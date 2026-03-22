@@ -1,0 +1,283 @@
+/* ============================================
+   ZERO BLOCK: Меню ресторана — Дело в огне
+   Вставить в редактор Zero Block → вкладка CSS
+   ============================================ */
+
+.menu-section {
+  background: #0d0600;
+  padding: 80px 20px;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+.menu-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Заголовок */
+.menu-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.menu-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF4500;
+  margin-bottom: 12px;
+}
+
+.menu-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #F5F0E8;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+
+.menu-subtitle {
+  font-size: 16px;
+  color: #A89880;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Табы категорий */
+.menu-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.menu-tab {
+  background: #2D1200;
+  border: 1px solid #3D2000;
+  color: #A89880;
+  padding: 12px 24px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.menu-tab:hover {
+  border-color: #FF4500;
+  color: #F5F0E8;
+}
+
+.menu-tab--active {
+  background: #FF4500;
+  border-color: #FF4500;
+  color: #fff;
+}
+
+/* Скрытая панель */
+.menu-grid--hidden {
+  display: none !important;
+}
+
+/* Сетка карточек */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Карточка блюда */
+.menu-card {
+  background: #1A0800;
+  border: 1px solid #2D1200;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(255, 69, 0, 0.2);
+  border-color: #FF4500;
+}
+
+/* Фото блюда */
+.menu-card__img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #2D1200;
+  overflow: hidden;
+}
+
+.menu-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.menu-card:hover .menu-card__img {
+  transform: scale(1.05);
+}
+
+/* Плейсхолдер если нет фото */
+.menu-card__img[src*="ФОТО"] {
+  display: none;
+}
+
+.menu-card__img-wrap::after {
+  content: '🔥';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: #2D1200;
+  /* Скрыть после загрузки реального фото */
+}
+
+.menu-card__img:not([src*="ФОТО"]) ~ .menu-card__img-wrap::after,
+.menu-card__img-wrap:has(img:not([src*="ФОТО"]))::after {
+  display: none;
+}
+
+/* Бейджи */
+.menu-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #FF4500;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.menu-card__badge--spicy {
+  background: #CC0000;
+}
+
+.menu-card__badge--new {
+  background: #27A700;
+}
+
+/* Тело карточки */
+.menu-card__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.menu-card__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #F5F0E8;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.menu-card__desc {
+  font-size: 13px;
+  color: #7A6050;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+/* Футер карточки */
+.menu-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.menu-card__price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFB347;
+}
+
+.menu-card__order {
+  background: #FF4500;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.menu-card__order:hover {
+  background: #cc3500;
+  transform: scale(1.05);
+}
+
+/* Сноска */
+.menu-footnote {
+  text-align: center;
+  font-size: 13px;
+  color: #4A3020;
+  margin: 0;
+  padding-top: 16px;
+}
+
+/* ============================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ============================================ */
+
+@media (max-width: 900px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-section {
+    padding: 60px 16px;
+  }
+
+  .menu-title {
+    font-size: 28px;
+  }
+
+  .menu-tabs {
+    gap: 6px;
+  }
+
+  .menu-tab {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .menu-card__title {
+    font-size: 16px;
+  }
+
+  .menu-card__price {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,265 @@
+<!--
+  ZERO BLOCK: Меню ресторана — «Дело в огне»
+  Вставить HTML в редактор Zero Block → вкладка HTML
+  CSS вставить в вкладку CSS
+  Позиции и цены заменить на актуальные
+-->
+
+<section class="menu-section" id="menu">
+  <div class="menu-inner">
+
+    <div class="menu-header">
+      <span class="menu-label">Что приготовили сегодня</span>
+      <h2 class="menu-title">Наше меню</h2>
+      <p class="menu-subtitle">
+        Всё готовится на живом огне. Состав и цены уточняйте у оператора —<br>
+        сезонные позиции меняются каждую неделю.
+      </p>
+    </div>
+
+    <!-- Табы категорий -->
+    <div class="menu-tabs" role="tablist">
+      <button class="menu-tab menu-tab--active" data-tab="meat" role="tab" aria-selected="true">🔥 Мясо на мангале</button>
+      <button class="menu-tab" data-tab="snacks" role="tab" aria-selected="false">🥗 Закуски</button>
+      <button class="menu-tab" data-tab="sides" role="tab" aria-selected="false">🍞 Гарниры</button>
+      <button class="menu-tab" data-tab="drinks" role="tab" aria-selected="false">🧃 Напитки</button>
+    </div>
+
+    <!-- Категория: Мясо -->
+    <div class="menu-grid" id="tab-meat">
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <!--
+            Замените src на URL фото блюда.
+            В Tilda: загрузить изображение → скопировать ссылку
+          -->
+          <img src="ФОТО_ШАШЛЫК_СВИНИНА.jpg" alt="Шашлык из свинины на мангале — Дело в огне" class="menu-card__img" loading="lazy" />
+          <span class="menu-card__badge">Хит</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Шашлык из свинины</h3>
+          <p class="menu-card__desc">Шея, маринад из лука и специй, живой огонь. 300&nbsp;г.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 450&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ШАШЛЫК_БАРАНИНА.jpg" alt="Шашлык из баранины — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Шашлык из баранины</h3>
+          <p class="menu-card__desc">Молодой ягнёнок, авторские специи, угольный жар. 300&nbsp;г.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 590&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_КУРИЦА.jpg" alt="Куриные крылья на мангале — Дело в огне" class="menu-card__img" loading="lazy" />
+          <span class="menu-card__badge menu-card__badge--spicy">Острое</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Крылья на углях</h3>
+          <p class="menu-card__desc">Куриные крылья в остром маринаде, хрустящая корочка. 400&nbsp;г.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 380&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ГОВЯДИНА.jpg" alt="Стейк из говядины на мангале — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Говяжий стейк</h3>
+          <p class="menu-card__desc">Вырезка, прожарка на выбор, соус из трав. 250&nbsp;г.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 750&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ЛЮЛЯ.jpg" alt="Люля-кебаб на мангале — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Люля-кебаб</h3>
+          <p class="menu-card__desc">Смешанный фарш, зелень, лаваш. 2 шт. / 350&nbsp;г.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 420&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_РЫБА.jpg" alt="Рыба на мангале — Дело в огне" class="menu-card__img" loading="lazy" />
+          <span class="menu-card__badge menu-card__badge--new">Новинка</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Форель на мангале</h3>
+          <p class="menu-card__desc">Речная форель целиком, лимон, розмарин. 500&nbsp;г.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 680&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-meat -->
+
+    <!-- Категория: Закуски -->
+    <div class="menu-grid menu-grid--hidden" id="tab-snacks">
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_САЛАТ.jpg" alt="Свежий салат из овощей — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Свежий овощной</h3>
+          <p class="menu-card__desc">Томаты, огурцы, зелень, оливковое масло. 250&nbsp;г.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 220&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_СОУСЫ.jpg" alt="Домашние соусы — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Соусы домашние</h3>
+          <p class="menu-card__desc">Ткемали, сацибели, чесночный. 100&nbsp;г каждый.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 80&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ЛАВАШ.jpg" alt="Свежий лаваш — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Лаваш свежий</h3>
+          <p class="menu-card__desc">Тонкий армянский лаваш, выпекаем сами.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 60&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-snacks -->
+
+    <!-- Категория: Гарниры -->
+    <div class="menu-grid menu-grid--hidden" id="tab-sides">
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_КАРТОФЕЛЬ.jpg" alt="Картофель на мангале — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Картофель на мангале</h3>
+          <p class="menu-card__desc">Молодой картофель с розмарином и чесноком. 300&nbsp;г.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 190&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ОВОЩИ_ГРИЛЬ.jpg" alt="Овощи гриль — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Овощи гриль</h3>
+          <p class="menu-card__desc">Баклажан, кабачок, перец, томат. 300&nbsp;г.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 230&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-sides -->
+
+    <!-- Категория: Напитки -->
+    <div class="menu-grid menu-grid--hidden" id="tab-drinks">
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ЛИМОНАД.jpg" alt="Домашний лимонад — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Домашний лимонад</h3>
+          <p class="menu-card__desc">Лимон, мята, имбирь. 0.5 л.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 150&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ЧАЙ.jpg" alt="Травяной чай — Дело в огне" class="menu-card__img" loading="lazy" />
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Чай травяной</h3>
+          <p class="menu-card__desc">Чабрец, мята, душица. Заварник 500&nbsp;мл.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">от 120&nbsp;₽</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-drinks -->
+
+    <!-- Сноска -->
+    <p class="menu-footnote">
+      * Цены и состав блюд могут меняться. Актуальное меню — у оператора по телефону.
+    </p>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.menu-tab');
+  var grids = {
+    meat:   document.getElementById('tab-meat'),
+    snacks: document.getElementById('tab-snacks'),
+    sides:  document.getElementById('tab-sides'),
+    drinks: document.getElementById('tab-drinks')
+  };
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabs.forEach(function(b){ b.classList.remove('menu-tab--active'); b.setAttribute('aria-selected','false'); });
+      btn.classList.add('menu-tab--active');
+      btn.setAttribute('aria-selected','true');
+      Object.keys(grids).forEach(function(k){ grids[k].classList.add('menu-grid--hidden'); });
+      var target = grids[btn.dataset.tab];
+      if(target){ target.classList.remove('menu-grid--hidden'); }
+    });
+  });
+})();
+</script>

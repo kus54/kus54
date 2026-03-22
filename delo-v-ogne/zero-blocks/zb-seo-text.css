@@ -1,0 +1,252 @@
+/* ============================================
+   ZERO BLOCK: SEO-текст + FAQ — Дело в огне
+   Вставить в редактор Zero Block → вкладка CSS
+   ============================================ */
+
+.seo-section {
+  background: #0d0600;
+  padding: 80px 20px;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+.seo-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+/* Метка */
+.seo-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF4500;
+  margin-bottom: 16px;
+}
+
+/* Концепция — две колонки */
+.seo-concept {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 72px;
+}
+
+.seo-concept__title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #F5F0E8;
+  line-height: 1.25;
+  margin: 0 0 24px;
+}
+
+.seo-concept__lead {
+  font-size: 17px;
+  color: #D0C4B4;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.seo-concept__body {
+  font-size: 15px;
+  color: #A89880;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+/* Список преимуществ */
+.seo-concept__highlights {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.seo-concept__highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: #C4B4A0;
+  line-height: 1.5;
+}
+
+.seo-concept__highlight-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.seo-concept__highlights strong {
+  color: #F5F0E8;
+}
+
+/* Колонка с фактами */
+.seo-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 24px;
+}
+
+.seo-fact {
+  background: #1A0800;
+  border: 1px solid #2D1200;
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.seo-fact__num {
+  font-size: 40px;
+  font-weight: 800;
+  color: #FF4500;
+  line-height: 1;
+}
+
+.seo-fact__unit {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFB347;
+}
+
+.seo-fact__label {
+  width: 100%;
+  font-size: 13px;
+  color: #7A6050;
+  margin-top: 4px;
+}
+
+/* FAQ блок */
+.seo-faq {
+  border-top: 1px solid #2D1200;
+  padding-top: 60px;
+}
+
+.seo-faq__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #F5F0E8;
+  margin: 0 0 32px;
+}
+
+.seo-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Вопрос-ответ */
+.faq-item {
+  border-bottom: 1px solid #2D1200;
+}
+
+.faq-item__q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #F5F0E8;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: inherit;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.faq-item__q:hover {
+  color: #FF4500;
+}
+
+.faq-item__arrow {
+  font-size: 20px;
+  color: #FF4500;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.faq-item__q[aria-expanded="true"] .faq-item__arrow {
+  transform: rotate(180deg);
+}
+
+.faq-item__a {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+}
+
+.faq-item__a p {
+  font-size: 15px;
+  color: #A89880;
+  line-height: 1.7;
+  padding: 0 0 24px;
+  margin: 0;
+}
+
+.faq-item__a strong {
+  color: #D0C4B4;
+}
+
+/* ============================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ============================================ */
+
+@media (max-width: 900px) {
+  .seo-concept {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .seo-facts {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .seo-fact {
+    flex: 1 1 140px;
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .seo-section {
+    padding: 60px 16px;
+  }
+
+  .seo-concept__title {
+    font-size: 26px;
+  }
+
+  .seo-concept__lead {
+    font-size: 15px;
+  }
+
+  .seo-fact {
+    flex: 1 1 120px;
+    padding: 16px;
+  }
+
+  .seo-fact__num {
+    font-size: 32px;
+  }
+
+  .faq-item__q {
+    font-size: 15px;
+  }
+}

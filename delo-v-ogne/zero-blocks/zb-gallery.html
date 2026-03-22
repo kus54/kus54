@@ -1,0 +1,182 @@
+<!--
+  ZERO BLOCK: Фотогалерея заведения — «Дело в огне»
+  Внутри и снаружи. Атмосфера живого огня.
+  Вставить HTML в редактор Zero Block → вкладка HTML
+  CSS вставить в вкладку CSS
+  Замените src у каждого <img> на реальные URL фотографий
+-->
+
+<section class="gallery-section" id="gallery">
+  <div class="gallery-inner">
+
+    <div class="gallery-header">
+      <span class="gallery-label">Приходите сами — убедитесь</span>
+      <h2 class="gallery-title">Атмосфера заведения</h2>
+      <p class="gallery-subtitle">
+        Живой огонь, открытый мангал и уютное пространство —<br>
+        место, где приятно сидеть и вкусно есть.
+      </p>
+    </div>
+
+    <!-- Переключатель: снаружи / внутри -->
+    <div class="gallery-tabs">
+      <button class="gtab gtab--active" data-gallery="outside">Снаружи</button>
+      <button class="gtab" data-gallery="inside">Внутри</button>
+      <button class="gtab" data-gallery="process">Процесс готовки</button>
+    </div>
+
+    <!-- Снаружи -->
+    <div class="gallery-grid" id="gallery-outside">
+      <div class="gallery-item gallery-item--wide">
+        <img
+          src="ФОТО_ФАСАД_ЗАВЕДЕНИЯ.jpg"
+          alt="Фасад ресторана Дело в огне — вход и вывеска"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Главный вход</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="ФОТО_ЛЕТНЯЯ_ТЕРРАСА.jpg"
+          alt="Летняя терраса ресторана Дело в огне"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Летняя терраса</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="ФОТО_ПАРКОВКА.jpg"
+          alt="Парковка у ресторана Дело в огне, пл.Карла Маркса 5"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Удобная парковка</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="ФОТО_ВЕЧЕР_СНАРУЖИ.jpg"
+          alt="Ресторан Дело в огне вечером — огни вывески"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Вечерняя атмосфера</div>
+      </div>
+    </div>
+
+    <!-- Внутри -->
+    <div class="gallery-grid gallery-grid--hidden" id="gallery-inside">
+      <div class="gallery-item gallery-item--wide">
+        <img
+          src="ФОТО_ЗАЛ_ОБЩИЙ.jpg"
+          alt="Общий вид зала ресторана Дело в огне"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Основной зал</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="ФОТО_СТОЛИК.jpg"
+          alt="Сервировка столика — Дело в огне"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Уютные столики</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="ФОТО_БАР_СТОЙКА.jpg"
+          alt="Барная стойка — Дело в огне"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Барная зона</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="ФОТО_ИНТЕРЬЕР_ДЕТАЛЬ.jpg"
+          alt="Детали интерьера ресторана Дело в огне"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Детали интерьера</div>
+      </div>
+    </div>
+
+    <!-- Процесс готовки -->
+    <div class="gallery-grid gallery-grid--hidden" id="gallery-process">
+      <div class="gallery-item gallery-item--wide">
+        <img
+          src="ФОТО_МАНГАЛ_ОГОНЬ.jpg"
+          alt="Открытый мангал с огнём — Дело в огне"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Живой огонь и мангал</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="ФОТО_ПОВАР_МАНГАЛ.jpg"
+          alt="Повар у мангала — Дело в огне"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Наш мастер у огня</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="ФОТО_МЯСО_НА_УГЛЯХ.jpg"
+          alt="Мясо на углях — Дело в огне"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Мясо на углях</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="ФОТО_ПОДАЧА_БЛЮДА.jpg"
+          alt="Подача готового блюда — Дело в огне"
+          class="gallery-img"
+          loading="lazy"
+        />
+        <div class="gallery-item__caption">Подача блюд</div>
+      </div>
+    </div>
+
+    <!-- Призыв посетить -->
+    <div class="gallery-cta-block">
+      <p class="gallery-cta-text">
+        Хотите почувствовать атмосферу вживую?
+      </p>
+      <div class="gallery-cta-buttons">
+        <a href="#contacts" class="gallery-cta-btn gallery-cta-btn--primary">Адрес и самовывоз</a>
+        <a href="#delivery" class="gallery-cta-btn gallery-cta-btn--secondary">Заказать доставку</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  var gtabs = document.querySelectorAll('.gtab');
+  var galleries = {
+    outside: document.getElementById('gallery-outside'),
+    inside:  document.getElementById('gallery-inside'),
+    process: document.getElementById('gallery-process')
+  };
+  gtabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      gtabs.forEach(function(b){ b.classList.remove('gtab--active'); });
+      btn.classList.add('gtab--active');
+      Object.keys(galleries).forEach(function(k){
+        galleries[k].classList.add('gallery-grid--hidden');
+      });
+      var target = galleries[btn.dataset.gallery];
+      if(target){ target.classList.remove('gallery-grid--hidden'); }
+    });
+  });
+})();
+</script>

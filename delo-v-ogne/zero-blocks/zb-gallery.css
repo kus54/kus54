@@ -1,0 +1,287 @@
+/* ============================================
+   ZERO BLOCK: Фотогалерея заведения — Дело в огне
+   Вставить в редактор Zero Block → вкладка CSS
+   ============================================ */
+
+.gallery-section {
+  background: #110600;
+  padding: 80px 20px;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+.gallery-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Заголовок */
+.gallery-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gallery-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF4500;
+  margin-bottom: 12px;
+}
+
+.gallery-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #F5F0E8;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+
+.gallery-subtitle {
+  font-size: 16px;
+  color: #A89880;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Табы галереи */
+.gallery-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.gtab {
+  background: #2D1200;
+  border: 1px solid #3D2000;
+  color: #A89880;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.gtab:hover {
+  border-color: #FF4500;
+  color: #F5F0E8;
+}
+
+.gtab--active {
+  background: #FF4500;
+  border-color: #FF4500;
+  color: #fff;
+}
+
+/* Скрытая галерея */
+.gallery-grid--hidden {
+  display: none !important;
+}
+
+/* Сетка фото */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+/* Широкий элемент — занимает 2 колонки, первая строка */
+.gallery-item--wide {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+/* Правый элемент в первой строке */
+.gallery-item:nth-child(2) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* Нижние три элемента */
+.gallery-item:nth-child(3) { grid-column: 1; grid-row: 2; }
+.gallery-item:nth-child(4) { grid-column: 2; grid-row: 2; }
+
+/* Если элементов меньше — fallback */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #2D1200;
+  aspect-ratio: 4/3;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-img {
+  transform: scale(1.06);
+}
+
+/* Плейсхолдер пока нет фото */
+.gallery-img[src*="ФОТО"] {
+  display: none;
+}
+
+.gallery-item::before {
+  content: '📷';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #3D2000;
+  background: #1A0800;
+}
+
+/* Убрать плейсхолдер если фото реальное */
+.gallery-item:has(img:not([src*="ФОТО"]))::before {
+  display: none;
+}
+
+/* Подпись к фото */
+.gallery-item__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  color: #F5F0E8;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.gallery-item:hover .gallery-item__caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA блок */
+.gallery-cta-block {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1A0800 0%, #2D1200 100%);
+  border: 1px solid #3D2000;
+  border-radius: 20px;
+}
+
+.gallery-cta-text {
+  font-size: 20px;
+  color: #F5F0E8;
+  font-weight: 600;
+  margin: 0 0 24px;
+}
+
+.gallery-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gallery-cta-btn {
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.gallery-cta-btn--primary {
+  background: #FF4500;
+  color: #fff;
+}
+
+.gallery-cta-btn--primary:hover {
+  background: #cc3500;
+  transform: translateY(-2px);
+}
+
+.gallery-cta-btn--secondary {
+  background: transparent;
+  color: #FF4500;
+  border: 1px solid #FF4500;
+}
+
+.gallery-cta-btn--secondary:hover {
+  background: rgba(255,69,0,0.1);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ============================================ */
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 60px 16px;
+  }
+
+  .gallery-title {
+    font-size: 28px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .gallery-item--wide {
+    grid-column: 1 / 3;
+  }
+
+  .gallery-item:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .gallery-item:nth-child(3) { grid-column: 2; grid-row: 2; }
+  .gallery-item:nth-child(4) { grid-column: 1; grid-row: 3; }
+
+  .gallery-item__caption {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item--wide,
+  .gallery-item:nth-child(2),
+  .gallery-item:nth-child(3),
+  .gallery-item:nth-child(4) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .gallery-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery-cta-btn {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,196 @@
+<!--
+  ZERO BLOCK: SEO-текст о концепции + GSEO (поиск ИИ) — «Дело в огне»
+
+  ЗАЧЕМ НУЖЕН ЭТОТ БЛОК:
+  - Даёт поисковикам (Яндекс, Google) текст с ключевыми словами
+  - Структурированный контент читают нейросетевые поисковики:
+    ChatGPT Search, Google SGE (AI Overview), Яндекс Нейро, Perplexity
+  - Формат «вопрос–ответ» = прямые попадания в блоки AI-ответов
+  - Разметка FAQ Schema.org внизу усиливает видимость в поиске ИИ
+
+  ИНСТРУКЦИЯ:
+  1. Вставить HTML в Zero Block → вкладка HTML
+  2. CSS вставить в вкладку CSS
+  3. В настройках блока Tilda → вставить Schema.org из файла schema.html в <head>
+  4. Замените [Город] на ваш реальный город везде в тексте
+-->
+
+<section class="seo-section" id="about">
+  <div class="seo-inner">
+
+    <!-- Основной SEO-текст о концепции -->
+    <div class="seo-concept">
+      <div class="seo-concept__text">
+        <span class="seo-label">О нас</span>
+        <h2 class="seo-concept__title">
+          «Дело в огне» — шашлык и блюда<br>
+          на живом огне с доставкой
+        </h2>
+        <p class="seo-concept__lead">
+          <strong>«Дело в огне»</strong> — ресторан блюд на открытом огне в&nbsp;[Город].
+          Мы готовим шашлык, люля-кебаб, стейки и&nbsp;овощи на&nbsp;настоящем угольном мангале.
+          Никаких газовых горелок и&nbsp;конвекционных печей — только живой жар,
+          который создаёт тот&nbsp;неповторимый аромат и&nbsp;корочку.
+        </p>
+        <p class="seo-concept__body">
+          Наша концепция проста: берём свежее мясо от&nbsp;локальных фермеров,
+          маринуем по&nbsp;собственным рецептам и&nbsp;готовим на&nbsp;углях прямо перед подачей.
+          Результат — сочное, ароматное блюдо, которое невозможно повторить дома
+          без настоящего мангала.
+        </p>
+        <p class="seo-concept__body">
+          Заказать шашлык с&nbsp;доставкой по&nbsp;[Город] можно через Яндекс&nbsp;Еду,
+          Delivery&nbsp;Club и&nbsp;Самокат. Самовывоз — по&nbsp;адресу пл.&nbsp;Карла&nbsp;Маркса,&nbsp;5.
+          Принимаем заказы ежедневно с&nbsp;10:00 до&nbsp;22:00.
+        </p>
+
+        <ul class="seo-concept__highlights">
+          <li>
+            <span class="seo-concept__highlight-icon">🔥</span>
+            <span>Готовим на <strong>живом угольном огне</strong> — никаких электроплит</span>
+          </li>
+          <li>
+            <span class="seo-concept__highlight-icon">🥩</span>
+            <span>Мясо от <strong>локальных фермеров</strong>, без заморозки, маринад ручного приготовления</span>
+          </li>
+          <li>
+            <span class="seo-concept__highlight-icon">⚡</span>
+            <span>От заказа до готовности — <strong>25 минут</strong></span>
+          </li>
+          <li>
+            <span class="seo-concept__highlight-icon">📍</span>
+            <span>Самовывоз: <strong>пл. Карла Маркса, 5</strong> · Доставка по всему городу</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Визуальная плашка-факты -->
+      <div class="seo-facts">
+        <div class="seo-fact">
+          <span class="seo-fact__num">25</span>
+          <span class="seo-fact__unit">мин</span>
+          <span class="seo-fact__label">от заказа до готовности</span>
+        </div>
+        <div class="seo-fact">
+          <span class="seo-fact__num">100%</span>
+          <span class="seo-fact__unit"></span>
+          <span class="seo-fact__label">натуральные ингредиенты</span>
+        </div>
+        <div class="seo-fact">
+          <span class="seo-fact__num">4+</span>
+          <span class="seo-fact__unit">вида</span>
+          <span class="seo-fact__label">мяса на мангале</span>
+        </div>
+        <div class="seo-fact">
+          <span class="seo-fact__num">7</span>
+          <span class="seo-fact__unit">дней</span>
+          <span class="seo-fact__label">в неделю без выходных</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ для AI-поиска (GSEO / Яндекс Нейро / ChatGPT Search) -->
+    <div class="seo-faq">
+      <h3 class="seo-faq__title">Часто спрашивают</h3>
+
+      <div class="seo-faq__list" itemscope itemtype="https://schema.org/FAQPage">
+
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-item__q" itemprop="name" aria-expanded="false">
+            Как заказать шашлык с доставкой в [Город]?
+            <span class="faq-item__arrow">▾</span>
+          </button>
+          <div class="faq-item__a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">
+              Заказать шашлык и блюда на огне от «Дело в огне» в [Город] можно через
+              агрегаторы доставки еды: <strong>Яндекс Еда</strong>, <strong>Delivery Club</strong>
+              и <strong>Самокат</strong>. Найдите нас по названию «Дело в огне» в приложении
+              или нажмите кнопку «Заказать» в разделе доставки на нашем сайте.
+              Доставка занимает 40–60 минут. Также можно позвонить и забрать самостоятельно
+              по адресу пл. Карла Маркса, 5.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-item__q" itemprop="name" aria-expanded="false">
+            Где можно забрать шашлык самовывозом?
+            <span class="faq-item__arrow">▾</span>
+          </button>
+          <div class="faq-item__a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">
+              Самовывоз из «Дело в огне» — по адресу <strong>пл. Карла Маркса, 5</strong>.
+              Работаем ежедневно: понедельник–пятница с 10:00 до 22:00,
+              суббота–воскресенье с 11:00 до 23:00. Чтобы заказать заранее и не ждать,
+              позвоните нам по телефону — блюдо приготовим к вашему приезду.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-item__q" itemprop="name" aria-expanded="false">
+            Что такое «блюда на живом огне» и чем это отличается от обычного шашлыка?
+            <span class="faq-item__arrow">▾</span>
+          </button>
+          <div class="faq-item__a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">
+              «Блюда на живом огне» — это приготовление на настоящем угольном мангале,
+              а не на газовой горелке или в электрической печи. Разница во вкусе принципиальная:
+              живой уголь даёт температуру 600–800°C, характерный аромат дыма и
+              золотистую корочку, которую невозможно получить иначе. В «Дело в огне»
+              мы используем только этот метод — для шашлыка, люля-кебаба, стейков,
+              рыбы и овощей.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-item__q" itemprop="name" aria-expanded="false">
+            Какое мясо используется в «Дело в огне»?
+            <span class="faq-item__arrow">▾</span>
+          </button>
+          <div class="faq-item__a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">
+              Мы работаем только со свежим охлаждённым мясом от местных фермерских хозяйств.
+              В меню: свиная шея (шашлык), молодой ягнёнок (баранина), куриные крылья и бёдра,
+              говяжья вырезка (стейки). Всё мясо маринуется по собственным рецептам —
+              без химических усилителей вкуса и консервантов. Никакой заморозки.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-item__q" itemprop="name" aria-expanded="false">
+            Сколько стоит шашлык с доставкой в [Город]?
+            <span class="faq-item__arrow">▾</span>
+          </button>
+          <div class="faq-item__a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <p itemprop="text">
+              Цены на шашлык в «Дело в огне» — от 380 ₽ за порцию (300 г).
+              Шашлык из свинины — от 450 ₽, из баранины — от 590 ₽, люля-кебаб — от 420 ₽.
+              Стоимость доставки зависит от сервиса агрегатора и удалённости адреса.
+              Актуальные цены уточняйте в меню Яндекс Еды или по телефону.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.faq-item__q');
+  items.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var answer = btn.nextElementSibling;
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      answer.style.maxHeight = isOpen ? '0' : answer.scrollHeight + 'px';
+      answer.style.opacity  = isOpen ? '0' : '1';
+    });
+  });
+})();
+</script>
