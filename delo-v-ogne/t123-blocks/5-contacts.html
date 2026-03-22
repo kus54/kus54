@@ -13,7 +13,7 @@
 .contact-card__phone { font-size: 20px; font-weight: 700; color: #F0EAE0; text-decoration: none; line-height: 1.2; display: block; margin: 4px 0; }
 .contact-card__phone:hover { color: #E8321A; }
 .contact-card__note { font-size: 13px; color: #4A4A4A; line-height: 1.4; }
-.contact-card__cta { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; background: #E8321A; color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 10px; transition: background 0.2s ease; }
+.contact-card__cta { display: flex; align-items: center; justify-content: center; padding: 12px 20px; background: #E8321A; color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 10px; transition: background 0.2s ease; box-sizing: border-box; width: 100%; }
 .contact-card__cta:hover { background: #C42818; }
 .contact-card__cta--tg { background: rgba(39,167,229,0.15); color: #27A7E5; }
 .contact-card__cta--tg:hover { background: rgba(39,167,229,0.25); }
@@ -26,13 +26,11 @@
 .hours-divider { height: 1px; background: #2A2A2A; margin: 8px 0; }
 @media (max-width: 800px) {
   .contacts-grid { grid-template-columns: 1fr; gap: 14px; }
-  .contact-card { flex-direction: row; flex-wrap: wrap; padding: 20px; }
-  .contact-card__cta { width: 100%; margin-top: 8px; }
+  .contact-card { flex-direction: column; padding: 20px; }
 }
 @media (max-width: 600px) {
   .contacts-section { padding: 60px 16px; }
   .contacts-title { font-size: 28px; }
-  .contact-card { flex-direction: column; }
   .hours-block { padding: 20px; }
   .hours-row { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
