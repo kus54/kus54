@@ -103,6 +103,9 @@
 }
 .hero-scroll__text { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
 .hero-scroll__arrow { font-size: 18px; color: rgba(255,255,255,0.4); }
+.hero-logo { margin-bottom: 40px; }
+.hero-logo__img { max-width: 220px; max-height: 88px; width: auto; height: auto; object-fit: contain; display: block; margin: 0 auto; }
+@media (max-width: 480px) { .hero-logo__img { max-width: 160px; max-height: 64px; } }
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(6px); }
@@ -127,6 +130,14 @@
     <span class="particle p3"></span>
   </div>
   <div class="hero-inner">
+    <div class="hero-logo">
+      <!-- ЛОГОТИП: замените URL ниже на ссылку из Tilda Медиа -->
+      <img
+        src="ВСТАВЬТЕ_ССЫЛКУ_НА_ЛОГОТИП"
+        alt="Дело в огне — шашлык на углях"
+        class="hero-logo__img"
+      />
+    </div>
     <span class="hero-eyebrow">Блюда на живом огне</span>
     <h1 class="hero-title">Дело<br>в&nbsp;огне</h1>
     <p class="hero-subtitle">
