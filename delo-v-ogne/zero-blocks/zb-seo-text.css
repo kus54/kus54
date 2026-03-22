@@ -4,7 +4,7 @@
    ============================================ */
 
 .seo-section {
-  background: #0d0600;
+  background: #0A0A0A;
   padding: 80px 20px;
   font-family: 'Montserrat', 'Arial', sans-serif;
 }
@@ -21,7 +21,7 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #FF4500;
+  color: #E8321A;
   margin-bottom: 16px;
 }
 
@@ -37,7 +37,7 @@
 .seo-concept__title {
   font-size: 36px;
   font-weight: 700;
-  color: #F5F0E8;
+  color: #F0EAE0;
   line-height: 1.25;
   margin: 0 0 24px;
 }
@@ -51,7 +51,7 @@
 
 .seo-concept__body {
   font-size: 15px;
-  color: #A89880;
+  color: #9A9A9A;
   line-height: 1.7;
   margin: 0 0 16px;
 }
@@ -82,7 +82,7 @@
 }
 
 .seo-concept__highlights strong {
-  color: #F5F0E8;
+  color: #F0EAE0;
 }
 
 /* Колонка с фактами */
@@ -95,8 +95,8 @@
 }
 
 .seo-fact {
-  background: #1A0800;
-  border: 1px solid #2D1200;
+  background: #141414;
+  border: 1px solid #1E1E1E;
   border-radius: 16px;
   padding: 20px 24px;
   display: flex;
@@ -108,33 +108,33 @@
 .seo-fact__num {
   font-size: 40px;
   font-weight: 800;
-  color: #FF4500;
+  color: #E8321A;
   line-height: 1;
 }
 
 .seo-fact__unit {
   font-size: 18px;
   font-weight: 700;
-  color: #FFB347;
+  color: #F0DBC0;
 }
 
 .seo-fact__label {
   width: 100%;
   font-size: 13px;
-  color: #7A6050;
+  color: #686868;
   margin-top: 4px;
 }
 
 /* FAQ блок */
 .seo-faq {
-  border-top: 1px solid #2D1200;
+  border-top: 1px solid #1E1E1E;
   padding-top: 60px;
 }
 
 .seo-faq__title {
   font-size: 28px;
   font-weight: 700;
-  color: #F5F0E8;
+  color: #F0EAE0;
   margin: 0 0 32px;
 }
 
@@ -146,7 +146,7 @@
 
 /* Вопрос-ответ */
 .faq-item {
-  border-bottom: 1px solid #2D1200;
+  border-bottom: 1px solid #1E1E1E;
 }
 
 .faq-item__q {
@@ -157,7 +157,7 @@
   padding: 22px 0;
   font-size: 17px;
   font-weight: 600;
-  color: #F5F0E8;
+  color: #F0EAE0;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -169,12 +169,12 @@
 }
 
 .faq-item__q:hover {
-  color: #FF4500;
+  color: #E8321A;
 }
 
 .faq-item__arrow {
   font-size: 20px;
-  color: #FF4500;
+  color: #E8321A;
   flex-shrink: 0;
   transition: transform 0.25s ease;
 }
@@ -192,7 +192,7 @@
 
 .faq-item__a p {
   font-size: 15px;
-  color: #A89880;
+  color: #9A9A9A;
   line-height: 1.7;
   padding: 0 0 24px;
   margin: 0;

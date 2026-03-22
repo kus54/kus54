@@ -3,7 +3,7 @@
    ============================================ */
 
 .contacts-section {
-  background: #120800;
+  background: #0A0A0A;
   padding: 80px 20px;
   font-family: 'Montserrat', 'Arial', sans-serif;
 }
@@ -25,14 +25,14 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #FF4500;
+  color: #E8321A;
   margin-bottom: 12px;
 }
 
 .contacts-title {
   font-size: 42px;
   font-weight: 700;
-  color: #F5F0E8;
+  color: #F0EAE0;
   margin: 0;
   line-height: 1.15;
 }
@@ -47,8 +47,8 @@
 
 /* Карточка контакта */
 .contact-card {
-  background: #1E0D00;
-  border: 1px solid #3D2000;
+  background: #1A1A1A;
+  border: 1px solid #2A2A2A;
   border-radius: 20px;
   padding: 28px 24px;
   display: flex;
@@ -58,19 +58,19 @@
 }
 
 .contact-card:hover {
-  border-color: #FF4500;
+  border-color: #E8321A;
   transform: translateY(-2px);
 }
 
 .contact-card--main {
-  border-color: #FF4500;
-  background: linear-gradient(160deg, #2D1200 0%, #1A0A00 100%);
+  border-color: #E8321A;
+  background: linear-gradient(160deg, #1E1E1E 0%, #141414 100%);
 }
 
 .contact-card__icon {
   width: 52px;
   height: 52px;
-  background: rgba(255, 69, 0, 0.1);
+  background: rgba(232, 50, 26, 0.1);
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@
 }
 
 .contact-card__icon--pin {
-  background: rgba(255, 179, 71, 0.1);
+  background: rgba(240, 219, 192, 0.1);
 }
 
 .contact-card__content {
@@ -97,25 +97,25 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #7A6050;
+  color: #686868;
 }
 
 .contact-card__phone {
   font-size: 20px;
   font-weight: 700;
-  color: #F5F0E8;
+  color: #F0EAE0;
   text-decoration: none;
   line-height: 1.2;
   transition: color 0.2s ease;
 }
 
 .contact-card__phone:hover {
-  color: #FF4500;
+  color: #E8321A;
 }
 
 .contact-card__note {
   font-size: 13px;
-  color: #5A4030;
+  color: #4A4A4A;
   line-height: 1.4;
 }
 
@@ -125,7 +125,7 @@
   align-items: center;
   justify-content: center;
   padding: 12px 20px;
-  background: #FF4500;
+  background: #E8321A;
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -135,7 +135,7 @@
 }
 
 .contact-card__cta:hover {
-  background: #FF6030;
+  background: #C42818;
   transform: scale(1.02);
 }
 
@@ -149,18 +149,18 @@
 }
 
 .contact-card__cta--map {
-  background: rgba(255, 179, 71, 0.12);
-  color: #FFB347;
+  background: rgba(240, 219, 192, 0.12);
+  color: #F0DBC0;
 }
 
 .contact-card__cta--map:hover {
-  background: rgba(255, 179, 71, 0.22);
+  background: rgba(240, 219, 192, 0.22);
 }
 
 /* Блок часов работы */
 .hours-block {
-  background: #1E0D00;
-  border: 1px solid #3D2000;
+  background: #1A1A1A;
+  border: 1px solid #2A2A2A;
   border-radius: 16px;
   padding: 24px 32px;
 }
@@ -174,18 +174,18 @@
 
 .hours-day {
   font-size: 15px;
-  color: #A89880;
+  color: #9A9A9A;
 }
 
 .hours-time {
   font-size: 16px;
   font-weight: 600;
-  color: #FFB347;
+  color: #F0DBC0;
 }
 
 .hours-divider {
   height: 1px;
-  background: #3D2000;
+  background: #2A2A2A;
   margin: 8px 0;
 }
 

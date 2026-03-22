@@ -45,7 +45,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #FF4500;
+  background: #E8321A;
   opacity: 0;
   animation: spark 4s infinite;
 }
@@ -84,7 +84,7 @@
   max-width: 180px;
   max-height: 70px;
   object-fit: contain;
-  filter: brightness(0) invert(1); /* Делаем логотип белым */
+  filter: none; /* Логотип уже имеет фирменные цвета */
 }
 
 /* Надпись над заголовком */
@@ -94,10 +94,10 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #FFB347;
+  color: #F0DBC0;
   margin-bottom: 20px;
   padding: 6px 16px;
-  border: 1px solid rgba(255, 179, 71, 0.3);
+  border: 1px solid rgba(240, 219, 192, 0.4);
   border-radius: 100px;
 }
 
@@ -107,18 +107,18 @@
   font-weight: 900;
   line-height: 0.9;
   margin: 0 0 28px;
-  color: #F5F0E8;
+  color: #F0EAE0;
   text-transform: uppercase;
   letter-spacing: -0.02em;
 
   /* Огненный градиент на тексте */
-  background: linear-gradient(180deg, #FFFFFF 0%, #FFB347 60%, #FF4500 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0DBC0 60%, #E8321A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 
   /* Тень для читаемости */
-  filter: drop-shadow(0 4px 24px rgba(255, 69, 0, 0.4));
+  filter: drop-shadow(0 4px 24px rgba(232, 50, 26, 0.4));
 }
 
 /* Подзаголовок */
@@ -152,19 +152,19 @@
 }
 
 .hero-btn--primary {
-  background: #FF4500;
+  background: #E8321A;
   color: #fff;
-  box-shadow: 0 4px 24px rgba(255, 69, 0, 0.4);
+  box-shadow: 0 4px 24px rgba(232, 50, 26, 0.4);
 }
 
 .hero-btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(255, 69, 0, 0.55);
+  box-shadow: 0 8px 32px rgba(232, 50, 26, 0.55);
 }
 
 .hero-btn--secondary {
   background: rgba(255, 255, 255, 0.1);
-  color: #F5F0E8;
+  color: #F0EAE0;
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
 }

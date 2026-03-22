@@ -7,7 +7,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'); */
 
 .delivery-section {
-  background: #1A0A00;
+  background: #141414;
   padding: 80px 20px;
   font-family: 'Montserrat', 'Arial', sans-serif;
 }
@@ -29,21 +29,21 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #FF4500;
+  color: #E8321A;
   margin-bottom: 12px;
 }
 
 .delivery-title {
   font-size: 42px;
   font-weight: 700;
-  color: #F5F0E8;
+  color: #F0EAE0;
   margin: 0 0 16px;
   line-height: 1.15;
 }
 
 .delivery-subtitle {
   font-size: 17px;
-  color: #A89880;
+  color: #9A9A9A;
   line-height: 1.6;
   margin: 0;
 }
@@ -62,8 +62,8 @@
   align-items: center;
   gap: 16px;
   padding: 22px 24px;
-  background: #2D1200;
-  border: 1px solid #3D2000;
+  background: #1E1E1E;
+  border: 1px solid #2A2A2A;
   border-radius: 16px;
   text-decoration: none;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -76,15 +76,15 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,69,0,0.08) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(232,50,26,0.08) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .delivery-btn:hover {
   transform: translateY(-3px);
-  border-color: #FF4500;
-  box-shadow: 0 8px 32px rgba(255, 69, 0, 0.25);
+  border-color: #E8321A;
+  box-shadow: 0 8px 32px rgba(232, 50, 26, 0.25);
 }
 
 .delivery-btn:hover::before {
@@ -117,19 +117,19 @@
 .delivery-btn__text strong {
   font-size: 16px;
   font-weight: 600;
-  color: #F5F0E8;
+  color: #F0EAE0;
   line-height: 1.2;
 }
 
 .delivery-btn__text small {
   font-size: 12px;
-  color: #7A6050;
+  color: #686868;
   font-weight: 400;
 }
 
 .delivery-btn__arrow {
   font-size: 18px;
-  color: #FF4500;
+  color: #E8321A;
   opacity: 0;
   transform: translateX(-4px);
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -145,8 +145,8 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background: #2D1200;
-  border: 1px solid #FF4500;
+  background: #1E1E1E;
+  border: 1px solid #E8321A;
   border-radius: 16px;
   padding: 24px 28px;
   margin-bottom: 24px;
@@ -169,18 +169,18 @@
 .delivery-pickup__title {
   font-size: 18px;
   font-weight: 700;
-  color: #F5F0E8;
+  color: #F0EAE0;
 }
 
 .delivery-pickup__address {
   font-size: 15px;
-  color: #FFB347;
+  color: #F0DBC0;
   font-weight: 600;
 }
 
 .delivery-pickup__hours {
   font-size: 13px;
-  color: #7A6050;
+  color: #686868;
 }
 
 .delivery-pickup__contact {
@@ -193,7 +193,7 @@
 
 .delivery-pickup__label {
   font-size: 12px;
-  color: #7A6050;
+  color: #686868;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -201,20 +201,20 @@
 .delivery-pickup__phone {
   font-size: 20px;
   font-weight: 700;
-  color: #F5F0E8;
+  color: #F0EAE0;
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .delivery-pickup__phone:hover {
-  color: #FF4500;
+  color: #E8321A;
 }
 
 .delivery-pickup__call-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #FF4500;
+  background: #E8321A;
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -225,7 +225,7 @@
 }
 
 .delivery-pickup__call-btn:hover {
-  background: #cc3500;
+  background: #C42818;
   transform: translateY(-2px);
 }
 
@@ -252,10 +252,10 @@
 .delivery-note {
   text-align: center;
   font-size: 14px;
-  color: #5A4030;
+  color: #4A4A4A;
   margin: 0;
   padding: 16px;
-  border: 1px dashed #3D2000;
+  border: 1px dashed #2A2A2A;
   border-radius: 10px;
 }
 
