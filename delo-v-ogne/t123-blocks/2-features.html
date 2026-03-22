@@ -1,0 +1,62 @@
+<style>
+.features-section { background: #0A0A0A; padding: 90px 20px; font-family: 'Montserrat', 'Arial', sans-serif; box-sizing: border-box; }
+.features-inner { max-width: 960px; margin: 0 auto; }
+.features-header { text-align: center; margin-bottom: 60px; }
+.features-label { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #E8321A; margin-bottom: 12px; }
+.features-title { font-size: 52px; font-weight: 800; margin: 0 0 20px; line-height: 1.1; background: linear-gradient(135deg, #F0EAE0 0%, #F0DBC0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.features-desc { font-size: 18px; color: #9A9A9A; line-height: 1.65; max-width: 560px; margin: 0 auto; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 56px; }
+.feature-card { background: #1A1A1A; border: 1px solid #2A2A2A; border-radius: 24px; padding: 36px 28px; text-align: center; transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; }
+.feature-card:hover { border-color: #E8321A; transform: translateY(-6px); box-shadow: 0 20px 60px rgba(232,50,26,0.15); }
+.feature-card__icon { width: 72px; height: 72px; background: rgba(232,50,26,0.08); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 36px; }
+.feature-card__title { font-size: 20px; font-weight: 700; color: #F0EAE0; margin: 0 0 14px; line-height: 1.2; }
+.feature-card__text { font-size: 15px; color: #686868; line-height: 1.65; margin: 0; }
+.features-divider { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; }
+.features-divider__line { flex: 1; height: 1px; background: #2A2A2A; }
+.features-divider__icon { font-size: 24px; opacity: 0.7; }
+.features-quote { text-align: center; font-size: 22px; font-style: italic; color: #9A9A9A; margin: 0; padding: 0 40px; line-height: 1.5; border: none; }
+@media (max-width: 860px) {
+  .features-grid { grid-template-columns: 1fr; gap: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .feature-card { text-align: left; display: flex; align-items: flex-start; gap: 20px; padding: 24px; }
+  .feature-card__icon { margin: 0; flex-shrink: 0; }
+}
+@media (max-width: 600px) {
+  .features-section { padding: 60px 16px; }
+  .features-title { font-size: 34px; }
+  .features-desc { font-size: 16px; }
+  .features-quote { font-size: 17px; padding: 0 10px; }
+}
+</style>
+
+<section class="features-section">
+  <div class="features-inner">
+    <div class="features-header">
+      <span class="features-label">Наша концепция</span>
+      <h2 class="features-title">Дело в огне</h2>
+      <p class="features-desc">Мы готовим на живом огне — так, как это делали тысячи лет. Настоящий вкус без компромиссов.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-card__icon">🔥</div>
+        <h3 class="feature-card__title">Живой огонь</h3>
+        <p class="feature-card__text">Мангал, уголь, язык пламени. Никаких электроплит — только настоящий жар, который даёт тот самый вкус.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">✅</div>
+        <h3 class="feature-card__title">Только свежее</h3>
+        <p class="feature-card__text">Мясо от локальных фермеров, специи ручного помола, маринад по собственному рецепту. Без заморозки.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">⚡</div>
+        <h3 class="feature-card__title">Быстро и горячо</h3>
+        <p class="feature-card__text">От заказа до готовности — 25 минут. Забирайте сами или получайте через агрегатор прямо к двери.</p>
+      </div>
+    </div>
+    <div class="features-divider">
+      <div class="features-divider__line"></div>
+      <span class="features-divider__icon">🔥</span>
+      <div class="features-divider__line"></div>
+    </div>
+    <blockquote class="features-quote">«Огонь — лучший шеф-повар. Мы просто помогаем ему.»</blockquote>
+  </div>
+</section>

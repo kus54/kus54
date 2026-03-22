@@ -1,0 +1,145 @@
+<style>
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1A0800;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,4,0,0.55) 0%, rgba(26,10,0,0.70) 50%, rgba(10,4,0,0.85) 100%);
+  z-index: 1;
+}
+.hero-particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.particle { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #E8321A; opacity: 0; animation: spark 4s infinite; }
+.p1 { left: 20%; top: 60%; animation-delay: 0s; }
+.p2 { left: 50%; top: 70%; animation-delay: 1.3s; }
+.p3 { left: 75%; top: 55%; animation-delay: 2.7s; }
+@keyframes spark {
+  0% { opacity: 0; transform: translateY(0) scale(1); }
+  20% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-120px) scale(0.3); }
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  width: 100%;
+  max-width: 800px;
+  min-height: 100vh;
+  justify-content: center;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #F0DBC0;
+  margin-bottom: 20px;
+  padding: 6px 16px;
+  border: 1px solid rgba(240,219,192,0.4);
+  border-radius: 100px;
+}
+.hero-title {
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 0.9;
+  margin: 0 0 28px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0DBC0 60%, #E8321A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 4px 24px rgba(232,50,26,0.4));
+}
+.hero-subtitle {
+  font-size: 20px;
+  color: rgba(245,240,232,0.75);
+  line-height: 1.6;
+  margin: 0 0 48px;
+  max-width: 460px;
+}
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 36px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.hero-btn--primary { background: #E8321A; color: #fff; box-shadow: 0 4px 24px rgba(232,50,26,0.4); }
+.hero-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,50,26,0.55); }
+.hero-btn--secondary { background: rgba(255,255,255,0.1); color: #F0EAE0; border: 1px solid rgba(255,255,255,0.2); }
+.hero-btn--secondary:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: bounce 2s infinite;
+}
+.hero-scroll__text { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.hero-scroll__arrow { font-size: 18px; color: rgba(255,255,255,0.4); }
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+@media (max-width: 768px) {
+  .hero-title { font-size: 56px; }
+  .hero-subtitle { font-size: 17px; }
+  .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; }
+  .hero-btn { justify-content: center; padding: 17px 28px; }
+}
+@media (max-width: 400px) {
+  .hero-title { font-size: 44px; }
+  .hero-eyebrow { font-size: 11px; }
+}
+</style>
+
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-particles">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+  </div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Блюда на живом огне</span>
+    <h1 class="hero-title">Дело<br>в&nbsp;огне</h1>
+    <p class="hero-subtitle">
+      Готовим на мангале. Доставляем горячим.<br>
+      Кормим с душой.
+    </p>
+    <div class="hero-ctas">
+      <a href="#delivery" class="hero-btn hero-btn--primary">Заказать доставку</a>
+      <a href="tel:+7XXXXXXXXXX" class="hero-btn hero-btn--secondary">Позвонить</a>
+    </div>
+    <div class="hero-scroll">
+      <span class="hero-scroll__text">Листайте вниз</span>
+      <span class="hero-scroll__arrow">↓</span>
+    </div>
+  </div>
+</section>
