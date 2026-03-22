@@ -1,0 +1,72 @@
+<!--
+  ZERO BLOCK: Hero секция — «Дело в огне»
+
+  ВАЖНО: Tilda не позволяет использовать <video> напрямую в Zero Block
+  для фона всего блока. Используйте вместо этого:
+  1. Настройки блока Tilda → Фон → Видео (встроенная функция Tilda)
+  2. Этот Zero Block — для контента поверх видеофона
+
+  Или используйте этот код целиком как Zero Block с CSS-фоном (изображение).
+-->
+
+<section class="hero-section">
+
+  <!-- Оверлей для затемнения фона -->
+  <div class="hero-overlay"></div>
+
+  <!-- Декоративные элементы -->
+  <div class="hero-particles">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+  </div>
+
+  <div class="hero-inner">
+
+    <!-- Логотип -->
+    <div class="hero-logo">
+      <!--
+        Замените img src на URL вашего логотипа.
+        В Tilda: загрузить файл → получить ссылку → вставить сюда
+      -->
+      <img
+        src="ССЫЛКА_НА_ВАШ_ЛОГОТИП.svg"
+        alt="Дело в огне — логотип"
+        class="hero-logo__img"
+        width="200"
+        height="80"
+      />
+    </div>
+
+    <!-- Основной контент -->
+    <div class="hero-content">
+      <span class="hero-eyebrow">Блюда на живом огне</span>
+      <h1 class="hero-title">Дело<br>в&nbsp;огне</h1>
+      <p class="hero-subtitle">
+        Готовим на мангале. Доставляем горячим.<br>
+        Кормим с душой.
+      </p>
+
+      <!-- CTA кнопки -->
+      <div class="hero-ctas">
+        <a href="#delivery" class="hero-btn hero-btn--primary">
+          Заказать доставку
+        </a>
+        <a href="tel:+7XXXXXXXXXX" class="hero-btn hero-btn--secondary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2.5 2C2.5 2 2 2 2 2.75C2 3.5 2.25 5.5 4.25 7.5C6.25 9.5 8.25 9.75 9.25 9.75C10.25 9.75 10.5 9 10.5 9L11.25 7.25C11.25 7.25 10.5 6.75 9.75 6.5C9 6.25 8.25 7 8.25 7C8.25 7 7.75 7.25 6.75 6.25C5.75 5.25 6 4.75 6 4.75C6 4.75 6.75 4 6.5 3.25C6.25 2.5 5.75 1.75 5.75 1.75L4 2L2.5 2Z" fill="currentColor"/>
+          </svg>
+          Позвонить
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Скролл-индикатор -->
+    <div class="hero-scroll">
+      <span class="hero-scroll__text">Листайте вниз</span>
+      <span class="hero-scroll__arrow">↓</span>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,245 @@
+/* ============================================
+   ZERO BLOCK: Контакты — Дело в огне
+   ============================================ */
+
+.contacts-section {
+  background: #120800;
+  padding: 80px 20px;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+.contacts-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Заголовок */
+.contacts-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.contacts-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF4500;
+  margin-bottom: 12px;
+}
+
+.contacts-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #F5F0E8;
+  margin: 0;
+  line-height: 1.15;
+}
+
+/* Сетка карточек */
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+/* Карточка контакта */
+.contact-card {
+  background: #1E0D00;
+  border: 1px solid #3D2000;
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-card:hover {
+  border-color: #FF4500;
+  transform: translateY(-2px);
+}
+
+.contact-card--main {
+  border-color: #FF4500;
+  background: linear-gradient(160deg, #2D1200 0%, #1A0A00 100%);
+}
+
+.contact-card__icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 69, 0, 0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-card__icon--tg {
+  background: rgba(39, 167, 229, 0.1);
+}
+
+.contact-card__icon--pin {
+  background: rgba(255, 179, 71, 0.1);
+}
+
+.contact-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.contact-card__type {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7A6050;
+}
+
+.contact-card__phone {
+  font-size: 20px;
+  font-weight: 700;
+  color: #F5F0E8;
+  text-decoration: none;
+  line-height: 1.2;
+  transition: color 0.2s ease;
+}
+
+.contact-card__phone:hover {
+  color: #FF4500;
+}
+
+.contact-card__note {
+  font-size: 13px;
+  color: #5A4030;
+  line-height: 1.4;
+}
+
+/* CTA кнопки в карточках */
+.contact-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  background: #FF4500;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.contact-card__cta:hover {
+  background: #FF6030;
+  transform: scale(1.02);
+}
+
+.contact-card__cta--secondary {
+  background: rgba(39, 167, 229, 0.15);
+  color: #27A7E5;
+}
+
+.contact-card__cta--secondary:hover {
+  background: rgba(39, 167, 229, 0.25);
+}
+
+.contact-card__cta--map {
+  background: rgba(255, 179, 71, 0.12);
+  color: #FFB347;
+}
+
+.contact-card__cta--map:hover {
+  background: rgba(255, 179, 71, 0.22);
+}
+
+/* Блок часов работы */
+.hours-block {
+  background: #1E0D00;
+  border: 1px solid #3D2000;
+  border-radius: 16px;
+  padding: 24px 32px;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.hours-day {
+  font-size: 15px;
+  color: #A89880;
+}
+
+.hours-time {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFB347;
+}
+
+.hours-divider {
+  height: 1px;
+  background: #3D2000;
+  margin: 8px 0;
+}
+
+/* ============================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ============================================ */
+
+@media (max-width: 800px) {
+  .contacts-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .contact-card {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+
+  .contact-card__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .contact-card__cta {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contacts-section {
+    padding: 60px 16px;
+  }
+
+  .contacts-title {
+    font-size: 28px;
+  }
+
+  .contact-card {
+    flex-direction: column;
+  }
+
+  .contact-card__phone {
+    font-size: 18px;
+  }
+
+  .hours-block {
+    padding: 20px;
+  }
+
+  .hours-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

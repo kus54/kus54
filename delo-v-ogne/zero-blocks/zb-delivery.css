@@ -1,0 +1,194 @@
+/* ============================================
+   ZERO BLOCK: Блок доставки — Дело в огне
+   Вставить в редактор Zero Block → вкладка CSS
+   ============================================ */
+
+/* Импорт шрифта (замените на ваш корпоративный) */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'); */
+
+.delivery-section {
+  background: #1A0A00;
+  padding: 80px 20px;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+.delivery-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Заголовок блока */
+.delivery-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.delivery-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF4500;
+  margin-bottom: 12px;
+}
+
+.delivery-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #F5F0E8;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+
+.delivery-subtitle {
+  font-size: 17px;
+  color: #A89880;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Сетка кнопок */
+.delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+/* Кнопка агрегатора */
+.delivery-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  background: #2D1200;
+  border: 1px solid #3D2000;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.delivery-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,69,0,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.delivery-btn:hover {
+  transform: translateY(-3px);
+  border-color: #FF4500;
+  box-shadow: 0 8px 32px rgba(255, 69, 0, 0.25);
+}
+
+.delivery-btn:hover::before {
+  opacity: 1;
+}
+
+.delivery-btn__icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+}
+
+.delivery-btn__icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.delivery-btn__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.delivery-btn__text strong {
+  font-size: 16px;
+  font-weight: 600;
+  color: #F5F0E8;
+  line-height: 1.2;
+}
+
+.delivery-btn__text small {
+  font-size: 12px;
+  color: #7A6050;
+  font-weight: 400;
+}
+
+.delivery-btn__arrow {
+  font-size: 18px;
+  color: #FF4500;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.delivery-btn:hover .delivery-btn__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Примечание о своей доставке */
+.delivery-note {
+  text-align: center;
+  font-size: 14px;
+  color: #5A4030;
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed #3D2000;
+  border-radius: 10px;
+}
+
+/* ============================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ============================================ */
+
+@media (max-width: 900px) {
+  .delivery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .delivery-section {
+    padding: 60px 16px;
+  }
+
+  .delivery-title {
+    font-size: 28px;
+  }
+
+  .delivery-subtitle {
+    font-size: 15px;
+  }
+
+  .delivery-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .delivery-btn {
+    padding: 18px 20px;
+  }
+
+  .delivery-btn__text strong {
+    font-size: 15px;
+  }
+
+  .delivery-btn__arrow {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,244 @@
+/* ============================================
+   ZERO BLOCK: Hero — Дело в огне
+   ============================================ */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Фоновое изображение (замените URL на ваше фото) */
+  background-image: url('ССЫЛКА_НА_ФОТО_ОГНЯ.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+/* Тёмный оверлей поверх фото/видео */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 4, 0, 0.55) 0%,
+    rgba(26, 10, 0, 0.70) 50%,
+    rgba(10, 4, 0, 0.85) 100%
+  );
+  z-index: 1;
+}
+
+/* Декоративные частицы (имитация искр) */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #FF4500;
+  opacity: 0;
+  animation: spark 4s infinite;
+}
+
+.p1 { left: 20%; top: 60%; animation-delay: 0s; }
+.p2 { left: 50%; top: 70%; animation-delay: 1.3s; }
+.p3 { left: 75%; top: 55%; animation-delay: 2.7s; }
+
+@keyframes spark {
+  0% { opacity: 0; transform: translateY(0) scale(1); }
+  20% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-120px) scale(0.3); }
+}
+
+/* Внутренний контейнер */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  width: 100%;
+  max-width: 800px;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+/* Логотип */
+.hero-logo {
+  margin-bottom: 48px;
+}
+
+.hero-logo__img {
+  max-width: 180px;
+  max-height: 70px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Делаем логотип белым */
+}
+
+/* Надпись над заголовком */
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FFB347;
+  margin-bottom: 20px;
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 179, 71, 0.3);
+  border-radius: 100px;
+}
+
+/* H1 */
+.hero-title {
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 0.9;
+  margin: 0 0 28px;
+  color: #F5F0E8;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+
+  /* Огненный градиент на тексте */
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFB347 60%, #FF4500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* Тень для читаемости */
+  filter: drop-shadow(0 4px 24px rgba(255, 69, 0, 0.4));
+}
+
+/* Подзаголовок */
+.hero-subtitle {
+  font-size: 20px;
+  color: rgba(245, 240, 232, 0.75);
+  line-height: 1.6;
+  margin: 0 0 48px;
+  max-width: 460px;
+}
+
+/* Кнопки */
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 36px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.hero-btn--primary {
+  background: #FF4500;
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(255, 69, 0, 0.4);
+}
+
+.hero-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255, 69, 0, 0.55);
+}
+
+.hero-btn--secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #F5F0E8;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.hero-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Скролл-индикатор */
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: bounce 2s infinite;
+}
+
+.hero-scroll__text {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+.hero-scroll__arrow {
+  font-size: 18px;
+  color: rgba(255,255,255,0.4);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ============================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 56px;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+  }
+
+  .hero-logo__img {
+    max-width: 140px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-btn {
+    justify-content: center;
+    padding: 17px 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 44px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+  }
+}
