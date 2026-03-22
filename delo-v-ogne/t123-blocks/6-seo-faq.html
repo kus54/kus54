@@ -1,0 +1,118 @@
+<style>
+.seo-section { background: #0A0A0A; padding: 80px 20px; font-family: 'Montserrat', 'Arial', sans-serif; box-sizing: border-box; }
+.seo-inner { max-width: 1060px; margin: 0 auto; }
+.seo-label { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #E8321A; margin-bottom: 16px; }
+.seo-concept { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; margin-bottom: 72px; }
+.seo-concept__title { font-size: 36px; font-weight: 700; color: #F0EAE0; line-height: 1.25; margin: 0 0 24px; }
+.seo-concept__lead { font-size: 17px; color: #D0C4B4; line-height: 1.7; margin: 0 0 16px; }
+.seo-concept__body { font-size: 15px; color: #9A9A9A; line-height: 1.7; margin: 0 0 16px; }
+.seo-concept__highlights { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 12px; }
+.seo-concept__highlights li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: #C4B4A0; line-height: 1.5; }
+.seo-concept__highlight-icon { font-size: 18px; flex-shrink: 0; }
+.seo-concept__highlights strong { color: #F0EAE0; }
+.seo-facts { display: flex; flex-direction: column; gap: 16px; }
+.seo-fact { background: #141414; border: 1px solid #1E1E1E; border-radius: 16px; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+.seo-fact__num { font-size: 40px; font-weight: 800; color: #E8321A; line-height: 1; }
+.seo-fact__unit { font-size: 18px; font-weight: 700; color: #F0DBC0; }
+.seo-fact__label { width: 100%; font-size: 13px; color: #686868; margin-top: 4px; }
+.seo-faq { border-top: 1px solid #1E1E1E; padding-top: 60px; }
+.seo-faq__title { font-size: 28px; font-weight: 700; color: #F0EAE0; margin: 0 0 32px; }
+.faq-item { border-bottom: 1px solid #1E1E1E; }
+.faq-item__q { width: 100%; text-align: left; background: none; border: none; padding: 22px 0; font-size: 17px; font-weight: 600; color: #F0EAE0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit; line-height: 1.4; transition: color 0.2s ease; }
+.faq-item__q:hover { color: #E8321A; }
+.faq-item__arrow { font-size: 20px; color: #E8321A; flex-shrink: 0; transition: transform 0.25s ease; }
+.faq-item__q[aria-expanded="true"] .faq-item__arrow { transform: rotate(180deg); }
+.faq-item__a { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease; }
+.faq-item__a p { font-size: 15px; color: #9A9A9A; line-height: 1.7; padding: 0 0 24px; margin: 0; }
+.faq-item__a strong { color: #D0C4B4; }
+@media (max-width: 900px) {
+  .seo-concept { grid-template-columns: 1fr; gap: 32px; }
+  .seo-facts { flex-direction: row; flex-wrap: wrap; }
+  .seo-fact { flex: 1 1 140px; min-width: 140px; }
+}
+@media (max-width: 600px) {
+  .seo-section { padding: 60px 16px; }
+  .seo-concept__title { font-size: 26px; }
+  .seo-concept__lead { font-size: 15px; }
+  .seo-fact { flex: 1 1 120px; padding: 16px; }
+  .seo-fact__num { font-size: 32px; }
+  .faq-item__q { font-size: 15px; }
+}
+</style>
+
+<section class="seo-section" id="about">
+  <div class="seo-inner">
+    <div class="seo-concept">
+      <div class="seo-concept__text">
+        <span class="seo-label">О нас</span>
+        <h2 class="seo-concept__title">«Дело в огне» — шашлык и блюда на живом огне с доставкой</h2>
+        <p class="seo-concept__lead">
+          <strong>«Дело в огне»</strong> — ресторан блюд на открытом огне в [Город].
+          Мы готовим шашлык, люля-кебаб, стейки и овощи на настоящем угольном мангале.
+          Никаких газовых горелок — только живой жар, который создаёт тот неповторимый аромат и корочку.
+        </p>
+        <p class="seo-concept__body">
+          Наша концепция проста: берём свежее мясо от локальных фермеров, маринуем по собственным рецептам
+          и готовим на углях прямо перед подачей. Результат — сочное, ароматное блюдо, которое невозможно
+          повторить дома без настоящего мангала.
+        </p>
+        <p class="seo-concept__body">
+          Заказать шашлык с доставкой по [Город] можно через Яндекс Еду, Delivery Club и Самокат.
+          Самовывоз — по адресу пл. Карла Маркса, 5. Принимаем заказы ежедневно с 10:00 до 22:00.
+        </p>
+        <ul class="seo-concept__highlights">
+          <li><span class="seo-concept__highlight-icon">🔥</span><span>Готовим на <strong>живом угольном огне</strong> — никаких электроплит</span></li>
+          <li><span class="seo-concept__highlight-icon">🥩</span><span>Мясо от <strong>локальных фермеров</strong>, без заморозки, маринад ручного приготовления</span></li>
+          <li><span class="seo-concept__highlight-icon">⚡</span><span>От заказа до готовности — <strong>25 минут</strong></span></li>
+          <li><span class="seo-concept__highlight-icon">📍</span><span>Самовывоз: <strong>пл. Карла Маркса, 5</strong> · Доставка по всему городу</span></li>
+        </ul>
+      </div>
+      <div class="seo-facts">
+        <div class="seo-fact"><span class="seo-fact__num">25</span><span class="seo-fact__unit">мин</span><span class="seo-fact__label">от заказа до готовности</span></div>
+        <div class="seo-fact"><span class="seo-fact__num">100%</span><span class="seo-fact__unit"></span><span class="seo-fact__label">натуральные ингредиенты</span></div>
+        <div class="seo-fact"><span class="seo-fact__num">4+</span><span class="seo-fact__unit">вида</span><span class="seo-fact__label">мяса на мангале</span></div>
+        <div class="seo-fact"><span class="seo-fact__num">7</span><span class="seo-fact__unit">дней</span><span class="seo-fact__label">в неделю без выходных</span></div>
+      </div>
+    </div>
+
+    <div class="seo-faq">
+      <h3 class="seo-faq__title">Часто спрашивают</h3>
+      <div class="seo-faq__list">
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">Как заказать шашлык с доставкой в [Город]?<span class="faq-item__arrow">▾</span></button>
+          <div class="faq-item__a"><p>Заказать шашлык и блюда на огне от «Дело в огне» в [Город] можно через агрегаторы: <strong>Яндекс Еда</strong>, <strong>Delivery Club</strong> и <strong>Самокат</strong>. Найдите нас по названию «Дело в огне» в приложении. Доставка — 40–60 минут. Также можно позвонить и забрать самостоятельно по адресу пл. Карла Маркса, 5.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">Где можно забрать шашлык самовывозом?<span class="faq-item__arrow">▾</span></button>
+          <div class="faq-item__a"><p>Самовывоз из «Дело в огне» — по адресу <strong>пл. Карла Маркса, 5</strong>. Работаем ежедневно: пн–пт с 10:00 до 22:00, сб–вс с 11:00 до 23:00. Чтобы не ждать — позвоните заранее, приготовим к приезду.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">Чем блюда на живом огне отличаются от обычного шашлыка?<span class="faq-item__arrow">▾</span></button>
+          <div class="faq-item__a"><p>Живой уголь даёт температуру 600–800°C, характерный аромат дыма и золотистую корочку. В «Дело в огне» только этот метод — для шашлыка, люля-кебаба, стейков, рыбы и овощей.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">Какое мясо используется?<span class="faq-item__arrow">▾</span></button>
+          <div class="faq-item__a"><p>Только свежее охлаждённое мясо от местных фермеров: свиная шея, молодой ягнёнок, куриные крылья, говяжья вырезка. Маринад по собственным рецептам — без консервантов. Никакой заморозки.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">Сколько стоит шашлык с доставкой в [Город]?<span class="faq-item__arrow">▾</span></button>
+          <div class="faq-item__a"><p>Шашлык из свинины — от 450 ₽, из баранины — от 590 ₽, люля-кебаб — от 420 ₽, крылья — от 380 ₽. Актуальные цены в Яндекс Еде или по телефону.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  document.querySelectorAll('.faq-item__q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var a = btn.nextElementSibling;
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      a.style.maxHeight = open ? '0' : a.scrollHeight + 'px';
+      a.style.opacity = open ? '0' : '1';
+    });
+  });
+})();
+</script>
