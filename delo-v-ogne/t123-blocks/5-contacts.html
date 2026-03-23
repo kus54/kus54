@@ -19,11 +19,19 @@
 .contact-card__cta--tg:hover { background: rgba(39,167,229,0.25); }
 .contact-card__cta--map { background: rgba(240,219,192,0.12); color: #F0DBC0; }
 .contact-card__cta--map:hover { background: rgba(240,219,192,0.22); }
+/* Адрес-ссылка */
+.contact-address-link { color: #F0EAE0; text-decoration: none; font-size: 18px; font-weight: 700; line-height: 1.2; display: block; margin: 4px 0; transition: color 0.2s; }
+.contact-address-link:hover { color: #E8321A; }
+.contact-map-links { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.contact-map-badge { font-size: 11px; color: #686868; text-decoration: none; padding: 3px 8px; border: 1px solid #333; border-radius: 20px; transition: color 0.2s, border-color 0.2s; }
+.contact-map-badge:hover { color: #F0DBC0; border-color: #686868; }
+/* График работы */
 .hours-block { background: #1A1A1A; border: 1px solid #2A2A2A; border-radius: 16px; padding: 24px 32px; }
+.hours-block__title { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #686868; margin-bottom: 16px; }
 .hours-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; }
 .hours-day { font-size: 15px; color: #9A9A9A; }
 .hours-time { font-size: 16px; font-weight: 600; color: #F0DBC0; }
-.hours-divider { height: 1px; background: #2A2A2A; margin: 8px 0; }
+.hours-badge { display: inline-block; font-size: 11px; font-weight: 600; color: #E8321A; background: rgba(232,50,26,0.12); padding: 3px 10px; border-radius: 20px; margin-left: 10px; }
 @media (max-width: 800px) {
   .contacts-grid { grid-template-columns: 1fr; gap: 14px; }
   .contact-card { flex-direction: column; padding: 20px; }
@@ -43,15 +51,17 @@
       <h2 class="contacts-title">Свяжитесь с нами</h2>
     </div>
     <div class="contacts-grid">
+
       <div class="contact-card contact-card--main">
         <div class="contact-card__icon">📞</div>
         <div>
           <span class="contact-card__type">Заказы и самовывоз</span>
           <a href="tel:+7XXXXXXXXXX" class="contact-card__phone">+7 (XXX) XXX-XX-XX</a>
-          <span class="contact-card__note">Принимаем с 10:00 до 22:00</span>
+          <span class="contact-card__note">Принимаем с 11:00 до 23:00</span>
         </div>
         <a href="tel:+7XXXXXXXXXX" class="contact-card__cta">Позвонить</a>
       </div>
+
       <div class="contact-card">
         <div class="contact-card__icon">✈️</div>
         <div>
@@ -61,25 +71,29 @@
         </div>
         <a href="https://t.me/ВАШ_TELEGRAM" target="_blank" rel="noopener" class="contact-card__cta contact-card__cta--tg">Написать</a>
       </div>
+
       <div class="contact-card">
         <div class="contact-card__icon">📍</div>
         <div>
           <span class="contact-card__type">Самовывоз</span>
-          <span class="contact-card__phone" style="font-size:18px;">пл. Карла Маркса, 5</span>
-          <span class="contact-card__note">Пн–Вс: 10:00–22:00 · Без выходных</span>
+          <!-- ЗАМЕНИТЕ href: вставьте прямую ссылку на вашу точку в Яндекс Картах -->
+          <a href="https://yandex.ru/maps/?text=площадь+Карла+Маркса+5" target="_blank" rel="noopener" class="contact-address-link">пл. Карла Маркса, 5</a>
+          <span class="contact-card__note">Пн–Вс: 11:00–23:00</span>
+          <div class="contact-map-links">
+            <a href="https://yandex.ru/maps/?text=площадь+Карла+Маркса+5" target="_blank" rel="noopener" class="contact-map-badge">Яндекс Карты</a>
+            <a href="https://2gis.ru/search/площадь%20Карла%20Маркса%205" target="_blank" rel="noopener" class="contact-map-badge">2GIS</a>
+          </div>
         </div>
-        <a href="https://yandex.ru/maps/" target="_blank" rel="noopener" class="contact-card__cta contact-card__cta--map">На карте</a>
+        <a href="https://yandex.ru/maps/?text=площадь+Карла+Маркса+5" target="_blank" rel="noopener" class="contact-card__cta contact-card__cta--map">На карте</a>
       </div>
+
     </div>
+
     <div class="hours-block">
+      <div class="hours-block__title">График работы</div>
       <div class="hours-row">
-        <span class="hours-day">Понедельник — Пятница</span>
-        <span class="hours-time">10:00 — 22:00</span>
-      </div>
-      <div class="hours-divider"></div>
-      <div class="hours-row">
-        <span class="hours-day">Суббота — Воскресенье</span>
-        <span class="hours-time">11:00 — 23:00</span>
+        <span class="hours-day">Понедельник — Воскресенье</span>
+        <span class="hours-time">11:00 — 23:00 <span class="hours-badge">Без выходных</span></span>
       </div>
     </div>
   </div>
