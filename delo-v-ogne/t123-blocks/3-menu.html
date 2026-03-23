@@ -6,22 +6,29 @@
 .menu-title { font-size: 42px; font-weight: 700; color: #F0EAE0; margin: 0 0 16px; line-height: 1.15; }
 .menu-subtitle { font-size: 16px; color: #9A9A9A; line-height: 1.6; margin: 0; }
 .menu-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-.menu-tab { background: #1E1E1E; border: 1px solid #2A2A2A; color: #9A9A9A; padding: 12px 24px; border-radius: 40px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-family: inherit; }
+.menu-tab { background: #1E1E1E; border: 1px solid #2A2A2A; color: #9A9A9A; padding: 12px 20px; border-radius: 40px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-family: inherit; }
 .menu-tab:hover { border-color: #E8321A; color: #F0EAE0; }
 .menu-tab--active { background: #E8321A; border-color: #E8321A; color: #fff; }
 .menu-grid--hidden { display: none !important; }
 .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
 .menu-card { background: #141414; border: 1px solid #1E1E1E; border-radius: 16px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; display: flex; flex-direction: column; }
 .menu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(232,50,26,0.2); border-color: #E8321A; }
+
+/* Обёртка фото */
+.menu-card__img-wrap { width: 100%; aspect-ratio: 4/3; position: relative; overflow: hidden; background: #1E1E1E; }
+/* Само фото блюда */
+.menu-card__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Заглушка — показывается пока нет фото */
 .menu-card__img-placeholder { width: 100%; aspect-ratio: 4/3; background: #1E1E1E; display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative; }
-.menu-card__badge { position: absolute; top: 12px; left: 12px; background: #E8321A; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; }
+
+.menu-card__badge { position: absolute; top: 12px; left: 12px; background: #E8321A; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; z-index: 1; }
 .menu-card__badge--spicy { background: #CC0000; }
 .menu-card__badge--new { background: #27A700; }
 .menu-card__body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
 .menu-card__title { font-size: 17px; font-weight: 700; color: #F0EAE0; margin: 0 0 8px; line-height: 1.3; }
 .menu-card__desc { font-size: 13px; color: #686868; line-height: 1.5; margin: 0 0 16px; flex: 1; }
 .menu-card__footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.menu-card__price { font-size: 20px; font-weight: 700; color: #F0DBC0; }
+.menu-card__weight { font-size: 18px; font-weight: 700; color: #F0DBC0; }
 .menu-card__order { background: #E8321A; color: #fff; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 30px; text-decoration: none; transition: background 0.2s ease; white-space: nowrap; }
 .menu-card__order:hover { background: #C42818; }
 .menu-footnote { text-align: center; font-size: 13px; color: #4A4A4A; margin: 0; padding-top: 16px; }
@@ -29,7 +36,7 @@
 @media (max-width: 600px) {
   .menu-section { padding: 60px 16px; }
   .menu-title { font-size: 28px; }
-  .menu-tab { padding: 10px 16px; font-size: 13px; }
+  .menu-tab { padding: 10px 14px; font-size: 12px; }
   .menu-grid { grid-template-columns: 1fr; gap: 16px; }
 }
 </style>
@@ -39,171 +46,608 @@
     <div class="menu-header">
       <span class="menu-label">Что приготовили сегодня</span>
       <h2 class="menu-title">Наше меню</h2>
-      <p class="menu-subtitle">Всё готовится на живом огне. Цены и состав уточняйте у оператора.</p>
+      <p class="menu-subtitle">Всё готовится на живом огне. Цены уточняйте у оператора.</p>
     </div>
+
     <div class="menu-tabs" role="tablist">
-      <button class="menu-tab menu-tab--active" data-tab="meat" role="tab">🔥 Мясо на мангале</button>
+      <button class="menu-tab menu-tab--active" data-tab="ugly" role="tab">🔥 Блюда на углях</button>
+      <button class="menu-tab" data-tab="complex" role="tab">📦 Комплексы</button>
+      <button class="menu-tab" data-tab="lavash" role="tab">🌯 Шашлык в лаваше</button>
+      <button class="menu-tab" data-tab="shawarma" role="tab">🥙 Шаурма</button>
       <button class="menu-tab" data-tab="snacks" role="tab">🥗 Закуски</button>
-      <button class="menu-tab" data-tab="sides" role="tab">🍞 Гарниры</button>
       <button class="menu-tab" data-tab="drinks" role="tab">🧃 Напитки</button>
     </div>
 
-    <div class="menu-grid" id="tab-meat">
+    <!-- ======================================================
+         КАТЕГОРИЯ: БЛЮДА НА УГЛЯХ
+         ====================================================== -->
+    <div class="menu-grid" id="tab-ugly">
+
+      <!-- ФОТО: Шашлык из свинины (шейная часть)
+           Снимать: крупный план — золотистые кусочки шеи на мангале, видны угли
+           Файл: foto_shashlyk_svinina.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
       <div class="menu-card">
-        <div class="menu-card__img-placeholder">🥩<span class="menu-card__badge">Хит</span></div>
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_shashlyk_svinina" alt="Шашлык из свинины на мангале" class="menu-card__img" loading="lazy">
+          <span class="menu-card__badge">Хит</span>
+        </div>
         <div class="menu-card__body">
           <h3 class="menu-card__title">Шашлык из свинины</h3>
-          <p class="menu-card__desc">Шея, маринад из лука и специй, живой огонь. 300 г.</p>
+          <p class="menu-card__desc">Шейная часть, маринад, живой огонь.</p>
           <div class="menu-card__footer">
-            <span class="menu-card__price">от 450 ₽</span>
+            <span class="menu-card__weight">250 г</span>
             <a href="#delivery" class="menu-card__order">Заказать</a>
           </div>
         </div>
       </div>
+
+      <!-- ФОТО: Люля-кебаб
+           Снимать: люля-кебаб на шампуре над углями, видна корочка
+           Файл: foto_lyulya_kebab.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
       <div class="menu-card">
-        <div class="menu-card__img-placeholder">🐑</div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Шашлык из баранины</h3>
-          <p class="menu-card__desc">Молодой ягнёнок, авторские специи, угольный жар. 300 г.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 590 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_lyulya_kebab" alt="Люля-кебаб на мангале" class="menu-card__img" loading="lazy">
         </div>
-      </div>
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🍗<span class="menu-card__badge menu-card__badge--spicy">Острое</span></div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Крылья на углях</h3>
-          <p class="menu-card__desc">Куриные крылья в остром маринаде, хрустящая корочка. 400 г.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 380 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🥩</div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Говяжий стейк</h3>
-          <p class="menu-card__desc">Вырезка, прожарка на выбор, соус из трав. 250 г.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 750 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🍢</div>
         <div class="menu-card__body">
           <h3 class="menu-card__title">Люля-кебаб</h3>
-          <p class="menu-card__desc">Смешанный фарш, зелень, лаваш. 2 шт. / 350 г.</p>
+          <p class="menu-card__desc">Свинина + говядина, авторские специи, лаваш.</p>
           <div class="menu-card__footer">
-            <span class="menu-card__price">от 420 ₽</span>
+            <span class="menu-card__weight">250 г</span>
             <a href="#delivery" class="menu-card__order">Заказать</a>
           </div>
         </div>
       </div>
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🐟<span class="menu-card__badge menu-card__badge--new">Новинка</span></div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Форель на мангале</h3>
-          <p class="menu-card__desc">Речная форель целиком, лимон, розмарин. 500 г.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 680 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
+      <!-- ФОТО: Крылья куриные на мангале
+           Снимать: куриные крылья с румяной корочкой на решётке над углями
+           Файл: foto_krylya_mangal.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_krylya_mangal" alt="Куриные крылья на мангале" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Крылья куриные на мангале</h3>
+          <p class="menu-card__desc">Куриные крылья, хрустящая корочка, живой огонь.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Грудка куриная на мангале
+           Снимать: филе грудки с поджаристыми полосками от решётки
+           Файл: foto_grudka_mangal.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_grudka_mangal" alt="Грудка куриная на мангале" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Грудка куриная на мангале</h3>
+          <p class="menu-card__desc">Куриное филе, маринад, угольный жар.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Стейк бедра куриного
+           Снимать: бедро куриное с корочкой на мангале, крупный план
+           Файл: foto_steyk_bedra.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_steyk_bedra" alt="Стейк бедра куриного на мангале" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Стейк бедра куриного</h3>
+          <p class="menu-card__desc">Куриные бёдра, маринад, на углях.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">250 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Колбаски на мангале
+           Снимать: жареные колбаски ассорти на решётке, дым от углей
+           Файл: foto_kolbaski_mangal.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_kolbaski_mangal" alt="Колбаски на мангале ассорти" class="menu-card__img" loading="lazy">
+          <span class="menu-card__badge menu-card__badge--new">Новинка</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Колбаски на мангале ассорти</h3>
+          <p class="menu-card__desc">Несколько видов колбасок, жар углей.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">250 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Овощи на гриле
+           Снимать: нарезанные кусочками перец, кабачок, баклажан на решётке-гриль
+           Файл: foto_ovoshi_gril.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_ovoshi_gril" alt="Овощи на гриле кусочками" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Овощи на гриле</h3>
+          <p class="menu-card__desc">Кусочки болгарского перца и других овощей на углях.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">500 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Грибы на мангале
+           Снимать: шампиньоны целиком или половинками на решётке, румяные
+           Файл: foto_griby_mangal.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_griby_mangal" alt="Грибы шампиньоны на мангале" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Грибы на мангале</h3>
+          <p class="menu-card__desc">Шампиньоны целиком на углях.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">500 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Картофель в беконе на углях
+           Снимать: картофель завёрнутый в бекон, поджаристый, на решётке
+           Файл: foto_kartofel_bekon.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_kartofel_bekon" alt="Картофель в беконе на углях" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Картофель в беконе на углях</h3>
+          <p class="menu-card__desc">Картофель, бекон, угольный жар.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">500 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-ugly -->
+
+    <!-- ======================================================
+         КАТЕГОРИЯ: КОМПЛЕКСЫ
+         ====================================================== -->
+    <div class="menu-grid menu-grid--hidden" id="tab-complex">
+
+      <!-- ФОТО: Комплекс №1 со свининой
+           Снимать: тарелка — шашлык из свинины + лук маринованный + соус + лаваш рядом
+           Файл: foto_complex1_svinina.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_complex1_svinina" alt="Комплекс №1 свинина с лавашом и соусом" class="menu-card__img" loading="lazy">
+          <span class="menu-card__badge">Хит</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Комплекс №1 — Свинина</h3>
+          <p class="menu-card__desc">Свинина (200 г) + лук маринованный + соус + лаваш.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">380 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Комплекс №2 с курицей грудкой
+           Снимать: тарелка — куриная грудка + лук маринованный + соус + лаваш рядом
+           Файл: foto_complex2_grudka.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_complex2_grudka" alt="Комплекс №2 курица грудка с лавашом и соусом" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Комплекс №2 — Курица грудка</h3>
+          <p class="menu-card__desc">Курица грудка (200 г) + лук маринованный + соус + лаваш.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">380 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Комплекс №3 с курицей бедром
+           Снимать: тарелка — куриное бедро + лук маринованный + соус + лаваш рядом
+           Файл: foto_complex3_bedro.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_complex3_bedro" alt="Комплекс №3 курица бедро с лавашом и соусом" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Комплекс №3 — Курица бедро</h3>
+          <p class="menu-card__desc">Курица бедро (200 г) + лук маринованный + соус + лаваш.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">380 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-complex -->
+
+    <!-- ======================================================
+         КАТЕГОРИЯ: ШАШЛЫК В ЛАВАШЕ
+         ====================================================== -->
+    <div class="menu-grid menu-grid--hidden" id="tab-lavash">
+
+      <!-- ФОТО: Шашлык в лаваше (свинина)
+           Снимать: шашлык завёрнутый в лаваш, разрезан пополам — виден сочный шашлык внутри
+           Файл: foto_shashlyk_lavash_svinina.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_shashlyk_lavash_svinina" alt="Шашлык в лаваше из свинины" class="menu-card__img" loading="lazy">
+          <span class="menu-card__badge">Хит</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Шашлык в лаваше — Свинина</h3>
+          <p class="menu-card__desc">Свинина в маринаде + лук маринованный + соус шаурмы + кетчуп + лаваш.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Шашлык в лаваше (курица)
+           Снимать: шашлык из курицы завёрнутый в лаваш, разрезан — видна начинка
+           Файл: foto_shashlyk_lavash_kurица.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_shashlyk_lavash_kurica" alt="Шашлык в лаваше из курицы" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Шашлык в лаваше — Курица</h3>
+          <p class="menu-card__desc">Курица в маринаде + лук маринованный + соус шаурмы + кетчуп + лаваш.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-lavash -->
+
+    <!-- ======================================================
+         КАТЕГОРИЯ: ШАУРМА
+         ====================================================== -->
+    <div class="menu-grid menu-grid--hidden" id="tab-shawarma">
+
+      <!-- ФОТО: Шаурма Классик
+           Снимать: шаурма в лаваше, разрезана пополам — видна начинка (курица, капуста, морковь, огурец, помидор)
+           Файл: foto_shawarma_klassik.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_shawarma_klassik" alt="Шаурма Классик" class="menu-card__img" loading="lazy">
+          <span class="menu-card__badge">Хит</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Шаурма Классик</h3>
+          <p class="menu-card__desc">Филе грудки + соус классика + капуста + морковь + огурец + помидор + лаваш.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">420 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Шаурма Острая
+           Снимать: шаурма в разрезе, видны острый соус и начинка — акцент на цвет соуса
+           Файл: foto_shawarma_ostraya.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_shawarma_ostraya" alt="Шаурма Острая" class="menu-card__img" loading="lazy">
+          <span class="menu-card__badge menu-card__badge--spicy">Острая</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Шаурма Острая</h3>
+          <p class="menu-card__desc">Филе грудки + острый соус + капуста + морковь + огурец + помидор + лаваш.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">420 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Шаурма Сырная
+           Снимать: шаурма в разрезе, видны тянущийся сыр и начинка
+           Файл: foto_shawarma_syrnaya.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_shawarma_syrnaya" alt="Шаурма Сырная" class="menu-card__img" loading="lazy">
+          <span class="menu-card__badge menu-card__badge--new">Новинка</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Шаурма Сырная</h3>
+          <p class="menu-card__desc">Филе грудки + сырный соус + капуста + морковь + огурец + помидор + лаваш.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">420 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-shawarma -->
+
+    <!-- ======================================================
+         КАТЕГОРИЯ: ЗАКУСКИ и СОУСЫ
+         ====================================================== -->
     <div class="menu-grid menu-grid--hidden" id="tab-snacks">
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🥗</div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Свежий овощной</h3>
-          <p class="menu-card__desc">Томаты, огурцы, зелень, оливковое масло. 250 г.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 220 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🫙</div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Соусы домашние</h3>
-          <p class="menu-card__desc">Ткемали, сацибели, чесночный. 100 г каждый.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 80 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🫓</div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Лаваш свежий</h3>
-          <p class="menu-card__desc">Тонкий армянский лаваш, выпекаем сами.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 60 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="menu-grid menu-grid--hidden" id="tab-sides">
+      <!-- ФОТО: Морковь по-корейски
+           Снимать: морковь по-корейски в небольшой тарелке или креманке, крупный план
+           Файл: foto_morkov_korejski.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
       <div class="menu-card">
-        <div class="menu-card__img-placeholder">🥔</div>
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_morkov_korejski" alt="Морковь по-корейски" class="menu-card__img" loading="lazy">
+        </div>
         <div class="menu-card__body">
-          <h3 class="menu-card__title">Картофель на мангале</h3>
-          <p class="menu-card__desc">Молодой картофель с розмарином и чесноком. 300 г.</p>
+          <h3 class="menu-card__title">Морковь по-корейски</h3>
+          <p class="menu-card__desc">Пикантная закуска к мясу.</p>
           <div class="menu-card__footer">
-            <span class="menu-card__price">от 190 ₽</span>
+            <span class="menu-card__weight">100 г</span>
             <a href="#delivery" class="menu-card__order">Заказать</a>
           </div>
         </div>
       </div>
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🥦</div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Овощи гриль</h3>
-          <p class="menu-card__desc">Баклажан, кабачок, перец, томат. 300 г.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 230 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
+      <!-- ФОТО: Лук маринованный
+           Снимать: маринованный лук кольцами в тарелке
+           Файл: foto_luk_marinovannyj.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_luk_marinovannyj" alt="Лук маринованный" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Лук маринованный</h3>
+          <p class="menu-card__desc">Классическая подача к шашлыку.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">50 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Гренки чесночные
+           Снимать: гренки горкой на тарелке, поджаристые, с зеленью
+           Файл: foto_grenki_chesnok.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_grenki_chesnok" alt="Гренки чесночные" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Гренки чесночные</h3>
+          <p class="menu-card__desc">Хрустящие гренки с чесноком.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">100 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Салат Цезарь
+           Снимать: салат цезарь в тарелке, листья, гренки, заправка — аппетитный вид
+           Файл: foto_salat_cezar.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_salat_cezar" alt="Салат Цезарь" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Цезарь</h3>
+          <p class="menu-card__desc">Классический салат цезарь.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">200 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Капуста квашеная
+           Снимать: квашеная капуста в тарелке, по-домашнему
+           Файл: foto_kapusta_kvashenaya.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_kapusta_kvashenaya" alt="Капуста квашеная" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Капуста квашеная</h3>
+          <p class="menu-card__desc">Домашняя квашеная капуста.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">200 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Соусы (одно общее фото всех соусов)
+           Снимать: 4–5 соусников в ряд — барбекю, аджика, кетчуп, сырный, чесночный
+           Файл: foto_sousy_assortі.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_sousy_assorti" alt="Соусы на выбор" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Соусы на выбор</h3>
+          <p class="menu-card__desc">Барбекю, аджика, кетчуп, сырный, чесночный.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">60 г</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-snacks -->
+
+    <!-- ======================================================
+         КАТЕГОРИЯ: НАПИТКИ
+         ====================================================== -->
     <div class="menu-grid menu-grid--hidden" id="tab-drinks">
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🍋</div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Домашний лимонад</h3>
-          <p class="menu-card__desc">Лимон, мята, имбирь. 0.5 л.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 150 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-      <div class="menu-card">
-        <div class="menu-card__img-placeholder">🍵</div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Чай травяной</h3>
-          <p class="menu-card__desc">Чабрец, мята, душица. Заварник 500 мл.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">от 120 ₽</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <p class="menu-footnote">* Цены и состав блюд могут меняться. Актуальное меню — у оператора по телефону.</p>
+      <!-- ФОТО: Газировка из автомата
+           Снимать: стакан с газировкой и льдом (кола / фанта / спрайт) — яркий цвет
+           Файл: foto_gazirovka_avtomat.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_gazirovka_avtomat" alt="Газировка Кола Фанта Спрайт" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Газировка (Кола / Фанта / Спрайт)</h3>
+          <p class="menu-card__desc">Свежая газировка из автомата.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">350 мл</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Морс
+           Снимать: стакан с морсом (красный/бордовый цвет), можно с ягодами рядом
+           Файл: foto_mors.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_mors" alt="Морс домашний" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Морс</h3>
+          <p class="menu-card__desc">Домашний морс из ягод.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 мл</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Вода
+           Снимать: бутылка воды или стакан чистой воды
+           Файл: foto_voda.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_voda" alt="Вода питьевая" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Вода</h3>
+          <p class="menu-card__desc">Чистая питьевая вода.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 мл</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Чай
+           Снимать: стакан/кружка с чаем, пар, уютная подача
+           Файл: foto_chaj.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_chaj" alt="Чай горячий" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Чай</h3>
+          <p class="menu-card__desc">Горячий чай.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 мл</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Чай с молоком
+           Снимать: кружка чая с молоком, светло-бежевый цвет
+           Файл: foto_chaj_moloko.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_chaj_moloko" alt="Чай с молоком" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Чай с молоком</h3>
+          <p class="menu-card__desc">Чай с добавлением молока.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 мл</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Кофе
+           Снимать: чашка чёрного кофе, крупный план, пар
+           Файл: foto_kofe.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_kofe" alt="Кофе" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Кофе</h3>
+          <p class="menu-card__desc">Горячий кофе.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 мл</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФОТО: Кофе с молоком
+           Снимать: латте или капучино в стакане/кружке, пена красивая
+           Файл: foto_kofe_moloko.jpg
+           Вставить ссылку из Tilda Медиа в src ниже -->
+      <div class="menu-card">
+        <div class="menu-card__img-wrap">
+          <img src="ВСТАВЬТЕ_ССЫЛКУ_foto_kofe_moloko" alt="Кофе с молоком" class="menu-card__img" loading="lazy">
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Кофе с молоком</h3>
+          <p class="menu-card__desc">Кофе с молоком, мягкий вкус.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__weight">300 мл</span>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-drinks -->
+
+    <p class="menu-footnote">* Цены уточняйте у оператора по телефону. Состав и вес могут незначительно меняться.</p>
   </div>
 </section>
 
@@ -211,10 +655,12 @@
 (function(){
   var tabs = document.querySelectorAll('.menu-tab');
   var grids = {
-    meat:   document.getElementById('tab-meat'),
-    snacks: document.getElementById('tab-snacks'),
-    sides:  document.getElementById('tab-sides'),
-    drinks: document.getElementById('tab-drinks')
+    ugly:     document.getElementById('tab-ugly'),
+    complex:  document.getElementById('tab-complex'),
+    lavash:   document.getElementById('tab-lavash'),
+    shawarma: document.getElementById('tab-shawarma'),
+    snacks:   document.getElementById('tab-snacks'),
+    drinks:   document.getElementById('tab-drinks')
   };
   tabs.forEach(function(btn){
     btn.addEventListener('click', function(){
