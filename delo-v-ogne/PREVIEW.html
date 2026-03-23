@@ -96,25 +96,28 @@
     .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .hero-btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 16px 32px;
+      padding: 18px 36px;
       border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 18px;
+      font-weight: 800;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
     }
     .hero-btn:hover { transform: translateY(-2px); }
     .hero-btn--primary {
       background: linear-gradient(135deg, #E8321A, #FF6B00);
-      color: #fff;
+      color: #fff !important;
       box-shadow: 0 4px 24px rgba(232,50,26,0.4);
     }
+    .hero-btn--primary:visited { color: #fff !important; }
     .hero-btn--primary:hover { box-shadow: 0 8px 32px rgba(232,50,26,0.6); }
     .hero-btn--secondary {
       background: rgba(255,255,255,0.05);
-      color: #f0ece4;
+      color: #f0ece4 !important;
       border: 1px solid rgba(255,255,255,0.15);
     }
+    .hero-btn--secondary:visited { color: #f0ece4 !important; }
     .hero-btn--secondary:hover { background: rgba(255,255,255,0.1); }
     .hero-scroll {
       position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
