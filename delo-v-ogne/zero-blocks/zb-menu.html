@@ -23,6 +23,7 @@
       <button class="menu-tab" data-tab="snacks" role="tab" aria-selected="false">🥗 Закуски</button>
       <button class="menu-tab" data-tab="sides" role="tab" aria-selected="false">🍞 Гарниры</button>
       <button class="menu-tab" data-tab="drinks" role="tab" aria-selected="false">🧃 Напитки</button>
+      <button class="menu-tab menu-tab--bar" data-tab="tinctures" role="tab" aria-selected="false">🍶 Настойки — Бар</button>
     </div>
 
     <!-- Категория: Мясо -->
@@ -234,9 +235,102 @@
 
     </div><!-- /tab-drinks -->
 
+    <!-- Категория: Настойки (Бар) -->
+    <div class="menu-grid menu-grid--hidden menu-grid--tinctures" id="tab-tinctures">
+
+      <!-- Баннер: только в баре, не доставляем -->
+      <div class="tinctures-notice">
+        <span class="tinctures-notice__icon">🚫🚗</span>
+        <p>Настойки продаются <strong>только в баре</strong> — алкоголь не доставляем.<br>
+        Приходите к нам, будем рады угостить!</p>
+      </div>
+
+      <div class="menu-card menu-card--tincture">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_КЛЮКВЕННАЯ.jpg" alt="Клюквенная настойка — Дело в огне" class="menu-card__img" loading="lazy" />
+          <span class="menu-card__badge menu-card__badge--18">18+</span>
+          <span class="menu-card__badge menu-card__badge--tincture-emoji">🍒</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Клюквенная</h3>
+          <p class="menu-card__desc">Кисло-сладкая, как первая любовь. Отличный старт для вечера. 50&nbsp;мл.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price-tincture">50&nbsp;мл</span>
+            <span class="menu-card__bar-only">Только в баре</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card menu-card--tincture">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ЛИМОННАЯ.jpg" alt="Лимонная настойка — Дело в огне" class="menu-card__img" loading="lazy" />
+          <span class="menu-card__badge menu-card__badge--18">18+</span>
+          <span class="menu-card__badge menu-card__badge--tincture-emoji">🍋</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Лимонная</h3>
+          <p class="menu-card__desc">Свежая, бодрящая — как пощёчина от судьбы, только приятная. 50&nbsp;мл.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price-tincture">50&nbsp;мл</span>
+            <span class="menu-card__bar-only">Только в баре</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card menu-card--tincture">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ПЕРЦОВАЯ.jpg" alt="Перцовая настойка — Дело в огне" class="menu-card__img" loading="lazy" />
+          <span class="menu-card__badge menu-card__badge--18">18+</span>
+          <span class="menu-card__badge menu-card__badge--tincture-emoji">🌶️</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Перцовая</h3>
+          <p class="menu-card__desc">Согреет до кончиков пальцев. Для тех, кто не боится огня — ни в тарелке, ни в стакане. 50&nbsp;мл.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price-tincture">50&nbsp;мл</span>
+            <span class="menu-card__bar-only">Только в баре</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card menu-card--tincture">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ФИРМЕННАЯ.jpg" alt="Фирменная настойка — Дело в огне" class="menu-card__img" loading="lazy" />
+          <span class="menu-card__badge menu-card__badge--18">18+</span>
+          <span class="menu-card__badge menu-card__badge--seasonal">Сезонная</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Фирменная (сезонная)</h3>
+          <p class="menu-card__desc">Секретный рецепт шефа. Меняется каждый сезон — уточняйте у бармена, что припрятал на этот раз. 50&nbsp;мл.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price-tincture">50&nbsp;мл</span>
+            <span class="menu-card__bar-only">Только в баре</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card menu-card--tincture">
+        <div class="menu-card__img-wrap">
+          <img src="ФОТО_ТОМАТНАЯ.jpg" alt="Томатная настойка — Дело в огне" class="menu-card__img" loading="lazy" />
+          <span class="menu-card__badge menu-card__badge--18">18+</span>
+          <span class="menu-card__badge menu-card__badge--tincture-emoji">🍅</span>
+        </div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Томатная</h3>
+          <p class="menu-card__desc">Для смелых и любопытных. Пряная, насыщенная — пара рюмок, и мангал кажется ещё жарче. 50&nbsp;мл.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__price-tincture">50&nbsp;мл</span>
+            <span class="menu-card__bar-only">Только в баре</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-tinctures -->
+
     <!-- Сноска -->
     <p class="menu-footnote">
       * Цены и состав блюд могут меняться. Актуальное меню — у оператора по телефону.
+      Алкоголь продаётся только лицам старше 18 лет.
     </p>
 
   </div>
@@ -246,10 +340,11 @@
 (function(){
   var tabs = document.querySelectorAll('.menu-tab');
   var grids = {
-    meat:   document.getElementById('tab-meat'),
-    snacks: document.getElementById('tab-snacks'),
-    sides:  document.getElementById('tab-sides'),
-    drinks: document.getElementById('tab-drinks')
+    meat:       document.getElementById('tab-meat'),
+    snacks:     document.getElementById('tab-snacks'),
+    sides:      document.getElementById('tab-sides'),
+    drinks:     document.getElementById('tab-drinks'),
+    tinctures:  document.getElementById('tab-tinctures')
   };
   tabs.forEach(function(btn){
     btn.addEventListener('click', function(){

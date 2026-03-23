@@ -412,6 +412,27 @@
     }
     .menu-card__order:hover { background: #C42818; }
     .menu-footnote { text-align: center; font-size: 13px; color: rgba(240,236,228,0.2); }
+    /* Таб Бар/Настойки */
+    .menu-tab--bar { border-color: rgba(255,179,71,0.35); color: #FFB347; }
+    .menu-tab--bar:hover, .menu-tab--bar.menu-tab--active { background: linear-gradient(135deg,#7B3F00,#A0522D); border-color: #FFB347; color: #FFE0A0; }
+    .tinctures-notice {
+      grid-column: 1/-1; display: flex; align-items: center; gap: 14px;
+      background: rgba(139,69,19,0.15); border: 1px dashed rgba(255,179,71,0.4);
+      border-radius: 12px; padding: 14px 20px; color: #FFB347; font-size: 14px; line-height: 1.6; margin-bottom: 4px;
+    }
+    .tinctures-notice__icon { font-size: 26px; flex-shrink: 0; }
+    .tinctures-notice strong { color: #FFD580; }
+    .menu-card--tincture { border-color: rgba(139,69,19,0.3); }
+    .menu-card--tincture:hover { box-shadow: 0 12px 40px rgba(255,140,0,0.2); border-color: #FFB347; }
+    .menu-card--tincture .menu-card__img-wrap::after { content: '🍶'; }
+    .menu-card__badge--18 { background: #8B0000; color: #FFB3B3; }
+    .menu-card__badge--tincture-emoji { left: auto; right: 10px; background: rgba(0,0,0,0.5); font-size: 14px; }
+    .menu-card__badge--seasonal { background: #5C4000; color: #FFD580; top: 38px; }
+    .menu-card__price-tincture { font-size: 15px; font-weight: 700; color: #FFB347; }
+    .menu-card__bar-only {
+      background: rgba(139,69,19,0.25); color: #FFB347; font-size: 12px; font-weight: 600;
+      padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(255,179,71,0.35); white-space: nowrap;
+    }
 
     /* ===== GALLERY ===== */
     .gallery-section { background: #110600; padding: 100px 24px; }
@@ -815,6 +836,7 @@
         <button class="menu-tab" data-tab="snacks" role="tab" aria-selected="false">🥗 Закуски</button>
         <button class="menu-tab" data-tab="sides" role="tab" aria-selected="false">🍞 Гарниры</button>
         <button class="menu-tab" data-tab="drinks" role="tab" aria-selected="false">🧃 Напитки</button>
+        <button class="menu-tab menu-tab--bar" data-tab="tinctures" role="tab" aria-selected="false">🍶 Настойки — Бар</button>
       </div>
       <div class="menu-grid" id="tab-meat">
         <div class="menu-card"><div class="menu-card__img-wrap"><img src="ФОТО_ШАШЛЫК_СВИНИНА.jpg" alt="Шашлык из свинины на мангале" class="menu-card__img"><span class="menu-card__badge">Хит</span></div><div class="menu-card__body"><h3 class="menu-card__title">Шашлык из свинины</h3><p class="menu-card__desc">Шея, маринад из лука и специй, живой огонь. 300&nbsp;г.</p><div class="menu-card__footer"><span class="menu-card__price">от 450&nbsp;₽</span><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
@@ -837,7 +859,15 @@
         <div class="menu-card"><div class="menu-card__img-wrap"><img src="ФОТО_ЛИМОНАД.jpg" alt="Домашний лимонад" class="menu-card__img"></div><div class="menu-card__body"><h3 class="menu-card__title">Домашний лимонад</h3><p class="menu-card__desc">Лимон, мята, имбирь. 0.5 л.</p><div class="menu-card__footer"><span class="menu-card__price">от 150&nbsp;₽</span><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
         <div class="menu-card"><div class="menu-card__img-wrap"><img src="ФОТО_ЧАЙ.jpg" alt="Травяной чай" class="menu-card__img"></div><div class="menu-card__body"><h3 class="menu-card__title">Чай травяной</h3><p class="menu-card__desc">Чабрец, мята, душица. Заварник 500&nbsp;мл.</p><div class="menu-card__footer"><span class="menu-card__price">от 120&nbsp;₽</span><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
       </div>
-      <p class="menu-footnote">* Цены и состав могут меняться. Актуальное меню — у оператора по телефону.</p>
+      <div class="menu-grid menu-grid--hidden" id="tab-tinctures">
+        <div class="tinctures-notice"><span class="tinctures-notice__icon">🚫🚗</span><p>Настойки продаются <strong>только в баре</strong> — алкоголь не доставляем. Приходите к нам, будем рады угостить!</p></div>
+        <div class="menu-card menu-card--tincture"><div class="menu-card__img-wrap"><img src="ФОТО_КЛЮКВЕННАЯ.jpg" alt="Клюквенная настойка" class="menu-card__img"><span class="menu-card__badge menu-card__badge--18">18+</span><span class="menu-card__badge menu-card__badge--tincture-emoji">🍒</span></div><div class="menu-card__body"><h3 class="menu-card__title">Клюквенная</h3><p class="menu-card__desc">Кисло-сладкая, как первая любовь. Отличный старт для вечера. 50&nbsp;мл.</p><div class="menu-card__footer"><span class="menu-card__price-tincture">50&nbsp;мл</span><span class="menu-card__bar-only">Только в баре</span></div></div></div>
+        <div class="menu-card menu-card--tincture"><div class="menu-card__img-wrap"><img src="ФОТО_ЛИМОННАЯ.jpg" alt="Лимонная настойка" class="menu-card__img"><span class="menu-card__badge menu-card__badge--18">18+</span><span class="menu-card__badge menu-card__badge--tincture-emoji">🍋</span></div><div class="menu-card__body"><h3 class="menu-card__title">Лимонная</h3><p class="menu-card__desc">Свежая, бодрящая — как пощёчина от судьбы, только приятная. 50&nbsp;мл.</p><div class="menu-card__footer"><span class="menu-card__price-tincture">50&nbsp;мл</span><span class="menu-card__bar-only">Только в баре</span></div></div></div>
+        <div class="menu-card menu-card--tincture"><div class="menu-card__img-wrap"><img src="ФОТО_ПЕРЦОВАЯ.jpg" alt="Перцовая настойка" class="menu-card__img"><span class="menu-card__badge menu-card__badge--18">18+</span><span class="menu-card__badge menu-card__badge--tincture-emoji">🌶️</span></div><div class="menu-card__body"><h3 class="menu-card__title">Перцовая</h3><p class="menu-card__desc">Согреет до кончиков пальцев. Для тех, кто не боится огня — ни в тарелке, ни в стакане. 50&nbsp;мл.</p><div class="menu-card__footer"><span class="menu-card__price-tincture">50&nbsp;мл</span><span class="menu-card__bar-only">Только в баре</span></div></div></div>
+        <div class="menu-card menu-card--tincture"><div class="menu-card__img-wrap"><img src="ФОТО_ФИРМЕННАЯ.jpg" alt="Фирменная настойка" class="menu-card__img"><span class="menu-card__badge menu-card__badge--18">18+</span><span class="menu-card__badge menu-card__badge--seasonal">Сезонная</span></div><div class="menu-card__body"><h3 class="menu-card__title">Фирменная (сезонная)</h3><p class="menu-card__desc">Секретный рецепт шефа. Меняется каждый сезон — уточняйте у бармена, что припрятал на этот раз. 50&nbsp;мл.</p><div class="menu-card__footer"><span class="menu-card__price-tincture">50&nbsp;мл</span><span class="menu-card__bar-only">Только в баре</span></div></div></div>
+        <div class="menu-card menu-card--tincture"><div class="menu-card__img-wrap"><img src="ФОТО_ТОМАТНАЯ.jpg" alt="Томатная настойка" class="menu-card__img"><span class="menu-card__badge menu-card__badge--18">18+</span><span class="menu-card__badge menu-card__badge--tincture-emoji">🍅</span></div><div class="menu-card__body"><h3 class="menu-card__title">Томатная</h3><p class="menu-card__desc">Для смелых и любопытных. Пряная, насыщенная — пара рюмок, и мангал кажется ещё жарче. 50&nbsp;мл.</p><div class="menu-card__footer"><span class="menu-card__price-tincture">50&nbsp;мл</span><span class="menu-card__bar-only">Только в баре</span></div></div></div>
+      </div>
+      <p class="menu-footnote">* Цены и состав могут меняться. Актуальное меню — у оператора по телефону. Алкоголь продаётся только лицам старше 18 лет.</p>
     </div>
   </section>
 
@@ -974,7 +1004,7 @@
   // Табы меню
   (function(){
     var tabs = document.querySelectorAll('.menu-tab');
-    var grids = { meat: document.getElementById('tab-meat'), snacks: document.getElementById('tab-snacks'), sides: document.getElementById('tab-sides'), drinks: document.getElementById('tab-drinks') };
+    var grids = { meat: document.getElementById('tab-meat'), snacks: document.getElementById('tab-snacks'), sides: document.getElementById('tab-sides'), drinks: document.getElementById('tab-drinks'), tinctures: document.getElementById('tab-tinctures') };
     tabs.forEach(function(btn){ btn.addEventListener('click', function(){
       tabs.forEach(function(b){ b.classList.remove('menu-tab--active'); b.setAttribute('aria-selected','false'); });
       btn.classList.add('menu-tab--active'); btn.setAttribute('aria-selected','true');

@@ -240,6 +240,107 @@
 }
 
 /* ============================================
+   ТАБ БАР — особая подсветка
+   ============================================ */
+
+.menu-tab--bar {
+  border-color: rgba(255, 179, 71, 0.35);
+  color: #FFB347;
+}
+
+.menu-tab--bar:hover,
+.menu-tab--bar.menu-tab--active {
+  background: linear-gradient(135deg, #7B3F00, #A0522D);
+  border-color: #FFB347;
+  color: #FFE0A0;
+}
+
+/* Сетка настоек — 3 колонки, как основное меню */
+.menu-grid--tinctures {
+  position: relative;
+}
+
+/* Баннер: только в баре */
+.tinctures-notice {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(139, 69, 19, 0.15);
+  border: 1px dashed rgba(255, 179, 71, 0.4);
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin-bottom: 8px;
+  color: #FFB347;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tinctures-notice__icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.tinctures-notice strong {
+  color: #FFD580;
+}
+
+/* Карточка настойки — тёмно-янтарный акцент */
+.menu-card--tincture {
+  border-color: rgba(139, 69, 19, 0.3);
+}
+
+.menu-card--tincture:hover {
+  box-shadow: 0 12px 40px rgba(255, 140, 0, 0.2);
+  border-color: #FFB347;
+}
+
+.menu-card--tincture .menu-card__img-wrap::after {
+  content: '🍶';
+}
+
+/* Бейдж 18+ */
+.menu-card__badge--18 {
+  background: #8B0000;
+  color: #FFB3B3;
+}
+
+/* Бейдж с эмодзи настойки (правый верхний угол) */
+.menu-card__badge--tincture-emoji {
+  left: auto;
+  right: 12px;
+  background: rgba(0,0,0,0.5);
+  font-size: 14px;
+}
+
+/* Бейдж "Сезонная" */
+.menu-card__badge--seasonal {
+  background: #5C4000;
+  color: #FFD580;
+  top: 40px;
+}
+
+/* Объём вместо цены */
+.menu-card__price-tincture {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFB347;
+  letter-spacing: 0.05em;
+}
+
+/* Кнопка "Только в баре" вместо "Заказать" */
+.menu-card__bar-only {
+  background: rgba(139, 69, 19, 0.25);
+  color: #FFB347;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 179, 71, 0.35);
+  white-space: nowrap;
+}
+
+/* ============================================
    МОБИЛЬНАЯ АДАПТАЦИЯ
    ============================================ */
 
