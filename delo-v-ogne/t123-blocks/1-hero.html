@@ -90,14 +90,12 @@
   border-radius: 16px;
   padding: 0;
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
 }
 .hero-logo__img {
   display: block;
-  width: auto;
+  width: 360px;
   height: auto;
-  max-width: 240px;
-  max-height: 96px;
+  max-width: 90vw;
   object-fit: contain;
 }
 .hero-eyebrow {
@@ -158,16 +156,17 @@
   50% { transform: translateX(-50%) translateY(6px); }
 }
 @media (max-width: 768px) {
-  .hero-logo__card { padding: 0; }
-  .hero-logo__img { max-width: 180px; max-height: 72px; }
+  .hero-logo__img { width: 280px; }
   .hero-subtitle { font-size: 17px; }
   .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; }
   .hero-btn { justify-content: center; padding: 17px 28px; }
 }
-@media (max-width: 400px) {
-  .hero-logo__img { max-width: 160px; max-height: 64px; }
-  .hero-logo__card { padding: 0; border-radius: 12px; }
+@media (max-width: 480px) {
+  .hero-logo__img { width: 240px; }
   .hero-eyebrow { font-size: 11px; }
+}
+@media (max-width: 360px) {
+  .hero-logo__img { width: 200px; }
 }
 </style>
 
@@ -185,7 +184,7 @@
       <div class="hero-logo__card">
         <!-- ЛОГОТИП: замените src на ссылку из Tilda Медиа после загрузки файла -->
         <img
-          src="https://drive.google.com/uc?export=view&id=1r_zZp9JDD2zogUvPYxpZUyV5HmAkuyx5"
+          src="https://optim.tildacdn.com/tild3539-6138-4465-a436-396439643639/-/format/webp/_7_-__.png.webp"
           alt="Дело в огне — шашлык на углях"
           class="hero-logo__img"
         />
