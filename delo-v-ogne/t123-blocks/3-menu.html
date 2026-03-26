@@ -28,6 +28,14 @@
 .menu-card__order:hover { background: #C42818; }
 .menu-note { font-size: 13px; color: #555; line-height: 1.5; margin: 0 0 32px; padding: 12px 16px; border-left: 2px solid #E8321A; background: #111; border-radius: 0 8px 8px 0; }
 .menu-footnote { text-align: center; font-size: 13px; color: #4A4A4A; margin: 0; padding-top: 16px; }
+/* Блок «честный вес» */
+.menu-value-tip { display: flex; align-items: flex-start; gap: 14px; background: rgba(232,50,26,0.08); border: 1px solid rgba(232,50,26,0.25); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; color: #D0C4B4; font-size: 14px; line-height: 1.65; }
+.menu-value-tip__icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.menu-value-tip strong { color: #F0EAE0; }
+.menu-value-tip em { color: #E8321A; font-style: normal; font-weight: 700; }
+/* Цена на карточке */
+.menu-card__price { font-size: 17px; font-weight: 800; color: #E8321A; line-height: 1; }
+.menu-card__weight-small { font-size: 11px; color: #555; margin-top: 3px; }
 /* Таб Бар/Настойки */
 .menu-tab--bar { border-color: rgba(255,179,71,0.35) !important; color: #FFB347 !important; }
 .menu-tab--bar:hover, .menu-tab--bar.menu-tab--active { background: linear-gradient(135deg,#7B3F00,#A0522D) !important; border-color: #FFB347 !important; color: #FFE0A0 !important; }
@@ -72,7 +80,15 @@
 
     <!-- БЛЮДА НА УГЛЯХ -->
     <div id="tab-ugly">
-      <p class="menu-note">Вес шашлыка — на ваш выбор. Минимум от 100 г.</p>
+      <div class="menu-value-tip">
+        <span class="menu-value-tip__icon">🔥</span>
+        <div>
+          <strong>Мы продаём мясо — не тарелку</strong><br>
+          В кафе за ~500 ₽ вы берёте блюдо: немного мяса + гарнир + лук, итого ~300 г.
+          У нас <em>от 250 г</em> — это только чистое мясо на углях. Хотите больше? Просто берёте 400, 500 г — сколько нужно.
+        </div>
+      </div>
+      <p class="menu-note">Минимальный заказ мяса — от 250 г. Цены уточняйте у оператора или в агрегаторах.</p>
       <div class="menu-grid">
 
         <div class="menu-card">
@@ -85,7 +101,10 @@
             <h3 class="menu-card__title">Шашлык из свинины</h3>
             <p class="menu-card__desc">Шейная часть, маринад, живой огонь.</p>
             <div class="menu-card__footer">
-              <span class="menu-card__weight">от 100 г</span>
+              <div>
+                <div class="menu-card__price">от 450 ₽</div>
+                <div class="menu-card__weight-small">от 250 г мяса</div>
+              </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
@@ -100,7 +119,10 @@
             <h3 class="menu-card__title">Люля-кебаб</h3>
             <p class="menu-card__desc">Свинина + говядина, авторские специи, лаваш.</p>
             <div class="menu-card__footer">
-              <span class="menu-card__weight">от 100 г</span>
+              <div>
+                <div class="menu-card__price">от 420 ₽</div>
+                <div class="menu-card__weight-small">от 250 г мяса</div>
+              </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
@@ -115,7 +137,10 @@
             <h3 class="menu-card__title">Крылья куриные на мангале</h3>
             <p class="menu-card__desc">Хрустящая корочка, живой огонь.</p>
             <div class="menu-card__footer">
-              <span class="menu-card__weight">от 100 г</span>
+              <div>
+                <div class="menu-card__price">от 380 ₽</div>
+                <div class="menu-card__weight-small">от 250 г</div>
+              </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
@@ -130,7 +155,10 @@
             <h3 class="menu-card__title">Грудка куриная на мангале</h3>
             <p class="menu-card__desc">Куриное филе, маринад, угольный жар.</p>
             <div class="menu-card__footer">
-              <span class="menu-card__weight">от 100 г</span>
+              <div>
+                <div class="menu-card__price">от 360 ₽</div><!-- уточните цену -->
+                <div class="menu-card__weight-small">от 250 г</div>
+              </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
@@ -145,7 +173,10 @@
             <h3 class="menu-card__title">Стейк бедра куриного</h3>
             <p class="menu-card__desc">Куриные бёдра, маринад, на углях.</p>
             <div class="menu-card__footer">
-              <span class="menu-card__weight">от 100 г</span>
+              <div>
+                <div class="menu-card__price">от 370 ₽</div><!-- уточните цену -->
+                <div class="menu-card__weight-small">от 250 г</div>
+              </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
@@ -161,7 +192,10 @@
             <h3 class="menu-card__title">Колбаски на мангале ассорти</h3>
             <p class="menu-card__desc">Несколько видов колбасок, жар углей.</p>
             <div class="menu-card__footer">
-              <span class="menu-card__weight">от 100 г</span>
+              <div>
+                <div class="menu-card__price">от 390 ₽</div><!-- уточните цену -->
+                <div class="menu-card__weight-small">от 250 г</div>
+              </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
@@ -176,7 +210,10 @@
             <h3 class="menu-card__title">Овощи на гриле</h3>
             <p class="menu-card__desc">Болгарский перец и другие овощи на углях.</p>
             <div class="menu-card__footer">
-              <span class="menu-card__weight">от 100 г</span>
+              <div>
+                <div class="menu-card__price">от 190 ₽</div><!-- уточните цену -->
+                <div class="menu-card__weight-small">от 250 г</div>
+              </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
@@ -191,7 +228,10 @@
             <h3 class="menu-card__title">Грибы на мангале</h3>
             <p class="menu-card__desc">Шампиньоны целиком на углях.</p>
             <div class="menu-card__footer">
-              <span class="menu-card__weight">от 100 г</span>
+              <div>
+                <div class="menu-card__price">от 180 ₽</div><!-- уточните цену -->
+                <div class="menu-card__weight-small">от 250 г</div>
+              </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
@@ -206,7 +246,10 @@
             <h3 class="menu-card__title">Картофель в беконе на углях</h3>
             <p class="menu-card__desc">Картофель, бекон, угольный жар.</p>
             <div class="menu-card__footer">
-              <span class="menu-card__weight">от 100 г</span>
+              <div>
+                <div class="menu-card__price">от 220 ₽</div><!-- уточните цену -->
+                <div class="menu-card__weight-small">от 250 г</div>
+              </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
@@ -560,7 +603,7 @@
 
       <div class="tinctures-notice">
         <span class="tinctures-notice__icon">🚫🚗</span>
-        <p>Настойки продаются <strong>только в баре</strong> — алкоголь не доставляем.<br>Приходите к нам, будем рады угостить!</p>
+        <p>Приходите в бар и попробуйте наши настойки. Каждая — по собственному рецепту, готовится в небольших партиях. <strong>Только в баре, 18+.</strong></p>
       </div>
 
       <div class="menu-card menu-card--tincture">
