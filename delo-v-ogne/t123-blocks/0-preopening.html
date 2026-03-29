@@ -1,0 +1,149 @@
+<style>
+/* ===================================================
+   БАННЕР «СКОРО ОТКРЫТИЕ»
+   Убрать блок целиком из Tilda когда откроетесь.
+   Контент страницы ниже остаётся в HTML → Google его
+   читает и индексирует, баннер поверх — только для людей.
+   =================================================== */
+.preopen-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 30%, #3A1200 0%, #1A0800 50%, #0A0400 100%);
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  text-align: center;
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
+.preopen-flame {
+  font-size: 64px;
+  margin-bottom: 16px;
+  animation: flicker 2.5s ease-in-out infinite;
+}
+@keyframes flicker {
+  0%, 100% { transform: scale(1) rotate(-1deg); }
+  50%       { transform: scale(1.06) rotate(1deg); }
+}
+.preopen-logo {
+  width: 260px;
+  max-width: 70vw;
+  height: auto;
+  display: block;
+  margin: 0 auto 24px;
+}
+.preopen-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #E8321A;
+  border: 1px solid rgba(232,50,26,0.5);
+  border-radius: 100px;
+  padding: 5px 16px;
+  margin-bottom: 20px;
+}
+.preopen-title {
+  font-size: 38px;
+  font-weight: 800;
+  color: #F0EAE0;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+.preopen-sub {
+  font-size: 17px;
+  color: rgba(240,234,224,0.6);
+  line-height: 1.6;
+  margin: 0 0 32px;
+  max-width: 420px;
+}
+.preopen-divider {
+  width: 48px;
+  height: 2px;
+  background: #E8321A;
+  margin: 0 auto 28px;
+  border-radius: 2px;
+}
+.preopen-contacts {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.preopen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+.preopen-btn--primary {
+  background: #E8321A;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(232,50,26,0.4);
+}
+.preopen-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,50,26,0.55); }
+.preopen-btn--ghost {
+  background: rgba(255,255,255,0.08);
+  color: #F0DBC0;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.preopen-btn--ghost:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+.preopen-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.05em;
+}
+@media (max-width: 480px) {
+  .preopen-title { font-size: 26px; }
+  .preopen-sub { font-size: 15px; }
+  .preopen-contacts { flex-direction: column; width: 100%; max-width: 280px; }
+  .preopen-btn { justify-content: center; }
+}
+</style>
+
+<!-- Баннер «Скоро открытие» — убрать блок из Tilda после открытия -->
+<div class="preopen-overlay" role="dialog" aria-label="Скоро открытие">
+
+  <img
+    src="https://optim.tildacdn.com/tild3539-6138-4465-a436-396439643639/-/format/webp/_7_-__.png.webp"
+    alt="Дело в огне — гриль-бар, шашлык на углях"
+    class="preopen-logo"
+  />
+
+  <span class="preopen-badge">Новосибирск · пл. Карла Маркса, 5</span>
+
+  <h1 class="preopen-title">Скоро открытие</h1>
+
+  <p class="preopen-sub">
+    Готовим мангал. Маринуем мясо. Скоро встречаем первых гостей.<br>
+    Следите за обновлениями в наших соцсетях.
+  </p>
+
+  <div class="preopen-divider"></div>
+
+  <div class="preopen-contacts">
+    <a href="tel:+7XXXXXXXXXX" class="preopen-btn preopen-btn--primary">📞 Позвонить</a>
+    <a href="https://t.me/ВАШ_TELEGRAM" target="_blank" rel="noopener" class="preopen-btn preopen-btn--ghost">✈️ Telegram</a>
+    <a href="https://vk.com/ВАШ_ВК" target="_blank" rel="noopener" class="preopen-btn preopen-btn--ghost">🔵 ВКонтакте</a>
+  </div>
+
+  <p class="preopen-note">delovogne.ru · delovogne.com</p>
+
+</div>
+
+<!-- =====================================================
+  Всё ниже — контент страницы. Он НЕВИДИМ пользователю,
+  но Google-бот его читает и индексирует.
+  НЕ УДАЛЯТЬ до открытия — это ваш SEO-фундамент.
+  ===================================================== -->
