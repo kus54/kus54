@@ -2,8 +2,8 @@
 /* ===================================================
    БАННЕР «СКОРО ОТКРЫТИЕ»
    Убрать блок целиком из Tilda когда откроетесь.
-   Контент страницы ниже остаётся в HTML → Google его
-   читает и индексирует, баннер поверх — только для людей.
+   Контент страницы ниже — в HTML, Google читает и
+   индексирует. Баннер поверх — только для людей.
    =================================================== */
 .preopen-overlay {
   position: fixed;
@@ -13,27 +13,37 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(ellipse at 50% 30%, #3A1200 0%, #1A0800 50%, #0A0400 100%);
+  background: radial-gradient(ellipse at 50% 25%, #3A1200 0%, #1A0800 55%, #080300 100%);
   font-family: 'Montserrat', 'Arial', sans-serif;
   text-align: center;
   padding: 32px 24px;
   box-sizing: border-box;
+  overflow: hidden;
 }
-.preopen-flame {
-  font-size: 64px;
-  margin-bottom: 16px;
-  animation: flicker 2.5s ease-in-out infinite;
+/* Частицы-угольки в фоне */
+.preopen-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(232,50,26,0.07) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,120,0,0.06) 0%, transparent 40%);
+  pointer-events: none;
 }
-@keyframes flicker {
-  0%, 100% { transform: scale(1) rotate(-1deg); }
-  50%       { transform: scale(1.06) rotate(1deg); }
+.preopen-logo-wrap {
+  margin-bottom: 28px;
+  animation: fadein 0.8s ease both;
 }
 .preopen-logo {
-  width: 260px;
-  max-width: 70vw;
+  width: 340px;
+  max-width: 75vw;
   height: auto;
   display: block;
-  margin: 0 auto 24px;
+  filter: drop-shadow(0 0 32px rgba(232,50,26,0.35));
+}
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .preopen-badge {
   display: inline-block;
@@ -42,50 +52,55 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #E8321A;
-  border: 1px solid rgba(232,50,26,0.5);
+  border: 1px solid rgba(232,50,26,0.45);
   border-radius: 100px;
-  padding: 5px 16px;
+  padding: 5px 18px;
   margin-bottom: 20px;
+  animation: fadein 0.8s 0.15s ease both;
 }
 .preopen-title {
-  font-size: 38px;
+  font-size: 40px;
   font-weight: 800;
   color: #F0EAE0;
   line-height: 1.2;
   margin: 0 0 12px;
+  animation: fadein 0.8s 0.25s ease both;
 }
 .preopen-sub {
-  font-size: 17px;
-  color: rgba(240,234,224,0.6);
-  line-height: 1.6;
-  margin: 0 0 32px;
-  max-width: 420px;
+  font-size: 16px;
+  color: rgba(240,234,224,0.55);
+  line-height: 1.7;
+  margin: 0 0 28px;
+  max-width: 400px;
+  animation: fadein 0.8s 0.35s ease both;
 }
 .preopen-divider {
-  width: 48px;
+  width: 40px;
   height: 2px;
-  background: #E8321A;
+  background: linear-gradient(90deg, transparent, #E8321A, transparent);
   margin: 0 auto 28px;
-  border-radius: 2px;
+  animation: fadein 0.8s 0.4s ease both;
 }
 .preopen-contacts {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  animation: fadein 0.8s 0.45s ease both;
 }
 .preopen-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 12px 22px;
   border-radius: 12px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   font-family: inherit;
+  white-space: nowrap;
 }
 .preopen-btn--primary {
   background: #E8321A;
@@ -94,40 +109,44 @@
 }
 .preopen-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,50,26,0.55); }
 .preopen-btn--ghost {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.07);
   color: #F0DBC0;
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.15);
 }
-.preopen-btn--ghost:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+.preopen-btn--ghost:hover { background: rgba(255,255,255,0.13); transform: translateY(-2px); }
 .preopen-note {
   font-size: 12px;
-  color: rgba(255,255,255,0.25);
-  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+  animation: fadein 0.8s 0.5s ease both;
 }
 @media (max-width: 480px) {
+  .preopen-logo { width: 260px; }
   .preopen-title { font-size: 26px; }
-  .preopen-sub { font-size: 15px; }
-  .preopen-contacts { flex-direction: column; width: 100%; max-width: 280px; }
+  .preopen-sub { font-size: 14px; }
+  .preopen-contacts { flex-direction: column; width: 100%; max-width: 260px; }
   .preopen-btn { justify-content: center; }
 }
 </style>
 
 <!-- Баннер «Скоро открытие» — убрать блок из Tilda после открытия -->
-<div class="preopen-overlay" role="dialog" aria-label="Скоро открытие">
+<div class="preopen-overlay" id="preopen-overlay">
 
-  <img
-    src="https://optim.tildacdn.com/tild3539-6138-4465-a436-396439643639/-/format/webp/_7_-__.png.webp"
-    alt="Дело в огне — гриль-бар, шашлык на углях"
-    class="preopen-logo"
-  />
+  <div class="preopen-logo-wrap">
+    <img
+      src="https://optim.tildacdn.com/tild3539-6138-4465-a436-396439643639/-/format/webp/_7_-__.png.webp"
+      alt="Дело в огне — гриль-бар, шашлык на углях"
+      class="preopen-logo"
+    />
+  </div>
 
   <span class="preopen-badge">Новосибирск · пл. Карла Маркса, 5</span>
 
   <h1 class="preopen-title">Скоро открытие</h1>
 
   <p class="preopen-sub">
-    Готовим мангал. Маринуем мясо. Скоро встречаем первых гостей.<br>
-    Следите за обновлениями в наших соцсетях.
+    Готовим мангал. Маринуем мясо.<br>
+    Скоро встречаем первых гостей — следите в соцсетях.
   </p>
 
   <div class="preopen-divider"></div>
@@ -141,6 +160,26 @@
   <p class="preopen-note">delovogne.ru · delovogne.com</p>
 
 </div>
+
+<script>
+(function () {
+  /* Блокируем скролл фоновой страницы */
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+
+  /* Блокируем ESC, пробел, стрелки и колёсико мыши */
+  var BLOCK_KEYS = [27, 32, 33, 34, 37, 38, 39, 40];
+  document.addEventListener('keydown', function (e) {
+    if (BLOCK_KEYS.indexOf(e.keyCode) !== -1) e.preventDefault();
+  }, { passive: false });
+  document.addEventListener('wheel', function (e) {
+    if (document.getElementById('preopen-overlay')) e.preventDefault();
+  }, { passive: false });
+  document.addEventListener('touchmove', function (e) {
+    if (document.getElementById('preopen-overlay')) e.preventDefault();
+  }, { passive: false });
+})();
+</script>
 
 <!-- =====================================================
   Всё ниже — контент страницы. Он НЕВИДИМ пользователю,
