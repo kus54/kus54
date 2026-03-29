@@ -2,7 +2,7 @@
 /* ===================================================
    БАННЕР «СКОРО ОТКРЫТИЕ»
    Убрать блок из Tilda после открытия.
-   Контент ниже остаётся в HTML — Google индексирует.
+   Контент ниже — в HTML, Google индексирует.
    =================================================== */
 .preopen-overlay {
   position: fixed;
@@ -11,59 +11,64 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: radial-gradient(ellipse at 50% 25%, #3A1200 0%, #1A0800 55%, #080300 100%);
   font-family: 'Montserrat', 'Arial', sans-serif;
   text-align: center;
-  padding: 28px 24px;
+  padding: 32px 24px 28px;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* скрыть полосу прокрутки визуально */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.preopen-overlay::-webkit-scrollbar { display: none; }
 .preopen-overlay::before {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   background:
     radial-gradient(circle at 20% 80%, rgba(232,50,26,0.07) 0%, transparent 40%),
     radial-gradient(circle at 80% 70%, rgba(255,120,0,0.06) 0%, transparent 40%);
   pointer-events: none;
+  z-index: -1;
 }
+
 /* Логотип */
 .preopen-logo-wrap {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   animation: fadein 0.8s ease both;
 }
 .preopen-logo {
-  width: 420px;
-  max-width: 80vw;
+  width: 380px;
+  max-width: 78vw;
   height: auto;
   display: block;
-  filter: drop-shadow(0 0 40px rgba(232,50,26,0.4));
+  filter: drop-shadow(0 0 36px rgba(232,50,26,0.38));
 }
 @keyframes fadein {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
 /* Адрес с картами */
 .preopen-address {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   animation: fadein 0.8s 0.1s ease both;
 }
 .preopen-address__text {
   font-size: 13px;
   font-weight: 700;
   color: rgba(240,219,192,0.7);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
-.preopen-map-links {
-  display: flex;
-  gap: 6px;
-}
+.preopen-map-links { display: flex; gap: 6px; }
 .preopen-map-badge {
   font-size: 11px;
   font-weight: 600;
@@ -76,62 +81,59 @@
   white-space: nowrap;
 }
 .preopen-map-badge:hover { color: #F0DBC0; border-color: #686868; }
+
 /* Бейдж */
 .preopen-badge {
   display: inline-block;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #E8321A;
   border: 1px solid rgba(232,50,26,0.45);
   border-radius: 100px;
-  padding: 5px 18px;
-  margin-bottom: 16px;
+  padding: 4px 16px;
+  margin-bottom: 12px;
   animation: fadein 0.8s 0.2s ease both;
 }
+
 /* Заголовок */
 .preopen-title {
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 800;
   color: #F0EAE0;
   line-height: 1.2;
-  margin: 0 0 10px;
-  animation: fadein 0.8s 0.3s ease both;
+  margin: 0 0 8px;
+  animation: fadein 0.8s 0.25s ease both;
 }
+
 /* Подзаголовок */
 .preopen-sub {
   font-size: 15px;
   color: rgba(240,234,224,0.5);
-  line-height: 1.7;
-  margin: 0 0 24px;
-  max-width: 380px;
-  animation: fadein 0.8s 0.35s ease both;
+  line-height: 1.65;
+  margin: 0 0 18px;
+  max-width: 360px;
+  animation: fadein 0.8s 0.3s ease both;
 }
+
 .preopen-divider {
   width: 40px;
   height: 2px;
   background: linear-gradient(90deg, transparent, #E8321A, transparent);
-  margin: 0 auto 24px;
-  animation: fadein 0.8s 0.4s ease both;
+  margin: 0 auto 18px;
+  animation: fadein 0.8s 0.35s ease both;
 }
+
 /* Большая кнопка телефона */
 .preopen-phone-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  /* =============================================
-     ВСТАВЬТЕ НОМЕР ТЕЛЕФОНА:
-     1. В атрибут href: замените +7XXXXXXXXXX
-        на ваш номер без пробелов и скобок
-        Пример: href="tel:+79131234567"
-     2. В текст кнопки ниже: замените
-        +7 (XXX) XXX-XX-XX на ваш номер
-     ============================================= */
   width: 100%;
   max-width: 340px;
-  padding: 16px 28px;
+  padding: 15px 28px;
   background: #E8321A;
   color: #fff;
   font-size: 20px;
@@ -140,12 +142,13 @@
   border-radius: 16px;
   box-shadow: 0 6px 28px rgba(232,50,26,0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-bottom: 14px;
-  animation: fadein 0.8s 0.45s ease both;
+  margin-bottom: 12px;
+  animation: fadein 0.8s 0.4s ease both;
   font-family: inherit;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 .preopen-phone-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(232,50,26,0.6); }
+
 /* Соцсети */
 .preopen-socials {
   display: flex;
@@ -153,7 +156,7 @@
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
-  animation: fadein 0.8s 0.5s ease both;
+  animation: fadein 0.8s 0.45s ease both;
 }
 .preopen-social-btn {
   display: inline-flex;
@@ -173,19 +176,23 @@
 .preopen-social-btn--tg  { color: #27A7E5; border-color: rgba(39,167,229,0.4);  background: rgba(39,167,229,0.1); }
 .preopen-social-btn--vk  { color: #5B9FFF; border-color: rgba(91,159,255,0.4);  background: rgba(91,159,255,0.1); }
 .preopen-social-btn--max { color: #00D278; border-color: rgba(0,210,120,0.4);   background: rgba(0,210,120,0.1); }
+
 /* Домен */
 .preopen-domain {
   font-size: 12px;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.22);
   letter-spacing: 0.1em;
-  animation: fadein 0.8s 0.55s ease both;
+  padding-bottom: 8px;
+  animation: fadein 0.8s 0.5s ease both;
 }
+
 @media (max-width: 480px) {
-  .preopen-logo { width: 280px; }
-  .preopen-title { font-size: 28px; }
-  .preopen-phone-btn { font-size: 17px; padding: 14px 20px; }
-  .preopen-socials { flex-direction: column; align-items: center; }
-  .preopen-social-btn { width: 220px; justify-content: center; }
+  .preopen-overlay { padding: 24px 20px 20px; }
+  .preopen-logo { width: 260px; }
+  .preopen-title { font-size: 26px; }
+  .preopen-phone-btn { font-size: 17px; padding: 13px 20px; }
+  .preopen-socials { gap: 8px; }
+  .preopen-social-btn { padding: 9px 14px; font-size: 13px; }
 }
 </style>
 
@@ -218,24 +225,25 @@
 
   <p class="preopen-sub">
     Маринуем мясо. Разжигаем мангал.<br>
-    Следите за нами в соцсетях — там узнаете первыми.
+    Следите за нами — узнаете первыми.
   </p>
 
   <div class="preopen-divider"></div>
 
-  <!-- ТЕЛЕФОН — БОЛЬШАЯ КНОПКА -->
-  <!-- ЗАМЕНИТЕ +7XXXXXXXXXX на ваш номер (только цифры): -->
+  <!-- ТЕЛЕФОН — БОЛЬШАЯ КНОПКА
+       ЗАМЕНИТЕ +7XXXXXXXXXX → ваш номер (только цифры, без пробелов)
+       Пример: href="tel:+79131234567"
+       И текст кнопки: +7 (913) 123-45-67 -->
   <a href="tel:+7XXXXXXXXXX" class="preopen-phone-btn">
     📞 +7 (XXX) XXX-XX-XX
   </a>
 
-  <!-- СОЦСЕТИ -->
+  <!-- СОЦСЕТИ
+       ЗАМЕНИТЕ каждый href на свою ссылку -->
   <div class="preopen-socials">
-    <!-- ЗАМЕНИТЕ href на вашу ссылку Telegram -->
     <a href="https://t.me/ВАШ_TELEGRAM" target="_blank" rel="noopener" class="preopen-social-btn preopen-social-btn--tg">✈️ Telegram</a>
-    <!-- ЗАМЕНИТЕ href на вашу ссылку ВКонтакте -->
     <a href="https://vk.com/ВАШ_ВК" target="_blank" rel="noopener" class="preopen-social-btn preopen-social-btn--vk">🔵 ВКонтакте</a>
-    <!-- ЗАМЕНИТЕ href на ваш номер в Max: https://wa.me/7XXXXXXXXXX -->
+    <!-- Max: замените 7XXXXXXXXXX на ваш номер без + -->
     <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" class="preopen-social-btn preopen-social-btn--max">💬 Max</a>
   </div>
 
@@ -245,23 +253,32 @@
 
 <script>
 (function () {
+  /* Блокируем скролл фоновой страницы под баннером */
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
+
+  /* Блокируем ESC и навигационные клавиши */
   var BLOCK_KEYS = [27, 32, 33, 34, 37, 38, 39, 40];
   document.addEventListener('keydown', function (e) {
     if (BLOCK_KEYS.indexOf(e.keyCode) !== -1) e.preventDefault();
   }, { passive: false });
+
+  /* Разрешаем скролл внутри оверлея, блокируем снаружи */
   document.addEventListener('wheel', function (e) {
-    if (document.getElementById('preopen-overlay')) e.preventDefault();
+    var overlay = document.getElementById('preopen-overlay');
+    if (overlay && overlay.contains(e.target)) return; /* внутри — разрешить */
+    e.preventDefault();
   }, { passive: false });
+
   document.addEventListener('touchmove', function (e) {
-    if (document.getElementById('preopen-overlay')) e.preventDefault();
+    var overlay = document.getElementById('preopen-overlay');
+    if (overlay && overlay.contains(e.target)) return; /* внутри — разрешить */
+    e.preventDefault();
   }, { passive: false });
 })();
 </script>
 
 <!-- =====================================================
-  Всё ниже — контент страницы. Он НЕВИДИМ пользователю,
-  но Google-бот его читает и индексирует.
-  НЕ УДАЛЯТЬ до открытия — это ваш SEO-фундамент.
+  Всё ниже — контент страницы. НЕВИДИМ пользователю,
+  но Google-бот читает и индексирует. НЕ УДАЛЯТЬ.
   ===================================================== -->
