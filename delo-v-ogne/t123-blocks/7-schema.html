@@ -1,0 +1,65 @@
+<!-- =======================================================
+  Schema.org — структурированные данные для Яндекса и Google
+  Вставить последним блоком на странице (после 6-seo-faq.html)
+  Пользователю НЕ ВИДЕН — только для поисковых роботов
+  ======================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Дело в огне",
+  "alternateName": "Grill-bar Delo v Ogne",
+  "description": "Гриль-бар «Дело в огне» — шашлык, люля-кебаб, крылья и блюда на живом угольном огне. От 250 г чистого мяса. Доставка по Новосибирску, самовывоз.",
+  "url": "https://delovogne.ru",
+  "telephone": "+7XXXXXXXXXX",
+  "image": "https://optim.tildacdn.com/tild3539-6138-4465-a436-396439643639/-/format/webp/_7_-__.png.webp",
+  "logo": "https://optim.tildacdn.com/tild3539-6138-4465-a436-396439643639/-/format/webp/_7_-__.png.webp",
+  "priceRange": "₽₽",
+  "servesCuisine": ["Шашлык", "Блюда на гриле", "Кавказская кухня"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "площадь Карла Маркса, 5",
+    "addressLocality": "Новосибирск",
+    "addressRegion": "Новосибирская область",
+    "postalCode": "630099",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "54.8617",
+    "longitude": "83.1088"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+      ],
+      "opens": "11:00",
+      "closes": "23:00"
+    }
+  ],
+  "hasMap": "https://yandex.ru/maps/?text=площадь+Карла+Маркса+5+Новосибирск",
+  "sameAs": [
+    "https://vk.com/ВАШ_ВК",
+    "https://t.me/ВАШ_TELEGRAM"
+  ],
+  "menu": "https://delovogne.ru/#menu",
+  "acceptsReservations": false,
+  "currenciesAccepted": "RUB",
+  "paymentAccepted": "Cash, Credit Card",
+  "potentialAction": {
+    "@type": "OrderAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://delovogne.ru/#delivery",
+      "inLanguage": "ru",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    },
+    "deliveryMethod": ["http://purl.org/goodrelations/v1#DeliveryModePickUp"]
+  }
+}
+</script>
