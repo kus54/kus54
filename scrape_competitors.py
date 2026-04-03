@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """
 Scraping competitors in Sochi/Adler: menu + business details → Excel
-Uses Firecrawl for scraping, Claude for structured extraction.
+
+ЗАПУСК ЛОКАЛЬНО:
+  pip install firecrawl-py openpyxl anthropic
+  export ANTHROPIC_API_KEY=sk-ant-...
+  python3 scrape_competitors.py
+
+Требует открытого интернета (api.firecrawl.dev + сайты конкурентов).
 """
 
 import os
@@ -64,13 +70,13 @@ firecrawl = FirecrawlApp(api_key=FIRECRAWL_API_KEY)
 claude = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY) if ANTHROPIC_API_KEY else None
 
 
-def scrape_url(url, timeout=30):
-    """Scrape a URL via Firecrawl, return markdown text or None."""
+def scrape_url(url):
+    """Scrape a single URL via Firecrawl, return markdown or None."""
     try:
-        result = firecrawl.scrape_url(url, formats=["markdown"])
-        if result and hasattr(result, 'markdown') and result.markdown:
+        result = firecrawl.scrape(url, formats=["markdown"])
+        if hasattr(result, 'markdown') and result.markdown:
             return result.markdown
-        if result and isinstance(result, dict) and result.get('markdown'):
+        if isinstance(result, dict) and result.get('markdown'):
             return result['markdown']
         return None
     except Exception as e:
@@ -79,24 +85,26 @@ def scrape_url(url, timeout=30):
 
 
 def crawl_site(url, limit=8):
-    """Crawl up to `limit` pages of a site via Firecrawl."""
+    """Crawl up to `limit` pages of a site, return list of {url, markdown}."""
     try:
-        result = firecrawl.crawl_url(
+        result = firecrawl.crawl(
             url,
             limit=limit,
             scrape_options={"formats": ["markdown"]}
         )
         pages = []
-        if result and hasattr(result, 'data'):
-            for page in result.data:
-                md = page.markdown if hasattr(page, 'markdown') else page.get('markdown', '')
-                src = page.metadata.url if hasattr(page, 'metadata') and hasattr(page.metadata, 'url') else page.get('metadata', {}).get('url', url)
+        data = getattr(result, 'data', None) or (result.get('data') if isinstance(result, dict) else [])
+        if data:
+            for page in data:
+                md = getattr(page, 'markdown', None) or (page.get('markdown', '') if isinstance(page, dict) else '')
+                meta = getattr(page, 'metadata', None) or (page.get('metadata', {}) if isinstance(page, dict) else {})
+                src = getattr(meta, 'url', None) or (meta.get('url', url) if isinstance(meta, dict) else url)
                 if md:
                     pages.append({'url': src, 'markdown': md})
         return pages
     except Exception as e:
         print(f"  [crawl error] {url}: {e}")
-        # Fall back to single page scrape
+        # Fallback to single-page scrape
         md = scrape_url(url)
         if md:
             return [{'url': url, 'markdown': md}]
@@ -104,8 +112,9 @@ def crawl_site(url, limit=8):
 
 
 def extract_with_claude(content, site_url):
-    """Use Claude to extract menu items and business details from scraped content."""
+    """Use Claude Haiku to extract menu + business details from scraped text."""
     if not claude:
+        print("  [warn] ANTHROPIC_API_KEY not set, skipping Claude extraction")
         return None
 
     prompt = f"""Ты извлекаешь данные из текста сайта ресторана/кафе.
@@ -118,21 +127,21 @@ def extract_with_claude(content, site_url):
 Извлеки ТОЛЬКО то, что явно указано в тексте:
 
 1. РЕКВИЗИТЫ (если есть):
-   - Наименование компании (официальное, как ООО "...", ИП Иванов и т.д.)
-   - Форма: ООО / ИП / АО / ПАО / ЗАО (или пустая строка если не найдено)
+   - Наименование компании (официальное: ООО "...", ИП Иванов и т.д.)
+   - Форма: ООО / ИП / АО / ПАО / ЗАО (или пустая строка)
    - ИНН (10 или 12 цифр, или пустая строка)
    - ОГРН (13 или 15 цифр, или пустая строка)
 
 2. МЕНЮ (все позиции с ценами):
    - Категория (Горячее, Пицца, Салаты, Напитки, Десерты, Суши, Роллы и т.д.)
    - Название блюда
-   - Вес/объём (например: 350г, 0.5л, 500мл) или пустая строка
-   - Цена (только число, без руб/₽)
+   - Вес/объём (например: 350г, 0.5л) или пустая строка
+   - Цена (только число без руб/₽)
 
-Если меню не найдено вообще - верни "NO_MENU".
-Если реквизиты не найдены - оставь поля пустыми.
+Если меню не найдено — верни {{"no_menu": true}}.
+Если реквизиты не найдены — оставь поля пустыми.
 
-Ответь ТОЛЬКО JSON в формате:
+Ответь ТОЛЬКО валидным JSON:
 {{
   "company_name": "ООО Пицца Плюс",
   "legal_form": "ООО",
@@ -143,9 +152,6 @@ def extract_with_claude(content, site_url):
     {{"category": "Напитки", "name": "Coca-Cola", "weight": "0.5л", "price": 120}}
   ]
 }}
-
-Или если нет меню:
-{{"no_menu": true}}
 """
 
     try:
@@ -155,7 +161,6 @@ def extract_with_claude(content, site_url):
             messages=[{"role": "user", "content": prompt}]
         )
         text = response.content[0].text.strip()
-        # Extract JSON from response
         json_match = re.search(r'\{.*\}', text, re.DOTALL)
         if json_match:
             return json.loads(json_match.group())
@@ -164,35 +169,32 @@ def extract_with_claude(content, site_url):
     return None
 
 
-def search_vk(company_name, site_url):
-    """Try to find restaurant on VK and extract menu."""
-    # Build search query from domain name
+def search_vk(site_url):
+    """Try to find the restaurant on VK and extract menu."""
     domain = re.sub(r'https?://', '', site_url).split('/')[0]
-    search_terms = domain.replace('-', ' ').replace('.ru', '').replace('.com', '').replace('.su', '').replace('.online', '')
+    search_term = re.sub(r'\.(ru|com|su|online|ws)$', '', domain).replace('-', ' ').replace('.', ' ')
 
-    vk_search_url = f"https://vk.com/search?c[q]={search_terms}+сочи&c[section]=communities"
-    print(f"  Searching VK: {vk_search_url}")
+    vk_search_url = f"https://vk.com/search?c[q]={search_term}+сочи&c[section]=communities"
+    print(f"  VK search: {vk_search_url}")
 
     md = scrape_url(vk_search_url)
     if not md:
         return None
 
-    # Extract VK community URLs from search results
-    vk_links = re.findall(r'vk\.com/([\w._-]+)', md)
-    vk_links = [l for l in vk_links if not l.startswith(('search', 'login', 'feed', 'im', 'photo', 'video', 'music', 'market'))]
+    # Find VK community slugs in search results
+    vk_links = re.findall(r'(?:vk\.com/|href=["\']/)([a-zA-Z0-9._-]{3,40})', md)
+    skip = {'search', 'login', 'feed', 'im', 'photo', 'video', 'music', 'market',
+            'away', 'wall', 'topic', 'note', 'doc', 'poll', 'app', 'link'}
+    vk_links = [l for l in dict.fromkeys(vk_links) if l not in skip and not l.startswith('id')]
 
-    if not vk_links:
-        return None
-
-    # Try first few community links
-    for link in vk_links[:3]:
-        vk_page_url = f"https://vk.com/{link}"
-        print(f"  Trying VK page: {vk_page_url}")
-        md2 = scrape_url(vk_page_url)
-        if md2 and len(md2) > 200:
-            data = extract_with_claude(md2, vk_page_url)
+    for slug in vk_links[:3]:
+        vk_url = f"https://vk.com/{slug}"
+        print(f"  Trying VK: {vk_url}")
+        md2 = scrape_url(vk_url)
+        if md2 and len(md2) > 300:
+            data = extract_with_claude(md2, vk_url)
             if data and not data.get('no_menu') and data.get('menu'):
-                data['source_url'] = vk_page_url
+                data['source_url'] = vk_url
                 return data
         time.sleep(1)
 
@@ -201,75 +203,62 @@ def search_vk(company_name, site_url):
 
 def process_site(site_url):
     """
-    Process one site: scrape → extract → VK fallback.
-    Returns dict with extracted data or None if no menu found.
+    Full pipeline for one site:
+      1. Crawl website → extract
+      2. If no menu → VK fallback
+      3. If still no menu → return None (skip)
     """
     print(f"\n{'='*60}")
     print(f"Processing: {site_url}")
 
-    # Step 1: Crawl the main site
+    # Step 1: Crawl main site
     pages = crawl_site(site_url, limit=8)
 
-    if not pages:
-        print("  No pages scraped, trying VK...")
-        return search_vk("", site_url)
+    if pages:
+        # Prioritise pages whose URL contains menu-related keywords
+        menu_pages = [p for p in pages if any(
+            kw in p['url'].lower() for kw in ['menu', 'меню', 'food', 'блюд', 'catalog', 'dish', 'eda']
+        )]
+        other_pages = [p for p in pages if p not in menu_pages]
+        ordered = menu_pages + other_pages
 
-    # Combine content from all pages, prioritizing menu-related pages
-    menu_pages = []
-    other_pages = []
-    for p in pages:
-        url_lower = p['url'].lower()
-        if any(kw in url_lower for kw in ['menu', 'меню', 'food', 'блюда', 'catalog', 'dish']):
-            menu_pages.append(p)
-        else:
-            other_pages.append(p)
+        combined = "\n\n---PAGE---\n\n".join(
+            f"URL: {p['url']}\n{p['markdown'][:3000]}" for p in ordered[:5]
+        )
+        data = extract_with_claude(combined, site_url)
+        if data and not data.get('no_menu') and data.get('menu'):
+            print(f"  ✓ {len(data['menu'])} menu items from website")
+            data['source_url'] = site_url
+            return data
 
-    # Build combined content: menu pages first, then others
-    all_pages = menu_pages + other_pages
-    combined = "\n\n---PAGE---\n\n".join(
-        f"URL: {p['url']}\n{p['markdown'][:3000]}" for p in all_pages[:5]
-    )
-
-    # Step 2: Extract with Claude
-    data = extract_with_claude(combined, site_url)
-
-    if data and not data.get('no_menu') and data.get('menu'):
-        print(f"  Found {len(data['menu'])} menu items")
-        data['source_url'] = site_url
-        return data
-
-    # Step 3: VK fallback
-    print("  No menu on website, trying VK...")
-    vk_data = search_vk("", site_url)
+    # Step 2: VK fallback
+    print("  No menu on website → trying VK...")
+    vk_data = search_vk(site_url)
     if vk_data and vk_data.get('menu'):
-        print(f"  Found {len(vk_data['menu'])} menu items on VK")
+        print(f"  ✓ {len(vk_data['menu'])} menu items from VK")
         return vk_data
 
-    print("  No menu found anywhere, skipping.")
+    print("  ✗ No menu found, skipping.")
     return None
 
 
-def style_header_row(ws, row=1):
-    """Apply header styling to the first row."""
-    header_fill = PatternFill(start_color="2B5591", end_color="2B5591", fill_type="solid")
-    header_font = Font(color="FFFFFF", bold=True)
-    for cell in ws[row]:
-        cell.fill = header_fill
-        cell.font = header_font
+def style_header_row(ws):
+    fill = PatternFill(start_color="2B5591", end_color="2B5591", fill_type="solid")
+    font = Font(color="FFFFFF", bold=True)
+    for cell in ws[1]:
+        cell.fill = fill
+        cell.font = font
         cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
 
 
 def create_excel(results, output_path):
-    """Create Excel with 2 sheets: Реквизиты and Меню."""
     wb = Workbook()
 
-    # ── Sheet 1: Реквизиты ──
+    # Sheet 1: Реквизиты
     ws1 = wb.active
     ws1.title = "Реквизиты"
-    headers1 = ["Сайт", "Наименование", "Форма (ООО/ИП)", "ИНН", "ОГРН"]
-    ws1.append(headers1)
+    ws1.append(["Сайт", "Наименование", "Форма (ООО/ИП)", "ИНН", "ОГРН"])
     style_header_row(ws1)
-
     for r in results:
         ws1.append([
             r.get('source_url', ''),
@@ -278,88 +267,75 @@ def create_excel(results, output_path):
             r.get('inn', ''),
             r.get('ogrn', ''),
         ])
-
-    # Auto-width
-    col_widths1 = [40, 35, 16, 14, 18]
-    for i, w in enumerate(col_widths1, 1):
+    for i, w in enumerate([40, 35, 16, 14, 18], 1):
         ws1.column_dimensions[get_column_letter(i)].width = w
     ws1.row_dimensions[1].height = 30
+    ws1.freeze_panes = "A2"
 
-    # ── Sheet 2: Меню ──
+    # Sheet 2: Меню
     ws2 = wb.create_sheet("Меню")
-    headers2 = ["Сайт", "Наименование компании", "Категория", "Позиция", "Вес/объём", "Цена"]
-    ws2.append(headers2)
+    ws2.append(["Сайт", "Наименование компании", "Категория", "Позиция", "Вес/объём", "Цена"])
     style_header_row(ws2)
-
     for r in results:
         company = r.get('company_name', '') or r.get('source_url', '')
         source = r.get('source_url', '')
         for item in r.get('menu', []):
             price = item.get('price', '')
-            # Ensure price is a number
             if price:
                 try:
                     price = float(str(price).replace(' ', '').replace(',', '.'))
                     price = int(price) if price == int(price) else price
-                except:
+                except Exception:
                     pass
-            ws2.append([
-                source,
-                company,
-                item.get('category', ''),
-                item.get('name', ''),
-                item.get('weight', ''),
-                price,
-            ])
-
-    col_widths2 = [40, 35, 20, 40, 12, 10]
-    for i, w in enumerate(col_widths2, 1):
+            ws2.append([source, company,
+                        item.get('category', ''),
+                        item.get('name', ''),
+                        item.get('weight', ''),
+                        price])
+    for i, w in enumerate([40, 35, 20, 40, 12, 10], 1):
         ws2.column_dimensions[get_column_letter(i)].width = w
     ws2.row_dimensions[1].height = 30
-
-    # Freeze header rows
-    ws1.freeze_panes = "A2"
     ws2.freeze_panes = "A2"
 
     wb.save(output_path)
+    menu_count = sum(len(r.get('menu', [])) for r in results)
     print(f"\nExcel saved: {output_path}")
-    print(f"  Реквизиты: {len(results)} rows")
-    print(f"  Меню: {sum(len(r.get('menu',[])) for r in results)} rows")
+    print(f"  Реквизиты: {len(results)} компаний")
+    print(f"  Меню: {menu_count} позиций")
 
 
 def main():
+    if not ANTHROPIC_API_KEY:
+        print("ВНИМАНИЕ: ANTHROPIC_API_KEY не задан — извлечение данных работать не будет.")
+        print("Задайте: export ANTHROPIC_API_KEY=sk-ant-...\n")
+
     results = []
     failed = []
 
     for i, site in enumerate(SITES, 1):
-        print(f"\n[{i}/{len(SITES)}] {site}")
+        print(f"\n[{i}/{len(SITES)}]")
         try:
             data = process_site(site)
             if data and data.get('menu'):
                 results.append(data)
-                print(f"  ✓ Added: {data.get('company_name', 'N/A')} — {len(data['menu'])} items")
             else:
                 failed.append(site)
-                print(f"  ✗ Skipped (no menu)")
         except Exception as e:
             print(f"  ERROR: {e}")
             failed.append(site)
-
-        # Be polite to APIs
-        time.sleep(2)
+        time.sleep(2)  # вежливая пауза между сайтами
 
     print(f"\n{'='*60}")
-    print(f"Done! Collected data from {len(results)}/{len(SITES)} sites")
-    print(f"Skipped: {len(failed)}")
+    print(f"Итог: данные собраны с {len(results)}/{len(SITES)} сайтов")
     if failed:
-        print("Skipped sites:")
+        print(f"Пропущено ({len(failed)}):")
         for s in failed:
             print(f"  - {s}")
 
     if results:
-        create_excel(results, "/home/user/kus54/sochi_competitors.xlsx")
+        create_excel(results, "sochi_competitors.xlsx")
     else:
-        print("No data collected!")
+        print("Данные не собраны — проверь ключи API и доступ к интернету.")
 
 
 if __name__ == "__main__":
