@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дело в огне — Меню v3 Крафт</title>
+<style>
+  @page { size: A4 landscape; margin: 10mm; }
+  @media print { * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    width: 277mm;
+    height: 190mm;
+    overflow: hidden;
+    background-color: #F0E6C8;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(139,90,43,0.03) 2px,
+      rgba(139,90,43,0.03) 4px
+    );
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #1C0A00;
+  }
+
+  /* HEADER */
+  .header {
+    width: 100%;
+    height: 18mm;
+    background-color: rgba(139,90,43,0.08);
+    border-bottom: 1.5px solid rgba(139,26,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5mm;
+  }
+
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5mm;
+  }
+
+  .header-title-row {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+  }
+
+  .flame-deco {
+    color: #8B1A00;
+    font-size: 16pt;
+    line-height: 1;
+    /* Using a decorative floral heart (❧) as the decorative element */
+  }
+
+  .restaurant-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22pt;
+    font-weight: 900;
+    color: #1C0A00;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .tagline {
+    font-size: 8pt;
+    color: #C4501A;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    padding-left: 0.5mm;
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5mm;
+  }
+
+  .header-flame-svg {
+    width: 10mm;
+    height: 12mm;
+  }
+
+  .header-url {
+    font-size: 7pt;
+    color: rgba(28,10,0,0.4);
+    letter-spacing: 0.05em;
+  }
+
+  /* BODY COLUMNS */
+  .body {
+    width: 100%;
+    height: 172mm;
+    display: flex;
+  }
+
+  .col {
+    flex: 1;
+    padding: 3mm 4mm 2mm 4mm;
+    border-right: 1.5px solid rgba(139,26,0,0.15);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .col:last-child { border-right: none; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #8B1A00;
+    letter-spacing: 0.2em;
+    border-bottom: 1.5px solid rgba(196,80,26,0.5);
+    padding-bottom: 1mm;
+    margin-bottom: 2mm;
+    margin-top: 3mm;
+    line-height: 1.2;
+  }
+
+  .section-title:first-child { margin-top: 0; }
+
+  /* MENU ITEM */
+  .item {
+    display: flex;
+    align-items: baseline;
+    gap: 1mm;
+    margin-bottom: 1.2mm;
+    line-height: 1.3;
+  }
+
+  .item-name {
+    flex: 1;
+    font-size: 8.5pt;
+    color: #1C0A00;
+    font-weight: 400;
+    border-bottom: 1px dotted rgba(139,26,0,0.2);
+    padding-bottom: 0.3mm;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .item-weight {
+    font-size: 7pt;
+    color: rgba(139,58,0,0.5);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .item-price {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #8B1A00;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* EMPTY SLOT */
+  .empty-slot {
+    border: 1px dashed rgba(139,26,0,0.3);
+    border-radius: 3px;
+    color: rgba(28,10,0,0.25);
+    font-style: italic;
+    font-size: 7.5pt;
+    text-align: center;
+    padding: 1.5mm 2mm;
+    margin-bottom: 1.2mm;
+  }
+
+  /* PILLS */
+  .pills { display: flex; flex-wrap: wrap; gap: 1mm; margin-top: 1.5mm; }
+
+  .pill {
+    display: inline-block;
+    padding: 0.8mm 2mm;
+    background: rgba(139,26,0,0.08);
+    border: 1px solid rgba(139,26,0,0.2);
+    border-radius: 20px;
+    font-size: 7pt;
+    color: #8B1A00;
+    white-space: nowrap;
+  }
+
+  .pill-label {
+    font-size: 7pt;
+    color: rgba(28,10,0,0.45);
+    margin-bottom: 1mm;
+  }
+
+  /* FOOTER */
+  .footer-strip {
+    position: absolute;
+    bottom: 2mm;
+    left: 0;
+    right: 0;
+    font-size: 6.5pt;
+    color: rgba(28,10,0,0.3);
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 0.05em;
+  }
+
+  /* GRILL ITEMS */
+  .any-qty {
+    font-size: 6.5pt;
+    color: rgba(139,26,0,0.65);
+    font-style: italic;
+    margin-bottom: 2mm;
+  }
+  .grill-item {
+    border-bottom: 1px solid rgba(139,26,0,0.07);
+    margin-bottom: 1.2mm;
+    padding-bottom: 1mm;
+  }
+  .grill-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5mm;
+  }
+  .grill-name {
+    flex: 1;
+    font-size: 8.5pt;
+    color: #1C0A00;
+  }
+  .grill-per100 {
+    font-size: 7pt;
+    color: rgba(139,26,0,0.7);
+    white-space: nowrap;
+    font-weight: 700;
+  }
+  .grill-portion {
+    font-size: 6.5pt;
+    color: rgba(28,10,0,0.3);
+    white-space: nowrap;
+  }
+  .grill-price {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #8B1A00;
+    white-space: nowrap;
+    min-width: 30px;
+    text-align: right;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="header-title-row">
+      <span class="flame-deco">❧</span>
+      <span class="restaurant-name">Дело в огне</span>
+    </div>
+    <div class="tagline">Настоящий вкус живого огня</div>
+  </div>
+  <div class="header-right">
+    <svg class="header-flame-svg" viewBox="0 0 30 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 2C15 2 8 10 8 18C8 22.4 10.5 25.8 14 27.2C13.2 25.6 13 23.8 13.5 22C14 20.2 15 18.8 15 18.8C15 18.8 16 20.8 16 23C16 24.4 15.5 25.7 14.8 26.8C17.8 25.8 20 22.8 20 19C20 15.5 18 12.5 17 11.5C17 11.5 17.5 14 16.5 16C15.8 14 15.5 11 15 8C14.5 10 13 12.5 12.5 15C12 13 12.5 10 13 8C11 10 9 13 9 17C9 14 10 9 15 2Z" fill="#C4501A"/>
+      <path d="M15 6C15 6 10 13 10 19C10 23 12 26 15 27.5C14.3 26.2 14 24.6 14.2 23C14.6 21 15.5 19.5 15.5 19.5C15.5 19.5 16.5 21.5 16.5 23.5C16.5 25 16 26.4 15.2 27.4C17.8 26 19.5 23.2 19.5 20C19.5 17 18 14.5 17.2 13.5C17.2 13.5 17.5 15.8 16.8 17.5C16.2 15.8 15.8 13.2 15.5 11C15 13 14 15.5 13.5 17.5C13.2 15.5 13.8 12.5 15 6Z" fill="#8B1A00"/>
+    </svg>
+    <div class="header-url">delovogne.ru</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+  <!-- COL 1: БЛЮДА НА УГЛЯХ -->
+  <div class="col">
+    
+    <div class="section-title">🔥 Блюда на углях</div>
+    <div class="any-qty">Готовим любое количество — хоть 100г, хоть 1 кг</div>
+
+    <div class="grill-item">
+      <div class="grill-row">
+        <span class="grill-name">Шашлык из свинины (шейная часть)</span>
+        <span class="grill-per100">168₽&nbsp;/&nbsp;100г</span>
+        <span class="grill-portion">порция 250г</span>
+        <span class="grill-price">420₽</span>
+      </div>
+    </div>
+    <div class="grill-item">
+      <div class="grill-row">
+        <span class="grill-name">Люля-кебаб (свинина + говядина)</span>
+        <span class="grill-per100">160₽&nbsp;/&nbsp;100г</span>
+        <span class="grill-portion">порция 250г</span>
+        <span class="grill-price">400₽</span>
+      </div>
+    </div>
+    <div class="grill-item">
+      <div class="grill-row">
+        <span class="grill-name">Крылья куриные на мангале</span>
+        <span class="grill-per100">133₽&nbsp;/&nbsp;100г</span>
+        <span class="grill-portion">порция 300г</span>
+        <span class="grill-price">400₽</span>
+      </div>
+    </div>
+    <div class="grill-item">
+      <div class="grill-row">
+        <span class="grill-name">Грудка куриная филе на мангале</span>
+        <span class="grill-per100">117₽&nbsp;/&nbsp;100г</span>
+        <span class="grill-portion">порция 300г</span>
+        <span class="grill-price">350₽</span>
+      </div>
+    </div>
+    <div class="grill-item">
+      <div class="grill-row">
+        <span class="grill-name">Стейк куриного бедра</span>
+        <span class="grill-per100">140₽&nbsp;/&nbsp;100г</span>
+        <span class="grill-portion">порция 250г</span>
+        <span class="grill-price">350₽</span>
+      </div>
+    </div>
+    <div class="grill-item">
+      <div class="grill-row">
+        <span class="grill-name">Колбаски ассорти на мангале</span>
+        <span class="grill-per100">168₽&nbsp;/&nbsp;100г</span>
+        <span class="grill-portion">порция 250г</span>
+        <span class="grill-price">420₽</span>
+      </div>
+    </div>
+    <div class="grill-item">
+      <div class="grill-row">
+        <span class="grill-name">Овощи на гриле</span>
+        <span class="grill-per100">50₽&nbsp;/&nbsp;100г</span>
+        <span class="grill-portion">порция 500г</span>
+        <span class="grill-price">250₽</span>
+      </div>
+    </div>
+    <div class="grill-item">
+      <div class="grill-row">
+        <span class="grill-name">Грибы на мангале (шампиньоны)</span>
+        <span class="grill-per100">50₽&nbsp;/&nbsp;100г</span>
+        <span class="grill-portion">порция 500г</span>
+        <span class="grill-price">250₽</span>
+      </div>
+    </div>
+    <div class="grill-item">
+      <div class="grill-row">
+        <span class="grill-name">Картофель в беконе на углях</span>
+        <span class="grill-per100">50₽&nbsp;/&nbsp;100г</span>
+        <span class="grill-portion">порция 500г</span>
+        <span class="grill-price">250₽</span>
+      </div>
+    </div>
+
+    <div class="empty-slot">+ добавить позицию</div>
+    <div class="empty-slot">+ добавить позицию</div>
+  </div>
+
+  <!-- COL 2: КОМПЛЕКСЫ + ШАШЛЫК В ЛАВАШЕ + ШАУРМА + ЗАКУСКИ -->
+  <div class="col">
+    <div class="section-title">Комплексы</div>
+
+    <div class="item">
+      <span class="item-name">Комплекс №1 — свинина, лук, соус, лаваш</span>
+      <span class="item-weight">380г</span>
+      <span class="item-price">450₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Комплекс №2 — грудка, лук, соус, лаваш</span>
+      <span class="item-weight">380г</span>
+      <span class="item-price">420₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Комплекс №3 — бедро, лук, соус, лаваш</span>
+      <span class="item-weight">380г</span>
+      <span class="item-price">420₽</span>
+    </div>
+
+    <div class="section-title">Шашлык в лаваше</div>
+
+    <div class="item">
+      <span class="item-name">Шашлык в лаваше (свинина)</span>
+      <span class="item-weight">300г</span>
+      <span class="item-price">450₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Шашлык в лаваше (курица)</span>
+      <span class="item-weight">300г</span>
+      <span class="item-price">420₽</span>
+    </div>
+
+    <div class="section-title">Шаурма</div>
+
+    <div class="item">
+      <span class="item-name">Шаурма Классик</span>
+      <span class="item-weight">420г</span>
+      <span class="item-price">420₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Шаурма Острая</span>
+      <span class="item-weight">420г</span>
+      <span class="item-price">420₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Шаурма Сырная</span>
+      <span class="item-weight">420г</span>
+      <span class="item-price">420₽</span>
+    </div>
+
+    <div class="section-title">Закуски</div>
+
+    <div class="item">
+      <span class="item-name">Морковь по-корейски</span>
+      <span class="item-weight">100г</span>
+      <span class="item-price">150₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Лук маринованный</span>
+      <span class="item-weight">50г</span>
+      <span class="item-price">120₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Гренки чесночные</span>
+      <span class="item-weight">100г</span>
+      <span class="item-price">200₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Цезарь</span>
+      <span class="item-weight">200г</span>
+      <span class="item-price">270₽</span>
+    </div>
+
+    <div class="empty-slot">+ добавить позицию</div>
+    <div class="empty-slot">+ добавить позицию</div>
+  </div>
+
+  <!-- COL 3: СОУСЫ + НАПИТКИ + НАСТОЙКИ + ДОПОЛНИТЕЛЬНО -->
+  <div class="col">
+    <div class="section-title">Соусы — 60₽ за порцию (60г)</div>
+    <div class="pills">
+      <span class="pill">Барбекю</span>
+      <span class="pill">Аджика</span>
+      <span class="pill">Кетчуп</span>
+      <span class="pill">Сырный</span>
+      <span class="pill">Чесночный</span>
+    </div>
+
+    <div class="section-title">Напитки</div>
+
+    <div class="item">
+      <span class="item-name">Газировка (Кола / Фанта / Спрайт)</span>
+      <span class="item-weight">350мл</span>
+      <span class="item-price">169₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Морс</span>
+      <span class="item-weight">300мл</span>
+      <span class="item-price">150₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Вода</span>
+      <span class="item-weight">300мл</span>
+      <span class="item-price">80₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Чай</span>
+      <span class="item-weight">300мл</span>
+      <span class="item-price">60₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Чай с молоком</span>
+      <span class="item-weight">300мл</span>
+      <span class="item-price">75₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Кофе</span>
+      <span class="item-weight">300мл</span>
+      <span class="item-price">100₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Кофе с молоком</span>
+      <span class="item-weight">300мл</span>
+      <span class="item-price">150₽</span>
+    </div>
+
+    <div class="section-title">Настойки — 150₽ (50мл)</div>
+    <div class="pills">
+      <span class="pill">Клюквенная</span>
+      <span class="pill">Лимонная</span>
+      <span class="pill">Перцовая</span>
+      <span class="pill">Томатная</span>
+      <span class="pill">Фирменная (сезонная)</span>
+    </div>
+
+    <div class="section-title">Дополнительно</div>
+
+    <div class="item">
+      <span class="item-name">Лаваш</span>
+      <span class="item-weight"></span>
+      <span class="item-price">50₽</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Лепёшка Узбекская</span>
+      <span class="item-weight"></span>
+      <span class="item-price">50₽</span>
+    </div>
+
+    <div class="footer-strip">С любовью и огнём · delovogne.ru</div>
+  </div>
+
+</div>
+</body>
+</html>
