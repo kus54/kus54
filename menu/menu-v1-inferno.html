@@ -197,11 +197,22 @@ body {
   font-weight:900;
   white-space:nowrap;
 }
+.row.blank {
+  opacity: 0.35;
+  border-bottom: 1px dashed rgba(232,50,26,0.35) !important;
+}
 .row.blank .row-name,
 .row.blank .row-measure,
 .row.blank .row-price {
   color: transparent;
-  user-select:none;
+  user-select: none;
+}
+.row.blank .row-name::after {
+  content: '·  ·  ·  добавить позицию  ·  ·  ·';
+  color: rgba(232,50,26,0.4);
+  font-size: 6pt;
+  font-style: italic;
+  letter-spacing: 0.1em;
 }
 .grill-item {
   display:grid;
@@ -482,12 +493,12 @@ body {
               </div>
               <div class="row">
                 <div class="row-name" style="font-size:8.35pt;">Лаваш</div>
-                <div class="row-measure"></div>
+                <div class="row-measure">1 шт.</div>
                 <div class="row-price">50 ₽</div>
               </div>
               <div class="row">
                 <div class="row-name" style="font-size:8.35pt;">Лепёшка узбекская</div>
-                <div class="row-measure"></div>
+                <div class="row-measure">1 шт.</div>
                 <div class="row-price">50 ₽</div>
               </div>
             </div>
@@ -546,17 +557,17 @@ body {
                 </div>
               </div>
               <div class="row">
-                <div class="row-name">Шаурма Классик</div>
+                <div class="row-name">Шаурма Классик <span style="font-size:6pt;opacity:0.4;font-weight:400"> — капуста, морковь, огурец</span></div>
                 <div class="row-measure">420 г</div>
                 <div class="row-price">420 ₽</div>
               </div>
               <div class="row">
-                <div class="row-name">Шаурма Острая</div>
+                <div class="row-name">Шаурма Острая <span style="font-size:6pt;opacity:0.4;font-weight:400"> — острый соус, капуста</span></div>
                 <div class="row-measure">420 г</div>
                 <div class="row-price">420 ₽</div>
               </div>
               <div class="row">
-                <div class="row-name">Шаурма Сырная</div>
+                <div class="row-name">Шаурма Сырная <span style="font-size:6pt;opacity:0.4;font-weight:400"> — сырный соус, капуста</span></div>
                 <div class="row-measure">420 г</div>
                 <div class="row-price">420 ₽</div>
               </div>
@@ -574,7 +585,7 @@ body {
                 <div class="row-price">150 ₽</div>
               </div>
               <div class="row">
-                <div class="row-name">Лук маринованный</div>
+                <div class="row-name">Лук маринованный <span style="font-size:6pt;opacity:0.45;font-weight:400"> — доп. порция</span></div>
                 <div class="row-measure">50 г</div>
                 <div class="row-price">120 ₽</div>
               </div>
@@ -587,6 +598,11 @@ body {
                 <div class="row-name">Цезарь</div>
                 <div class="row-measure">200 г</div>
                 <div class="row-price">270 ₽</div>
+              </div>
+              <div class="row">
+                <div class="row-name">Капуста квашеная</div>
+                <div class="row-measure">200 г</div>
+                <div class="row-price">150 ₽</div>
               </div>
             </div>
           </div>
