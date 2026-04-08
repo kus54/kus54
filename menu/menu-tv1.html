@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Дело в огне — Меню (Экран 1)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 1080px;
+  min-height: 1920px;
+  background: #0c0c0e;
+  color: #f5efe8;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+:root {
+  --accent: #D42B1A;
+  --accent-soft: #FF6B6B;
+  --accent-bg: rgba(212,43,26,0.13);
+  --muted: rgba(245,239,232,0.55);
+  --line: rgba(255,255,255,0.07);
+  --line-accent: rgba(212,43,26,0.25);
+}
+.page {
+  width: 1080px;
+  min-height: 1920px;
+  background:
+    radial-gradient(ellipse 60% 30% at 50% 0%, rgba(212,43,26,0.07), transparent),
+    #0c0c0e;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.header {
+  padding: 40px 52px 30px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+}
+.logo-text {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff 20%, #f5d0cc 60%, #C41A0A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.screen-badge {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--line-accent);
+  padding: 8px 20px;
+  border-radius: 999px;
+}
+
+/* BODY */
+.body {
+  flex: 1;
+  padding: 36px 52px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* SECTION */
+.section {
+  background: linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.008));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px 16px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(90deg, var(--accent-bg), transparent 60%);
+}
+.section-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff8f2;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* GRILL ITEMS (по весу) */
+.grill-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.grill-item {
+  padding: 20px 28px 18px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.grill-item:nth-child(even) { border-right: none; }
+.grill-item:nth-last-child(-n+2) { border-bottom: none; }
+.grill-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff8f2;
+}
+.grill-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.grill-bottom {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.grill-measure {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-soft);
+}
+.grill-anchor {
+  font-size: 15px;
+  color: rgba(245,239,232,0.38);
+}
+.grill-price-fixed {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff8f2;
+}
+
+/* SECTION NOTE (под шапкой) */
+.section-note {
+  padding: 12px 28px;
+  font-size: 15px;
+  color: rgba(245,239,232,0.38);
+  border-bottom: 1px solid var(--line);
+  letter-spacing: 0.01em;
+}
+
+/* ROW ITEMS */
+.row-list { display: flex; flex-direction: column; }
+.row-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 17px 28px;
+  border-bottom: 1px solid var(--line);
+  gap: 14px;
+}
+.row-item:last-child { border-bottom: none; }
+.row-left { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.row-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff8f2;
+}
+.row-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.row-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.row-price {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff8f2;
+  white-space: nowrap;
+}
+.row-weight {
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* КОМПЛЕКСЫ — 3 col */
+.combo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+.combo-item {
+  padding: 20px 22px 18px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.combo-item:last-child { border-right: none; }
+.combo-name {
+  font-size: 19px;
+  font-weight: 700;
+  color: #fff8f2;
+  letter-spacing: -0.01em;
+}
+.combo-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.4;
+  flex: 1;
+}
+.combo-price {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent-soft);
+  margin-top: 8px;
+}
+
+/* FOOTER */
+.footer {
+  padding: 22px 52px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-left { font-size: 15px; color: rgba(245,239,232,0.3); }
+.footer-right { font-size: 15px; color: rgba(245,239,232,0.3); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="logo-text">Дело в огне</div>
+    <div class="screen-badge">Экран 1 · Мясо</div>
+  </div>
+
+  <div class="body">
+
+    <!-- МЯСО НА УГЛЯХ -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Мясо на углях</div>
+        <div class="section-sub">называйте вес · от 100 г</div>
+      </div>
+      <div class="section-note">Цена за 100 г · взвешиваем при вас · чем больше берёте — выгоднее</div>
+      <div class="grill-grid">
+
+        <div class="grill-item">
+          <div class="grill-name">Шашлык из свинины</div>
+          <div class="grill-desc">Свиная шейка в авторском маринаде — сочная, с аппетитной корочкой</div>
+          <div class="grill-bottom">
+            <div class="grill-measure">168 ₽ / 100 г</div>
+            <div class="grill-anchor">300 г → 504 ₽</div>
+          </div>
+        </div>
+
+        <div class="grill-item">
+          <div class="grill-name">Люля-кебаб</div>
+          <div class="grill-desc">Рубленая свинина и говядина со специями на шампуре</div>
+          <div class="grill-bottom">
+            <div class="grill-measure">160 ₽ / 100 г</div>
+            <div class="grill-anchor">300 г → 480 ₽</div>
+          </div>
+        </div>
+
+        <div class="grill-item">
+          <div class="grill-name">Куриное бедро</div>
+          <div class="grill-desc">Куриное бедро на углях — нежное мясо с хрустящей кожицей</div>
+          <div class="grill-bottom">
+            <div class="grill-price-fixed">350 ₽</div>
+            <div class="grill-anchor">1 шт. ≈ 180 г</div>
+          </div>
+        </div>
+
+        <div class="grill-item">
+          <div class="grill-name">Куриная грудка</div>
+          <div class="grill-desc">Филе куриной грудки на мангале — диетически, сочно</div>
+          <div class="grill-bottom">
+            <div class="grill-price-fixed">350 ₽</div>
+            <div class="grill-anchor">1 шт. ≈ 200–250 г</div>
+          </div>
+        </div>
+
+        <div class="grill-item">
+          <div class="grill-name">Крылья на мангале</div>
+          <div class="grill-desc">Куриные крылья в маринаде — хрустящие снаружи, сочные внутри</div>
+          <div class="grill-bottom">
+            <div class="grill-price-fixed">400 ₽</div>
+            <div class="grill-anchor">300 г</div>
+          </div>
+        </div>
+
+        <div class="grill-item">
+          <div class="grill-name">Колбаски ассорти</div>
+          <div class="grill-desc">Ароматные колбаски из свинины и говядины на углях</div>
+          <div class="grill-bottom">
+            <div class="grill-price-fixed">420 ₽</div>
+            <div class="grill-anchor">250 г</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ОВОЩИ И ГРИЛЬ -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Овощи и гриль</div>
+        <div class="section-sub">500 г · 250 ₽</div>
+      </div>
+      <div class="row-list">
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Овощи на огне</div>
+            <div class="row-desc">Болгарский перец, кабачки, помидоры, грибы — на живом огне</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">250 ₽</div>
+            <div class="row-weight">500 г</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Грибы на огне</div>
+            <div class="row-desc">Шампиньоны на мангале — с дымком, с зеленью</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">250 ₽</div>
+            <div class="row-weight">500 г</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Картофель в беконе</div>
+            <div class="row-desc">Картофель, запечённый в хрустящем беконе на углях</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">250 ₽</div>
+            <div class="row-weight">500 г</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ШАШЛЫК В ЛАВАШЕ -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Шашлык в лаваше</div>
+        <div class="section-sub">мясо + лук + соус</div>
+      </div>
+      <div class="row-list">
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Свинина в лаваше</div>
+            <div class="row-desc">Шашлык из свинины + маринованный лук + соус — завёрнуто в тонкий лаваш</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">450 ₽</div>
+            <div class="row-weight">300 г</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Курица в лаваше</div>
+            <div class="row-desc">Шашлык из курицы + маринованный лук + соус — завёрнуто в тонкий лаваш</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">420 ₽</div>
+            <div class="row-weight">300 г</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- КОМПЛЕКСЫ -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Комплексы</div>
+        <div class="section-sub">мясо + лук + соус + лаваш</div>
+      </div>
+      <div class="combo-grid">
+        <div class="combo-item">
+          <div class="combo-name">Комплекс №1</div>
+          <div class="combo-desc">Свинина на углях, маринованный лук, соус на выбор, лаваш</div>
+          <div class="combo-price">450 ₽</div>
+        </div>
+        <div class="combo-item">
+          <div class="combo-name">Комплекс №2</div>
+          <div class="combo-desc">Куриная грудка на углях, маринованный лук, соус на выбор, лаваш</div>
+          <div class="combo-price">420 ₽</div>
+        </div>
+        <div class="combo-item">
+          <div class="combo-name">Комплекс №3</div>
+          <div class="combo-desc">Куриное бедро на углях, маринованный лук, соус на выбор, лаваш</div>
+          <div class="combo-price">420 ₽</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ЗАКУСКИ -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Закуски</div>
+      </div>
+      <div class="row-list">
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Морковь по-корейски</div>
+            <div class="row-desc">Морковь в остро-пряном маринаде с кунжутом</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">150 ₽</div>
+            <div class="row-weight">100 г</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Лук маринованный</div>
+            <div class="row-desc">Репчатый лук в лёгком маринаде — идеально к шашлыку</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">120 ₽</div>
+            <div class="row-weight">50 г</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Гренки чесночные</div>
+            <div class="row-desc">Хрустящий хлеб с чесночным маслом и зеленью</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">200 ₽</div>
+            <div class="row-weight">100 г</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Цезарь</div>
+            <div class="row-desc">Классический салат с курицей, сухариками, сыром и соусом Цезарь</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">270 ₽</div>
+            <div class="row-weight">200 г</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Капуста квашеная</div>
+            <div class="row-desc">Квашеная капуста по домашнему рецепту</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">150 ₽</div>
+            <div class="row-weight">200 г</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ДОПОЛНИТЕЛЬНО -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Дополнительно</div>
+      </div>
+      <div class="row-list">
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Лаваш</div>
+            <div class="row-desc">Тонкий армянский лаваш</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">50 ₽</div>
+            <div class="row-weight">1 шт.</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Лепёшка узбекская</div>
+            <div class="row-desc">Пышная узбекская лепёшка из тандыра</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">50 ₽</div>
+            <div class="row-weight">1 шт.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <div class="footer">
+    <div class="footer-left">К любому мясу — соус и лук в подарок</div>
+    <div class="footer-right">delovogne.ru</div>
+  </div>
+
+</div>
+</body>
+</html>

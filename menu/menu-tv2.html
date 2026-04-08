@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Дело в огне — Меню (Экран 2)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 1080px;
+  min-height: 1920px;
+  background: #0c0c0e;
+  color: #f5efe8;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+:root {
+  --accent: #D42B1A;
+  --accent-soft: #FF6B6B;
+  --accent-bg: rgba(212,43,26,0.13);
+  --muted: rgba(245,239,232,0.55);
+  --line: rgba(255,255,255,0.07);
+  --line-accent: rgba(212,43,26,0.25);
+}
+.page {
+  width: 1080px;
+  min-height: 1920px;
+  background:
+    radial-gradient(ellipse 60% 30% at 50% 0%, rgba(212,43,26,0.07), transparent),
+    #0c0c0e;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  padding: 40px 52px 30px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+}
+.logo-text {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff 20%, #f5d0cc 60%, #C41A0A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.screen-badge {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--line-accent);
+  padding: 8px 20px;
+  border-radius: 999px;
+}
+.body {
+  flex: 1;
+  padding: 36px 52px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.section {
+  background: linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.008));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px 16px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(90deg, var(--accent-bg), transparent 60%);
+}
+.section-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff8f2;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.row-list { display: flex; flex-direction: column; }
+.row-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 17px 28px;
+  border-bottom: 1px solid var(--line);
+  gap: 14px;
+}
+.row-item:last-child { border-bottom: none; }
+.row-left { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.row-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff8f2;
+}
+.row-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.row-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.row-price {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff8f2;
+  white-space: nowrap;
+}
+.row-weight {
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* СОУСЫ — пилюли */
+.sauce-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 28px;
+  align-items: center;
+}
+.sauce-pill {
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 18px;
+  font-weight: 600;
+  color: #f5efe8;
+}
+.sauce-price {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent-soft);
+  margin-left: auto;
+}
+
+/* НАПИТКИ — 2 col */
+.drinks-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.drinks-col {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+}
+.drinks-col:last-child { border-right: none; }
+.drinks-sub-head {
+  padding: 12px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,239,232,0.35);
+  border-bottom: 1px solid var(--line);
+}
+.drink-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  gap: 10px;
+}
+.drink-row:last-child { border-bottom: none; }
+.drink-name {
+  font-size: 19px;
+  font-weight: 600;
+  color: #f5efe8;
+}
+.drink-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff8f2;
+  white-space: nowrap;
+}
+.drink-vol {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ПИВО */
+.beer-note {
+  padding: 22px 28px;
+  font-size: 17px;
+  color: rgba(245,239,232,0.4);
+  font-style: italic;
+}
+
+/* СКОРО — настойки */
+.soon-card {
+  margin: 0 52px;
+  padding: 20px 28px;
+  border: 1px dashed rgba(212,43,26,0.3);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0.5;
+}
+.soon-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.soon-badge {
+  margin-left: auto;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-soft);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.footer {
+  padding: 22px 52px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-left { font-size: 15px; color: rgba(245,239,232,0.3); }
+.footer-right { font-size: 15px; color: rgba(245,239,232,0.3); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="logo-text">Дело в огне</div>
+    <div class="screen-badge">Экран 2 · Шаурма</div>
+  </div>
+
+  <div class="body">
+
+    <!-- ШАУРМА -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Шаурма</div>
+        <div class="section-sub">420 г · 420 ₽</div>
+      </div>
+      <div class="row-list">
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Классик</div>
+            <div class="row-desc">Курица, капуста, морковь, огурец, помидор, классический соус — в лаваше</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">420 ₽</div>
+            <div class="row-weight">420 г</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Острая</div>
+            <div class="row-desc">Курица, капуста, морковь, огурец, помидор, острый соус — в лаваше</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">420 ₽</div>
+            <div class="row-weight">420 г</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Сырная</div>
+            <div class="row-desc">Курица, капуста, морковь, огурец, помидор, нежный сырный соус — в лаваше</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">420 ₽</div>
+            <div class="row-weight">420 г</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СОУСЫ -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Соусы</div>
+        <div class="section-sub">к мясу и шаурме</div>
+      </div>
+      <div class="sauce-grid">
+        <div class="sauce-pill">Барбекю</div>
+        <div class="sauce-pill">Аджика</div>
+        <div class="sauce-pill">Кетчуп</div>
+        <div class="sauce-pill">Сырный</div>
+        <div class="sauce-pill">Чесночный</div>
+        <div class="sauce-price">60 ₽</div>
+      </div>
+    </div>
+
+    <!-- НАПИТКИ -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Напитки</div>
+      </div>
+      <div class="drinks-cols">
+        <!-- Холодные -->
+        <div class="drinks-col">
+          <div class="drinks-sub-head">Холодные</div>
+          <div class="drink-row">
+            <div>
+              <div class="drink-name">Газировка</div>
+              <div class="drink-vol">Кола / Фанта / Спрайт · 350 мл</div>
+            </div>
+            <div class="drink-price">169 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div>
+              <div class="drink-name">Морс</div>
+              <div class="drink-vol">300 мл</div>
+            </div>
+            <div class="drink-price">150 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div>
+              <div class="drink-name">Вода</div>
+              <div class="drink-vol">300 мл</div>
+            </div>
+            <div class="drink-price">80 ₽</div>
+          </div>
+          <div class="drinks-sub-head" style="margin-top:4px;">Чай</div>
+          <div class="drink-row">
+            <div>
+              <div class="drink-name">Чай</div>
+              <div class="drink-vol">300 мл</div>
+            </div>
+            <div class="drink-price">60 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div>
+              <div class="drink-name">Чай с молоком</div>
+              <div class="drink-vol">300 мл</div>
+            </div>
+            <div class="drink-price">75 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div>
+              <div class="drink-name">Горячая вода</div>
+              <div class="drink-vol">300 мл</div>
+            </div>
+            <div class="drink-price">30 ₽</div>
+          </div>
+        </div>
+
+        <!-- Кофе -->
+        <div class="drinks-col">
+          <div class="drinks-sub-head">Кофе · 180 ₽</div>
+          <div class="drink-row">
+            <div class="drink-name">Американо</div>
+            <div class="drink-price">180 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div class="drink-name">Капучино</div>
+            <div class="drink-price">180 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div class="drink-name">Латте</div>
+            <div class="drink-price">180 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div class="drink-name">Флэт уайт</div>
+            <div class="drink-price">180 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div class="drink-name">Мокачино</div>
+            <div class="drink-price">180 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div class="drink-name">Раф банановый</div>
+            <div class="drink-price">180 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div class="drink-name">Горячий шоколад</div>
+            <div class="drink-price">180 ₽</div>
+          </div>
+          <div class="drink-row">
+            <div class="drink-name">Шоколад с молоком</div>
+            <div class="drink-price">180 ₽</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ПИВО -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Пиво</div>
+        <div class="section-sub">бутылочное</div>
+      </div>
+      <div class="beer-note">Спросите у сотрудника — ассортимент уточняется</div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- НАСТОЙКИ СКОРО -->
+  <div class="soon-card">
+    <div class="soon-title">Настойки (18+)</div>
+    <div class="soon-badge">— скоро</div>
+  </div>
+
+  <div style="height: 32px;"></div>
+
+  <div class="footer">
+    <div class="footer-left">Мы рады вашим вопросам — обращайтесь к нам</div>
+    <div class="footer-right">delovogne.ru</div>
+  </div>
+
+</div>
+</body>
+</html>
