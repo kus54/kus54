@@ -48,10 +48,10 @@ html, body {
   50%  { box-shadow: 0 0 28px rgba(255,106,45,0.18); }
   100% { box-shadow: 0 0 0px rgba(255,106,45,0); }
 }
-.page { position: relative; isolation: isolate; }
+.page { position: relative; isolation: isolate; overflow: hidden; }
 .page::before {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   background:
     radial-gradient(ellipse 80% 40% at 30% 100%, rgba(200,60,0,0.22), transparent 55%),
@@ -62,7 +62,7 @@ html, body {
 }
 .page::after {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: radial-gradient(ellipse 40% 20% at 50% 88%, rgba(255,130,0,0.1), transparent 60%);
   animation: ember-breathe 7s ease-in-out infinite reverse;
