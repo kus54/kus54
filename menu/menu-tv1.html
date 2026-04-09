@@ -116,30 +116,35 @@ html, body {
   gap: 3px;
   margin-top: 8px;
 }
-.grill-measure {
-  font-size: 30px;
-  font-weight: 800;
-  color: var(--fire);
-  letter-spacing: -0.01em;
+/* Якорная цена — главная, большая */
+.grill-anchor-price {
+  font-size: 38px;
+  font-weight: 900;
+  color: #fff8f2;
+  letter-spacing: -0.02em;
 }
-/* Anchor — большой и заметный */
-.grill-anchor {
+.grill-anchor-qty {
+  font-size: 17px;
+  color: var(--muted);
+  font-weight: 500;
+}
+/* 100г — мелкая дописка */
+.grill-measure {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255,106,45,0.13);
-  border: 1px solid rgba(255,106,45,0.28);
-  border-radius: 8px;
-  padding: 5px 14px;
-  font-size: 19px;
-  font-weight: 700;
-  color: rgba(245,239,232,0.75);
-  width: fit-content;
+  gap: 5px;
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(245,239,232,0.38);
+  letter-spacing: 0.01em;
 }
-.grill-anchor-price {
-  color: var(--fire);
-  font-weight: 800;
-  font-size: 22px;
+.grill-measure::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 1px;
+  background: rgba(255,106,45,0.4);
 }
 .grill-price-fixed {
   font-size: 30px;
@@ -207,16 +212,18 @@ html, body {
           <div class="grill-name">Шашлык из свинины</div>
           <div class="grill-desc">Свиная шейка в авторском маринаде — сочная, с аппетитной корочкой</div>
           <div class="grill-bottom">
+            <div class="grill-anchor-qty">чаще берут 300 г →</div>
+            <div class="grill-anchor-price">504 ₽</div>
             <div class="grill-measure">168 ₽ / 100 г</div>
-            <div class="grill-anchor">чаще берут 300 г → <span class="grill-anchor-price">504 ₽</span></div>
           </div>
         </div>
         <div class="grill-item">
           <div class="grill-name">Люля-кебаб</div>
           <div class="grill-desc">Рубленая свинина и говядина со специями на шампуре</div>
           <div class="grill-bottom">
+            <div class="grill-anchor-qty">чаще берут 300 г →</div>
+            <div class="grill-anchor-price">480 ₽</div>
             <div class="grill-measure">160 ₽ / 100 г</div>
-            <div class="grill-anchor">чаще берут 300 г → <span class="grill-anchor-price">480 ₽</span></div>
           </div>
         </div>
         <div class="grill-item">
