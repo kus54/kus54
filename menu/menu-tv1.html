@@ -6,9 +6,29 @@
 <title>Дело в огне — Меню (Экран 1)</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/*
+  Если ОС TV повёрнута через Developer Options → страница просто 1080×1920, всё ок.
+  Если ОС не повёрнута (браузер видит 1920×1080) → CSS поворачивает контент на -90°.
+*/
+@media screen and (orientation: landscape) {
+  html {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+  }
+  body {
+    width: 1080px;
+    min-height: 1920px;
+    transform: rotate(-90deg) translateX(-1920px);
+    transform-origin: top left;
+  }
+}
+@media screen and (orientation: portrait) {
+  html, body { width: 1080px; min-height: 1920px; }
+}
+
 html, body {
-  width: 1080px;
-  min-height: 1920px;
   background: #0a0806;
   color: #f5efe8;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
