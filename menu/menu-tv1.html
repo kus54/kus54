@@ -22,6 +22,65 @@ html, body {
   --line:    rgba(255,255,255,0.07);
   --line-fire: rgba(255,106,45,0.22);
 }
+/* ── АНИМАЦИИ ОГНЯ ── */
+@keyframes ember-breathe {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.55; }
+  100% { opacity: 1; }
+}
+@keyframes ember-shift {
+  0%   { transform: scale(1)   translateY(0); }
+  50%  { transform: scale(1.08) translateY(-12px); }
+  100% { transform: scale(1)   translateY(0); }
+}
+@keyframes glow-pulse {
+  0%   { box-shadow: 0 0 0px rgba(255,106,45,0); }
+  50%  { box-shadow: 0 0 28px rgba(255,106,45,0.18); }
+  100% { box-shadow: 0 0 0px rgba(255,106,45,0); }
+}
+/* слои угля — псевдоэлементы на .page */
+.page { position: relative; isolation: isolate; }
+.page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 40% at 30% 100%, rgba(200,60,0,0.22), transparent 55%),
+    radial-gradient(ellipse 60% 30% at 75% 95%,  rgba(255,90,0,0.14), transparent 50%);
+  animation: ember-breathe 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+.page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 40% 20% at 50% 88%, rgba(255,130,0,0.1), transparent 60%);
+  animation: ember-breathe 7s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: 0;
+}
+.page > * { position: relative; z-index: 1; }
+
+/* ХИТ-БЕЙДЖ */
+.hit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--fire);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  width: fit-content;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
 .page {
   width: 1080px;
   min-height: 1920px;
@@ -206,9 +265,10 @@ html, body {
         <div class="section-title">Мясо на углях</div>
         <div class="section-sub">называйте вес · от 100 г</div>
       </div>
-      <div class="section-note">Цена за 100 г · взвешиваем при вас · чем больше берёте — выгоднее</div>
+      <div class="section-note">Цена за 100 г · взвешиваем при вас · чем больше берёте — выгоднее · <span style="color:rgba(255,106,45,0.7);">к каждому мясу маринованный лук и соус — в подарок</span></div>
       <div class="grill-grid">
         <div class="grill-item">
+          <div class="hit-badge">🔥 Хит</div>
           <div class="grill-name">Шашлык из свинины</div>
           <div class="grill-desc">Свиная шейка в авторском маринаде — сочная, с аппетитной корочкой</div>
           <div class="grill-bottom">
@@ -220,6 +280,7 @@ html, body {
           </div>
         </div>
         <div class="grill-item">
+          <div class="hit-badge">🔥 Хит</div>
           <div class="grill-name">Люля-кебаб</div>
           <div class="grill-desc">Рубленая свинина и говядина со специями на шампуре</div>
           <div class="grill-bottom">
