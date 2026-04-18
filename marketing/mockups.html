@@ -3,442 +3,492 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Дело в Огне — Макеты</title>
+<title>Дело в Огне — Маркетинговые макеты</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #1a1a1a; font-family: 'Arial', sans-serif; color: #fff; padding: 40px 20px; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  h1 { text-align: center; color: #ff6b1a; font-size: 28px; margin-bottom: 10px; }
-  .subtitle { text-align: center; color: #888; margin-bottom: 60px; font-size: 14px; }
+body {
+  background: #050505;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  color: #F0EAE0;
+  padding: 48px 24px;
+}
 
-  .section-title {
-    color: #ff6b1a; font-size: 16px; text-transform: uppercase;
-    letter-spacing: 2px; margin: 60px 0 24px; border-bottom: 1px solid #333; padding-bottom: 12px;
-  }
+/* PAGE HEADER */
+.page-header { text-align: center; margin-bottom: 72px; }
+.page-header h1 {
+  font-size: 13px; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: #E8321A; margin-bottom: 16px;
+}
+.page-header h2 {
+  font-size: 48px; font-weight: 900; line-height: 1;
+  background: linear-gradient(180deg, #fff 0%, #F0DBC0 60%, #E8321A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 4px 20px rgba(232,50,26,.3));
+  margin-bottom: 12px;
+}
+.page-header p { font-size: 16px; color: #686868; }
 
-  /* ─── GRID ─────────────────────────────── */
-  .grid { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
+/* SECTION TITLE */
+.section-title {
+  font-size: 13px; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: #E8321A;
+  margin: 72px 0 32px; padding-bottom: 16px;
+  border-bottom: 1px solid #1E1E1E;
+}
 
-  /* ─── INSTAGRAM POST 1:1 ────────────────── */
-  .post-ig {
-    width: 380px; height: 380px; border-radius: 4px;
-    position: relative; overflow: hidden; flex-shrink: 0;
-  }
-  .post-ig .bg-fire {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 100%, #c0390a 0%, #6b1a00 40%, #1a0a00 80%);
-  }
-  .post-ig .bg-dark {
-    position: absolute; inset: 0;
-    background: linear-gradient(160deg, #0d0d0d 0%, #2a1000 50%, #0d0d0d 100%);
-  }
-  .post-ig .bg-coal {
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 30% 70%, #ff4500 0%, #8b1a00 25%, #111 60%);
-  }
-  .post-ig .overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 50%);
-  }
-  .post-ig .content {
-    position: absolute; inset: 0; padding: 28px;
-    display: flex; flex-direction: column; justify-content: flex-end;
-  }
-  .post-ig .tag {
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: #ff6b1a; margin-bottom: 8px;
-  }
-  .post-ig .headline {
-    font-size: 30px; font-weight: 900; line-height: 1.1;
-    color: #fff; text-transform: uppercase; margin-bottom: 10px;
-  }
-  .post-ig .sub {
-    font-size: 13px; color: #ccc; line-height: 1.5; margin-bottom: 14px;
-  }
-  .post-ig .price-badge {
-    display: inline-block; background: #ff6b1a; color: #fff;
-    font-size: 18px; font-weight: 900; padding: 6px 16px; border-radius: 2px;
-  }
-  .post-ig .logo {
-    position: absolute; top: 20px; right: 20px;
-    font-size: 12px; font-weight: 700; letter-spacing: 1px;
-    color: #ff6b1a; text-transform: uppercase; text-align: right; line-height: 1.3;
-  }
+/* LAYOUT */
+.grid { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
+.card-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.mock-label {
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  color: #4A4A4A; text-align: center;
+}
 
-  /* ember dots */
-  .ember {
-    position: absolute; width: 4px; height: 4px; border-radius: 50%;
-    background: #ff8c00; box-shadow: 0 0 6px #ff4500;
-  }
+/* SPARKS */
+.sparks { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.spark {
+  position: absolute; border-radius: 50%; opacity: 0;
+  background: #E8321A; box-shadow: 0 0 6px #E8321A;
+  animation: spark 4s infinite;
+}
+.s1 { width: 4px; height: 4px; left: 22%; top: 58%; animation-delay: 0s; }
+.s2 { width: 3px; height: 3px; left: 55%; top: 65%; animation-delay: 1.4s; }
+.s3 { width: 4px; height: 4px; left: 78%; top: 50%; animation-delay: 2.7s; }
+.s4 { width: 2px; height: 2px; left: 40%; top: 72%; animation-delay: 0.8s; }
+@keyframes spark {
+  0%   { opacity: 0; transform: translateY(0) scale(1); }
+  20%  { opacity: .9; }
+  100% { opacity: 0; transform: translateY(-110px) scale(.2); }
+}
 
-  /* ─── INSTAGRAM STORY 9:16 ──────────────── */
-  .story {
-    width: 214px; height: 380px; border-radius: 12px;
-    position: relative; overflow: hidden; flex-shrink: 0;
-  }
-  .story .bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, #0d0d0d 0%, #3a0e00 50%, #0d0d0d 100%);
-  }
-  .story .flame-art {
-    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 160px; height: 200px;
-    background: radial-gradient(ellipse at 50% 100%, #ff4500 0%, #c0390a 35%, transparent 70%);
-    filter: blur(8px);
-  }
-  .story .content {
-    position: absolute; inset: 0; padding: 24px 20px;
-    display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .story .story-logo {
-    font-size: 11px; font-weight: 700; letter-spacing: 2px;
-    color: #ff6b1a; text-transform: uppercase;
-  }
-  .story .story-body { text-align: center; }
-  .story .story-headline {
-    font-size: 26px; font-weight: 900; line-height: 1.1;
-    text-transform: uppercase; margin-bottom: 12px;
-  }
-  .story .story-sub { font-size: 12px; color: #ccc; line-height: 1.5; margin-bottom: 16px; }
-  .story .story-cta {
-    background: #ff6b1a; color: #fff; font-size: 13px; font-weight: 700;
-    padding: 10px 20px; border-radius: 24px; text-align: center;
-    text-transform: uppercase; letter-spacing: 1px;
-  }
-  .story .story-bottom { text-align: center; font-size: 10px; color: #666; }
+/* ── INSTAGRAM POST ── */
+.ig-post {
+  width: 400px; height: 400px;
+  border-radius: 4px; overflow: hidden; position: relative; flex-shrink: 0;
+}
+.bg-ember {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 110%, #C42818 0%, #6B1200 35%, #0A0400 70%);
+}
+.bg-coal {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 25% 90%, #E8321A 0%, #5A0E00 30%, #0A0A0A 65%);
+}
+.bg-night {
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, #0A0A0A 0%, #1A0800 55%, #0A0A0A 100%);
+}
+.ig-overlay {
+  position: absolute; inset: 0; z-index: 3;
+  background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.1) 55%, transparent 100%);
+}
+.ig-logo {
+  position: absolute; top: 20px; right: 20px; z-index: 5;
+  font-size: 10px; font-weight: 700; letter-spacing: .15em;
+  text-transform: uppercase; color: rgba(240,219,192,.6); text-align: right; line-height: 1.4;
+}
+.ig-content {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 5; padding: 28px 28px 32px;
+}
+.ig-eyebrow {
+  display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: #F0DBC0;
+  padding: 4px 12px; border: 1px solid rgba(240,219,192,.35); border-radius: 100px;
+  margin-bottom: 12px;
+}
+.ig-title {
+  font-size: 34px; font-weight: 900; line-height: .95; text-transform: uppercase;
+  margin-bottom: 10px;
+  background: linear-gradient(180deg, #fff 0%, #F0DBC0 55%, #E8321A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 2px 12px rgba(232,50,26,.5));
+}
+.ig-desc { font-size: 12px; color: rgba(240,234,224,.65); line-height: 1.55; margin-bottom: 14px; }
+.ig-price {
+  display: inline-flex; align-items: center;
+  background: #E8321A; color: #fff;
+  font-size: 14px; font-weight: 700; padding: 8px 18px; border-radius: 100px;
+  box-shadow: 0 4px 20px rgba(232,50,26,.5);
+}
 
-  /* ─── VK POST ───────────────────────────── */
-  .vk-post {
-    width: 540px; background: #222; border-radius: 8px;
-    overflow: hidden; font-size: 14px;
-  }
-  .vk-header {
-    display: flex; align-items: center; gap: 12px; padding: 14px 16px;
-    border-bottom: 1px solid #333;
-  }
-  .vk-avatar {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: linear-gradient(135deg, #ff6b1a, #c0390a);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; font-weight: 900; color: #fff; flex-shrink: 0;
-  }
-  .vk-name { font-weight: 700; color: #fff; font-size: 14px; }
-  .vk-time { font-size: 11px; color: #666; margin-top: 2px; }
-  .vk-image {
-    width: 100%; height: 280px;
-    background: radial-gradient(ellipse at 40% 80%, #ff4500 0%, #8b1a00 30%, #1a0800 70%);
-    position: relative; display: flex; align-items: center; justify-content: center;
-  }
-  .vk-image-text {
-    text-align: center; z-index: 1;
-  }
-  .vk-image-text .big { font-size: 52px; font-weight: 900; color: #fff; text-transform: uppercase; line-height: 1; }
-  .vk-image-text .small { font-size: 16px; color: #ffbb77; margin-top: 6px; letter-spacing: 2px; }
-  .vk-image-text .kg { font-size: 22px; color: #ff6b1a; margin-top: 4px; font-weight: 700; }
-  .vk-body { padding: 14px 16px; line-height: 1.6; color: #ddd; }
-  .vk-body strong { color: #fff; }
-  .vk-tags { color: #5b9bd5; margin-top: 8px; font-size: 12px; }
-  .vk-actions {
-    display: flex; gap: 20px; padding: 10px 16px;
-    border-top: 1px solid #333; color: #666; font-size: 12px;
-  }
-  .vk-actions span { cursor: pointer; }
-  .vk-actions span:hover { color: #ff6b1a; }
+/* ── INSTAGRAM STORY ── */
+.ig-story {
+  width: 214px; height: 380px; border-radius: 16px; overflow: hidden;
+  position: relative; flex-shrink: 0;
+}
+.story-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, #0A0A0A 0%, #200800 50%, #0A0A0A 100%);
+}
+.story-glow {
+  position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
+  width: 180px; height: 220px; border-radius: 50%;
+  background: radial-gradient(ellipse, #E8321A 0%, transparent 70%);
+  opacity: .35; filter: blur(12px);
+}
+.story-content {
+  position: absolute; inset: 0; z-index: 4; padding: 22px 20px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.story-top {
+  font-size: 10px; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(240,219,192,.55);
+}
+.story-body { text-align: center; }
+.story-eyebrow {
+  display: block; font-size: 9px; font-weight: 600; letter-spacing: .15em;
+  text-transform: uppercase; color: #E8321A; margin-bottom: 8px;
+}
+.story-title {
+  font-size: 28px; font-weight: 900; text-transform: uppercase; line-height: 1.05;
+  margin-bottom: 10px;
+  background: linear-gradient(180deg, #fff 0%, #F0DBC0 55%, #E8321A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 2px 10px rgba(232,50,26,.5));
+}
+.story-sub { font-size: 11px; color: rgba(240,234,224,.6); line-height: 1.5; margin-bottom: 12px; }
+.story-price { font-size: 26px; font-weight: 900; color: #F0DBC0; margin-bottom: 14px; }
+.story-btn {
+  display: block; background: #E8321A; color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 10px; border-radius: 100px; text-align: center;
+  box-shadow: 0 4px 16px rgba(232,50,26,.4);
+}
+.story-bottom { font-size: 9px; color: #3A3A3A; text-align: center; }
 
-  /* ─── WEBSITE HERO ──────────────────────── */
-  .hero {
-    width: 100%; max-width: 900px; height: 480px;
-    border-radius: 8px; overflow: hidden; position: relative; margin: 0 auto;
-  }
-  .hero .bg {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 60% 100%, #c0390a 0%, #5a0e00 35%, #0d0508 70%);
-  }
-  .hero .grid-lines {
-    position: absolute; inset: 0; opacity: .06;
-    background-image: linear-gradient(#fff 1px, transparent 1px),
-                      linear-gradient(90deg, #fff 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  .hero .nav {
-    position: absolute; top: 0; left: 0; right: 0;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 24px 48px;
-  }
-  .hero .nav .nav-logo { font-size: 15px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
-  .hero .nav .nav-logo span { color: #ff6b1a; }
-  .hero .nav .nav-links { display: flex; gap: 28px; font-size: 13px; color: #aaa; }
-  .hero .center {
-    position: absolute; top: 50%; left: 48px;
-    transform: translateY(-50%);
-  }
-  .hero .hero-eyebrow {
-    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
-    color: #ff6b1a; margin-bottom: 16px;
-  }
-  .hero .hero-title {
-    font-size: 64px; font-weight: 900; line-height: 1;
-    text-transform: uppercase;
-  }
-  .hero .hero-title .fire { color: #ff6b1a; }
-  .hero .hero-desc {
-    font-size: 15px; color: #bbb; max-width: 340px; line-height: 1.6; margin: 20px 0 32px;
-  }
-  .hero .hero-btn {
-    display: inline-block; background: #ff6b1a; color: #fff;
-    padding: 14px 36px; font-size: 14px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 2px; border-radius: 2px; cursor: pointer;
-  }
-  .hero .hero-btn:hover { background: #e05a0a; }
-  .hero .right-stat {
-    position: absolute; right: 48px; bottom: 48px; text-align: right;
-  }
-  .hero .stat-num { font-size: 48px; font-weight: 900; color: #ff6b1a; line-height: 1; }
-  .hero .stat-label { font-size: 12px; color: #888; letter-spacing: 1px; }
+/* ── VK POST ── */
+.vk-post {
+  width: 540px; background: #141414; border: 1px solid #1E1E1E;
+  border-radius: 16px; overflow: hidden;
+  transition: border-color .25s, box-shadow .25s;
+}
+.vk-post:hover { border-color: #E8321A; box-shadow: 0 12px 40px rgba(232,50,26,.15); }
+.vk-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
+.vk-avatar {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; background: #E8321A;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900; color: #fff;
+}
+.vk-meta-name { font-size: 14px; font-weight: 700; color: #F0EAE0; }
+.vk-meta-time { font-size: 11px; color: #4A4A4A; margin-top: 2px; }
+.vk-image { width: 100%; height: 260px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.vk-img-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 40% 80%, #C42818 0%, #5A0E00 35%, #0A0A0A 75%);
+}
+.vk-img-content { position: relative; z-index: 3; text-align: center; }
+.vk-img-big {
+  font-size: 52px; font-weight: 900; text-transform: uppercase; line-height: 1;
+  background: linear-gradient(180deg, #fff 0%, #F0DBC0 55%, #E8321A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 4px 20px rgba(232,50,26,.6));
+}
+.vk-img-sub { font-size: 13px; color: rgba(240,219,192,.7); margin-top: 6px; letter-spacing: .1em; }
+.vk-img-price { font-size: 20px; font-weight: 700; color: #E8321A; margin-top: 6px; }
+.vk-body { padding: 16px 18px; line-height: 1.65; color: #9A9A9A; font-size: 13px; }
+.vk-body strong { color: #F0EAE0; }
+.vk-tags { color: #3A6EA5; margin-top: 10px; font-size: 12px; }
+.vk-actions {
+  display: flex; gap: 24px; padding: 10px 18px;
+  border-top: 1px solid #1E1E1E; font-size: 12px; color: #4A4A4A;
+}
+.vk-actions span { cursor: pointer; transition: color .2s; }
+.vk-actions span:hover { color: #E8321A; }
 
-  /* ─── TELEGRAM BANNER ───────────────────── */
-  .tg-banner {
-    width: 540px; height: 200px; border-radius: 8px;
-    position: relative; overflow: hidden;
-    background: linear-gradient(135deg, #0d0d0d 0%, #2a0d00 50%, #0d0d0d 100%);
-  }
-  .tg-banner .accent {
-    position: absolute; right: -30px; top: -30px;
-    width: 260px; height: 260px; border-radius: 50%;
-    background: radial-gradient(circle, #ff4500 0%, transparent 70%);
-    opacity: .3;
-  }
-  .tg-banner .content {
-    position: absolute; inset: 0; padding: 28px 32px;
-    display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .tg-banner .tg-tag {
-    font-size: 10px; letter-spacing: 3px; color: #ff6b1a; text-transform: uppercase;
-  }
-  .tg-banner .tg-headline {
-    font-size: 28px; font-weight: 900; text-transform: uppercase; line-height: 1.1;
-  }
-  .tg-banner .tg-sub { font-size: 12px; color: #aaa; }
-  .tg-banner .tg-cta {
-    background: transparent; border: 1px solid #ff6b1a; color: #ff6b1a;
-    font-size: 11px; font-weight: 700; padding: 8px 20px; border-radius: 2px;
-    text-transform: uppercase; letter-spacing: 2px; display: inline-block; width: fit-content;
-  }
+/* ── TELEGRAM ── */
+.tg-banner {
+  width: 540px; height: 192px; border-radius: 16px; overflow: hidden;
+  position: relative; border: 1px solid #1E1E1E;
+  background: linear-gradient(135deg, #0A0A0A 0%, #1E0800 55%, #0A0A0A 100%);
+}
+.tg-glow {
+  position: absolute; right: -60px; top: -60px; width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, #E8321A 0%, transparent 70%); opacity: .18;
+}
+.tg-content {
+  position: absolute; inset: 0; z-index: 3; padding: 28px 32px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.tg-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #E8321A; }
+.tg-title {
+  font-size: 26px; font-weight: 900; line-height: 1.1; text-transform: uppercase;
+  background: linear-gradient(135deg, #F0EAE0 0%, #F0DBC0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.tg-sub { font-size: 12px; color: #686868; margin-top: 4px; }
+.tg-btn {
+  display: inline-block; background: transparent; border: 1px solid #E8321A;
+  color: #E8321A; font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; padding: 8px 20px; border-radius: 100px; width: fit-content;
+}
 
-  /* ─── CAPTION AREA ──────────────────────── */
-  .caption {
-    background: #2a2a2a; border-radius: 8px; padding: 20px 24px;
-    margin-top: 12px; font-size: 13px; line-height: 1.7; color: #ccc;
-    width: 380px;
-  }
-  .caption .cap-title { color: #ff6b1a; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-  .caption .cap-text { white-space: pre-line; }
+/* ── WEBSITE HERO ── */
+.site-hero {
+  width: 100%; max-width: 960px; height: 500px; border-radius: 16px;
+  border: 1px solid #1E1E1E; overflow: hidden; position: relative; margin: 0 auto;
+}
+.site-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 55% 100%, #C42818 0%, #5A0E00 30%, #0A0400 65%);
+}
+.site-grid {
+  position: absolute; inset: 0; opacity: .04;
+  background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.site-nav {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+  display: flex; justify-content: space-between; align-items: center; padding: 24px 48px;
+  background: linear-gradient(to bottom, rgba(0,0,0,.55), transparent);
+}
+.site-nav-logo { font-size: 14px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.site-nav-logo span { color: #E8321A; }
+.site-nav-links { display: flex; gap: 28px; font-size: 12px; color: rgba(240,234,224,.5); }
+.site-center {
+  position: absolute; top: 50%; left: 48px; transform: translateY(-50%); z-index: 5;
+}
+.site-eyebrow {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: #F0DBC0; margin-bottom: 20px;
+  padding: 5px 14px; border: 1px solid rgba(240,219,192,.35); border-radius: 100px;
+}
+.site-title {
+  font-size: 72px; font-weight: 900; line-height: .92; text-transform: uppercase;
+  background: linear-gradient(180deg, #fff 0%, #F0DBC0 55%, #E8321A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 4px 28px rgba(232,50,26,.4));
+  margin-bottom: 20px;
+}
+.site-desc { font-size: 15px; color: rgba(240,234,224,.65); max-width: 340px; line-height: 1.65; margin-bottom: 32px; }
+.site-btns { display: flex; gap: 14px; }
+.site-btn-a {
+  background: #E8321A; color: #fff; font-size: 14px; font-weight: 700;
+  padding: 14px 32px; border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(232,50,26,.45); cursor: pointer;
+}
+.site-btn-b {
+  background: rgba(255,255,255,.08); color: #F0EAE0; font-size: 14px; font-weight: 600;
+  padding: 14px 32px; border-radius: 12px; border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(8px); cursor: pointer;
+}
+.site-right { position: absolute; right: 48px; bottom: 48px; z-index: 5; text-align: right; }
+.site-stat-num {
+  font-size: 52px; font-weight: 900; line-height: 1;
+  background: linear-gradient(180deg, #fff 0%, #E8321A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.site-stat-lbl { font-size: 11px; color: #686868; letter-spacing: .08em; margin-top: 4px; }
 
-  /* label */
-  .label {
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: #555; text-align: center; margin-top: 8px; margin-bottom: 4px;
-  }
-
-  .card-wrap { display: flex; flex-direction: column; align-items: center; }
+/* ── CAPTION ── */
+.caption {
+  width: 400px; background: #141414; border: 1px solid #1E1E1E;
+  border-radius: 16px; padding: 20px 24px;
+}
+.caption__label {
+  font-size: 10px; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: #E8321A; margin-bottom: 12px;
+}
+.caption__text { font-size: 13px; color: #9A9A9A; line-height: 1.7; white-space: pre-line; }
+.caption__text strong { color: #F0EAE0; }
 </style>
 </head>
 <body>
 
-<h1>ДЕЛО В ОГНЕ</h1>
-<p class="subtitle">Макеты для сайта и социальных сетей</p>
+<!-- HEADER -->
+<div class="page-header">
+  <h1>Маркетинговые макеты</h1>
+  <h2>ДЕЛО В ОГНЕ</h2>
+  <p>Instagram · Stories · ВКонтакте · Telegram · Сайт</p>
+</div>
 
-<!-- ═══════════════════════════════════════════ -->
-<div class="section-title">Instagram — Посты (1080×1080)</div>
+<!-- ═══ INSTAGRAM POSTS ═══ -->
+<div class="section-title">Instagram — Посты 1080×1080</div>
 <div class="grid">
 
-  <!-- POST 1: Шашлык -->
+  <!-- 1: Шашлык -->
   <div class="card-wrap">
-    <div class="post-ig">
-      <div class="bg-fire"></div>
-      <div class="overlay"></div>
-      <div class="ember" style="top:18%;left:20%;animation:none;opacity:.8"></div>
-      <div class="ember" style="top:35%;left:70%;width:3px;height:3px;opacity:.6"></div>
-      <div class="ember" style="top:50%;left:45%;opacity:.9"></div>
-      <div class="logo">ДЕЛО<br>В ОГНЕ</div>
-      <div class="content">
-        <div class="tag">Блюда на углях</div>
-        <div class="headline">Шашлык<br>из свинины</div>
-        <div class="sub">Шейная часть. Маринад. Живой уголь.<br>Никаких компромиссов.</div>
-        <div class="price-badge">от 500 ₽ / 250 г &nbsp;·&nbsp; 2 000 ₽/кг</div>
+    <div class="ig-post">
+      <div class="bg-ember"></div>
+      <div class="sparks"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span></div>
+      <div class="ig-overlay"></div>
+      <div class="ig-logo">ДЕЛО<br>В ОГНЕ</div>
+      <div class="ig-content">
+        <div class="ig-eyebrow">Блюда на углях</div>
+        <div class="ig-title">Шашлык<br>из свинины</div>
+        <div class="ig-desc">Шейная часть. Маринад. Живой уголь.<br>Берёшь сколько хочешь — платишь по весу.</div>
+        <div class="ig-price">2 000 ₽ / кг &nbsp;·&nbsp; от 500 ₽</div>
       </div>
     </div>
-    <div class="label">Макет 1 — Флагман</div>
+    <div class="mock-label">Макет 1 — Флагман</div>
     <div class="caption">
-      <div class="cap-title">Подпись к посту</div>
-      <div class="cap-text">250 граммов свиной шейки.
-Уголь. Маринад. Больше ничего не нужно.
+      <div class="caption__label">Подпись к посту</div>
+      <div class="caption__text"><strong>250 граммов свиной шейки.
+Уголь. Маринад. Больше ничего.</strong>
 
 Берёшь сколько хочешь — хоть 300 г, хоть 2 кг.
-Цена одна: 2 000 ₽/кг.
+2 000 ₽/кг. Без накруток за «порцию».
 
 📍 [адрес]
-#шашлык #деловогне #мясонагриле</div>
+#шашлык #деловогне #мясонаугле</div>
     </div>
   </div>
 
-  <!-- POST 2: Люля -->
+  <!-- 2: Люля -->
   <div class="card-wrap">
-    <div class="post-ig">
+    <div class="ig-post">
       <div class="bg-coal"></div>
-      <div class="overlay"></div>
-      <div class="logo">ДЕЛО<br>В ОГНЕ</div>
-      <div class="content">
-        <div class="tag">Хит</div>
-        <div class="headline">Люля-кебаб</div>
-        <div class="sub">Свинина + говядина. Это не котлета<br>на шпажке. Это философия.</div>
-        <div class="price-badge">2 133 ₽ / кг</div>
+      <div class="sparks"><span class="spark s1"></span><span class="spark s3"></span></div>
+      <div class="ig-overlay"></div>
+      <div class="ig-logo">ДЕЛО<br>В ОГНЕ</div>
+      <div class="ig-content">
+        <div class="ig-eyebrow">Хит</div>
+        <div class="ig-title">Люля-<br>кебаб</div>
+        <div class="ig-desc">Свинина + говядина. Не котлета на шпажке.<br>Это философия.</div>
+        <div class="ig-price">2 133 ₽ / кг</div>
       </div>
     </div>
-    <div class="label">Макет 2 — Люля</div>
+    <div class="mock-label">Макет 2 — Люля</div>
     <div class="caption">
-      <div class="cap-title">Подпись к посту</div>
-      <div class="cap-text">Когда последний раз ел нормальный люля?
+      <div class="caption__label">Подпись к посту</div>
+      <div class="caption__text"><strong>Когда последний раз ел нормальный люля?</strong>
 
-Не котлету на шпажке — а настоящий,
-со свининой и говядиной, с огня.
+Свинина + говядина, с огня.
+300 г = 640 ₽. По весу — сколько хочешь.
 
-У нас по весу: 2 133 ₽/кг.
-300 г = 640 ₽.
-
-#люлякебаб #деловогне #шашлычная</div>
+#люлякебаб #деловогне</div>
     </div>
   </div>
 
-  <!-- POST 3: Настойки -->
+  <!-- 3: Настойки -->
   <div class="card-wrap">
-    <div class="post-ig">
-      <div class="bg-dark"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a0500 0%,#3d1000 50%,#0d0d0d 100%);"></div>
-      <div class="overlay"></div>
-      <div class="logo">ДЕЛО<br>В ОГНЕ</div>
-      <div class="content">
-        <div class="tag">Своего производства</div>
-        <div class="headline">Настойки<br>собственные</div>
-        <div class="sub">Клюква · Лимон · Перец · Томат<br>Фирменная (сезонная)</div>
-        <div class="price-badge">50 мл · 150 ₽</div>
+    <div class="ig-post">
+      <div class="bg-night"></div>
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 95%,rgba(139,69,0,.55) 0%,transparent 60%);"></div>
+      <div class="sparks"><span class="spark s2"></span><span class="spark s4"></span></div>
+      <div class="ig-overlay"></div>
+      <div class="ig-logo">ДЕЛО<br>В ОГНЕ</div>
+      <div class="ig-content">
+        <div class="ig-eyebrow" style="color:#FFB347;border-color:rgba(255,179,71,.35)">Своего производства</div>
+        <div class="ig-title">Настойки<br>собственные</div>
+        <div class="ig-desc" style="color:rgba(255,179,71,.7)">Клюква · Лимон · Перец · Томат · Фирменная</div>
+        <div class="ig-price" style="background:linear-gradient(135deg,#7B3F00,#A0522D);box-shadow:0 4px 20px rgba(139,69,0,.5);color:#FFE0A0">50 мл · 150 ₽</div>
       </div>
     </div>
-    <div class="label">Макет 3 — Настойки</div>
+    <div class="mock-label">Макет 3 — Настойки</div>
     <div class="caption">
-      <div class="cap-title">Подпись к посту</div>
-      <div class="cap-text">Настойки делаем сами.
+      <div class="caption__label">Подпись к посту</div>
+      <div class="caption__text"><strong>Настойки делаем сами.</strong>
 Клюква, лимон, перец, томат.
-
 50 мл — 150 ₽.
+
 К шашлыку берём клюквенную.
 К люля — перцовую.
 
 Что возьмёшь ты?
 
-#настойки #деловогне #шашлычная</div>
+#настойки #деловогне</div>
     </div>
   </div>
 
 </div>
 
-<!-- ═══════════════════════════════════════════ -->
-<div class="section-title">Instagram — Stories (1080×1920)</div>
+<!-- ═══ STORIES ═══ -->
+<div class="section-title">Instagram Stories 1080×1920</div>
 <div class="grid">
 
-  <!-- STORY 1 -->
   <div class="card-wrap">
-    <div class="story">
-      <div class="bg"></div>
-      <div class="flame-art"></div>
-      <div class="content">
-        <div class="story-logo">Дело в Огне</div>
+    <div class="ig-story">
+      <div class="story-bg"></div>
+      <div class="story-glow"></div>
+      <div class="sparks"><span class="spark s1"></span><span class="spark s3"></span></div>
+      <div class="story-content">
+        <div class="story-top">Дело в Огне</div>
         <div class="story-body">
-          <div class="story-headline">Пятница.<br>Мясо.<br>Огонь.</div>
+          <div class="story-title">Пятница.<br>Мясо.<br>Огонь.</div>
           <div class="story-sub">Шашлык из свинины<br>по весу — от 500 ₽</div>
-          <div class="story-cta">Заказать</div>
+          <div class="story-btn">Заказать</div>
         </div>
-        <div class="story-bottom">📍 [адрес] · ежедневно с 11:00</div>
+        <div class="story-bottom">📍 [адрес] · с 11:00</div>
       </div>
     </div>
-    <div class="label">Story 1 — Пятница</div>
+    <div class="mock-label">Story 1 — Пятница</div>
   </div>
 
-  <!-- STORY 2 -->
   <div class="card-wrap">
-    <div class="story">
-      <div class="bg" style="background:linear-gradient(180deg,#0d0d0d,#1a0a00,#0d0d0d)"></div>
-      <div class="flame-art" style="opacity:.7"></div>
-      <div class="content">
-        <div class="story-logo">Дело в Огне</div>
+    <div class="ig-story">
+      <div class="story-bg" style="background:linear-gradient(180deg,#0A0A0A,#1A0800,#0A0A0A)"></div>
+      <div class="story-glow" style="opacity:.45"></div>
+      <div class="story-content">
+        <div class="story-top">Дело в Огне</div>
         <div class="story-body">
-          <div style="font-size:13px;color:#ff6b1a;letter-spacing:2px;margin-bottom:12px;text-transform:uppercase">Комплекс №1</div>
-          <div class="story-headline" style="font-size:22px">Свинина<br>+ лук<br>+ соус<br>+ лаваш</div>
-          <div style="font-size:28px;font-weight:900;color:#ff6b1a;margin:12px 0">490 ₽</div>
+          <span class="story-eyebrow">Комплекс №1</span>
+          <div class="story-title" style="font-size:20px">Свинина<br>+ лук<br>+ соус<br>+ лаваш</div>
+          <div class="story-price">490 ₽</div>
           <div class="story-sub">370 г · всё включено</div>
-          <div class="story-cta">Хочу это</div>
+          <div class="story-btn">Хочу это</div>
         </div>
         <div class="story-bottom">Готово за 15 минут</div>
       </div>
     </div>
-    <div class="label">Story 2 — Комплекс</div>
+    <div class="mock-label">Story 2 — Комплекс</div>
   </div>
 
-  <!-- STORY 3 -->
   <div class="card-wrap">
-    <div class="story">
-      <div class="bg" style="background:linear-gradient(180deg,#050505,#200800,#050505)"></div>
-      <div class="flame-art" style="background:radial-gradient(ellipse at 50% 100%,#ff6b00 0%,#8b1a00 40%,transparent 70%);opacity:.8"></div>
-      <div class="content">
-        <div class="story-logo">Дело в Огне</div>
+    <div class="ig-story">
+      <div class="story-bg" style="background:linear-gradient(180deg,#050505,#200800,#050505)"></div>
+      <div class="story-glow" style="opacity:.3"></div>
+      <div class="story-content">
+        <div class="story-top">Дело в Огне</div>
         <div class="story-body">
-          <div class="story-headline" style="font-size:22px">Шашлык<br>в лаваше</div>
+          <span class="story-eyebrow">На ходу</span>
+          <div class="story-title">Шашлык<br>в лаваше</div>
           <div class="story-sub">Взял — и пошёл.<br>Свинина или курица.</div>
-          <div style="font-size:32px;font-weight:900;color:#ff6b1a;margin:10px 0">450 ₽</div>
-          <div class="story-cta">360 г · сытно</div>
+          <div class="story-price">450 ₽</div>
+          <div class="story-btn">360 г · сытно</div>
         </div>
-        <div class="story-bottom">Работаем с 11:00</div>
+        <div class="story-bottom">С 11:00 каждый день</div>
       </div>
     </div>
-    <div class="label">Story 3 — На ходу</div>
+    <div class="mock-label">Story 3 — На ходу</div>
   </div>
 
 </div>
 
-<!-- ═══════════════════════════════════════════ -->
-<div class="section-title">ВКонтакте — Пост с картинкой</div>
+<!-- ═══ VK ═══ -->
+<div class="section-title">ВКонтакте — Посты</div>
 <div class="grid">
+
   <div class="card-wrap">
     <div class="vk-post">
       <div class="vk-header">
         <div class="vk-avatar">ДО</div>
         <div>
-          <div class="vk-name">Дело в Огне</div>
-          <div class="vk-time">сегодня в 12:00</div>
+          <div class="vk-meta-name">Дело в Огне</div>
+          <div class="vk-meta-time">сегодня в 12:00</div>
         </div>
       </div>
       <div class="vk-image">
-        <div class="vk-image-text">
-          <div class="big">1 кг</div>
-          <div class="small">шашлыка из свинины</div>
-          <div class="kg">= 2 000 ₽</div>
+        <div class="vk-img-bg"></div>
+        <div class="sparks"><span class="spark s1"></span><span class="spark s3"></span></div>
+        <div class="vk-img-content">
+          <div class="vk-img-big">1 кг</div>
+          <div class="vk-img-sub">шашлыка из свинины</div>
+          <div class="vk-img-price">= 2 000 ₽</div>
         </div>
       </div>
       <div class="vk-body">
         <strong>Берёшь сколько хочешь — платишь по весу.</strong><br><br>
-        250 г → 500 ₽<br>
-        500 г → 1 000 ₽<br>
-        1 кг → 2 000 ₽<br><br>
-        Шейная часть, живой уголь, маринад — без лишних слов.<br>
-        <div class="vk-tags">#шашлык #деловогне #мясонаугле #шашлычная</div>
+        250 г → 500 ₽<br>500 г → 1 000 ₽<br>1 кг → 2 000 ₽<br><br>
+        Шейная часть, живой уголь, маринад.
+        <div class="vk-tags">#шашлык #деловогне #мясонаугле</div>
       </div>
       <div class="vk-actions">
-        <span>❤️ Нравится</span>
-        <span>💬 Комментировать</span>
-        <span>↗️ Поделиться</span>
+        <span>❤️ Нравится</span><span>💬 Комментировать</span><span>↗️ Поделиться</span>
       </div>
     </div>
-    <div class="label">ВКонтакте — Пост «по весу»</div>
+    <div class="mock-label">ВК — Продажа по весу</div>
   </div>
 
   <div class="card-wrap">
@@ -446,80 +496,80 @@
       <div class="vk-header">
         <div class="vk-avatar">ДО</div>
         <div>
-          <div class="vk-name">Дело в Огне</div>
-          <div class="vk-time">пятница в 11:00</div>
+          <div class="vk-meta-name">Дело в Огне</div>
+          <div class="vk-meta-time">пятница в 11:00</div>
         </div>
       </div>
-      <div class="vk-image" style="background:radial-gradient(ellipse at 30% 60%,#c04000 0%,#5a0e00 40%,#0d0508 80%)">
-        <div class="vk-image-text">
-          <div class="big" style="font-size:38px;line-height:1.2">ШАУРМА<br>СЫРНАЯ</div>
-          <div class="small">с моцареллой</div>
-          <div class="kg">390 г · 480 ₽</div>
+      <div class="vk-image">
+        <div class="vk-img-bg" style="background:radial-gradient(ellipse at 30% 75%,#C42818 0%,#4A0E00 35%,#0A0A0A 75%)"></div>
+        <div class="vk-img-content">
+          <div class="vk-img-big" style="font-size:32px;line-height:1.2">ШАУРМА<br>СЫРНАЯ</div>
+          <div class="vk-img-sub">с тёртой моцареллой</div>
+          <div class="vk-img-price">390 г · 480 ₽</div>
         </div>
       </div>
       <div class="vk-body">
-        <strong>Шаурма Сырная — теперь с тёртой моцареллой.</strong><br><br>
-        Филе грудки, капуста, морковь, помидор, огурец,
-        сырный соус, моцарелла, лаваш.<br><br>
+        <strong>Шаурма Сырная — теперь с моцареллой.</strong><br><br>
+        Филе грудки, капуста, морковь, помидор, огурец, сырный соус, тёртая моцарелла, лаваш.<br><br>
         390 г · <strong>480 ₽</strong>
         <div class="vk-tags">#шаурма #деловогне #шаурмасырная</div>
       </div>
       <div class="vk-actions">
-        <span>❤️ Нравится</span>
-        <span>💬 Комментировать</span>
-        <span>↗️ Поделиться</span>
+        <span>❤️ Нравится</span><span>💬 Комментировать</span><span>↗️ Поделиться</span>
       </div>
     </div>
-    <div class="label">ВКонтакте — Шаурма Сырная</div>
+    <div class="mock-label">ВК — Шаурма Сырная</div>
   </div>
+
 </div>
 
-<!-- ═══════════════════════════════════════════ -->
+<!-- ═══ TELEGRAM ═══ -->
 <div class="section-title">Telegram — Баннер канала</div>
 <div class="grid">
   <div class="tg-banner">
-    <div class="accent"></div>
-    <div class="content">
-      <div class="tg-tag">Telegram · Дело в Огне</div>
+    <div class="tg-glow"></div>
+    <div class="sparks"><span class="spark s1"></span></div>
+    <div class="tg-content">
+      <div class="tg-eyebrow">Telegram · Дело в Огне</div>
       <div>
-        <div class="tg-headline">Мясо. Огонь.<br>Без лишних слов.</div>
-        <div class="tg-sub" style="margin-top:6px">Акции, меню, свежие фото с мангала</div>
+        <div class="tg-title">Мясо. Огонь.<br>Без лишних слов.</div>
+        <div class="tg-sub">Акции, меню, свежие фото с мангала</div>
       </div>
-      <div class="tg-cta">Подписаться</div>
+      <div class="tg-btn">Подписаться</div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════ -->
-<div class="section-title">Сайт — Hero-секция (главный экран)</div>
-<div class="hero">
-  <div class="bg"></div>
-  <div class="grid-lines"></div>
-  <div class="nav">
-    <div class="nav-logo">Дело <span>в</span> Огне</div>
-    <div class="nav-links">
-      <span>Меню</span>
-      <span>О нас</span>
-      <span>Адрес</span>
-      <span>Контакты</span>
+<!-- ═══ WEBSITE HERO ═══ -->
+<div class="section-title">Сайт — Главный экран</div>
+<div class="site-hero">
+  <div class="site-bg"></div>
+  <div class="site-grid"></div>
+  <div class="sparks" style="z-index:3">
+    <span class="spark s1"></span><span class="spark s2"></span>
+    <span class="spark s3"></span><span class="spark s4"></span>
+  </div>
+  <div class="site-nav">
+    <div class="site-nav-logo">Дело <span>в</span> Огне</div>
+    <div class="site-nav-links">
+      <span>Меню</span><span>Доставка</span><span>О нас</span><span>Контакты</span>
     </div>
   </div>
-  <div class="center">
-    <div class="hero-eyebrow">Шашлычная · Живой огонь</div>
-    <div class="hero-title">ДЕЛО<br>В <span class="fire">ОГНЕ</span></div>
-    <div class="hero-desc">
-      Шашлык и люля по весу — берёшь сколько хочешь.
-      Настойки собственного производства.
-      Еда, которую не стыдно есть руками.
+  <div class="site-center">
+    <div class="site-eyebrow">Блюда на живом огне</div>
+    <div class="site-title">ДЕЛО<br>В ОГНЕ</div>
+    <div class="site-desc">Готовим на мангале. Шашлык по весу — берёшь сколько хочешь. Настойки собственного производства.</div>
+    <div class="site-btns">
+      <div class="site-btn-a">Смотреть меню</div>
+      <div class="site-btn-b">Позвонить</div>
     </div>
-    <div class="hero-btn">Смотреть меню</div>
   </div>
-  <div class="right-stat">
-    <div class="stat-num">2 000₽</div>
-    <div class="stat-label">/ кг · шашлык из свинины</div>
+  <div class="site-right">
+    <div class="site-stat-num">2 000₽</div>
+    <div class="site-stat-lbl">/ кг · шашлык из свинины</div>
   </div>
 </div>
+
 <br><br>
-
 </body>
 </html>
