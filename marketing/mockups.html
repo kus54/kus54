@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дело в Огне — Макеты</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a1a; font-family: 'Arial', sans-serif; color: #fff; padding: 40px 20px; }
+
+  h1 { text-align: center; color: #ff6b1a; font-size: 28px; margin-bottom: 10px; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 60px; font-size: 14px; }
+
+  .section-title {
+    color: #ff6b1a; font-size: 16px; text-transform: uppercase;
+    letter-spacing: 2px; margin: 60px 0 24px; border-bottom: 1px solid #333; padding-bottom: 12px;
+  }
+
+  /* ─── GRID ─────────────────────────────── */
+  .grid { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
+
+  /* ─── INSTAGRAM POST 1:1 ────────────────── */
+  .post-ig {
+    width: 380px; height: 380px; border-radius: 4px;
+    position: relative; overflow: hidden; flex-shrink: 0;
+  }
+  .post-ig .bg-fire {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, #c0390a 0%, #6b1a00 40%, #1a0a00 80%);
+  }
+  .post-ig .bg-dark {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, #0d0d0d 0%, #2a1000 50%, #0d0d0d 100%);
+  }
+  .post-ig .bg-coal {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 70%, #ff4500 0%, #8b1a00 25%, #111 60%);
+  }
+  .post-ig .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 50%);
+  }
+  .post-ig .content {
+    position: absolute; inset: 0; padding: 28px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .post-ig .tag {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: #ff6b1a; margin-bottom: 8px;
+  }
+  .post-ig .headline {
+    font-size: 30px; font-weight: 900; line-height: 1.1;
+    color: #fff; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .post-ig .sub {
+    font-size: 13px; color: #ccc; line-height: 1.5; margin-bottom: 14px;
+  }
+  .post-ig .price-badge {
+    display: inline-block; background: #ff6b1a; color: #fff;
+    font-size: 18px; font-weight: 900; padding: 6px 16px; border-radius: 2px;
+  }
+  .post-ig .logo {
+    position: absolute; top: 20px; right: 20px;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    color: #ff6b1a; text-transform: uppercase; text-align: right; line-height: 1.3;
+  }
+
+  /* ember dots */
+  .ember {
+    position: absolute; width: 4px; height: 4px; border-radius: 50%;
+    background: #ff8c00; box-shadow: 0 0 6px #ff4500;
+  }
+
+  /* ─── INSTAGRAM STORY 9:16 ──────────────── */
+  .story {
+    width: 214px; height: 380px; border-radius: 12px;
+    position: relative; overflow: hidden; flex-shrink: 0;
+  }
+  .story .bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, #0d0d0d 0%, #3a0e00 50%, #0d0d0d 100%);
+  }
+  .story .flame-art {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 160px; height: 200px;
+    background: radial-gradient(ellipse at 50% 100%, #ff4500 0%, #c0390a 35%, transparent 70%);
+    filter: blur(8px);
+  }
+  .story .content {
+    position: absolute; inset: 0; padding: 24px 20px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .story .story-logo {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: #ff6b1a; text-transform: uppercase;
+  }
+  .story .story-body { text-align: center; }
+  .story .story-headline {
+    font-size: 26px; font-weight: 900; line-height: 1.1;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .story .story-sub { font-size: 12px; color: #ccc; line-height: 1.5; margin-bottom: 16px; }
+  .story .story-cta {
+    background: #ff6b1a; color: #fff; font-size: 13px; font-weight: 700;
+    padding: 10px 20px; border-radius: 24px; text-align: center;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .story .story-bottom { text-align: center; font-size: 10px; color: #666; }
+
+  /* ─── VK POST ───────────────────────────── */
+  .vk-post {
+    width: 540px; background: #222; border-radius: 8px;
+    overflow: hidden; font-size: 14px;
+  }
+  .vk-header {
+    display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+    border-bottom: 1px solid #333;
+  }
+  .vk-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b1a, #c0390a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 900; color: #fff; flex-shrink: 0;
+  }
+  .vk-name { font-weight: 700; color: #fff; font-size: 14px; }
+  .vk-time { font-size: 11px; color: #666; margin-top: 2px; }
+  .vk-image {
+    width: 100%; height: 280px;
+    background: radial-gradient(ellipse at 40% 80%, #ff4500 0%, #8b1a00 30%, #1a0800 70%);
+    position: relative; display: flex; align-items: center; justify-content: center;
+  }
+  .vk-image-text {
+    text-align: center; z-index: 1;
+  }
+  .vk-image-text .big { font-size: 52px; font-weight: 900; color: #fff; text-transform: uppercase; line-height: 1; }
+  .vk-image-text .small { font-size: 16px; color: #ffbb77; margin-top: 6px; letter-spacing: 2px; }
+  .vk-image-text .kg { font-size: 22px; color: #ff6b1a; margin-top: 4px; font-weight: 700; }
+  .vk-body { padding: 14px 16px; line-height: 1.6; color: #ddd; }
+  .vk-body strong { color: #fff; }
+  .vk-tags { color: #5b9bd5; margin-top: 8px; font-size: 12px; }
+  .vk-actions {
+    display: flex; gap: 20px; padding: 10px 16px;
+    border-top: 1px solid #333; color: #666; font-size: 12px;
+  }
+  .vk-actions span { cursor: pointer; }
+  .vk-actions span:hover { color: #ff6b1a; }
+
+  /* ─── WEBSITE HERO ──────────────────────── */
+  .hero {
+    width: 100%; max-width: 900px; height: 480px;
+    border-radius: 8px; overflow: hidden; position: relative; margin: 0 auto;
+  }
+  .hero .bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 100%, #c0390a 0%, #5a0e00 35%, #0d0508 70%);
+  }
+  .hero .grid-lines {
+    position: absolute; inset: 0; opacity: .06;
+    background-image: linear-gradient(#fff 1px, transparent 1px),
+                      linear-gradient(90deg, #fff 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero .nav {
+    position: absolute; top: 0; left: 0; right: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 48px;
+  }
+  .hero .nav .nav-logo { font-size: 15px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+  .hero .nav .nav-logo span { color: #ff6b1a; }
+  .hero .nav .nav-links { display: flex; gap: 28px; font-size: 13px; color: #aaa; }
+  .hero .center {
+    position: absolute; top: 50%; left: 48px;
+    transform: translateY(-50%);
+  }
+  .hero .hero-eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: #ff6b1a; margin-bottom: 16px;
+  }
+  .hero .hero-title {
+    font-size: 64px; font-weight: 900; line-height: 1;
+    text-transform: uppercase;
+  }
+  .hero .hero-title .fire { color: #ff6b1a; }
+  .hero .hero-desc {
+    font-size: 15px; color: #bbb; max-width: 340px; line-height: 1.6; margin: 20px 0 32px;
+  }
+  .hero .hero-btn {
+    display: inline-block; background: #ff6b1a; color: #fff;
+    padding: 14px 36px; font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 2px; border-radius: 2px; cursor: pointer;
+  }
+  .hero .hero-btn:hover { background: #e05a0a; }
+  .hero .right-stat {
+    position: absolute; right: 48px; bottom: 48px; text-align: right;
+  }
+  .hero .stat-num { font-size: 48px; font-weight: 900; color: #ff6b1a; line-height: 1; }
+  .hero .stat-label { font-size: 12px; color: #888; letter-spacing: 1px; }
+
+  /* ─── TELEGRAM BANNER ───────────────────── */
+  .tg-banner {
+    width: 540px; height: 200px; border-radius: 8px;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0d0d0d 0%, #2a0d00 50%, #0d0d0d 100%);
+  }
+  .tg-banner .accent {
+    position: absolute; right: -30px; top: -30px;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle, #ff4500 0%, transparent 70%);
+    opacity: .3;
+  }
+  .tg-banner .content {
+    position: absolute; inset: 0; padding: 28px 32px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .tg-banner .tg-tag {
+    font-size: 10px; letter-spacing: 3px; color: #ff6b1a; text-transform: uppercase;
+  }
+  .tg-banner .tg-headline {
+    font-size: 28px; font-weight: 900; text-transform: uppercase; line-height: 1.1;
+  }
+  .tg-banner .tg-sub { font-size: 12px; color: #aaa; }
+  .tg-banner .tg-cta {
+    background: transparent; border: 1px solid #ff6b1a; color: #ff6b1a;
+    font-size: 11px; font-weight: 700; padding: 8px 20px; border-radius: 2px;
+    text-transform: uppercase; letter-spacing: 2px; display: inline-block; width: fit-content;
+  }
+
+  /* ─── CAPTION AREA ──────────────────────── */
+  .caption {
+    background: #2a2a2a; border-radius: 8px; padding: 20px 24px;
+    margin-top: 12px; font-size: 13px; line-height: 1.7; color: #ccc;
+    width: 380px;
+  }
+  .caption .cap-title { color: #ff6b1a; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .caption .cap-text { white-space: pre-line; }
+
+  /* label */
+  .label {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: #555; text-align: center; margin-top: 8px; margin-bottom: 4px;
+  }
+
+  .card-wrap { display: flex; flex-direction: column; align-items: center; }
+</style>
+</head>
+<body>
+
+<h1>ДЕЛО В ОГНЕ</h1>
+<p class="subtitle">Макеты для сайта и социальных сетей</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Instagram — Посты (1080×1080)</div>
+<div class="grid">
+
+  <!-- POST 1: Шашлык -->
+  <div class="card-wrap">
+    <div class="post-ig">
+      <div class="bg-fire"></div>
+      <div class="overlay"></div>
+      <div class="ember" style="top:18%;left:20%;animation:none;opacity:.8"></div>
+      <div class="ember" style="top:35%;left:70%;width:3px;height:3px;opacity:.6"></div>
+      <div class="ember" style="top:50%;left:45%;opacity:.9"></div>
+      <div class="logo">ДЕЛО<br>В ОГНЕ</div>
+      <div class="content">
+        <div class="tag">Блюда на углях</div>
+        <div class="headline">Шашлык<br>из свинины</div>
+        <div class="sub">Шейная часть. Маринад. Живой уголь.<br>Никаких компромиссов.</div>
+        <div class="price-badge">от 500 ₽ / 250 г &nbsp;·&nbsp; 2 000 ₽/кг</div>
+      </div>
+    </div>
+    <div class="label">Макет 1 — Флагман</div>
+    <div class="caption">
+      <div class="cap-title">Подпись к посту</div>
+      <div class="cap-text">250 граммов свиной шейки.
+Уголь. Маринад. Больше ничего не нужно.
+
+Берёшь сколько хочешь — хоть 300 г, хоть 2 кг.
+Цена одна: 2 000 ₽/кг.
+
+📍 [адрес]
+#шашлык #деловогне #мясонагриле</div>
+    </div>
+  </div>
+
+  <!-- POST 2: Люля -->
+  <div class="card-wrap">
+    <div class="post-ig">
+      <div class="bg-coal"></div>
+      <div class="overlay"></div>
+      <div class="logo">ДЕЛО<br>В ОГНЕ</div>
+      <div class="content">
+        <div class="tag">Хит</div>
+        <div class="headline">Люля-кебаб</div>
+        <div class="sub">Свинина + говядина. Это не котлета<br>на шпажке. Это философия.</div>
+        <div class="price-badge">2 133 ₽ / кг</div>
+      </div>
+    </div>
+    <div class="label">Макет 2 — Люля</div>
+    <div class="caption">
+      <div class="cap-title">Подпись к посту</div>
+      <div class="cap-text">Когда последний раз ел нормальный люля?
+
+Не котлету на шпажке — а настоящий,
+со свининой и говядиной, с огня.
+
+У нас по весу: 2 133 ₽/кг.
+300 г = 640 ₽.
+
+#люлякебаб #деловогне #шашлычная</div>
+    </div>
+  </div>
+
+  <!-- POST 3: Настойки -->
+  <div class="card-wrap">
+    <div class="post-ig">
+      <div class="bg-dark"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a0500 0%,#3d1000 50%,#0d0d0d 100%);"></div>
+      <div class="overlay"></div>
+      <div class="logo">ДЕЛО<br>В ОГНЕ</div>
+      <div class="content">
+        <div class="tag">Своего производства</div>
+        <div class="headline">Настойки<br>собственные</div>
+        <div class="sub">Клюква · Лимон · Перец · Томат<br>Фирменная (сезонная)</div>
+        <div class="price-badge">50 мл · 150 ₽</div>
+      </div>
+    </div>
+    <div class="label">Макет 3 — Настойки</div>
+    <div class="caption">
+      <div class="cap-title">Подпись к посту</div>
+      <div class="cap-text">Настойки делаем сами.
+Клюква, лимон, перец, томат.
+
+50 мл — 150 ₽.
+К шашлыку берём клюквенную.
+К люля — перцовую.
+
+Что возьмёшь ты?
+
+#настойки #деловогне #шашлычная</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Instagram — Stories (1080×1920)</div>
+<div class="grid">
+
+  <!-- STORY 1 -->
+  <div class="card-wrap">
+    <div class="story">
+      <div class="bg"></div>
+      <div class="flame-art"></div>
+      <div class="content">
+        <div class="story-logo">Дело в Огне</div>
+        <div class="story-body">
+          <div class="story-headline">Пятница.<br>Мясо.<br>Огонь.</div>
+          <div class="story-sub">Шашлык из свинины<br>по весу — от 500 ₽</div>
+          <div class="story-cta">Заказать</div>
+        </div>
+        <div class="story-bottom">📍 [адрес] · ежедневно с 11:00</div>
+      </div>
+    </div>
+    <div class="label">Story 1 — Пятница</div>
+  </div>
+
+  <!-- STORY 2 -->
+  <div class="card-wrap">
+    <div class="story">
+      <div class="bg" style="background:linear-gradient(180deg,#0d0d0d,#1a0a00,#0d0d0d)"></div>
+      <div class="flame-art" style="opacity:.7"></div>
+      <div class="content">
+        <div class="story-logo">Дело в Огне</div>
+        <div class="story-body">
+          <div style="font-size:13px;color:#ff6b1a;letter-spacing:2px;margin-bottom:12px;text-transform:uppercase">Комплекс №1</div>
+          <div class="story-headline" style="font-size:22px">Свинина<br>+ лук<br>+ соус<br>+ лаваш</div>
+          <div style="font-size:28px;font-weight:900;color:#ff6b1a;margin:12px 0">490 ₽</div>
+          <div class="story-sub">370 г · всё включено</div>
+          <div class="story-cta">Хочу это</div>
+        </div>
+        <div class="story-bottom">Готово за 15 минут</div>
+      </div>
+    </div>
+    <div class="label">Story 2 — Комплекс</div>
+  </div>
+
+  <!-- STORY 3 -->
+  <div class="card-wrap">
+    <div class="story">
+      <div class="bg" style="background:linear-gradient(180deg,#050505,#200800,#050505)"></div>
+      <div class="flame-art" style="background:radial-gradient(ellipse at 50% 100%,#ff6b00 0%,#8b1a00 40%,transparent 70%);opacity:.8"></div>
+      <div class="content">
+        <div class="story-logo">Дело в Огне</div>
+        <div class="story-body">
+          <div class="story-headline" style="font-size:22px">Шашлык<br>в лаваше</div>
+          <div class="story-sub">Взял — и пошёл.<br>Свинина или курица.</div>
+          <div style="font-size:32px;font-weight:900;color:#ff6b1a;margin:10px 0">450 ₽</div>
+          <div class="story-cta">360 г · сытно</div>
+        </div>
+        <div class="story-bottom">Работаем с 11:00</div>
+      </div>
+    </div>
+    <div class="label">Story 3 — На ходу</div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">ВКонтакте — Пост с картинкой</div>
+<div class="grid">
+  <div class="card-wrap">
+    <div class="vk-post">
+      <div class="vk-header">
+        <div class="vk-avatar">ДО</div>
+        <div>
+          <div class="vk-name">Дело в Огне</div>
+          <div class="vk-time">сегодня в 12:00</div>
+        </div>
+      </div>
+      <div class="vk-image">
+        <div class="vk-image-text">
+          <div class="big">1 кг</div>
+          <div class="small">шашлыка из свинины</div>
+          <div class="kg">= 2 000 ₽</div>
+        </div>
+      </div>
+      <div class="vk-body">
+        <strong>Берёшь сколько хочешь — платишь по весу.</strong><br><br>
+        250 г → 500 ₽<br>
+        500 г → 1 000 ₽<br>
+        1 кг → 2 000 ₽<br><br>
+        Шейная часть, живой уголь, маринад — без лишних слов.<br>
+        <div class="vk-tags">#шашлык #деловогне #мясонаугле #шашлычная</div>
+      </div>
+      <div class="vk-actions">
+        <span>❤️ Нравится</span>
+        <span>💬 Комментировать</span>
+        <span>↗️ Поделиться</span>
+      </div>
+    </div>
+    <div class="label">ВКонтакте — Пост «по весу»</div>
+  </div>
+
+  <div class="card-wrap">
+    <div class="vk-post">
+      <div class="vk-header">
+        <div class="vk-avatar">ДО</div>
+        <div>
+          <div class="vk-name">Дело в Огне</div>
+          <div class="vk-time">пятница в 11:00</div>
+        </div>
+      </div>
+      <div class="vk-image" style="background:radial-gradient(ellipse at 30% 60%,#c04000 0%,#5a0e00 40%,#0d0508 80%)">
+        <div class="vk-image-text">
+          <div class="big" style="font-size:38px;line-height:1.2">ШАУРМА<br>СЫРНАЯ</div>
+          <div class="small">с моцареллой</div>
+          <div class="kg">390 г · 480 ₽</div>
+        </div>
+      </div>
+      <div class="vk-body">
+        <strong>Шаурма Сырная — теперь с тёртой моцареллой.</strong><br><br>
+        Филе грудки, капуста, морковь, помидор, огурец,
+        сырный соус, моцарелла, лаваш.<br><br>
+        390 г · <strong>480 ₽</strong>
+        <div class="vk-tags">#шаурма #деловогне #шаурмасырная</div>
+      </div>
+      <div class="vk-actions">
+        <span>❤️ Нравится</span>
+        <span>💬 Комментировать</span>
+        <span>↗️ Поделиться</span>
+      </div>
+    </div>
+    <div class="label">ВКонтакте — Шаурма Сырная</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Telegram — Баннер канала</div>
+<div class="grid">
+  <div class="tg-banner">
+    <div class="accent"></div>
+    <div class="content">
+      <div class="tg-tag">Telegram · Дело в Огне</div>
+      <div>
+        <div class="tg-headline">Мясо. Огонь.<br>Без лишних слов.</div>
+        <div class="tg-sub" style="margin-top:6px">Акции, меню, свежие фото с мангала</div>
+      </div>
+      <div class="tg-cta">Подписаться</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Сайт — Hero-секция (главный экран)</div>
+<div class="hero">
+  <div class="bg"></div>
+  <div class="grid-lines"></div>
+  <div class="nav">
+    <div class="nav-logo">Дело <span>в</span> Огне</div>
+    <div class="nav-links">
+      <span>Меню</span>
+      <span>О нас</span>
+      <span>Адрес</span>
+      <span>Контакты</span>
+    </div>
+  </div>
+  <div class="center">
+    <div class="hero-eyebrow">Шашлычная · Живой огонь</div>
+    <div class="hero-title">ДЕЛО<br>В <span class="fire">ОГНЕ</span></div>
+    <div class="hero-desc">
+      Шашлык и люля по весу — берёшь сколько хочешь.
+      Настойки собственного производства.
+      Еда, которую не стыдно есть руками.
+    </div>
+    <div class="hero-btn">Смотреть меню</div>
+  </div>
+  <div class="right-stat">
+    <div class="stat-num">2 000₽</div>
+    <div class="stat-label">/ кг · шашлык из свинины</div>
+  </div>
+</div>
+<br><br>
+
+</body>
+</html>
