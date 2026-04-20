@@ -9,20 +9,19 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 @media screen and (orientation: landscape) {
-  html {
-    width: 3840px;
-    height: 2160px;
-    overflow: hidden;
-  }
+  /* TV висит вертикально, браузер видит landscape — CSS поворачивает на -90° */
+  html { overflow: hidden; }
   body {
-    width: 2160px;
-    min-height: 3840px;
-    transform: rotate(-90deg) translateX(-3840px);
+    width: 100vh;        /* в landscape: vh = короткая сторона = нужная ширина портрета */
+    min-height: 100vw;   /* в landscape: vw = длинная сторона = нужная высота портрета */
     transform-origin: top left;
-    zoom: 2;
+    transform: rotate(-90deg) translateX(-100vw);
+    overflow-x: hidden;
   }
+  .page { width: 100% !important; min-height: 100vw !important; }
 }
 @media screen and (orientation: portrait) {
+  /* Portrait: браузер или ОС сами повернули — рендерим как есть */
   html, body { width: 1080px; min-height: 1920px; }
 }
 
@@ -33,12 +32,12 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 :root {
-  --fire:    #FF6A2D;
-  --ember:   #D44A10;
-  --accent-bg: rgba(255,106,45,0.11);
+  --fire:    #D42B1A;
+  --ember:   #991212;
+  --accent-bg: rgba(212,43,26,0.12);
   --muted:   rgba(245,239,232,0.52);
   --line:    rgba(255,255,255,0.07);
-  --line-fire: rgba(255,106,45,0.22);
+  --line-fire: rgba(212,43,26,0.25);
 }
 @keyframes ember-breathe {
   0%   { opacity: 1; }
@@ -46,9 +45,9 @@ html, body {
   100% { opacity: 1; }
 }
 @keyframes glow-pulse {
-  0%   { box-shadow: 0 0 0px rgba(255,106,45,0); }
-  50%  { box-shadow: 0 0 28px rgba(255,106,45,0.18); }
-  100% { box-shadow: 0 0 0px rgba(255,106,45,0); }
+  0%   { box-shadow: 0 0 0px rgba(212,43,26,0); }
+  50%  { box-shadow: 0 0 28px rgba(212,43,26,0.18); }
+  100% { box-shadow: 0 0 0px rgba(212,43,26,0); }
 }
 @keyframes flicker {
   0%   { opacity: 1;    transform: scale(1)    rotate(-2deg); }
@@ -64,9 +63,9 @@ html, body {
   100% { transform: translateY(-320px) translateX(var(--sway)) scale(0.3); opacity: 0; }
 }
 @keyframes fire-glow {
-  0%   { text-shadow: 0 0 12px rgba(255,106,45,0.5), 0 0 30px rgba(255,60,0,0.2); }
-  50%  { text-shadow: 0 0 22px rgba(255,140,40,0.8), 0 0 55px rgba(255,80,0,0.35), 0 0 80px rgba(200,40,0,0.15); }
-  100% { text-shadow: 0 0 12px rgba(255,106,45,0.5), 0 0 30px rgba(255,60,0,0.2); }
+  0%   { text-shadow: 0 0 12px rgba(212,43,26,0.5), 0 0 30px rgba(190,20,20,0.2); }
+  50%  { text-shadow: 0 0 22px rgba(220,50,50,0.8), 0 0 55px rgba(200,20,20,0.35), 0 0 80px rgba(175,15,15,0.15); }
+  100% { text-shadow: 0 0 12px rgba(212,43,26,0.5), 0 0 30px rgba(190,20,20,0.2); }
 }
 .fire-deco {
   display: inline-block;
@@ -74,7 +73,7 @@ html, body {
   line-height: 1;
   animation: flicker var(--dur, 2.4s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
-  filter: drop-shadow(0 0 8px rgba(255,100,0,0.6));
+  filter: drop-shadow(0 0 8px rgba(200,20,20,0.6));
 }
 .sparks {
   position: absolute;
@@ -89,8 +88,8 @@ html, body {
   bottom: 60px;
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffb347, #ff6a2d);
-  box-shadow: 0 0 6px #ff6a2d;
+  background: radial-gradient(circle, #ff8080, #d42b1a);
+  box-shadow: 0 0 6px #d42b1a;
   animation: spark-rise var(--dur, 3s) ease-out infinite;
   animation-delay: var(--delay, 0s);
   opacity: 0;
@@ -99,7 +98,7 @@ html, body {
   font-size: 44px;
   font-weight: 900;
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #fff 15%, #ffd580 45%, #FF6A2D 75%, #C41A0A 100%);
+  background: linear-gradient(135deg, #fff 15%, #ffd580 45%, #D42B1A 75%, #C41A0A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -111,8 +110,8 @@ html, body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 40% at 30% 100%, rgba(200,60,0,0.22), transparent 55%),
-    radial-gradient(ellipse 60% 30% at 75% 95%,  rgba(255,90,0,0.14), transparent 50%);
+    radial-gradient(ellipse 80% 40% at 30% 100%, rgba(170,20,20,0.22), transparent 55%),
+    radial-gradient(ellipse 60% 30% at 75% 95%,  rgba(200,25,20,0.14), transparent 50%);
   animation: ember-breathe 5s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
@@ -121,7 +120,7 @@ html, body {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 40% 20% at 50% 88%, rgba(255,130,0,0.1), transparent 60%);
+  background: radial-gradient(ellipse 40% 20% at 50% 88%, rgba(200,30,20,0.1), transparent 60%);
   animation: ember-breathe 7s ease-in-out infinite reverse;
   pointer-events: none;
   z-index: 0;
@@ -147,10 +146,10 @@ html, body {
   width: 1080px;
   min-height: 1920px;
   background:
-    radial-gradient(ellipse 90% 35% at 50% 100%, rgba(180,55,0,0.2), transparent 55%),
-    radial-gradient(ellipse 55% 25% at 20% 85%, rgba(255,90,0,0.09), transparent),
-    radial-gradient(ellipse 55% 25% at 80% 80%, rgba(220,60,0,0.08), transparent),
-    radial-gradient(ellipse 70% 20% at 50% 5%, rgba(255,80,20,0.05), transparent),
+    radial-gradient(ellipse 90% 35% at 50% 100%, rgba(150,20,20,0.2), transparent 55%),
+    radial-gradient(ellipse 55% 25% at 20% 85%, rgba(200,25,20,0.09), transparent),
+    radial-gradient(ellipse 55% 25% at 80% 80%, rgba(185,20,20,0.08), transparent),
+    radial-gradient(ellipse 70% 20% at 50% 5%, rgba(200,20,20,0.05), transparent),
     #0a0806;
   display: flex;
   flex-direction: column;
@@ -160,7 +159,7 @@ html, body {
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
-  background: linear-gradient(180deg, rgba(255,106,45,0.05), rgba(255,255,255,0));
+  background: linear-gradient(180deg, rgba(212,43,26,0.05), rgba(255,255,255,0));
 }
 .logo-box img { display: block; height: 72px; width: auto; }
 .body {
@@ -182,7 +181,7 @@ html, body {
   justify-content: space-between;
   padding: 18px 28px 14px;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(90deg, rgba(255,106,45,0.15), rgba(180,55,0,0.06) 55%, transparent);
+  background: linear-gradient(90deg, rgba(212,43,26,0.15), rgba(150,20,20,0.06) 55%, transparent);
 }
 .section-title { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; color: #fff8f2; }
 .section-sub { font-size: 19px; color: var(--muted); font-weight: 500; }
@@ -212,8 +211,8 @@ html, body {
 .sauce-pill {
   padding: 10px 24px;
   border-radius: 999px;
-  background: rgba(255,106,45,0.09);
-  border: 1px solid rgba(255,106,45,0.22);
+  background: rgba(212,43,26,0.09);
+  border: 1px solid rgba(212,43,26,0.25);
   font-size: 20px;
   font-weight: 600;
   color: #f5efe8;
@@ -250,7 +249,7 @@ html, body {
 .soon-wrap { padding: 0 44px; }
 .soon-card {
   padding: 20px 28px;
-  border: 1px dashed rgba(255,106,45,0.25);
+  border: 1px dashed rgba(212,43,26,0.28);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -264,7 +263,7 @@ html, body {
   width: 100%;
   height: 260px;
   border-radius: 16px;
-  border: 2px dashed rgba(255,106,45,0.35);
+  border: 2px dashed rgba(212,43,26,0.35);
   background: rgba(255,106,45,0.04);
   display: flex;
   flex-direction: column;
@@ -285,7 +284,7 @@ html, body {
 }
 .media-placeholder-label {
   font-size: 18px;
-  color: rgba(255,106,45,0.5);
+  color: rgba(212,43,26,0.5);
   font-weight: 600;
   text-align: center;
   pointer-events: none;

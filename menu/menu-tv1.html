@@ -13,23 +13,19 @@
   Если ОС не повёрнута (браузер видит 1920×1080) → CSS поворачивает контент на -90°.
 */
 @media screen and (orientation: landscape) {
-  /* Fallback: если ОС TV не повёрнута — CSS поворачивает контент.
-     Для 4K Hisense E7Q (3840x2160 в landscape) используем полные 4K размеры. */
-  html {
-    width: 3840px;
-    height: 2160px;
-    overflow: hidden;
-  }
+  /* TV висит вертикально, браузер видит landscape — CSS поворачивает на -90° */
+  html { overflow: hidden; }
   body {
-    width: 2160px;
-    min-height: 3840px;
-    transform: rotate(-90deg) translateX(-3840px);
+    width: 100vh;        /* в landscape: vh = короткая сторона = нужная ширина портрета */
+    min-height: 100vw;   /* в landscape: vw = длинная сторона = нужная высота портрета */
     transform-origin: top left;
-    zoom: 2;
+    transform: rotate(-90deg) translateX(-100vw);
+    overflow-x: hidden;
   }
+  .page { width: 100% !important; min-height: 100vw !important; }
 }
 @media screen and (orientation: portrait) {
-  /* Portrait mode: браузер TV сам масштабирует 1080px → 2160px (×2) для 4K */
+  /* Portrait: браузер или ОС сами повернули — рендерим как есть */
   html, body { width: 1080px; min-height: 1920px; }
 }
 
@@ -40,12 +36,12 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 :root {
-  --fire:    #FF6A2D;
-  --ember:   #D44A10;
-  --accent-bg: rgba(255,106,45,0.11);
+  --fire:    #D42B1A;
+  --ember:   #991212;
+  --accent-bg: rgba(212,43,26,0.12);
   --muted:   rgba(245,239,232,0.52);
   --line:    rgba(255,255,255,0.07);
-  --line-fire: rgba(255,106,45,0.22);
+  --line-fire: rgba(212,43,26,0.25);
 }
 /* ── АНИМАЦИИ ОГНЯ ── */
 @keyframes ember-breathe {
@@ -54,9 +50,9 @@ html, body {
   100% { opacity: 1; }
 }
 @keyframes glow-pulse {
-  0%   { box-shadow: 0 0 0px rgba(255,106,45,0); }
-  50%  { box-shadow: 0 0 28px rgba(255,106,45,0.18); }
-  100% { box-shadow: 0 0 0px rgba(255,106,45,0); }
+  0%   { box-shadow: 0 0 0px rgba(212,43,26,0); }
+  50%  { box-shadow: 0 0 28px rgba(212,43,26,0.18); }
+  100% { box-shadow: 0 0 0px rgba(212,43,26,0); }
 }
 /* Флicker — живое дрожание огня */
 @keyframes flicker {
@@ -75,9 +71,9 @@ html, body {
 }
 /* Логотип-текст — пульсирующий огненный glow */
 @keyframes fire-glow {
-  0%   { text-shadow: 0 0 12px rgba(255,106,45,0.5), 0 0 30px rgba(255,60,0,0.2); }
-  50%  { text-shadow: 0 0 22px rgba(255,140,40,0.8), 0 0 55px rgba(255,80,0,0.35), 0 0 80px rgba(200,40,0,0.15); }
-  100% { text-shadow: 0 0 12px rgba(255,106,45,0.5), 0 0 30px rgba(255,60,0,0.2); }
+  0%   { text-shadow: 0 0 12px rgba(212,43,26,0.5), 0 0 30px rgba(190,20,20,0.2); }
+  50%  { text-shadow: 0 0 22px rgba(220,50,50,0.8), 0 0 55px rgba(200,20,20,0.35), 0 0 80px rgba(175,15,15,0.15); }
+  100% { text-shadow: 0 0 12px rgba(212,43,26,0.5), 0 0 30px rgba(190,20,20,0.2); }
 }
 /* слои угля — position: absolute (fixed ломается при transform на родителе) */
 .page { position: relative; isolation: isolate; overflow: hidden; }
@@ -86,8 +82,8 @@ html, body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 40% at 30% 100%, rgba(200,60,0,0.22), transparent 55%),
-    radial-gradient(ellipse 60% 30% at 75% 95%,  rgba(255,90,0,0.14), transparent 50%);
+    radial-gradient(ellipse 80% 40% at 30% 100%, rgba(170,20,20,0.22), transparent 55%),
+    radial-gradient(ellipse 60% 30% at 75% 95%,  rgba(200,25,20,0.14), transparent 50%);
   animation: ember-breathe 5s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
@@ -97,7 +93,7 @@ html, body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 40% 20% at 50% 88%, rgba(255,130,0,0.1), transparent 60%);
+    radial-gradient(ellipse 40% 20% at 50% 88%, rgba(200,30,20,0.1), transparent 60%);
   animation: ember-breathe 7s ease-in-out infinite reverse;
   pointer-events: none;
   z-index: 0;
@@ -128,7 +124,7 @@ html, body {
   line-height: 1;
   animation: flicker var(--dur, 2.4s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
-  filter: drop-shadow(0 0 8px rgba(255,100,0,0.6));
+  filter: drop-shadow(0 0 8px rgba(200,20,20,0.6));
 }
 /* Искры */
 .sparks {
@@ -144,8 +140,8 @@ html, body {
   bottom: 60px;
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffb347, #ff6a2d);
-  box-shadow: 0 0 6px #ff6a2d;
+  background: radial-gradient(circle, #ff8080, #d42b1a);
+  box-shadow: 0 0 6px #d42b1a;
   animation: spark-rise var(--dur, 3s) ease-out infinite;
   animation-delay: var(--delay, 0s);
   opacity: 0;
@@ -155,7 +151,7 @@ html, body {
   font-size: 44px;
   font-weight: 900;
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #fff 15%, #ffd580 45%, #FF6A2D 75%, #C41A0A 100%);
+  background: linear-gradient(135deg, #fff 15%, #ffd580 45%, #D42B1A 75%, #C41A0A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -166,10 +162,10 @@ html, body {
   width: 1080px;
   min-height: 1920px;
   background:
-    radial-gradient(ellipse 90% 35% at 50% 100%, rgba(180,55,0,0.2), transparent 55%),
-    radial-gradient(ellipse 55% 25% at 20% 85%, rgba(255,90,0,0.09), transparent),
-    radial-gradient(ellipse 55% 25% at 80% 80%, rgba(220,60,0,0.08), transparent),
-    radial-gradient(ellipse 70% 20% at 50% 5%, rgba(255,80,20,0.05), transparent),
+    radial-gradient(ellipse 90% 35% at 50% 100%, rgba(150,20,20,0.2), transparent 55%),
+    radial-gradient(ellipse 55% 25% at 20% 85%, rgba(200,25,20,0.09), transparent),
+    radial-gradient(ellipse 55% 25% at 80% 80%, rgba(185,20,20,0.08), transparent),
+    radial-gradient(ellipse 70% 20% at 50% 5%, rgba(200,20,20,0.05), transparent),
     #0a0806;
   display: flex;
   flex-direction: column;
@@ -180,7 +176,7 @@ html, body {
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
-  background: linear-gradient(180deg, rgba(255,106,45,0.05), rgba(255,255,255,0));
+  background: linear-gradient(180deg, rgba(212,43,26,0.05), rgba(255,255,255,0));
 }
 .logo-box img { display: block; height: 72px; width: auto; }
 /* BODY */
@@ -204,7 +200,7 @@ html, body {
   justify-content: space-between;
   padding: 18px 28px 14px;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(90deg, rgba(255,106,45,0.15), rgba(180,55,0,0.06) 55%, transparent);
+  background: linear-gradient(90deg, rgba(212,43,26,0.15), rgba(150,20,20,0.06) 55%, transparent);
 }
 .section-title {
   font-size: 32px;
@@ -268,8 +264,8 @@ html, body {
   display: inline-flex;
   align-items: baseline;
   gap: 10px;
-  background: rgba(255,106,45,0.13);
-  border: 1px solid rgba(255,106,45,0.3);
+  background: rgba(212,43,26,0.13);
+  border: 1px solid rgba(212,43,26,0.3);
   border-radius: 10px;
   padding: 8px 16px;
   width: fit-content;
@@ -338,7 +334,7 @@ html, body {
   width: 100%;
   height: 300px;
   border-radius: 16px;
-  border: 2px dashed rgba(255,106,45,0.35);
+  border: 2px dashed rgba(212,43,26,0.35);
   background: rgba(255,106,45,0.04);
   display: flex;
   flex-direction: column;
@@ -360,7 +356,7 @@ html, body {
 }
 .media-placeholder-label {
   font-size: 18px;
-  color: rgba(255,106,45,0.5);
+  color: rgba(212,43,26,0.5);
   font-weight: 600;
   text-align: center;
   pointer-events: none;
@@ -668,14 +664,14 @@ html, body {
       </div>
       <div class="vip-grid">
         <div class="vip-item">
-          <div class="vip-badge" style="background:rgba(255,106,45,0.15);border-color:rgba(255,106,45,0.35);color:var(--fire);">✨ Новинка</div>
+          <div class="vip-badge" style="background:rgba(212,43,26,0.15);border-color:rgba(212,43,26,0.35);color:var(--fire);">✨ Новинка</div>
           <div class="vip-name">Креветка на мангале</div>
           <div class="vip-desc">Крупные креветки на живом огне — сочные, с дымком и чесночным маслом</div>
           <div class="vip-price">800 ₽</div>
           <div class="vip-weight">хх г — уточняйте у персонала</div>
         </div>
         <div class="vip-item">
-          <div class="vip-badge" style="background:rgba(255,106,45,0.15);border-color:rgba(255,106,45,0.35);color:var(--fire);">✨ Новинка</div>
+          <div class="vip-badge" style="background:rgba(212,43,26,0.15);border-color:rgba(212,43,26,0.35);color:var(--fire);">✨ Новинка</div>
           <div class="vip-name">Сёмга на мангале</div>
           <div class="vip-desc">Стейк сёмги на углях — нежная рыба с хрустящей корочкой</div>
           <div class="vip-price">1 100 ₽</div>
