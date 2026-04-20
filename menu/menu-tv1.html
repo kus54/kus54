@@ -13,19 +13,23 @@
   Если ОС не повёрнута (браузер видит 1920×1080) → CSS поворачивает контент на -90°.
 */
 @media screen and (orientation: landscape) {
+  /* Fallback: если ОС TV не повёрнута — CSS поворачивает контент.
+     Для 4K Hisense E7Q (3840x2160 в landscape) используем полные 4K размеры. */
   html {
-    width: 1920px;
-    height: 1080px;
+    width: 3840px;
+    height: 2160px;
     overflow: hidden;
   }
   body {
-    width: 1080px;
-    min-height: 1920px;
-    transform: rotate(-90deg) translateX(-1920px);
+    width: 2160px;
+    min-height: 3840px;
+    transform: rotate(-90deg) translateX(-3840px);
     transform-origin: top left;
+    zoom: 2;
   }
 }
 @media screen and (orientation: portrait) {
+  /* Portrait mode: браузер TV сам масштабирует 1080px → 2160px (×2) для 4K */
   html, body { width: 1080px; min-height: 1920px; }
 }
 
@@ -329,132 +333,45 @@ html, body {
 .footer-left { font-size: 17px; color: rgba(245,239,232,0.28); }
 .footer-right { font-size: 17px; color: rgba(245,239,232,0.28); }
 
-/* ── CSS МАНГАЛ АНИМАЦИЯ ── */
-@keyframes coal-pulse {
-  0%,100% { opacity:1; }
-  50%      { opacity:0.6; }
-}
-@keyframes coal-shift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes smoke-rise {
-  0%   { transform: translateY(0) scaleX(1); opacity:0.35; }
-  100% { transform: translateY(-120px) scaleX(2.5); opacity:0; }
-}
-@keyframes sizzle {
-  0%,100% { transform: scaleY(1); }
-  50%     { transform: scaleY(1.03) translateY(-1px); }
-}
-.grill-scene {
+/* ── ПЛЕЙСХОЛДЕР ДЛЯ ФОТО / ВИДЕО ── */
+.media-placeholder {
   width: 100%;
-  height: 290px;
-  position: relative;
-  overflow: hidden;
+  height: 300px;
   border-radius: 16px;
-  border: 1px solid rgba(255,106,45,0.25);
-  background: #080503;
-  margin-bottom: 4px;
-}
-/* Угли снизу */
-.grill-coals {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 55%;
-  background:
-    radial-gradient(ellipse 60% 60% at 25% 100%, rgba(255,80,0,0.55), transparent 60%),
-    radial-gradient(ellipse 50% 50% at 75% 100%, rgba(200,50,0,0.45), transparent 60%),
-    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(255,120,0,0.3), transparent 55%),
-    linear-gradient(0deg, rgba(180,40,0,0.6) 0%, rgba(80,15,0,0.2) 60%, transparent 100%);
-  animation: coal-pulse 3s ease-in-out infinite;
-}
-/* Дым — слой над углями */
-.grill-heat {
-  position: absolute;
-  bottom: 42%; left: 0; right: 0; height: 30%;
-  background: linear-gradient(0deg,
-    rgba(255,90,10,0.12) 0%,
-    rgba(180,60,0,0.06) 50%,
-    transparent 100%);
-  animation: coal-pulse 4s ease-in-out infinite reverse;
-}
-/* Решётка — горизонтальные полосы */
-.grill-grates {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    180deg,
-    transparent 0px, transparent 34px,
-    rgba(8,4,2,0.92) 34px, rgba(8,4,2,0.92) 46px
-  );
-  z-index: 3;
-}
-/* Мясо на шампурах */
-.grill-rack {
-  position: absolute;
-  bottom: 38%;
-  left: 8%; right: 8%;
+  border: 2px dashed rgba(255,106,45,0.35);
+  background: rgba(255,106,45,0.04);
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  z-index: 4;
-}
-.skewer {
-  height: 26px;
-  border-radius: 5px;
-  background: linear-gradient(180deg,
-    #6B2E00 0%, #8B3A00 30%, #A04500 50%, #7A3000 80%, #5C2200 100%);
-  box-shadow:
-    0 0 12px rgba(255,100,0,0.35),
-    inset 0 1px 2px rgba(255,150,50,0.2);
-  animation: sizzle var(--dur,2.8s) ease-in-out infinite;
-  animation-delay: var(--delay,0s);
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  overflow: hidden;
   position: relative;
 }
-.skewer::after {
-  content: '';
+.media-placeholder video,
+.media-placeholder img {
   position: absolute;
-  top: 2px; left: 4px; right: 4px; height: 4px;
-  background: linear-gradient(90deg,
-    transparent, rgba(255,140,60,0.4), rgba(255,180,80,0.3), transparent);
-  border-radius: 2px;
-  animation: sizzle var(--dur,2.8s) ease-in-out infinite reverse;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
 }
-/* Дымки */
-.smoke-wrap {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 40%;
-  z-index: 5;
+.media-placeholder-label {
+  font-size: 18px;
+  color: rgba(255,106,45,0.5);
+  font-weight: 600;
+  text-align: center;
   pointer-events: none;
+  z-index: 1;
 }
-.smoke-w {
-  position: absolute;
-  bottom: 0;
-  width: 10px;
-  height: 80px;
-  border-radius: 50%;
-  background: linear-gradient(0deg,
-    rgba(200,190,180,0.25), rgba(180,170,160,0.12), transparent);
-  animation: smoke-rise var(--dur,4s) ease-out infinite;
-  animation-delay: var(--delay,0s);
-  filter: blur(4px);
-}
-/* Оверлей тёмный сверху */
-.grill-top-fade {
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 45%;
-  background: linear-gradient(180deg, rgba(8,4,2,0.7) 0%, transparent 100%);
-  z-index: 6;
-}
-.grill-label {
-  position: absolute;
-  bottom: 14px; right: 18px;
-  font-size: 15px;
-  font-weight: 700;
-  color: rgba(245,220,180,0.65);
-  letter-spacing: 0.05em;
-  z-index: 10;
+.media-placeholder-hint {
+  font-size: 14px;
+  color: rgba(245,239,232,0.3);
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* VIP секция */
@@ -529,26 +446,14 @@ html, body {
 
   <div class="body">
 
-    <!-- CSS МАНГАЛ — вместо видео -->
-    <div class="grill-scene">
-      <div class="grill-coals"></div>
-      <div class="grill-heat"></div>
-      <div class="grill-rack">
-        <div class="skewer" style="--dur:3.1s;--delay:0s; width:88%;"></div>
-        <div class="skewer" style="--dur:2.7s;--delay:0.6s; width:94%; margin-left:3%;"></div>
-        <div class="skewer" style="--dur:3.4s;--delay:1.1s; width:85%; margin-left:5%;"></div>
-        <div class="skewer" style="--dur:2.9s;--delay:0.3s; width:90%; margin-left:1%;"></div>
-      </div>
-      <div class="smoke-wrap">
-        <div class="smoke-w" style="left:15%; --dur:4.2s; --delay:0s;"></div>
-        <div class="smoke-w" style="left:32%; --dur:3.8s; --delay:1.1s;"></div>
-        <div class="smoke-w" style="left:52%; --dur:5.0s; --delay:0.5s;"></div>
-        <div class="smoke-w" style="left:68%; --dur:4.5s; --delay:1.8s;"></div>
-        <div class="smoke-w" style="left:82%; --dur:3.6s; --delay:0.9s;"></div>
-      </div>
-      <div class="grill-grates"></div>
-      <div class="grill-top-fade"></div>
-      <div class="grill-label">🔥 Готовим прямо сейчас</div>
+    <!-- ФОТО / ВИДЕО — вставьте свою ссылку (Экран 1) -->
+    <div class="media-placeholder" id="media-block-1">
+      <!-- ВСТАВИТЬ ВИДЕО: замените строку ниже, убрав комментарий -->
+      <!-- <video src="ССЫЛКА_НА_ВИДЕО.mp4" autoplay loop muted playsinline></video> -->
+      <!-- ВСТАВИТЬ ФОТО: замените строку ниже, убрав комментарий -->
+      <!-- <img src="ССЫЛКА_НА_ФОТО.jpg" alt=""> -->
+      <div class="media-placeholder-label">📸 Фото / видео</div>
+      <div class="media-placeholder-hint">Загрузите файл на GitHub и вставьте ссылку выше</div>
     </div>
 
     <!-- МЯСО НА УГЛЯХ -->
@@ -557,7 +462,7 @@ html, body {
         <div class="section-title" style="display:flex;align-items:center;gap:12px;">Мясо на углях <span class="fire-deco" style="font-size:26px;--dur:2.2s;--delay:0.4s;">🔥</span></div>
         <div class="section-sub">называйте вес · от 100 г</div>
       </div>
-      <div class="section-note">Цена за 100 г · взвешиваем при вас · чем больше берёте — выгоднее · <span style="color:rgba(255,106,45,0.7);">к каждому мясу маринованный лук и соус — в подарок</span></div>
+      <div class="section-note">Цена за 100 г · взвешиваем при вас · чем больше берёте — выгоднее</div>
       <div class="grill-grid">
 
         <div class="grill-item">
@@ -753,24 +658,24 @@ html, body {
       </div>
     </div>
 
-    <!-- VIP ПОЗИЦИИ -->
-    <div class="section" style="border-color: rgba(220,180,50,0.25);">
-      <div class="section-head" style="background: linear-gradient(90deg, rgba(180,140,0,0.15), rgba(255,180,50,0.05) 55%, transparent);">
-        <div class="section-title" style="display:flex;align-items:center;gap:10px;">
-          <span style="font-size:22px;">👑</span> VIP позиции
+    <!-- НОВИНКИ -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title" style="display:flex;align-items:center;gap:12px;">
+          Новинки <span class="fire-deco" style="font-size:26px;--dur:2.8s;--delay:0.2s;">✨</span>
         </div>
-        <div class="section-sub">премиум · на огне</div>
+        <div class="section-sub">на огне · пробуйте</div>
       </div>
       <div class="vip-grid">
         <div class="vip-item">
-          <div class="vip-badge">👑 VIP</div>
+          <div class="vip-badge" style="background:rgba(255,106,45,0.15);border-color:rgba(255,106,45,0.35);color:var(--fire);">✨ Новинка</div>
           <div class="vip-name">Креветка на мангале</div>
           <div class="vip-desc">Крупные креветки на живом огне — сочные, с дымком и чесночным маслом</div>
           <div class="vip-price">800 ₽</div>
           <div class="vip-weight">хх г — уточняйте у персонала</div>
         </div>
         <div class="vip-item">
-          <div class="vip-badge">👑 VIP</div>
+          <div class="vip-badge" style="background:rgba(255,106,45,0.15);border-color:rgba(255,106,45,0.35);color:var(--fire);">✨ Новинка</div>
           <div class="vip-name">Сёмга на мангале</div>
           <div class="vip-desc">Стейк сёмги на углях — нежная рыба с хрустящей корочкой</div>
           <div class="vip-price">1 100 ₽</div>
@@ -782,7 +687,7 @@ html, body {
   </div>
 
   <div class="footer">
-    <div class="footer-left">К любому мясу — маринованный лук и соус в подарок</div>
+    <div class="footer-left">Приятного аппетита!</div>
     <div class="footer-right">delovogne.ru</div>
   </div>
 </div>

@@ -10,15 +10,16 @@
 
 @media screen and (orientation: landscape) {
   html {
-    width: 1920px;
-    height: 1080px;
+    width: 3840px;
+    height: 2160px;
     overflow: hidden;
   }
   body {
-    width: 1080px;
-    min-height: 1920px;
-    transform: rotate(-90deg) translateX(-1920px);
+    width: 2160px;
+    min-height: 3840px;
+    transform: rotate(-90deg) translateX(-3840px);
     transform-origin: top left;
+    zoom: 2;
   }
 }
 @media screen and (orientation: portrait) {
@@ -258,6 +259,45 @@ html, body {
 }
 .soon-title { font-size: 22px; font-weight: 700; color: var(--muted); }
 .soon-badge { font-size: 18px; font-weight: 700; color: var(--fire); letter-spacing: 0.08em; text-transform: uppercase; margin-left: auto; }
+/* ── ПЛЕЙСХОЛДЕР ДЛЯ ФОТО / ВИДЕО ── */
+.media-placeholder {
+  width: 100%;
+  height: 260px;
+  border-radius: 16px;
+  border: 2px dashed rgba(255,106,45,0.35);
+  background: rgba(255,106,45,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.media-placeholder video,
+.media-placeholder img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+.media-placeholder-label {
+  font-size: 18px;
+  color: rgba(255,106,45,0.5);
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.media-placeholder-hint {
+  font-size: 14px;
+  color: rgba(245,239,232,0.3);
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+}
 .footer {
   padding: 20px 52px;
   border-top: 1px solid var(--line);
@@ -392,6 +432,17 @@ html, body {
     <div class="soon-card">
       <div class="soon-title">Настойки (18+)</div>
       <div class="soon-badge">— скоро</div>
+    </div>
+  </div>
+  <!-- ФОТО / ВИДЕО — вставьте свою ссылку (Экран 2) -->
+  <div style="padding: 0 44px;">
+    <div class="media-placeholder" id="media-block-2">
+      <!-- ВСТАВИТЬ ВИДЕО: замените строку ниже, убрав комментарий -->
+      <!-- <video src="ССЫЛКА_НА_ВИДЕО.mp4" autoplay loop muted playsinline></video> -->
+      <!-- ВСТАВИТЬ ФОТО: замените строку ниже, убрав комментарий -->
+      <!-- <img src="ССЫЛКА_НА_ФОТО.jpg" alt=""> -->
+      <div class="media-placeholder-label">📸 Фото / видео</div>
+      <div class="media-placeholder-hint">Загрузите файл на GitHub и вставьте ссылку выше</div>
     </div>
   </div>
   <div style="height:28px;"></div>
