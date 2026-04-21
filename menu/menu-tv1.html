@@ -129,7 +129,7 @@ html, body {
 /* Искры */
 .sparks {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  top: 0; bottom: 0; left: 0; right: 0;
   height: 100%;
   pointer-events: none;
   overflow: hidden;
@@ -138,7 +138,7 @@ html, body {
 .spark {
   position: absolute;
   bottom: 60px;
-  width: 6px; height: 6px;
+  width: 6.5px; height: 6.5px;
   border-radius: 50%;
   background: radial-gradient(circle, #ff8080, #d42b1a);
   box-shadow: 0 0 6px #d42b1a;
@@ -252,7 +252,7 @@ html, body {
   gap: 3px;
   margin-top: 8px;
 }
-/* 168 ₽/100г — маленькая серая информационная строка */
+/* 168 р./100г — маленькая серая информационная строка */
 .grill-measure {
   font-size: 17px;
   font-weight: 500;
@@ -330,47 +330,6 @@ html, body {
 .footer-right { font-size: 17px; color: rgba(245,239,232,0.28); }
 
 /* ── ПЛЕЙСХОЛДЕР ДЛЯ ФОТО / ВИДЕО ── */
-.media-placeholder {
-  width: 100%;
-  height: 300px;
-  border-radius: 16px;
-  border: 2px dashed rgba(212,43,26,0.35);
-  background: rgba(255,106,45,0.04);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 4px;
-  overflow: hidden;
-  position: relative;
-}
-.media-placeholder video,
-.media-placeholder img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 14px;
-}
-.media-placeholder-label {
-  font-size: 18px;
-  color: rgba(212,43,26,0.5);
-  font-weight: 600;
-  text-align: center;
-  pointer-events: none;
-  z-index: 1;
-}
-.media-placeholder-hint {
-  font-size: 14px;
-  color: rgba(245,239,232,0.3);
-  text-align: center;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* VIP секция */
 .vip-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -442,16 +401,6 @@ html, body {
 
   <div class="body">
 
-    <!-- ФОТО / ВИДЕО — вставьте свою ссылку (Экран 1) -->
-    <div class="media-placeholder" id="media-block-1">
-      <!-- ВСТАВИТЬ ВИДЕО: замените строку ниже, убрав комментарий -->
-      <!-- <video src="ССЫЛКА_НА_ВИДЕО.mp4" autoplay loop muted playsinline></video> -->
-      <!-- ВСТАВИТЬ ФОТО: замените строку ниже, убрав комментарий -->
-      <!-- <img src="ССЫЛКА_НА_ФОТО.jpg" alt=""> -->
-      <div class="media-placeholder-label">📸 Фото / видео</div>
-      <div class="media-placeholder-hint">Загрузите файл на GitHub и вставьте ссылку выше</div>
-    </div>
-
     <!-- МЯСО НА УГЛЯХ -->
     <div class="section">
       <div class="section-head">
@@ -466,10 +415,10 @@ html, body {
           <div class="grill-name">Шашлык из свинины</div>
           <div class="grill-desc">Свиная шейка в авторском маринаде — сочная, с аппетитной корочкой</div>
           <div class="grill-bottom">
-            <div class="grill-measure">200 ₽ / 100 г</div>
+            <div class="grill-measure">200 р. / 100 г</div>
             <div class="grill-anchor">
               <span class="grill-anchor-qty">чаще берут 300 г →</span>
-              <span class="grill-anchor-price">600 ₽</span>
+              <span class="grill-anchor-price">600 р.</span>
             </div>
           </div>
         </div>
@@ -479,10 +428,10 @@ html, body {
           <div class="grill-name">Люля-кебаб</div>
           <div class="grill-desc">Рубленая свинина и говядина со специями на шампуре</div>
           <div class="grill-bottom">
-            <div class="grill-measure">256 ₽ / 100 г</div>
+            <div class="grill-measure">256 р. / 100 г</div>
             <div class="grill-anchor">
               <span class="grill-anchor-qty">чаще берут 300 г →</span>
-              <span class="grill-anchor-price">768 ₽</span>
+              <span class="grill-anchor-price">768 р.</span>
             </div>
           </div>
         </div>
@@ -491,7 +440,7 @@ html, body {
           <div class="grill-name">Куриное бедро</div>
           <div class="grill-desc">Куриное бедро на углях — нежное мясо с хрустящей кожицей</div>
           <div class="grill-bottom">
-            <div class="grill-price-fixed">590 ₽</div>
+            <div class="grill-price-fixed">590 р.</div>
             <div class="grill-weight">1 шт.</div>
           </div>
         </div>
@@ -500,7 +449,7 @@ html, body {
           <div class="grill-name">Куриная грудка</div>
           <div class="grill-desc">Филе куриной грудки на мангале — диетично, сочно</div>
           <div class="grill-bottom">
-            <div class="grill-price-fixed">590 ₽</div>
+            <div class="grill-price-fixed">590 р.</div>
             <div class="grill-weight">1 шт.</div>
           </div>
         </div>
@@ -509,7 +458,7 @@ html, body {
           <div class="grill-name">Крылья на мангале</div>
           <div class="grill-desc">Куриные крылья в маринаде — хрустящие снаружи, сочные внутри</div>
           <div class="grill-bottom">
-            <div class="grill-price-fixed">480 ₽</div>
+            <div class="grill-price-fixed">480 р.</div>
             <div class="grill-weight">300 г</div>
           </div>
         </div>
@@ -518,7 +467,7 @@ html, body {
           <div class="grill-name">Стейк бедра куриный</div>
           <div class="grill-desc">Сочный стейк из куриного бедра — на живом огне</div>
           <div class="grill-bottom">
-            <div class="grill-price-fixed">590 ₽</div>
+            <div class="grill-price-fixed">590 р.</div>
             <div class="grill-weight">1 шт.</div>
           </div>
         </div>
@@ -537,21 +486,21 @@ html, body {
             <div class="row-name">Овощи на огне</div>
             <div class="row-desc">Болгарский перец, кабачки, помидоры, грибы — на живом огне</div>
           </div>
-          <div class="row-right"><div class="row-price">900 ₽</div><div class="row-weight">порция</div></div>
+          <div class="row-right"><div class="row-price">900 р.</div><div class="row-weight">порция</div></div>
         </div>
         <div class="row-item">
           <div class="row-left">
             <div class="row-name">Грибы на огне</div>
             <div class="row-desc">Шампиньоны на мангале — с дымком, с зеленью</div>
           </div>
-          <div class="row-right"><div class="row-price">540 ₽</div><div class="row-weight">порция</div></div>
+          <div class="row-right"><div class="row-price">540 р.</div><div class="row-weight">порция</div></div>
         </div>
         <div class="row-item">
           <div class="row-left">
             <div class="row-name">Картофель в беконе</div>
             <div class="row-desc">Картофель, запечённый в хрустящем беконе на углях</div>
           </div>
-          <div class="row-right"><div class="row-price">550 ₽</div><div class="row-weight">порция</div></div>
+          <div class="row-right"><div class="row-price">550 р.</div><div class="row-weight">порция</div></div>
         </div>
       </div>
     </div>
@@ -568,14 +517,14 @@ html, body {
             <div class="row-name">Свинина в лаваше</div>
             <div class="row-desc">Шашлык из свинины + маринованный лук + соус — в тонком лаваше</div>
           </div>
-          <div class="row-right"><div class="row-price">450 ₽</div><div class="row-weight">300 г</div></div>
+          <div class="row-right"><div class="row-price">450 р.</div><div class="row-weight">300 г</div></div>
         </div>
         <div class="row-item">
           <div class="row-left">
             <div class="row-name">Курица в лаваше</div>
             <div class="row-desc">Шашлык из курицы + маринованный лук + соус — в тонком лаваше</div>
           </div>
-          <div class="row-right"><div class="row-price">450 ₽</div><div class="row-weight">300 г</div></div>
+          <div class="row-right"><div class="row-price">450 р.</div><div class="row-weight">300 г</div></div>
         </div>
       </div>
     </div>
@@ -590,17 +539,17 @@ html, body {
         <div class="combo-item">
           <div class="combo-name">Комплекс №1</div>
           <div class="combo-desc">Свинина на углях, маринованный лук, кетчуп + чесночный, лаваш</div>
-          <div class="combo-price">490 ₽</div>
+          <div class="combo-price">490 р.</div>
         </div>
         <div class="combo-item">
           <div class="combo-name">Комплекс №2</div>
           <div class="combo-desc">Колбаски охотничьи, лук, картофель по деревенски, соус, лаваш</div>
-          <div class="combo-price">490 ₽</div>
+          <div class="combo-price">490 р.</div>
         </div>
         <div class="combo-item">
           <div class="combo-name">Комплекс №3</div>
           <div class="combo-desc">Куриное бедро на углях, маринованный лук, соус, лаваш</div>
-          <div class="combo-price">460 ₽</div>
+          <div class="combo-price">460 р.</div>
         </div>
       </div>
     </div>
@@ -614,42 +563,42 @@ html, body {
         <div class="grill-item" style="padding:14px 22px;">
           <div class="grill-name" style="font-size:20px;">Морковь по-корейски</div>
           <div class="grill-desc">В остро-пряном маринаде с кунжутом</div>
-          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">120 ₽</div>
+          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">120 р.</div>
         </div>
         <div class="grill-item" style="padding:14px 22px;">
           <div class="grill-name" style="font-size:20px;">Лук маринованный</div>
           <div class="grill-desc">Идеально к шашлыку</div>
-          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">150 ₽</div>
+          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">150 р.</div>
         </div>
         <div class="grill-item" style="padding:14px 22px;">
           <div class="grill-name" style="font-size:20px;">Капуста маринованная</div>
           <div class="grill-desc">По домашнему рецепту</div>
-          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">120 ₽</div>
+          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">120 р.</div>
         </div>
         <div class="grill-item" style="padding:14px 22px;">
           <div class="grill-name" style="font-size:20px;">Креветки в панировке</div>
           <div class="grill-desc">Хрустящие, с соусом</div>
-          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">250 ₽</div>
+          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">250 р.</div>
         </div>
         <div class="grill-item" style="padding:14px 22px;">
           <div class="grill-name" style="font-size:20px;">Картофель фри</div>
           <div class="grill-desc">Золотистый, хрустящий</div>
-          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">180 ₽</div>
+          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">180 р.</div>
         </div>
         <div class="grill-item" style="padding:14px 22px;">
           <div class="grill-name" style="font-size:20px;">Картофель по деревенски</div>
           <div class="grill-desc">С румяной корочкой и специями</div>
-          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">180 ₽</div>
+          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">180 р.</div>
         </div>
         <div class="grill-item" style="padding:14px 22px; border-bottom:none;">
           <div class="grill-name" style="font-size:20px;">Сырные палочки</div>
           <div class="grill-desc">С тягучим сыром внутри</div>
-          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">200 ₽</div>
+          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">200 р.</div>
         </div>
         <div class="grill-item" style="padding:14px 22px; border-bottom:none;">
           <div class="grill-name" style="font-size:20px;">Лаваш / Лепёшка</div>
           <div class="grill-desc">Армянский тонкий / узбекская</div>
-          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">50 ₽</div>
+          <div class="grill-price-fixed" style="font-size:24px; margin-top:6px;">50 р.</div>
         </div>
       </div>
     </div>
@@ -667,14 +616,14 @@ html, body {
           <div class="vip-badge" style="background:rgba(212,43,26,0.15);border-color:rgba(212,43,26,0.35);color:var(--fire);">✨ Новинка</div>
           <div class="vip-name">Креветка на мангале</div>
           <div class="vip-desc">Крупные креветки на живом огне — сочные, с дымком и чесночным маслом</div>
-          <div class="vip-price">800 ₽</div>
+          <div class="vip-price">800 р.</div>
           <div class="vip-weight">хх г — уточняйте у персонала</div>
         </div>
         <div class="vip-item">
           <div class="vip-badge" style="background:rgba(212,43,26,0.15);border-color:rgba(212,43,26,0.35);color:var(--fire);">✨ Новинка</div>
           <div class="vip-name">Сёмга на мангале</div>
           <div class="vip-desc">Стейк сёмги на углях — нежная рыба с хрустящей корочкой</div>
-          <div class="vip-price">1 100 ₽</div>
+          <div class="vip-price">1 100 р.</div>
           <div class="vip-weight">хх г — уточняйте у персонала</div>
         </div>
       </div>

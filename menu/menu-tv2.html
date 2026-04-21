@@ -15,7 +15,7 @@
     width: 100vh;        /* в landscape: vh = короткая сторона = нужная ширина портрета */
     min-height: 100vw;   /* в landscape: vw = длинная сторона = нужная высота портрета */
     transform-origin: top left;
-    transform: rotate(-90deg) translateX(-100vw);
+    transform: rotate(90deg) translateY(-100vh);
     overflow-x: hidden;
   }
   .page { width: 100% !important; min-height: 100vw !important; }
@@ -77,7 +77,7 @@ html, body {
 }
 .sparks {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  top: 0; bottom: 0; left: 0; right: 0;
   height: 100%;
   pointer-events: none;
   overflow: hidden;
@@ -86,7 +86,7 @@ html, body {
 .spark {
   position: absolute;
   bottom: 60px;
-  width: 6px; height: 6px;
+  width: 6.5px; height: 6.5px;
   border-radius: 50%;
   background: radial-gradient(circle, #ff8080, #d42b1a);
   box-shadow: 0 0 6px #d42b1a;
@@ -259,44 +259,6 @@ html, body {
 .soon-title { font-size: 22px; font-weight: 700; color: var(--muted); }
 .soon-badge { font-size: 18px; font-weight: 700; color: var(--fire); letter-spacing: 0.08em; text-transform: uppercase; margin-left: auto; }
 /* ── ПЛЕЙСХОЛДЕР ДЛЯ ФОТО / ВИДЕО ── */
-.media-placeholder {
-  width: 100%;
-  height: 260px;
-  border-radius: 16px;
-  border: 2px dashed rgba(212,43,26,0.35);
-  background: rgba(255,106,45,0.04);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  overflow: hidden;
-  position: relative;
-}
-.media-placeholder video,
-.media-placeholder img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 14px;
-}
-.media-placeholder-label {
-  font-size: 18px;
-  color: rgba(212,43,26,0.5);
-  font-weight: 600;
-  text-align: center;
-  pointer-events: none;
-  z-index: 1;
-}
-.media-placeholder-hint {
-  font-size: 14px;
-  color: rgba(245,239,232,0.3);
-  text-align: center;
-  pointer-events: none;
-  z-index: 1;
-}
 .footer {
   padding: 20px 52px;
   border-top: 1px solid var(--line);
@@ -338,21 +300,21 @@ html, body {
             <div class="row-name">Классик</div>
             <div class="row-desc">Курица, капуста, морковь, огурец, помидор, классический соус — в лаваше</div>
           </div>
-          <div class="row-right"><div class="row-price">450 ₽</div><div class="row-weight">порция</div></div>
+          <div class="row-right"><div class="row-price">450 р.</div><div class="row-weight">порция</div></div>
         </div>
         <div class="row-item">
           <div class="row-left">
             <div class="row-name">Острая</div>
             <div class="row-desc">Курица, капуста, морковь, огурец, помидор, острый соус — в лаваше</div>
           </div>
-          <div class="row-right"><div class="row-price">470 ₽</div><div class="row-weight">порция</div></div>
+          <div class="row-right"><div class="row-price">470 р.</div><div class="row-weight">порция</div></div>
         </div>
         <div class="row-item">
           <div class="row-left">
             <div class="row-name">Сырная</div>
             <div class="row-desc">Курица, капуста, морковь, огурец, помидор, сырный соус, тёртая моцарелла</div>
           </div>
-          <div class="row-right"><div class="row-price">480 ₽</div><div class="row-weight">порция</div></div>
+          <div class="row-right"><div class="row-price">480 р.</div><div class="row-weight">порция</div></div>
         </div>
       </div>
     </div>
@@ -368,7 +330,7 @@ html, body {
         <div class="sauce-pill">Кетчуп</div>
         <div class="sauce-pill">Кавказский</div>
         <div class="sauce-pill">Чесночный</div>
-        <div class="sauce-price">100–120 ₽</div>
+        <div class="sauce-price">100–120 р.</div>
       </div>
     </div>
 
@@ -382,36 +344,36 @@ html, body {
           <div class="drinks-sub-head">Холодные</div>
           <div class="drink-row">
             <div><div class="drink-name">Морс комбо</div><div class="drink-vol">смородина, вишня, клюква · 350 мл</div></div>
-            <div class="drink-price">150 ₽</div>
+            <div class="drink-price">150 р.</div>
           </div>
           <div class="drink-row">
             <div><div class="drink-name">Газировка</div><div class="drink-vol">Кола / Фанта / Спрайт · 350 мл</div></div>
-            <div class="drink-price">169 ₽</div>
+            <div class="drink-price">169 р.</div>
           </div>
           <div class="drink-row">
             <div><div class="drink-name">Вода</div><div class="drink-vol">300 мл</div></div>
-            <div class="drink-price">80 ₽</div>
+            <div class="drink-price">80 р.</div>
           </div>
           <div class="drinks-sub-head" style="margin-top:4px;">Чай</div>
           <div class="drink-row">
             <div><div class="drink-name">Чай</div><div class="drink-vol">350 мл</div></div>
-            <div class="drink-price">120 ₽</div>
+            <div class="drink-price">120 р.</div>
           </div>
           <div class="drink-row">
             <div><div class="drink-name">Горячая вода</div><div class="drink-vol">350 мл</div></div>
-            <div class="drink-price">30 ₽</div>
+            <div class="drink-price">30 р.</div>
           </div>
         </div>
         <div class="drinks-col">
-          <div class="drinks-sub-head">Кофе · 160 ₽</div>
-          <div class="drink-row"><div class="drink-name">Американо</div><div class="drink-price">150 ₽</div></div>
-          <div class="drink-row"><div class="drink-name">Капучино</div><div class="drink-price">160 ₽</div></div>
-          <div class="drink-row"><div class="drink-name">Латте</div><div class="drink-price">160 ₽</div></div>
-          <div class="drink-row"><div class="drink-name">Флэт уайт</div><div class="drink-price">160 ₽</div></div>
-          <div class="drink-row"><div class="drink-name">Мокачино</div><div class="drink-price">160 ₽</div></div>
-          <div class="drink-row"><div class="drink-name">Раф банановый</div><div class="drink-price">160 ₽</div></div>
-          <div class="drink-row"><div class="drink-name">Горячий шоколад</div><div class="drink-price">160 ₽</div></div>
-          <div class="drink-row"><div class="drink-name">Шоколад с молоком</div><div class="drink-price">160 ₽</div></div>
+          <div class="drinks-sub-head">Кофе · 160 р.</div>
+          <div class="drink-row"><div class="drink-name">Американо</div><div class="drink-price">150 р.</div></div>
+          <div class="drink-row"><div class="drink-name">Капучино</div><div class="drink-price">160 р.</div></div>
+          <div class="drink-row"><div class="drink-name">Латте</div><div class="drink-price">160 р.</div></div>
+          <div class="drink-row"><div class="drink-name">Флэт уайт</div><div class="drink-price">160 р.</div></div>
+          <div class="drink-row"><div class="drink-name">Мокачино</div><div class="drink-price">160 р.</div></div>
+          <div class="drink-row"><div class="drink-name">Раф банановый</div><div class="drink-price">160 р.</div></div>
+          <div class="drink-row"><div class="drink-name">Горячий шоколад</div><div class="drink-price">160 р.</div></div>
+          <div class="drink-row"><div class="drink-name">Шоколад с молоком</div><div class="drink-price">160 р.</div></div>
         </div>
       </div>
     </div>
@@ -433,17 +395,7 @@ html, body {
       <div class="soon-badge">— скоро</div>
     </div>
   </div>
-  <!-- ФОТО / ВИДЕО — вставьте свою ссылку (Экран 2) -->
-  <div style="padding: 0 44px;">
-    <div class="media-placeholder" id="media-block-2">
-      <!-- ВСТАВИТЬ ВИДЕО: замените строку ниже, убрав комментарий -->
-      <!-- <video src="ССЫЛКА_НА_ВИДЕО.mp4" autoplay loop muted playsinline></video> -->
-      <!-- ВСТАВИТЬ ФОТО: замените строку ниже, убрав комментарий -->
-      <!-- <img src="ССЫЛКА_НА_ФОТО.jpg" alt=""> -->
-      <div class="media-placeholder-label">📸 Фото / видео</div>
-      <div class="media-placeholder-hint">Загрузите файл на GitHub и вставьте ссылку выше</div>
-    </div>
-  </div>
+</div>
   <div style="height:28px;"></div>
 
   <div class="footer">
