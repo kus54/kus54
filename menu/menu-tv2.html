@@ -13,7 +13,7 @@
     width: 100vh;
     min-height: 100vw;
     transform-origin: top left;
-    transform: rotate(90deg) translateY(-100vh);
+    transform: rotate(-90deg) translateX(-100vw);
     overflow: hidden;
   }
   .page { width: 100% !important; min-height: 100vw !important; }
@@ -122,29 +122,29 @@ html, body {
 
 .body {
   flex: 1;
-  padding: 14px 24px 10px;
+  padding: 8px 16px 8px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 7px;
 }
 
 .section {
   background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 14px;
   overflow: hidden;
 }
 .section-head {
-  padding: 11px 18px 9px;
+  padding: 7px 12px 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   border-bottom: 1px solid var(--line);
   background: linear-gradient(90deg, rgba(212,43,26,.18), rgba(212,43,26,.04) 68%, transparent);
 }
 .section-title {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 900;
   letter-spacing: -.03em;
   display: flex;
@@ -152,7 +152,7 @@ html, body {
   gap: 8px;
 }
 .section-sub {
-  font-size: 15px;
+  font-size: 12px;
   color: var(--muted);
   text-align: right;
 }
@@ -166,11 +166,11 @@ html, body {
   width: fit-content;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
-  font-size: 13px;
+  padding: 3px 8px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  border-radius: 8px;
+  border-radius: 7px;
   background: var(--fire);
   color: #fff;
   animation: glow-pulse 3s ease-in-out infinite;
@@ -179,8 +179,8 @@ html, body {
 .row-list { display: flex; flex-direction: column; }
 .row-item {
   display: flex;
-  gap: 10px;
-  padding: 11px 18px;
+  gap: 8px;
+  padding: 7px 12px;
   border-bottom: 1px solid var(--line);
 }
 .row-item:last-child { border-bottom: none; }
@@ -192,31 +192,31 @@ html, body {
   gap: 4px;
 }
 .row-name {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 800;
   line-height: 1.02;
 }
 .row-desc {
-  font-size: 14px;
+  font-size: 11px;
   color: var(--muted);
-  line-height: 1.22;
+  line-height: 1.14;
 }
 .row-right {
-  min-width: 150px;
+  min-width: 118px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 2px;
 }
 .row-price {
-  font-size: 38px;
+  font-size: 28px;
   font-weight: 900;
   color: var(--accent-soft);
   line-height: 1;
   white-space: nowrap;
 }
 .row-weight {
-  font-size: 15px;
+  font-size: 12px;
   color: var(--muted);
 }
 
@@ -225,48 +225,61 @@ html, body {
   grid-template-columns: 1fr 1fr;
 }
 .grill-item {
-  padding: 11px 14px;
+  padding: 7px 9px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 .grill-item:nth-child(even) { border-right: none; }
 .grill-item:nth-last-child(-n+2) { border-bottom: none; }
 .grill-name {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 800;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 .grill-desc {
-  font-size: 13px;
+  font-size: 10px;
   color: var(--muted);
-  line-height: 1.18;
+  line-height: 1.12;
 }
 .grill-price {
-  margin-top: 6px;
-  font-size: 27px;
+  margin-top: 4px;
+  font-size: 20px;
   font-weight: 900;
   color: var(--accent-soft);
   line-height: 1;
 }
 
+.compact-rows .row-item {
+  padding: 6px 12px;
+}
+.compact-rows .row-name {
+  font-size: 17px;
+}
+.compact-rows .row-desc {
+  font-size: 10px;
+}
+.compact-rows .row-price {
+  font-size: 24px;
+}
+
 .sauce-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 14px 18px 16px;
+  gap: 6px;
+  padding: 8px 12px 10px;
   align-items: center;
 }
 .sauce-pill {
-  padding: 8px 14px;
+  padding: 5px 9px;
   border-radius: 999px;
   background: rgba(212,43,26,.10);
   border: 1px solid rgba(212,43,26,.25);
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 700;
 }
 .sauce-price {
   margin-left: auto;
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 900;
   color: var(--accent-soft);
 }
@@ -280,8 +293,8 @@ html, body {
 }
 .drinks-col:last-child { border-right: none; }
 .drinks-sub-head {
-  padding: 8px 16px;
-  font-size: 13px;
+  padding: 6px 10px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -291,81 +304,36 @@ html, body {
 .drink-row {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-  padding: 9px 16px;
+  gap: 6px;
+  padding: 5px 10px;
   border-bottom: 1px solid rgba(255,255,255,.05);
 }
 .drink-row:last-child { border-bottom: none; }
 .drink-name {
-  font-size: 19px;
+  font-size: 14px;
   font-weight: 700;
 }
 .drink-vol {
-  font-size: 13px;
+  font-size: 10px;
   color: var(--muted);
   margin-top: 2px;
 }
 .drink-price {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 900;
   color: var(--accent-soft);
   white-space: nowrap;
 }
 
-.vip-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.vip-item {
-  padding: 12px 14px 14px;
-  border-right: 1px solid var(--line);
-  background: linear-gradient(135deg, rgba(212,43,26,.08), rgba(255,180,70,.03));
-}
-.vip-item:last-child { border-right: none; }
-.vip-badge {
-  display: inline-flex;
-  width: fit-content;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-  border-radius: 8px;
-  color: #ffb689;
-  border: 1px solid rgba(255,170,110,.35);
-  background: rgba(212,43,26,.16);
-  margin-bottom: 8px;
-}
-.vip-name {
-  font-size: 21px;
-  font-weight: 800;
-}
-.vip-desc {
-  margin-top: 4px;
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.2;
-}
-.vip-price {
-  margin-top: 8px;
-  font-size: 32px;
-  font-weight: 900;
-  color: var(--accent-soft);
-}
-.vip-weight {
-  margin-top: 2px;
-  font-size: 12px;
-  color: rgba(247,241,234,.48);
-}
-
 .beer-note {
-  padding: 14px 18px 16px;
-  font-size: 17px;
+  padding: 8px 12px 10px;
+  font-size: 13px;
   color: rgba(247,241,234,.44);
 }
 .soon-card {
-  margin: 0 24px 10px;
-  padding: 12px 16px;
-  border-radius: 16px;
+  margin: 0 16px 8px;
+  padding: 8px 12px;
+  border-radius: 14px;
   border: 1px dashed rgba(212,43,26,.30);
   display: flex;
   justify-content: space-between;
@@ -373,28 +341,16 @@ html, body {
   color: rgba(247,241,234,.62);
 }
 .soon-title {
-  font-size: 19px;
+  font-size: 15px;
   font-weight: 700;
 }
 .soon-badge {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 800;
   color: var(--accent-soft);
   text-transform: uppercase;
 }
 
-.footer {
-  padding: 12px 24px 14px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-left,
-.footer-right {
-  font-size: 15px;
-  color: rgba(247,241,234,.32);
-}
 </style>
 </head>
 <body>
@@ -517,25 +473,41 @@ html, body {
       </div>
     </div>
 
-    <div class="section">
+    <div class="section compact-rows">
       <div class="section-head">
-        <div class="section-title">Новинки <span class="fire-deco">✨</span></div>
-        <div class="section-sub">на огне</div>
+        <div class="section-title">Комплексы</div>
+        <div class="section-sub">мясо + лук + соус + лаваш</div>
       </div>
-      <div class="vip-grid">
-        <div class="vip-item">
-          <div class="vip-badge">✨ Новинка</div>
-          <div class="vip-name">Креветка на мангале</div>
-          <div class="vip-desc">Крупные креветки на живом огне — сочные, с дымком и чесночным маслом</div>
-          <div class="vip-price">800 р.</div>
-          <div class="vip-weight">уточняйте вес</div>
+      <div class="row-list">
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Комплекс №1</div>
+            <div class="row-desc">Свинина на углях, лук, соус, лаваш</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">490 р.</div>
+            <div class="row-weight">порция</div>
+          </div>
         </div>
-        <div class="vip-item">
-          <div class="vip-badge">✨ Новинка</div>
-          <div class="vip-name">Сёмга на мангале</div>
-          <div class="vip-desc">Стейк сёмги на углях — нежная рыба с хрустящей корочкой</div>
-          <div class="vip-price">1 100 р.</div>
-          <div class="vip-weight">уточняйте вес</div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Комплекс №2</div>
+            <div class="row-desc">Колбаски, картофель по-деревенски, соус, лаваш</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">490 р.</div>
+            <div class="row-weight">порция</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-left">
+            <div class="row-name">Комплекс №3</div>
+            <div class="row-desc">Куриное бедро на углях, лук, соус, лаваш</div>
+          </div>
+          <div class="row-right">
+            <div class="row-price">460 р.</div>
+            <div class="row-weight">порция</div>
+          </div>
         </div>
       </div>
     </div>
@@ -612,10 +584,6 @@ html, body {
     <div class="soon-badge">скоро</div>
   </div>
 
-  <div class="footer">
-    <div class="footer-left">Мы рады вашим вопросам — обращайтесь к нам</div>
-    <div class="footer-right">Экран 2</div>
-  </div>
 </div>
 </body>
 </html>
