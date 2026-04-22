@@ -137,7 +137,7 @@ html, body {
   border-radius: 50%;
   background: radial-gradient(circle, var(--spark-core, #ffd2a8), var(--spark-edge, #ff6b6b) 58%, rgba(212,43,26,.16) 100%);
   box-shadow: 0 0 12px var(--spark-glow, rgba(255,107,107,.85));
-  animation: spark-rise calc(var(--dur, 3.8s) * 2) ease-out infinite;
+  animation: spark-rise calc(var(--dur, 3.8s) * 3) ease-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
@@ -290,7 +290,7 @@ html, body {
 
 .combo-grid-hero {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 7px;
   padding: 9px 12px 10px;
 }
@@ -302,6 +302,18 @@ html, body {
   background:
     radial-gradient(circle at top right, rgba(255,107,107,.15), transparent 42%),
     linear-gradient(180deg, rgba(212,43,26,.18), rgba(89,16,15,.30));
+}
+.combo-card-1 {
+  border-color: rgba(212,43,26,.34);
+  background:
+    radial-gradient(circle at top right, rgba(255,130,120,.18), transparent 42%),
+    linear-gradient(180deg, rgba(186,34,28,.28), rgba(97,18,16,.34));
+}
+.combo-card-3 {
+  border-color: rgba(190,86,52,.34);
+  background:
+    radial-gradient(circle at top right, rgba(255,188,138,.16), transparent 42%),
+    linear-gradient(180deg, rgba(153,58,30,.24), rgba(77,23,16,.34));
 }
 .combo-tag {
   display: inline-flex;
@@ -335,15 +347,14 @@ html, body {
   color: var(--accent-soft);
   line-height: .95;
 }
-.margin-snack {
-  background: linear-gradient(180deg, rgba(212,43,26,.16), rgba(212,43,26,.05));
+.snack-split {
+  padding: 0;
 }
-.margin-snack .grill-name::after {
-  content: " • upsell";
-  color: rgba(255,217,189,.75);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .04em;
+.snack-split-item {
+  padding: 7px 9px;
+}
+.snack-split-item + .snack-split-item {
+  border-top: 1px solid var(--line);
 }
 
 .snack-footer {
@@ -514,19 +525,22 @@ html, body {
         <div class="section-sub">мясо + лук + соус + лаваш</div>
       </div>
       <div class="combo-grid-hero">
-        <div class="combo-card">
+        <div class="combo-card combo-card-1">
           <div class="combo-tag">сильный чек</div>
           <div class="combo-name">Комплекс №1</div>
           <div class="combo-desc">Свинина на углях, лук, соус, лаваш</div>
           <div class="combo-price-big">490 р.</div>
         </div>
+        <!-- Комплекс №2 временно скрыт. Чтобы вернуть, просто снимите комментарий с блока ниже и при желании верните 3 колонки в .combo-grid-hero -->
+        <!--
         <div class="combo-card">
           <div class="combo-tag">добирают к пиву</div>
           <div class="combo-name">Комплекс №2</div>
           <div class="combo-desc">Колбаски, картофель по-деревенски, соус, лаваш</div>
           <div class="combo-price-big">490 р.</div>
         </div>
-        <div class="combo-card">
+        -->
+        <div class="combo-card combo-card-3">
           <div class="combo-tag">быстрый выбор</div>
           <div class="combo-name">Комплекс №3</div>
           <div class="combo-desc">Куриное бедро на углях, лук, соус, лаваш</div>
@@ -555,12 +569,12 @@ html, body {
           <div class="grill-desc">По домашнему рецепту</div>
           <div class="grill-price">120 р.</div>
         </div>
-        <div class="grill-item margin-snack">
+        <div class="grill-item">
           <div class="grill-name">Креветки в панировке</div>
           <div class="grill-desc">Хрустящие, с соусом</div>
           <div class="grill-price">250 р.</div>
         </div>
-        <div class="grill-item margin-snack">
+        <div class="grill-item">
           <div class="grill-name">Картофель фри</div>
           <div class="grill-desc">Золотистый, хрустящий</div>
           <div class="grill-price">180 р.</div>
@@ -570,15 +584,22 @@ html, body {
           <div class="grill-desc">С румяной корочкой и специями</div>
           <div class="grill-price">180 р.</div>
         </div>
-        <div class="grill-item margin-snack">
+        <div class="grill-item">
           <div class="grill-name">Сырные палочки</div>
           <div class="grill-desc">С тягучим сыром внутри</div>
           <div class="grill-price">200 р.</div>
         </div>
-        <div class="grill-item">
-          <div class="grill-name">Лаваш / Лепёшка</div>
-          <div class="grill-desc">Армянский тонкий / узбекская</div>
-          <div class="grill-price">50 р.</div>
+        <div class="grill-item snack-split">
+          <div class="snack-split-item">
+            <div class="grill-name">Наггетсы</div>
+            <div class="grill-desc">Хрустящие куриные кусочки</div>
+            <div class="grill-price">250 р.</div>
+          </div>
+          <div class="snack-split-item">
+            <div class="grill-name">Цезарь с курицей</div>
+            <div class="grill-desc">Листья салата, курица, соус · 200 г</div>
+            <div class="grill-price">300 р.</div>
+          </div>
         </div>
       </div>
       <div class="snack-footer">
