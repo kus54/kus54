@@ -57,6 +57,7 @@ html, body {
   .drink-name         — названия напитков
   .drink-vol          — объём напитков
   .drink-price        — цены напитков
+  .drink-price-hit    — увеличенная цена у Морса и Чая
   .soon-title         — "Настойки 18+"
   .soon-badge         — слово "скоро"
   .combo-price-big    — крупная цена в акцентных карточках комплексов
@@ -136,7 +137,7 @@ html, body {
   border-radius: 50%;
   background: radial-gradient(circle, var(--spark-core, #ffd2a8), var(--spark-edge, #ff6b6b) 58%, rgba(212,43,26,.16) 100%);
   box-shadow: 0 0 12px var(--spark-glow, rgba(255,107,107,.85));
-  animation: spark-rise calc(var(--dur, 3.8s) * 1.6) ease-out infinite;
+  animation: spark-rise calc(var(--dur, 3.8s) * 2) ease-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
@@ -443,6 +444,9 @@ html, body {
   color: var(--accent-soft);
   white-space: nowrap;
 }
+.drink-price-hit {
+  font-size: 28px;
+}
 
 .beer-note {
   padding: 8px 12px 10px;
@@ -600,14 +604,14 @@ html, body {
               <div class="drink-name">Морс комбо</div>
               <div class="drink-vol">смородина, вишня, клюква · 350 мл</div>
             </div>
-            <div class="drink-price">150 р.</div>
+            <div class="drink-price drink-price-hit">150 р.</div>
           </div>
           <div class="drink-row">
             <div>
               <div class="drink-name">Чай</div>
               <div class="drink-vol">350 мл</div>
             </div>
-            <div class="drink-price">120 р.</div>
+            <div class="drink-price drink-price-hit">120 р.</div>
           </div>
         </div>
 
