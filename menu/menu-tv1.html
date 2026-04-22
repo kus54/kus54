@@ -62,7 +62,8 @@ html, body {
   .spot-price          — самая крупная цена в карточках "Шашлык в лаваше"
   .veg-prefix          — слово "порция" перед ценой в блоке "Овощи и гриль"
   .extra-price         — цена у добавок и хлеба внизу экрана
-  .drink-price-hit     — если понадобится отдельно усилить важные цены
+  .shawarma-line-name  — строка формата "Название — 350 г"
+  .shawarma-line-price — крупная цена в блоке шаурмы
 */
 
 @keyframes ember-breathe {
@@ -138,7 +139,7 @@ html, body {
   border-radius: 50%;
   background: radial-gradient(circle, var(--spark-core, #ffd2a8), var(--spark-edge, #ff6b6b) 58%, rgba(212,43,26,.16) 100%);
   box-shadow: 0 0 12px var(--spark-glow, rgba(255,107,107,.85));
-  animation: spark-rise calc(var(--dur, 3.8s) * 2) ease-out infinite;
+  animation: spark-rise calc(var(--dur, 3.8s) * 3) ease-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
@@ -262,11 +263,11 @@ html, body {
   line-height: 1.05;
 }
 .grill-anchor-price {
-  font-size: 37px;
+  font-size: 40px;
   font-weight: 900;
   color: var(--accent-soft);
   line-height: .92;
-  min-width: 86px;
+  min-width: 94px;
   text-align: right;
 }
 .grill-price-fixed {
@@ -278,6 +279,24 @@ html, body {
 .grill-weight {
   font-size: 13px;
   color: var(--muted);
+}
+.featured-grill {
+  min-height: 184px;
+}
+.featured-grill .grill-bottom {
+  margin-top: auto;
+}
+.grill-split {
+  padding: 0;
+}
+.split-dish {
+  padding: 9px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.split-dish + .split-dish {
+  border-top: 1px solid var(--line);
 }
 
 .row-list { display: flex; flex-direction: column; }
@@ -398,15 +417,29 @@ html, body {
   color: #ff7f7f;
   text-align: right;
 }
-.margin-row {
-  background: linear-gradient(90deg, rgba(212,43,26,.18), rgba(212,43,26,.06) 62%, transparent 100%);
+.shawarma-line .row-item {
+  align-items: center;
+  gap: 10px;
 }
-.margin-row .row-name::after {
-  content: "  • маржа";
+.shawarma-line-name {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.04;
+  color: #fff5ee;
+}
+.shawarma-line-name span {
   color: rgba(255,217,189,.78);
-  font-size: 10px;
   font-weight: 800;
-  letter-spacing: .04em;
+}
+.shawarma-line .row-desc {
+  margin-top: 3px;
+}
+.shawarma-line-price {
+  font-size: 37px;
+  font-weight: 900;
+  line-height: .95;
+  color: var(--accent-soft);
+  white-space: nowrap;
 }
 
 .extras-bar {
@@ -477,7 +510,7 @@ html, body {
 .screen1-meat { flex: 1.62; }
 .screen1-veg { flex: 1.00; }
 .screen1-lavash { flex: 1.02; }
-.screen1-shawarma { flex: 1.34; }
+.screen1-shawarma { flex: 1.38; }
 
 .veg-price-line {
   display: flex;
@@ -494,8 +527,8 @@ html, body {
 .screen1-veg .row-price {
   font-size: 35px;
 }
-.screen1-shawarma .row-price {
-  font-size: 34px;
+.screen1-shawarma .shawarma-line-price {
+  font-size: 37px;
 }
 
 </style>
@@ -526,7 +559,7 @@ html, body {
       </div>
       <div class="section-note">Цена за 100 г · взвешиваем при вас · чем больше берёте — выгоднее</div>
       <div class="grill-grid">
-        <div class="grill-item">
+        <div class="grill-item featured-grill">
           <div class="hit-badge">🔥 Хит</div>
           <div class="grill-name">Шашлык из свинины</div>
           <div class="grill-desc">Свиная шейка в авторском маринаде — сочная, с аппетитной корочкой</div>
@@ -539,7 +572,7 @@ html, body {
           </div>
         </div>
 
-        <div class="grill-item">
+        <div class="grill-item featured-grill">
           <div class="hit-badge">🔥 Хит</div>
           <div class="grill-name">Люля-кебаб</div>
           <div class="grill-desc">Рубленая свинина и говядина со специями на шампуре</div>
@@ -579,12 +612,24 @@ html, body {
           </div>
         </div>
 
-        <div class="grill-item">
-          <div class="grill-name">Стейк бедра куриный</div>
-          <div class="grill-desc">Сочный куриный стейк на живом огне</div>
-          <div class="grill-bottom">
-            <div class="grill-price-fixed">590 р.</div>
-            <div class="grill-weight">1 шт.</div>
+        <div class="grill-item grill-split">
+          <div class="split-dish">
+            <div class="grill-name">Креветки на гриле</div>
+            <div class="grill-desc">Обжаренные на огне креветки с дымком</div>
+            <div class="grill-bottom">
+              <!-- TODO: заменить цену креветок после утверждения -->
+              <div class="grill-price-fixed">350 р.</div>
+              <div class="grill-weight">200 г</div>
+            </div>
+          </div>
+          <div class="split-dish">
+            <div class="grill-name">Стейк из сёмги</div>
+            <div class="grill-desc">Нежная сёмга на гриле, сочная внутри</div>
+            <div class="grill-bottom">
+              <!-- TODO: заменить цену сёмги после утверждения -->
+              <div class="grill-price-fixed">650 р.</div>
+              <div class="grill-weight">300 г</div>
+            </div>
           </div>
         </div>
       </div>
@@ -657,35 +702,32 @@ html, body {
         <div class="section-title">Шаурма <span class="fire-deco">🔥</span></div>
         <div class="section-sub">выгодно выделяем</div>
       </div>
-      <div class="row-list compact-rows">
-        <div class="row-item margin-row">
+      <div class="row-list compact-rows shawarma-line">
+        <div class="row-item">
           <div class="row-left">
-            <div class="row-name">Классик</div>
+            <div class="shawarma-line-name">Классик <span>— 350 г</span></div>
             <div class="row-desc">Курица, капуста, морковь, огурец, помидор, классический соус</div>
           </div>
           <div class="row-right">
-            <div class="row-price">450 р.</div>
-            <div class="row-weight">порция</div>
+            <div class="shawarma-line-price">450 р.</div>
           </div>
         </div>
-        <div class="row-item margin-row">
+        <div class="row-item">
           <div class="row-left">
-            <div class="row-name">Острая</div>
+            <div class="shawarma-line-name">Острая <span>— 350 г</span></div>
             <div class="row-desc">Курица, капуста, морковь, огурец, помидор, острый соус</div>
           </div>
           <div class="row-right">
-            <div class="row-price">470 р.</div>
-            <div class="row-weight">порция</div>
+            <div class="shawarma-line-price">470 р.</div>
           </div>
         </div>
-        <div class="row-item margin-row">
+        <div class="row-item">
           <div class="row-left">
-            <div class="row-name">Сырная</div>
+            <div class="shawarma-line-name">Сырная <span>— 350 г</span></div>
             <div class="row-desc">Курица, овощи, сырный соус, тёртая моцарелла</div>
           </div>
           <div class="row-right">
-            <div class="row-price">480 р.</div>
-            <div class="row-weight">порция</div>
+            <div class="shawarma-line-price">480 р.</div>
           </div>
         </div>
       </div>
