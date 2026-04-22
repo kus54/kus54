@@ -62,6 +62,7 @@ html, body {
   .spot-price          — самая крупная цена в карточках "Шашлык в лаваше"
   .veg-prefix          — слово "порция" перед ценой в блоке "Овощи и гриль"
   .extra-price         — цена у добавок и хлеба внизу экрана
+  .drink-price-hit     — если понадобится отдельно усилить важные цены
 */
 
 @keyframes ember-breathe {
@@ -137,7 +138,7 @@ html, body {
   border-radius: 50%;
   background: radial-gradient(circle, var(--spark-core, #ffd2a8), var(--spark-edge, #ff6b6b) 58%, rgba(212,43,26,.16) 100%);
   box-shadow: 0 0 12px var(--spark-glow, rgba(255,107,107,.85));
-  animation: spark-rise calc(var(--dur, 3.8s) * 1.6) ease-out infinite;
+  animation: spark-rise calc(var(--dur, 3.8s) * 2) ease-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
@@ -245,11 +246,12 @@ html, body {
   color: rgba(247,241,234,.52);
 }
 .grill-anchor {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  width: fit-content;
-  padding: 4px 7px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 8px;
+  width: 100%;
+  padding: 5px 8px;
   border-radius: 8px;
   background: rgba(212,43,26,.14);
   border: 1px solid rgba(212,43,26,.30);
@@ -257,12 +259,15 @@ html, body {
 .grill-anchor-qty {
   font-size: 12px;
   color: rgba(247,241,234,.68);
+  line-height: 1.05;
 }
 .grill-anchor-price {
-  font-size: 34px;
+  font-size: 37px;
   font-weight: 900;
   color: var(--accent-soft);
-  line-height: 1;
+  line-height: .92;
+  min-width: 86px;
+  text-align: right;
 }
 .grill-price-fixed {
   font-size: 31px;
@@ -446,13 +451,14 @@ html, body {
   border-radius: 999px;
   background: rgba(212,43,26,.12);
   border: 1px solid rgba(212,43,26,.22);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: #fff1e8;
 }
 .extra-price {
   color: rgba(255,217,189,.86);
   font-weight: 900;
+  font-size: 15px;
 }
 .bread-item {
   display: flex;
@@ -463,7 +469,7 @@ html, body {
   border-radius: 10px;
   background: rgba(212,43,26,.10);
   border: 1px solid rgba(212,43,26,.18);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: #fff1e8;
 }
