@@ -135,26 +135,26 @@ html, body {
   border-radius: 50%;
   background: radial-gradient(circle, var(--spark-core, #ffd2a8), var(--spark-edge, #ff6b6b) 58%, rgba(212,43,26,.16) 100%);
   box-shadow: 0 0 12px var(--spark-glow, rgba(255,107,107,.85));
-  animation: spark-rise calc(var(--dur, 3.8s) * 1.3) ease-out infinite;
+  animation: spark-rise calc(var(--dur, 3.8s) * 1.6) ease-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
 .body {
   flex: 1;
-  padding: 10px 16px 10px;
+  padding: 8px 14px 8px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 6px;
 }
 
 .section {
   background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
 }
 .section-head {
-  padding: 8px 14px 7px;
+  padding: 7px 10px 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -167,7 +167,7 @@ html, body {
     inset 0 -1px 0 rgba(0,0,0,.24);
 }
 .section-title {
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 900;
   letter-spacing: -.03em;
   display: flex;
@@ -176,13 +176,13 @@ html, body {
   color: #fff6ef;
 }
 .section-sub {
-  font-size: 15px;
+  font-size: 13px;
   color: rgba(255,239,231,.82);
   text-align: right;
 }
 .section-note {
-  padding: 6px 12px;
-  font-size: 14px;
+  padding: 5px 10px;
+  font-size: 12px;
   color: rgba(247,241,234,.40);
   border-bottom: 1px solid var(--line);
 }
@@ -198,7 +198,7 @@ html, body {
   grid-template-columns: 1fr 1fr;
 }
 .grill-item {
-  padding: 11px 13px 10px;
+  padding: 9px 10px 8px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   display: flex;
@@ -214,7 +214,7 @@ html, body {
   align-items: center;
   gap: 6px;
   padding: 2px 7px;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 900;
   text-transform: uppercase;
   border-radius: 7px;
@@ -223,23 +223,23 @@ html, body {
   animation: glow-pulse 3s ease-in-out infinite;
 }
 .grill-name {
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 800;
   line-height: 1.02;
 }
 .grill-desc {
-  font-size: 14px;
-  line-height: 1.16;
+  font-size: 12px;
+  line-height: 1.12;
   color: var(--muted);
 }
 .grill-bottom {
-  margin-top: 4px;
+  margin-top: 3px;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 .grill-measure {
-  font-size: 15px;
+  font-size: 13px;
   color: rgba(247,241,234,.52);
 }
 .grill-anchor {
@@ -247,29 +247,29 @@ html, body {
   align-items: baseline;
   gap: 6px;
   width: fit-content;
-  padding: 5px 8px;
-  border-radius: 9px;
+  padding: 4px 7px;
+  border-radius: 8px;
   background: rgba(212,43,26,.14);
   border: 1px solid rgba(212,43,26,.30);
 }
 .grill-anchor-qty {
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(247,241,234,.68);
 }
 .grill-anchor-price {
-  font-size: 35px;
+  font-size: 31px;
   font-weight: 900;
   color: var(--accent-soft);
   line-height: 1;
 }
 .grill-price-fixed {
-  font-size: 35px;
+  font-size: 31px;
   font-weight: 900;
   line-height: 1;
   color: var(--accent-soft);
 }
 .grill-weight {
-  font-size: 15px;
+  font-size: 13px;
   color: var(--muted);
 }
 
@@ -277,7 +277,7 @@ html, body {
 .row-item {
   display: flex;
   gap: 10px;
-  padding: 9px 14px;
+  padding: 7px 10px;
   border-bottom: 1px solid var(--line);
 }
 .row-item:last-child { border-bottom: none; }
@@ -289,57 +289,57 @@ html, body {
   gap: 4px;
 }
 .row-name {
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 800;
   line-height: 1.02;
 }
 .row-desc {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--muted);
-  line-height: 1.16;
+  line-height: 1.12;
 }
 .row-right {
-  min-width: 126px;
+  min-width: 112px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 2px;
 }
 .row-price {
-  font-size: 35px;
+  font-size: 31px;
   font-weight: 900;
   color: var(--accent-soft);
   line-height: 1;
   white-space: nowrap;
 }
 .row-weight {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--muted);
 }
 
 .compact-rows .row-item {
-  padding: 8px 12px;
+  padding: 7px 10px;
 }
 .compact-rows .row-name {
-  font-size: 21px;
+  font-size: 18px;
 }
 .compact-rows .row-desc {
-  font-size: 13px;
+  font-size: 11px;
 }
 .compact-rows .row-price {
-  font-size: 33px;
+  font-size: 29px;
 }
 
 .spot-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  padding: 9px 12px 10px;
+  gap: 7px;
+  padding: 7px 10px 8px;
 }
 .spot-card {
   position: relative;
-  padding: 10px 12px 11px;
-  border-radius: 14px;
+  padding: 8px 10px 9px;
+  border-radius: 12px;
   border: 1px solid rgba(212,43,26,.28);
   background:
     radial-gradient(circle at top right, rgba(255,107,107,.18), transparent 38%),
@@ -350,42 +350,42 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 3px 8px;
+  padding: 2px 7px;
   border-radius: 999px;
   background: rgba(255,245,236,.10);
   border: 1px solid rgba(255,217,189,.20);
   color: var(--accent-cream);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 900;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
 .spot-name {
-  margin-top: 7px;
-  font-size: 24px;
+  margin-top: 5px;
+  font-size: 20px;
   font-weight: 900;
   line-height: .98;
 }
 .spot-desc {
-  margin-top: 5px;
-  font-size: 13px;
-  line-height: 1.16;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.12;
   color: rgba(247,241,234,.78);
 }
 .spot-meta {
-  margin-top: 9px;
+  margin-top: 6px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 8px;
 }
 .spot-hint {
-  font-size: 13px;
+  font-size: 11px;
   color: rgba(255,217,189,.78);
   line-height: 1.1;
 }
 .spot-price {
-  font-size: 42px;
+  font-size: 35px;
   font-weight: 900;
   line-height: .92;
   color: #ff7f7f;
@@ -397,18 +397,18 @@ html, body {
 .margin-row .row-name::after {
   content: "  • маржа";
   color: rgba(255,217,189,.78);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: .04em;
 }
 
 .addon-bar {
-  padding: 8px 12px 10px;
+  padding: 6px 10px 8px;
   border-top: 1px solid rgba(255,255,255,.06);
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
 }
 .addon-title {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -417,8 +417,8 @@ html, body {
 .addon-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 8px;
+  gap: 6px;
+  margin-top: 6px;
 }
 .addon-pill {
   display: inline-flex;
@@ -426,11 +426,11 @@ html, body {
   justify-content: space-between;
   gap: 8px;
   min-width: 0;
-  padding: 6px 10px;
+  padding: 5px 8px;
   border-radius: 999px;
   background: rgba(212,43,26,.12);
   border: 1px solid rgba(212,43,26,.22);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   color: #fff1e8;
 }
@@ -440,12 +440,12 @@ html, body {
 }
 
 .bread-bar {
-  padding: 8px 12px 10px;
+  padding: 6px 10px 8px;
   border-top: 1px solid rgba(255,255,255,.06);
   background: linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,.008));
 }
 .bread-title {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -454,19 +454,19 @@ html, body {
 .bread-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 6px;
+  margin-top: 6px;
 }
 .bread-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  padding: 7px 10px;
-  border-radius: 12px;
+  padding: 5px 8px;
+  border-radius: 10px;
   background: rgba(212,43,26,.10);
   border: 1px solid rgba(212,43,26,.18);
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   color: #fff1e8;
 }
