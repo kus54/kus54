@@ -291,13 +291,13 @@ html, body {
 .combo-grid-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 7px;
-  padding: 9px 12px 10px;
+  gap: 6px;
+  padding: 7px 10px 8px;
 }
 .combo-card {
   position: relative;
-  padding: 9px 10px 10px;
-  border-radius: 14px;
+  padding: 7px 8px 8px;
+  border-radius: 12px;
   border: 1px solid rgba(212,43,26,.26);
   background:
     radial-gradient(circle at top right, rgba(255,107,107,.15), transparent 42%),
@@ -317,32 +317,32 @@ html, body {
 }
 .combo-tag {
   display: inline-flex;
-  padding: 3px 7px;
+  padding: 2px 6px;
   border-radius: 999px;
   background: rgba(255,245,236,.10);
   border: 1px solid rgba(255,217,189,.18);
   color: var(--accent-cream);
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 900;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
 .combo-name {
-  margin-top: 7px;
-  font-size: 20px;
+  margin-top: 5px;
+  font-size: 18px;
   font-weight: 900;
   line-height: .98;
 }
 .combo-desc {
-  margin-top: 5px;
-  font-size: 12px;
-  line-height: 1.16;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.14;
   color: rgba(247,241,234,.78);
-  min-height: 64px;
+  min-height: 52px;
 }
 .combo-price-big {
-  margin-top: 8px;
-  font-size: 41px;
+  margin-top: 6px;
+  font-size: 36px;
   font-weight: 900;
   color: var(--accent-soft);
   line-height: .95;
@@ -464,34 +464,41 @@ html, body {
   font-size: 13px;
   color: rgba(247,241,234,.44);
 }
-.soon-card {
-  margin: 0 14px 5px;
-  padding: 7px 12px;
-  border-radius: 14px;
-  border: 1px dashed rgba(212,43,26,.30);
-  background: linear-gradient(90deg, rgba(212,43,26,.18), rgba(212,43,26,.05) 72%, transparent 100%);
+.soon-wrap {
+  padding: 0 14px 6px;
   display: flex;
+  justify-content: flex-end;
+}
+.soon-card {
+  width: 176px;
+  min-height: 118px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px dashed rgba(212,43,26,.34);
+  background:
+    radial-gradient(circle at top right, rgba(255,107,107,.14), transparent 40%),
+    linear-gradient(180deg, rgba(212,43,26,.16), rgba(212,43,26,.05));
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   color: rgba(247,241,234,.62);
 }
 .soon-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
+  line-height: 1.05;
 }
 .soon-badge {
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--accent-soft);
   text-transform: uppercase;
+  align-self: flex-start;
 }
-.soon-list {
-  margin-top: 4px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 10px;
+.soon-note {
   font-size: 12px;
-  color: rgba(247,241,234,.70);
+  color: rgba(247,241,234,.42);
+  line-height: 1.15;
 }
 
 .screen2-combos { flex: 1.02; }
@@ -651,12 +658,14 @@ html, body {
     </div>
   </div>
 
-  <div class="soon-card">
-    <div>
-      <div class="soon-title">Настойки 18+</div>
-      <div class="soon-list">Клюквенная · Лимонная · Перцовая · Фирменная · Томатная</div>
+  <div class="soon-wrap">
+    <div class="soon-card">
+      <div>
+        <div class="soon-title">Настойки 18+</div>
+        <div class="soon-note">Блок оставлен под будущую витрину</div>
+      </div>
+      <div class="soon-badge">скоро</div>
     </div>
-    <div class="soon-badge">скоро</div>
   </div>
 
 </div>
