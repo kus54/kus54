@@ -74,10 +74,10 @@ body{overflow:hidden}
   width:1080px;
   min-height:1920px;
   height:1920px;
-  padding:12px;
+  padding:8px;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:5px;
   overflow:hidden;
   background:
     radial-gradient(ellipse 88% 24% at 50% 100%, rgba(232,32,5,.18), transparent 58%),
@@ -130,14 +130,14 @@ body{overflow:hidden}
 .content{
   flex:1;
   display:grid;
-  grid-template-rows:1020px 495px 135px 180px;
-  gap:6px;
+  grid-template-rows:minmax(0, 1.54fr) minmax(0, .66fr) minmax(0, .18fr) minmax(0, .30fr);
+  gap:5px;
   min-height:0;
 }
 
 .section{
   border:1px solid var(--divider);
-  border-radius:18px;
+  border-radius:14px;
   background:var(--card);
   overflow:hidden;
   min-height:0;
@@ -145,14 +145,14 @@ body{overflow:hidden}
   flex-direction:column;
 }
 .section-head{
-  padding:7px 12px 6px;
+  padding:5px 10px 5px;
   background:var(--accent);
   border-bottom:1px solid rgba(255,255,255,.12);
   flex:0 0 auto;
 }
 .section-title{
   font-family:"BrandOswald",sans-serif;
-  font-size:30px;
+  font-size:28px;
   line-height:1;
   letter-spacing:.05em;
   color:var(--white);
@@ -190,8 +190,8 @@ body{overflow:hidden}
 .meat-col:last-child{border-right:none}
 
 .featured-meat{
-  min-height:178px;
-  padding:10px 12px;
+  min-height:166px;
+  padding:8px 10px;
   border-bottom:1px solid var(--divider);
   background:
     linear-gradient(180deg,rgba(13,10,9,.14),rgba(13,10,9,.54)),
@@ -205,16 +205,16 @@ body{overflow:hidden}
     url("Фото/Люля-кебаб_2.JPG") center/cover no-repeat;
 }
 .meat-name{
-  margin-top:7px;
+  margin-top:5px;
   font-family:"BrandOswald",sans-serif;
-  font-size:30px;
+  font-size:28px;
   line-height:.98;
   color:var(--white);
 }
 .meat-desc{
-  margin-top:5px;
-  font-size:13px;
-  line-height:1.12;
+  margin-top:3px;
+  font-size:12px;
+  line-height:1.08;
   color:var(--muted);
 }
 .featured-meat .meat-desc,
@@ -233,7 +233,7 @@ body{overflow:hidden}
   align-items:end;
   gap:8px;
   border-top:1px solid var(--line);
-  padding-top:6px;
+  padding-top:4px;
 }
 .meat-grams{
   font-size:19px;
@@ -253,7 +253,7 @@ body{overflow:hidden}
   justify-content:space-between;
   align-items:flex-end;
   gap:8px;
-  padding-top:6px;
+  padding-top:4px;
   border-top:1px solid var(--line);
 }
 .meat-price-only .price-label{
@@ -271,14 +271,14 @@ body{overflow:hidden}
 
 .meat-list{display:flex;flex-direction:column;flex:1;min-height:0}
 .meat-item{
-  padding:8px 12px;
+  padding:6px 10px;
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .meat-item:last-child{border-bottom:none}
 .meat-item.fill-photo{
   flex:0 0 auto;
-  min-height:230px;
-  max-height:260px;
+  min-height:205px;
+  max-height:225px;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
@@ -288,14 +288,14 @@ body{overflow:hidden}
 }
 .meat-item-title{
   font-family:"BrandOswald",sans-serif;
-  font-size:23px;
+  font-size:21px;
   line-height:1;
   color:var(--white);
 }
 .meat-item-desc{
-  margin-top:4px;
-  font-size:12px;
-  line-height:1.10;
+  margin-top:2px;
+  font-size:10px;
+  line-height:1.05;
   color:var(--muted);
 }
 .meat-item.fill-photo .meat-item-desc{
@@ -307,8 +307,8 @@ body{overflow:hidden}
   background:rgba(13,10,9,.56);
 }
 .meat-item-meta{
-  margin-top:5px;
-  font-size:20px;
+  margin-top:3px;
+  font-size:18px;
   font-weight:700;
   color:var(--text);
 }
@@ -321,39 +321,39 @@ body{overflow:hidden}
   background:rgba(13,10,9,.56);
 }
 .snack-grid{
-  padding:8px 10px 10px;
+  padding:6px 8px;
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:6px;
+  gap:5px;
   align-content:start;
 }
 .snack-card{
   border:1px solid var(--divider);
   border-radius:10px;
-  padding:7px 8px;
+  padding:5px 7px;
   background:rgba(255,255,255,.02);
   display:grid;
   grid-template-columns:minmax(0,1fr) auto;
   grid-template-rows:auto auto;
-  column-gap:8px;
+  column-gap:6px;
   align-items:end;
 }
 .snack-name{
   font-family:"BrandOswald",sans-serif;
-  font-size:17px;
+  font-size:15px;
   line-height:1.04;
   color:var(--white);
   grid-column:1;
 }
 .snack-meta{
-  margin-top:3px;
-  font-size:11px;
+  margin-top:1px;
+  font-size:9px;
   color:var(--muted);
   grid-column:1;
 }
 .snack-price{
   margin-top:0;
-  font-size:24px;
+  font-size:21px;
   font-weight:800;
   line-height:.95;
   color:var(--text);
@@ -363,7 +363,7 @@ body{overflow:hidden}
 }
 
 .sauce-grid{
-  padding:8px;
+  padding:5px 7px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:6px;
@@ -372,7 +372,7 @@ body{overflow:hidden}
 .sauce-card{
   border:1px solid var(--divider);
   border-radius:10px;
-  padding:7px 8px;
+  padding:4px 7px;
   text-align:left;
   background:rgba(232,32,5,.06);
   display:flex;
@@ -382,13 +382,13 @@ body{overflow:hidden}
 }
 .sauce-name{
   font-family:"BrandOswald",sans-serif;
-  font-size:16px;
+  font-size:14px;
   color:var(--white);
   line-height:1;
 }
 .sauce-price{
   margin-top:0;
-  font-size:19px;
+  font-size:17px;
   font-weight:800;
   color:var(--text);
   white-space:nowrap;
@@ -401,13 +401,13 @@ body{overflow:hidden}
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
-  gap:14px;
-  padding:12px 14px;
+  gap:10px;
+  padding:9px 12px;
   min-height:0;
 }
 .soon-panel-title{
   font-family:"BrandOswald",sans-serif;
-  font-size:25px;
+  font-size:24px;
   line-height:1;
   letter-spacing:.05em;
   color:var(--white);
@@ -422,11 +422,11 @@ body{overflow:hidden}
 .soon-list{
   display:flex;
   flex-wrap:wrap;
-  gap:6px;
+  gap:5px;
   min-width:0;
 }
 .soon-chip{
-  padding:4px 8px;
+  padding:4px 7px;
   border-radius:999px;
   border:1px solid rgba(232,32,5,.28);
   background:rgba(232,32,5,.08);
