@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Дело в огне — Экран 1</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+@font-face{
+  font-family:"BrandOswald";
+  src:url("fonts/Oswald-Bold.ttf") format("truetype");
+  font-weight:700;
+}
+@font-face{
+  font-family:"BrandOswald";
+  src:url("fonts/Oswald-Regular.ttf") format("truetype");
+  font-weight:400;
+}
+@font-face{
+  font-family:"BrandInter";
+  src:url("fonts/Inter-Regular.ttf") format("truetype");
+  font-weight:400;
+}
+@font-face{
+  font-family:"BrandInter";
+  src:url("fonts/Inter-Bold.ttf") format("truetype");
+  font-weight:700;
+}
+@font-face{
+  font-family:"BrandInter";
+  src:url("fonts/Inter-ExtraBold.ttf") format("truetype");
+  font-weight:800;
+}
+
+@media screen and (orientation:landscape){
+  html{overflow:hidden}
+  body{
+    width:100vh;
+    min-height:100vw;
+    transform-origin:top left;
+    transform:rotate(-90deg) translateX(-100vw);
+    overflow:hidden;
+  }
+  .page{width:100%!important;min-height:100vw!important}
+}
+@media screen and (orientation:portrait){
+  html,body{width:1080px;min-height:1920px}
+}
+
+:root{
+  --bg:#0D0A09;
+  --accent:#E82005;
+  --text:#F5E4CE;
+  --white:#FFFFFF;
+  --muted:rgba(245,228,206,.72);
+  --muted-soft:rgba(255,255,255,.72);
+  --card:rgba(255,255,255,.025);
+  --card-strong:rgba(232,32,5,.08);
+  --line:rgba(232,32,5,.58);
+  --divider:rgba(255,255,255,.08);
+}
+
+html,body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"BrandInter",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+body{overflow:hidden}
+
+.page{
+  position:relative;
+  width:1080px;
+  min-height:1920px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 88% 24% at 50% 100%, rgba(232,32,5,.18), transparent 58%),
+    radial-gradient(ellipse 64% 14% at 50% 97%, rgba(245,228,206,.06), transparent 62%),
+    #0D0A09;
+}
+
+.page > *{position:relative;z-index:1}
+
+@keyframes spark-rise{
+  0%{transform:translateY(0) translateX(0) scale(1);opacity:0}
+  12%{opacity:.95}
+  72%{opacity:.55}
+  100%{transform:translateY(var(--rise,-1450px)) translateX(var(--sway,8px)) scale(.18);opacity:0}
+}
+
+.sparks{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:2;
+}
+
+.spark{
+  position:absolute;
+  bottom:26px;
+  width:6.6px;
+  height:6.6px;
+  border-radius:50%;
+  background:radial-gradient(circle,#ffd7ab 0%, #ff8b6f 58%, rgba(232,32,5,.08) 100%);
+  box-shadow:0 0 10px rgba(255,129,98,.72);
+  animation:spark-rise calc(var(--dur,4.8s) * 2.6) ease-out infinite;
+  animation-delay:var(--delay,0s);
+}
+
+.content{
+  flex:1;
+  display:grid;
+  grid-template-rows:1.42fr .88fr .98fr .92fr;
+  gap:12px;
+}
+
+.section{
+  border:1px solid var(--divider);
+  border-radius:18px;
+  background:var(--card);
+  overflow:hidden;
+}
+
+.section-head{
+  padding:10px 16px 9px;
+  background:var(--accent);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.section-title{
+  font-family:"BrandOswald",sans-serif;
+  font-size:34px;
+  line-height:1;
+  letter-spacing:.05em;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.section-note{
+  margin-top:4px;
+  font-size:14px;
+  color:rgba(255,255,255,.84);
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  width:fit-content;
+  padding:4px 9px;
+  border-radius:999px;
+  background:var(--accent);
+  color:var(--white);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.combo-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  padding:12px 14px 8px;
+}
+.combo-card{
+  min-height:238px;
+  border:1px solid var(--divider);
+  border-radius:16px;
+  overflow:hidden;
+  background:rgba(255,255,255,.03);
+  display:flex;
+  flex-direction:column;
+}
+.combo-photo{
+  height:188px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+  filter:saturate(1.14) contrast(1.05) brightness(1.04);
+}
+.combo-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(13,10,9,.08),rgba(13,10,9,.40));
+}
+.combo-body{
+  flex:1;
+  padding:10px 12px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.combo-name{
+  margin-top:2px;
+  font-family:"BrandOswald",sans-serif;
+  font-size:30px;
+  line-height:.98;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.combo-desc{
+  font-size:14px;
+  line-height:1.2;
+  color:var(--muted);
+}
+.combo-weight{
+  margin-top:6px;
+  font-size:16px;
+  font-weight:700;
+  color:var(--text);
+}
+.price-main{
+  margin-top:auto;
+  font-size:56px;
+  line-height:.92;
+  font-weight:800;
+  color:var(--text);
+}
+.footnote{
+  padding:8px 16px 12px;
+  font-size:14px;
+  font-style:italic;
+  color:var(--muted);
+}
+
+.lavash-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  padding:12px 14px 14px;
+}
+.lavash-card{
+  border:1px solid var(--divider);
+  border-radius:16px;
+  padding:12px;
+  background:var(--card-strong);
+  display:flex;
+  flex-direction:column;
+  min-height:152px;
+}
+.lavash-name{
+  margin-top:8px;
+  font-family:"BrandOswald",sans-serif;
+  font-size:29px;
+  line-height:.98;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.lavash-meta{
+  margin-top:6px;
+  font-size:14px;
+  line-height:1.18;
+  color:var(--muted);
+}
+.lavash-weight{
+  margin-top:8px;
+  font-size:16px;
+  font-weight:700;
+  color:var(--text);
+}
+.lavash-price{
+  margin-top:auto;
+  font-size:38px;
+  line-height:.95;
+  font-weight:800;
+  color:var(--text);
+  text-align:right;
+}
+
+.shawarma{
+  position:relative;
+}
+.shawarma::before{
+  content:"";
+  position:absolute;
+  inset:58px 0 0 0;
+  background:
+    linear-gradient(90deg,rgba(13,10,9,.44),rgba(13,10,9,.22)),
+    url("Фото/Шаурма2.JPG") center/cover no-repeat;
+}
+.shawarma > *{position:relative;z-index:1}
+.shawarma-list{
+  padding:7px 16px 4px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.shawarma-item{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  align-items:start;
+  padding-bottom:4px;
+  border-bottom:1px solid var(--divider);
+}
+.shawarma-item:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+.shawarma-line{
+  font-family:"BrandOswald",sans-serif;
+  font-size:24px;
+  line-height:1;
+  color:var(--white);
+}
+.shawarma-line span{
+  color:var(--text);
+}
+.shawarma-desc{
+  margin-top:4px;
+  font-size:13px;
+  line-height:1.14;
+  color:var(--muted);
+  display:inline-block;
+  width:fit-content;
+  max-width:100%;
+  padding:4px 6px;
+  border-radius:8px;
+  background:rgba(13,10,9,.56);
+}
+.price-inline{
+  font-size:44px;
+  line-height:.95;
+  font-weight:800;
+  color:var(--text);
+  white-space:nowrap;
+  padding:4px 8px 5px;
+  border-radius:10px;
+  background:rgba(13,10,9,.54);
+}
+.extra-bar{
+  padding:5px 16px 8px;
+  border-top:1px solid var(--divider);
+  color:var(--muted);
+}
+.extra-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.extra-group{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  background:rgba(255,255,255,.02);
+  overflow:hidden;
+}
+.extra-group-title{
+  font-family:"BrandOswald",sans-serif;
+  font-size:17px;
+  line-height:1;
+  color:var(--white);
+  text-transform:uppercase;
+  padding:7px 10px 6px;
+  background:rgba(232,32,5,.88);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  margin-bottom:0;
+}
+.extra-group-text{
+  font-size:14px;
+  line-height:1.25;
+  color:var(--muted);
+  padding:6px 10px 7px;
+  background:rgba(13,10,9,.28);
+}
+.extra-group-text b{color:var(--text)}
+
+.feature-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:12px;
+  margin-top:auto;
+  padding-top:8px;
+  border-top:1px solid var(--line);
+}
+.feature-weight{
+  font-size:20px;
+  font-weight:700;
+  color:rgba(255,255,255,.72);
+}
+.feature-weight-label{
+  font-size:16px;
+  font-weight:700;
+  color:rgba(245,228,206,.78);
+}
+.feature-price{
+  font-size:56px;
+  line-height:.95;
+  font-weight:800;
+  color:var(--text);
+  white-space:nowrap;
+}
+
+.drinks-grid{
+  padding:8px 16px 6px;
+  display:grid;
+  grid-template-columns:1fr 1.14fr;
+  gap:12px;
+}
+.drink-col-title{
+  font-family:"BrandOswald",sans-serif;
+  font-size:16px;
+  letter-spacing:.06em;
+  color:var(--muted-soft);
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.drink-line{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:8px;
+  padding:1px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.drink-line:last-child{border-bottom:none}
+.drink-name{
+  font-size:15px;
+  font-weight:700;
+  color:var(--white);
+  line-height:1.05;
+}
+.drink-desc{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:0;
+  line-height:1.05;
+}
+.drink-price{
+  font-size:26px;
+  line-height:1;
+  font-weight:800;
+  color:var(--text);
+  white-space:nowrap;
+}
+.soon-bar{
+  margin:0 16px 10px;
+  padding:7px 12px;
+  border-radius:14px;
+  border:1px dashed var(--line);
+  background:rgba(232,32,5,.06);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.soon-title{
+  font-family:"BrandOswald",sans-serif;
+  font-size:22px;
+  line-height:1;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.soon-note{
+  font-size:13px;
+  font-weight:800;
+  color:var(--text);
+  text-transform:uppercase;
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="sparks" aria-hidden="true">
+    <div class="spark" style="left:6%;--dur:4.9s;--delay:.2s;--sway:14px;--rise:-1500px;"></div>
+    <div class="spark" style="left:13%;--dur:6.1s;--delay:1.6s;--sway:-10px;--rise:-1680px;"></div>
+    <div class="spark" style="left:19%;--dur:5.4s;--delay:.8s;--sway:18px;--rise:-1430px;"></div>
+    <div class="spark" style="left:31%;--dur:4.6s;--delay:2.1s;--sway:-12px;--rise:-1380px;"></div>
+    <div class="spark" style="left:42%;--dur:5.8s;--delay:1.1s;--sway:12px;--rise:-1600px;"></div>
+    <div class="spark" style="left:55%;--dur:4.8s;--delay:2.8s;--sway:-16px;--rise:-1460px;"></div>
+    <div class="spark" style="left:67%;--dur:5.6s;--delay:.5s;--sway:20px;--rise:-1700px;"></div>
+    <div class="spark" style="left:78%;--dur:6.3s;--delay:1.9s;--sway:-14px;--rise:-1580px;"></div>
+    <div class="spark" style="left:88%;--dur:5.2s;--delay:1.2s;--sway:10px;--rise:-1490px;"></div>
+  </div>
+  <div class="content">
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">КОМПЛЕКСЫ 🔥</div>
+        <div class="section-note">мясо + лук + соус + лаваш</div>
+      </div>
+      <div class="combo-grid">
+        <article class="combo-card">
+          <div class="combo-photo" style="background-image:url('Фото/Шашлык свиной комплекс.JPG');"></div>
+          <div class="combo-body">
+            <div class="badge">Самый популярный</div>
+            <div class="combo-name">Комплекс №1</div>
+            <div class="combo-desc">Свинина на углях, маринованный лук, фирменный соус, лаваш</div>
+            <div class="combo-weight">370 г</div>
+            <div class="price-main">490 р.</div>
+          </div>
+        </article>
+        <article class="combo-card">
+          <div class="combo-photo" style="background-image:url('Фото/Куриное бедро.JPG');"></div>
+          <div class="combo-body">
+            <div class="badge">Хит</div>
+            <div class="combo-name">Комплекс №2</div>
+            <div class="combo-desc">Куриное бедро на углях, маринованный лук, соус, лаваш</div>
+            <div class="combo-weight">370 г</div>
+            <div class="price-main">460 р.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">ШАШЛЫК В ЛАВАШЕ</div>
+        <div class="section-note">мясо + лук + соус · 300 г</div>
+      </div>
+      <div class="lavash-grid">
+        <article class="lavash-card">
+          <div class="badge">Хит</div>
+          <div class="lavash-name">Свинина в лаваше</div>
+          <div class="lavash-meta">Шашлык из свинины, маринованный лук, соус</div>
+          <div class="lavash-weight">300 г</div>
+          <div class="lavash-price">450 р.</div>
+        </article>
+        <article class="lavash-card">
+          <div class="badge">Хит</div>
+          <div class="lavash-name">Курица в лаваше</div>
+          <div class="lavash-meta">Шашлык из курицы, маринованный лук, соус</div>
+          <div class="lavash-weight">300 г</div>
+          <div class="lavash-price">450 р.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shawarma">
+      <div class="section-head">
+        <div class="section-title">ШАУРМА 🔥</div>
+        <div class="section-note">выгодно выделяем</div>
+      </div>
+      <div class="shawarma-list">
+        <div class="shawarma-item">
+          <div>
+            <div class="shawarma-line">Классик <span>— 350 г</span></div>
+            <div class="shawarma-desc">Курица, капуста, морковь по корейски, огурец, помидор, классический соус</div>
+          </div>
+          <div class="price-inline">450 р.</div>
+        </div>
+        <div class="shawarma-item">
+          <div>
+            <div class="shawarma-line">Острая <span>— 350 г</span></div>
+            <div class="shawarma-desc">Курица, капуста, морковь, огурец, помидор, острый соус, халапеньо</div>
+          </div>
+          <div class="price-inline">470 р.</div>
+        </div>
+        <div class="shawarma-item">
+          <div>
+            <div class="shawarma-line">Сырная <span>— 350 г</span></div>
+            <div class="shawarma-desc">Курица, капуста, огурцы, помидоры, фирменный соус, тёртая моцарелла</div>
+          </div>
+          <div class="price-inline">480 р.</div>
+        </div>
+      </div>
+      <div class="extra-bar">
+        <div class="extra-grid">
+          <div class="extra-group">
+            <div class="extra-group-title">Добавки к шаурме</div>
+            <div class="extra-group-text">Халапеньо 15г — <b>60р.</b> · Сыр 15г — <b>60р.</b></div>
+          </div>
+          <div class="extra-group">
+            <div class="extra-group-title">Хлебные изделия</div>
+            <div class="extra-group-text">Лаваш — <b>70р.</b> · Лепёшка — <b>70р.</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">НАПИТКИ</div>
+      </div>
+      <div class="drinks-grid">
+        <div>
+          <div class="drink-col-title">Холодные и чай</div>
+          <div class="drink-line">
+            <div>
+              <div class="drink-name">Морс комбо 350 мл</div>
+              <div class="drink-desc">смородина, вишня, клюква</div>
+            </div>
+            <div class="drink-price">150р.</div>
+          </div>
+          <div class="drink-line">
+            <div>
+              <div class="drink-name">Чай 350 мл</div>
+              <div class="drink-desc">чёрный, зелёный</div>
+            </div>
+            <div class="drink-price">120р.</div>
+          </div>
+        </div>
+        <div>
+          <div class="drink-col-title">Кофе 350 мл</div>
+          <div class="drink-line"><div class="drink-name">Американо</div><div class="drink-price">150р.</div></div>
+          <div class="drink-line"><div class="drink-name">Капучино</div><div class="drink-price">160р.</div></div>
+          <div class="drink-line"><div class="drink-name">Латте</div><div class="drink-price">160р.</div></div>
+          <div class="drink-line"><div class="drink-name">Флэт уайт</div><div class="drink-price">160р.</div></div>
+          <div class="drink-line"><div class="drink-name">Мокачино</div><div class="drink-price">160р.</div></div>
+          <div class="drink-line"><div class="drink-name">Раф банановый</div><div class="drink-price">160р.</div></div>
+          <div class="drink-line"><div class="drink-name">Горячий шоколад</div><div class="drink-price">160р.</div></div>
+          <div class="drink-line"><div class="drink-name">Шоколад с молоком</div><div class="drink-price">160р.</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>
