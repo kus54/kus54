@@ -3,450 +3,527 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080">
-<title>Дело в огне — Меню (Экран 2)</title>
+<title>Дело в огне — Экран 2</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0}
 
-@media screen and (orientation: landscape) {
-  html { overflow: hidden; }
-  body {
-    width: 100vh;
-    min-height: 100vw;
-    transform-origin: top left;
-    transform: rotate(-90deg) translateX(-100vw);
-    overflow: hidden;
+@font-face{
+  font-family:"BrandOswald";
+  src:url("fonts/Oswald-Bold.ttf") format("truetype");
+  font-weight:700;
+}
+@font-face{
+  font-family:"BrandOswald";
+  src:url("fonts/Oswald-Regular.ttf") format("truetype");
+  font-weight:400;
+}
+@font-face{
+  font-family:"BrandInter";
+  src:url("fonts/Inter-Regular.ttf") format("truetype");
+  font-weight:400;
+}
+@font-face{
+  font-family:"BrandInter";
+  src:url("fonts/Inter-Bold.ttf") format("truetype");
+  font-weight:700;
+}
+@font-face{
+  font-family:"BrandInter";
+  src:url("fonts/Inter-ExtraBold.ttf") format("truetype");
+  font-weight:800;
+}
+
+@media screen and (orientation:landscape){
+  html{overflow:hidden}
+  body{
+    width:100vh;
+    min-height:100vw;
+    transform-origin:top left;
+    transform:rotate(-90deg) translateX(-100vw);
+    overflow:hidden;
   }
-  .page { width: 100% !important; min-height: 100vw !important; }
+  .page{width:100%!important;min-height:100vw!important}
 }
-@media screen and (orientation: portrait) {
-  html, body { width: 1080px; min-height: 1920px; }
-}
-
-:root {
-  --bg: #090705;
-  --page: #0c0c0e;
-  --shell: #151517;
-  --panel: #1b1c20;
-  --panel-2: #202126;
-  --fire: #d42b1a;
-  --accent-soft: #ff6b6b;
-  --accent-cream: #ffd9bd;
-  --text: #f7f1ea;
-  --muted: rgba(247,241,234,0.62);
-  --line: rgba(255,255,255,0.08);
-  --line-strong: rgba(212,43,26,0.22);
+@media screen and (orientation:portrait){
+  html,body{width:1080px;min-height:1920px}
 }
 
-html, body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: Inter, "Segoe UI", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+:root{
+  --bg:#0D0A09;
+  --accent:#E82005;
+  --text:#F5E4CE;
+  --white:#FFFFFF;
+  --muted:rgba(245,228,206,.72);
+  --muted-soft:rgba(255,255,255,.72);
+  --card:rgba(255,255,255,.025);
+  --card-strong:rgba(232,32,5,.08);
+  --line:rgba(232,32,5,.58);
+  --divider:rgba(255,255,255,.08);
 }
 
-@keyframes ember-breathe {
-  0%,100% { opacity: .92; transform: scale(1); }
-  50% { opacity: .58; transform: scale(1.03); }
+html,body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"BrandInter",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
 }
-@keyframes spark-rise {
-  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-  10% { opacity: .95; }
-  70% { opacity: .65; }
-  100% { transform: translateY(var(--rise, -1550px)) translateX(var(--sway)) scale(.18); opacity: 0; }
-}
-@keyframes glow-pulse {
-  0%,100% { box-shadow: 0 0 0 rgba(212,43,26,0); }
-  50% { box-shadow: 0 0 30px rgba(212,43,26,.24); }
-}
-@keyframes flicker {
-  0% { transform: rotate(-2deg) scale(1); opacity: 1; }
-  25% { transform: rotate(1deg) scale(1.06); opacity: .88; }
-  50% { transform: rotate(-1deg) scale(.97); opacity: 1; }
-  75% { transform: rotate(2deg) scale(1.04); opacity: .9; }
-  100% { transform: rotate(-2deg) scale(1); opacity: 1; }
-}
+body{overflow:hidden}
 
-.page {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  width: 1080px;
-  min-height: 1920px;
-  display: flex;
-  flex-direction: column;
+.page{
+  position:relative;
+  width:1080px;
+  min-height:1920px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  overflow:hidden;
   background:
-    radial-gradient(ellipse 96% 41% at 50% 102%, rgba(212,43,26,.38), transparent 58%),
-    radial-gradient(ellipse 78% 24% at 50% 96%, rgba(255,107,107,.12), transparent 62%),
-    radial-gradient(ellipse 70% 24% at 20% 88%, rgba(200,25,20,.08), transparent 66%),
-    radial-gradient(ellipse 70% 24% at 80% 86%, rgba(200,25,20,.08), transparent 66%),
-    linear-gradient(180deg, #111114 0%, #090705 28%, #090705 100%);
+    radial-gradient(ellipse 88% 24% at 50% 100%, rgba(232,32,5,.18), transparent 58%),
+    radial-gradient(ellipse 64% 14% at 50% 97%, rgba(245,228,206,.06), transparent 62%),
+    #0D0A09;
 }
-.page::before,
-.page::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+.page > *{position:relative;z-index:1}
+
+@keyframes spark-rise{
+  0%{transform:translateY(0) translateX(0) scale(1);opacity:0}
+  12%{opacity:.95}
+  72%{opacity:.55}
+  100%{transform:translateY(var(--rise,-1450px)) translateX(var(--sway,8px)) scale(.18);opacity:0}
 }
-.page::before {
+
+.sparks{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:2;
+}
+
+.spark{
+  position:absolute;
+  bottom:26px;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:radial-gradient(circle,#ffd7ab 0%, #ff8b6f 58%, rgba(232,32,5,.08) 100%);
+  box-shadow:0 0 10px rgba(255,129,98,.72);
+  animation:spark-rise calc(var(--dur,4.8s) * 2.6) ease-out infinite;
+  animation-delay:var(--delay,0s);
+}
+
+@keyframes flicker{
+  0%{transform:rotate(-2deg) scale(1);opacity:1}
+  25%{transform:rotate(1deg) scale(1.06);opacity:.88}
+  50%{transform:rotate(-1deg) scale(.97);opacity:1}
+  75%{transform:rotate(2deg) scale(1.04);opacity:.9}
+  100%{transform:rotate(-2deg) scale(1);opacity:1}
+}
+
+.fire-deco{
+  display:inline-block;
+  animation:flicker 2.3s ease-in-out infinite;
+  filter:drop-shadow(0 0 10px rgba(232,32,5,.72));
+}
+
+.content{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:0;
+}
+.content > .section:nth-of-type(1){flex:1.78}
+.content > .section:nth-of-type(2){flex:1.02}
+.content > .section:nth-of-type(3){flex:.36}
+.content > .soon-panel{flex:.20}
+
+.section{
+  border:1px solid var(--divider);
+  border-radius:18px;
+  background:var(--card);
+  overflow:hidden;
+}
+.section-head{
+  padding:7px 12px 6px;
+  background:var(--accent);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.section-title{
+  font-family:"BrandOswald",sans-serif;
+  font-size:28px;
+  line-height:1;
+  letter-spacing:.05em;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.section-note{
+  margin-top:4px;
+  font-size:12px;
+  color:rgba(255,255,255,.84);
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  width:fit-content;
+  padding:4px 9px;
+  border-radius:999px;
+  background:var(--accent);
+  color:var(--white);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.meat-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+.meat-col{
+  display:flex;
+  flex-direction:column;
+  border-right:1px solid var(--divider);
+}
+.meat-col:last-child{border-right:none}
+
+.featured-meat{
+  min-height:184px;
+  padding:10px 12px;
+  border-bottom:1px solid var(--divider);
   background:
-    radial-gradient(ellipse 94% 36% at 50% 103%, rgba(212,43,26,.26), transparent 56%),
-    radial-gradient(ellipse 76% 22% at 50% 98%, rgba(255,107,107,.14), transparent 60%);
-  animation: ember-breathe 5.5s ease-in-out infinite;
+    linear-gradient(180deg,rgba(13,10,9,.14),rgba(13,10,9,.54)),
+    url("Фото/Общее фото ш_2.JPG") center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
 }
-.page::after {
+.featured-meat.right{
   background:
-    radial-gradient(ellipse 36% 13% at 18% 97%, rgba(212,43,26,.12), transparent 70%),
-    radial-gradient(ellipse 36% 13% at 82% 97%, rgba(212,43,26,.12), transparent 70%);
-  animation: ember-breathe 7s ease-in-out infinite reverse;
+    linear-gradient(180deg,rgba(13,10,9,.14),rgba(13,10,9,.56)),
+    url("Фото/Люля-кебаб_2.JPG") center/cover no-repeat;
 }
-.page > * { position: relative; z-index: 1; }
+.meat-name{
+  margin-top:8px;
+  font-family:"BrandOswald",sans-serif;
+  font-size:28px;
+  line-height:.98;
+  color:var(--white);
+}
+.meat-desc{
+  margin-top:5px;
+  font-size:13px;
+  line-height:1.12;
+  color:var(--muted);
+}
+.featured-meat .meat-desc,
+.meat-item.fill-photo .meat-desc{
+  display:inline-block;
+  width:fit-content;
+  max-width:100%;
+  padding:4px 6px;
+  border-radius:8px;
+  background:rgba(13,10,9,.56);
+}
+.meat-price-row{
+  margin-top:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:8px;
+  border-top:1px solid var(--line);
+  padding-top:6px;
+}
+.meat-grams{
+  font-size:18px;
+  font-weight:700;
+  color:rgba(255,255,255,.72);
+}
+.meat-price{
+  font-size:44px;
+  line-height:.95;
+  font-weight:800;
+  color:var(--text);
+  white-space:nowrap;
+}
+.meat-price-only{
+  margin-top:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:8px;
+  padding-top:6px;
+  border-top:1px solid var(--line);
+}
+.meat-price-only .price-label{
+  font-size:18px;
+  font-weight:700;
+  color:rgba(245,228,206,.94);
+}
+.meat-price-only .price-value{
+  font-size:44px;
+  line-height:.95;
+  font-weight:800;
+  color:var(--text);
+  white-space:nowrap;
+}
 
-.sparks {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
+.meat-list{display:flex;flex-direction:column;flex:1}
+.meat-item{
+  padding:8px 12px;
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
-.spark {
-  position: absolute;
-  bottom: 40px;
-  width: 7.5px;
-  height: 7.5px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--spark-core, #ffd2a8), var(--spark-edge, #ff6b6b) 58%, rgba(212,43,26,.16) 100%);
-  box-shadow: 0 0 12px var(--spark-glow, rgba(255,107,107,.85));
-  animation: spark-rise calc(var(--dur, 3.8s) * 3) ease-out infinite;
-  animation-delay: var(--delay, 0s);
-}
-
-.print-logo { display: none; }
-.print-brand-panel { display: none; }
-
-.body {
-  flex: 1;
-  padding: 10px 14px 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.section {
-  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  overflow: hidden;
-}
-.section-head {
-  padding: 7px 12px 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1px solid var(--line);
+.meat-item:last-child{border-bottom:none}
+.meat-item.fill-photo{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
   background:
-    linear-gradient(90deg, rgba(144,28,24,.78), rgba(112,18,16,.72) 54%, rgba(74,10,10,.50) 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255,145,145,.12),
-    inset 0 -1px 0 rgba(0,0,0,.24);
+    linear-gradient(180deg,rgba(13,10,9,.18),rgba(13,10,9,.72)),
+    url("Фото/Овощи гриль_1.JPG") center/cover no-repeat;
 }
-.section-title {
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: -.03em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #fff6ef;
+.meat-item-title{
+  font-family:"BrandOswald",sans-serif;
+  font-size:22px;
+  line-height:1;
+  color:var(--white);
 }
-.section-sub {
-  font-size: 14px;
-  color: rgba(255,239,231,.82);
-  text-align: right;
+.meat-item-desc{
+  margin-top:4px;
+  font-size:11px;
+  line-height:1.08;
+  color:var(--muted);
 }
-.fire-deco {
-  display: inline-block;
-  animation: flicker 2.3s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(212,43,26,.7));
+.meat-item.fill-photo .meat-item-desc{
+  display:inline-block;
+  width:fit-content;
+  max-width:100%;
+  padding:4px 6px;
+  border-radius:8px;
+  background:rgba(13,10,9,.56);
 }
-.hit-badge {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 8px;
-  font-size: 11px;
-  font-weight: 900;
-  text-transform: uppercase;
-  border-radius: 7px;
-  background: var(--fire);
-  color: #fff;
-  animation: glow-pulse 3s ease-in-out infinite;
+.meat-item-meta{
+  margin-top:5px;
+  font-size:18px;
+  font-weight:700;
+  color:var(--text);
+}
+.meat-item.fill-photo .meat-item-meta{
+  display:inline-block;
+  width:fit-content;
+  max-width:100%;
+  padding:4px 6px;
+  border-radius:8px;
+  background:rgba(13,10,9,.56);
+}
+.snack-grid{
+  padding:8px 10px 10px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.snack-card{
+  border:1px solid var(--divider);
+  border-radius:14px;
+  padding:8px;
+  background:rgba(255,255,255,.02);
+}
+.snack-name{
+  font-family:"BrandOswald",sans-serif;
+  font-size:18px;
+  line-height:1.04;
+  color:var(--white);
+}
+.snack-meta{
+  margin-top:4px;
+  font-size:11px;
+  color:var(--muted);
+}
+.snack-price{
+  margin-top:6px;
+  font-size:28px;
+  font-weight:800;
+  line-height:.95;
+  color:var(--text);
 }
 
-.row-list { display: flex; flex-direction: column; }
-.row-item { display: flex; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--line); }
-.row-item:last-child { border-bottom: none; }
-.row-left { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-.row-name { font-size: 22px; font-weight: 800; line-height: 1.02; }
-.row-desc { font-size: 13px; color: var(--muted); line-height: 1.14; }
-.row-right { min-width: 118px; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
-.row-price { font-size: 35px; font-weight: 900; color: var(--accent-soft); line-height: 1; white-space: nowrap; }
-.row-weight { font-size: 14px; color: var(--muted); }
+.sauce-grid{
+  padding:10px 10px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.sauce-card{
+  border:1px solid var(--divider);
+  border-radius:12px;
+  padding:8px 6px;
+  text-align:center;
+  background:rgba(232,32,5,.06);
+}
+.sauce-name{
+  font-family:"BrandOswald",sans-serif;
+  font-size:18px;
+  color:var(--white);
+}
+.sauce-price{
+  margin-top:4px;
+  font-size:22px;
+  font-weight:800;
+  color:var(--text);
+}
 
-.grill-grid { display: grid; grid-template-columns: 1fr 1fr; }
-.grill-item { padding: 7px 9px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.grill-item:nth-child(even) { border-right: none; }
-.grill-item:nth-last-child(-n+2) { border-bottom: none; }
-.grill-name { font-size: 18px; font-weight: 800; margin-bottom: 2px; }
-.grill-desc { font-size: 12px; color: var(--muted); line-height: 1.12; }
-.grill-price { margin-top: 4px; font-size: 27px; font-weight: 900; color: var(--accent-soft); line-height: 1; }
+.soon-panel{
+  border:1px dashed var(--line);
+  border-radius:18px;
+  background:rgba(232,32,5,.05);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 14px;
+}
+.soon-panel-title{
+  font-family:"BrandOswald",sans-serif;
+  font-size:28px;
+  line-height:1;
+  letter-spacing:.05em;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.soon-panel-note{
+  font-size:14px;
+  font-weight:800;
+  color:var(--text);
+  text-transform:uppercase;
+}
 
-.compact-rows .row-item { padding: 7px 12px; }
-.compact-rows .row-name { font-size: 21px; }
-.compact-rows .row-desc { font-size: 12px; }
-.compact-rows .row-price { font-size: 33px; }
-
-.combo-grid-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 7px 10px 8px; }
-.combo-card {
-  position: relative;
-  padding: 7px 8px 8px;
-  border-radius: 12px;
-  border: 1px solid rgba(212,43,26,.26);
-  background:
-    radial-gradient(circle at top right, rgba(255,107,107,.15), transparent 42%),
-    linear-gradient(180deg, rgba(212,43,26,.18), rgba(89,16,15,.30));
-}
-.combo-card-1 {
-  border-color: rgba(212,43,26,.34);
-  background:
-    radial-gradient(circle at top right, rgba(255,130,120,.18), transparent 42%),
-    linear-gradient(180deg, rgba(186,34,28,.28), rgba(97,18,16,.34));
-}
-.combo-card-3 {
-  border-color: rgba(190,86,52,.34);
-  background:
-    radial-gradient(circle at top right, rgba(255,188,138,.16), transparent 42%),
-    linear-gradient(180deg, rgba(153,58,30,.24), rgba(77,23,16,.34));
-}
-.combo-tag {
-  display: inline-flex; padding: 2px 6px; border-radius: 999px;
-  background: rgba(255,245,236,.10); border: 1px solid rgba(255,217,189,.18);
-  color: var(--accent-cream); font-size: 8px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase;
-}
-.combo-name { margin-top: 5px; font-size: 18px; font-weight: 900; line-height: .98; }
-.combo-desc { margin-top: 4px; font-size: 11px; line-height: 1.14; color: rgba(247,241,234,.78); min-height: 52px; }
-.combo-price-big { margin-top: 6px; font-size: 36px; font-weight: 900; color: var(--accent-soft); line-height: .95; }
-.snack-split { padding: 0; }
-.snack-split-item { padding: 7px 9px; }
-.snack-split-item + .snack-split-item { border-top: 1px solid var(--line); }
-
-.snack-footer {
-  padding: 8px 10px 10px;
-  border-top: 1px solid rgba(255,255,255,.06);
-  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-}
-.snack-footer-title {
-  font-size: 15px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
-  color: rgba(255,217,189,.80);
-}
-.sauce-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 7px; }
-.sauce-mini {
-  display: flex; justify-content: space-between; align-items: center; gap: 8px;
-  padding: 7px 10px; border-radius: 999px;
-  background: rgba(212,43,26,.10); border: 1px solid rgba(212,43,26,.20);
-  font-size: 15px; font-weight: 700; color: #fff1e8;
-}
-.sauce-mini span { color: rgba(255,217,189,.86); font-weight: 900; }
-
-.drinks-cols { display: grid; grid-template-columns: 1fr 1fr; }
-.drinks-col { border-right: 1px solid var(--line); }
-.drinks-col:last-child { border-right: none; }
-.drinks-sub-head {
-  padding: 6px 10px; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
-  color: rgba(247,241,234,.38); border-bottom: 1px solid var(--line);
-}
-.drink-row { display: flex; justify-content: space-between; gap: 6px; padding: 5px 10px; border-bottom: 1px solid rgba(255,255,255,.05); }
-.drink-row:last-child { border-bottom: none; }
-.drink-name { font-size: 16px; font-weight: 700; }
-.drink-vol { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.drink-price { font-size: 22px; font-weight: 900; color: var(--accent-soft); white-space: nowrap; }
-.drink-price-hit { font-size: 28px; }
-
-.soon-card {
-  width: calc(100% - 20px);
-  min-height: 84px;
-  margin: 6px 10px 8px;
-  padding: 8px 10px;
-  border-radius: 16px;
-  border: 1px dashed rgba(212,43,26,.34);
-  background:
-    radial-gradient(circle at top right, rgba(255,107,107,.14), transparent 40%),
-    linear-gradient(180deg, rgba(212,43,26,.16), rgba(212,43,26,.05));
-  display: flex; flex-direction: column; justify-content: space-between;
-  color: rgba(247,241,234,.62);
-}
-.soon-title { font-size: 18px; font-weight: 700; line-height: 1.05; }
-.soon-badge { font-size: 15px; font-weight: 800; color: var(--accent-soft); text-transform: uppercase; align-self: flex-start; }
-.soon-note { font-size: 11px; color: rgba(247,241,234,.42); line-height: 1.15; }
-
-.screen2-combos { flex: 1.02; }
-.screen2-snacks { flex: 1.18; }
-.screen2-drinks { flex: 1.00; }
 </style>
 </head>
 <body>
 <div class="page">
   <div class="sparks" aria-hidden="true">
-    <div class="spark" style="left:8%;--dur:4.8s;--delay:.2s;--sway:18px;--rise:-1760px;--spark-core:#ffd8a8;--spark-edge:#ff7f6d;--spark-glow:rgba(255,140,120,.9);"></div>
-    <div class="spark" style="left:12%;--dur:6.2s;--delay:2.1s;--sway:-10px;--rise:-1920px;--spark-core:#fff1c4;--spark-edge:#ff9568;--spark-glow:rgba(255,195,130,.9);"></div>
-    <div class="spark" style="left:17%;--dur:5.1s;--delay:1.3s;--sway:-16px;--rise:-1680px;--spark-core:#ffd0b2;--spark-edge:#ff5d62;"></div>
-    <div class="spark" style="left:28%;--dur:4.5s;--delay:.9s;--sway:14px;--rise:-1600px;--spark-core:#ffe0a8;--spark-edge:#ff7d52;"></div>
-    <div class="spark" style="left:33%;--dur:6.6s;--delay:2.4s;--sway:-18px;--rise:-1880px;--spark-core:#fff2c6;--spark-edge:#ff8860;"></div>
-    <div class="spark" style="left:39%;--dur:5.7s;--delay:0s;--sway:-12px;--rise:-1800px;--spark-core:#ffd4bc;--spark-edge:#ff6666;"></div>
-    <div class="spark" style="left:51%;--dur:4.7s;--delay:1.6s;--sway:22px;--rise:-1660px;--spark-core:#ffdfa6;--spark-edge:#ff6b6b;"></div>
-    <div class="spark" style="left:57%;--dur:6.8s;--delay:2.7s;--sway:-15px;--rise:-1940px;--spark-core:#fff0bb;--spark-edge:#ff9f61;"></div>
-    <div class="spark" style="left:63%;--dur:5.3s;--delay:.5s;--sway:-20px;--rise:-1720px;--spark-core:#ffd1a8;--spark-edge:#ff705e;"></div>
-    <div class="spark" style="left:76%;--dur:4.6s;--delay:1.1s;--sway:16px;--rise:-1640px;--spark-core:#ffd8bc;--spark-edge:#ff6270;"></div>
-    <div class="spark" style="left:82%;--dur:6.1s;--delay:2.2s;--sway:12px;--rise:-1860px;--spark-core:#fff1c6;--spark-edge:#ff8c57;"></div>
-    <div class="spark" style="left:88%;--dur:5.5s;--delay:1.9s;--sway:-14px;--rise:-1750px;--spark-core:#ffd9a4;--spark-edge:#ff6f66;"></div>
-    <div class="spark" style="left:93%;--dur:6.4s;--delay:.8s;--sway:10px;--rise:-1900px;--spark-core:#fff5cf;--spark-edge:#ff9b70;"></div>
+    <div class="spark" style="left:6%;--dur:4.9s;--delay:.2s;--sway:14px;--rise:-1500px;"></div>
+    <div class="spark" style="left:13%;--dur:6.1s;--delay:1.6s;--sway:-10px;--rise:-1680px;"></div>
+    <div class="spark" style="left:19%;--dur:5.4s;--delay:.8s;--sway:18px;--rise:-1430px;"></div>
+    <div class="spark" style="left:31%;--dur:4.6s;--delay:2.1s;--sway:-12px;--rise:-1380px;"></div>
+    <div class="spark" style="left:42%;--dur:5.8s;--delay:1.1s;--sway:12px;--rise:-1600px;"></div>
+    <div class="spark" style="left:55%;--dur:4.8s;--delay:2.8s;--sway:-16px;--rise:-1460px;"></div>
+    <div class="spark" style="left:67%;--dur:5.6s;--delay:.5s;--sway:20px;--rise:-1700px;"></div>
+    <div class="spark" style="left:78%;--dur:6.3s;--delay:1.9s;--sway:-14px;--rise:-1580px;"></div>
+    <div class="spark" style="left:88%;--dur:5.2s;--delay:1.2s;--sway:10px;--rise:-1490px;"></div>
   </div>
-
-  <div class="body">
-    <div class="section screen2-combos">
+  <div class="content">
+    <section class="section">
       <div class="section-head">
-        <div class="section-title">Комплексы</div>
-        <div class="section-sub">мясо + лук + соус + лаваш</div>
+        <div class="section-title">МЯСО НА УГЛЯХ <span class="fire-deco">🔥</span></div>
+        <div class="section-note">называйте вес — минимум 100 г</div>
       </div>
-      <div class="combo-grid-hero">
-        <div class="combo-card combo-card-1">
-          <div class="combo-tag">сильный чек</div>
-          <div class="combo-name">Комплекс №1</div>
-          <div class="combo-desc">Свинина на углях, лук, соус, лаваш</div>
-          <div class="combo-price-big">490 р.</div>
+      <div class="meat-grid">
+        <div class="meat-col">
+          <div class="featured-meat">
+            <div class="badge">Хит</div>
+            <div class="meat-name">Шашлык из свинины</div>
+            <div class="meat-desc">Свиная шейка в авторском маринаде</div>
+            <div class="meat-price-only">
+              <div class="price-label">за 100 г</div>
+              <div class="price-value">220 р.</div>
+            </div>
+          </div>
+          <div class="meat-list">
+            <div class="meat-item">
+              <div class="meat-item-title">Куриное бедро</div>
+              <div class="meat-item-desc">Нежное филе, приготовленное на мангале</div>
+              <div class="meat-item-meta">200 г — 400 р.</div>
+            </div>
+            <div class="meat-item">
+              <div class="meat-item-title">Крылья на мангале</div>
+              <div class="meat-item-desc">Хрустящие снаружи, сочные внутри</div>
+              <div class="meat-item-meta">500 г — 800 р.</div>
+            </div>
+            <div class="meat-item fill-photo">
+              <div class="meat-item-title">Овощи на огне</div>
+              <div class="meat-item-desc">Болгарский перец, кабачки, помидоры, грибы (маринуются в фирменном соусе шефа)</div>
+              <div class="meat-item-meta">Порция 500 г — 900 р.</div>
+            </div>
+          </div>
         </div>
-        <div class="combo-card combo-card-3">
-          <div class="combo-tag">быстрый выбор</div>
-          <div class="combo-name">Комплекс №2</div>
-          <div class="combo-desc">Куриное бедро на углях, лук, соус, лаваш</div>
-          <div class="combo-price-big">460 р.</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="section screen2-snacks">
+        <div class="meat-col">
+          <div class="featured-meat right">
+            <div class="badge">Хит</div>
+            <div class="meat-name">Люля-кебаб</div>
+            <div class="meat-desc">Рублёная свинина и говядина со специями</div>
+            <div class="meat-price-row">
+              <div class="meat-grams">300 г</div>
+              <div class="meat-price">640 р.</div>
+            </div>
+          </div>
+          <div class="meat-list">
+            <div class="meat-item">
+              <div class="meat-item-title">Куриная грудка</div>
+              <div class="meat-item-desc">Филе на живом огне — сочно и легко</div>
+              <div class="meat-item-meta">250 г — 400 р.</div>
+            </div>
+            <div class="meat-item">
+              <div class="meat-item-title">Креветки на гриле</div>
+              <div class="meat-item-desc">Обжаренные на огне с дымком</div>
+              <div class="meat-item-meta">200 г — 520 р.</div>
+            </div>
+            <div class="meat-item">
+              <div class="meat-item-title">Грибы на огне</div>
+              <div class="meat-item-desc">Шампиньоны на мангале — с дымом и зеленью</div>
+              <div class="meat-item-meta">Порция 300 г — 540 р.</div>
+            </div>
+            <div class="meat-item">
+              <div class="meat-item-title">Картофель в беконе</div>
+              <div class="meat-item-desc">Запечённый на углях картофель в хрустящем беконе</div>
+              <div class="meat-item-meta">Порция 500 г — 550 р.</div>
+            </div>
+            <!-- ВРЕМЕННО СКРЫТЬ СЁМГУ:
+                 закомментируйте или удалите блок ниже от <div class="meat-item salmon-item"> до </div> -->
+            <div class="meat-item salmon-item">
+              <div class="meat-item-title">Стейк из сёмги</div>
+              <div class="meat-item-desc">Нежная сёмга на гриле, сочная внутри</div>
+              <div class="meat-item-meta">Стейки от 300 г — 960 р.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="section-head">
-        <div class="section-title">Закуски</div>
+        <div class="section-title">ЗАКУСКИ</div>
       </div>
-      <div class="grill-grid">
-        <div class="grill-item">
-          <div class="grill-name">Морковь по-корейски</div>
-          <div class="grill-desc">Остро-пряный маринад от шефа. 100 гр.</div>
-          <div class="grill-price">120 р.</div>
-        </div>
-        <div class="grill-item">
-          <div class="grill-name">Лук маринованный</div>
-          <div class="grill-desc">Идеально к шашлыку. 100 гр.</div>
-          <div class="grill-price">150 р.</div>
-        </div>
-        <div class="grill-item">
-          <div class="grill-name">Капуста маринованная</div>
-          <div class="grill-desc">По домашнему рецепту от шефа. 100 гр.</div>
-          <div class="grill-price">120 р.</div>
-        </div>
-        <div class="grill-item">
-          <div class="grill-name">Креветки в панировке</div>
-          <div class="grill-desc">Хрустящие с золотой корочкой. 5 шт.</div>
-          <div class="grill-price">250 р.</div>
-        </div>
-        <div class="grill-item">
-          <div class="grill-name">Картофель фри</div>
-          <div class="grill-desc">Золотистый, хрустящий. 100 гр.</div>
-          <div class="grill-price">180 р.</div>
-        </div>
-        <div class="grill-item">
-          <div class="grill-name">Картофель по-деревенски</div>
-          <div class="grill-desc">С румяной корочкой и специями. 100 гр.</div>
-          <div class="grill-price">180 р.</div>
-        </div>
-        <div class="grill-item">
-          <div class="grill-name">Сырные палочки</div>
-          <div class="grill-desc">С тягучим сыром внутри. 5 шт.</div>
-          <div class="grill-price">200 р.</div>
-        </div>
-        <div class="grill-item snack-split">
-          <div class="snack-split-item">
-            <div class="grill-name">Наггетсы</div>
-            <div class="grill-desc">Хрустящие куриные кусочки. 5 шт.</div>
-            <div class="grill-price">250 р.</div>
-          </div>
-          <div class="snack-split-item">
-            <div class="grill-name">Цезарь с курицей</div>
-            <div class="grill-desc">Листья салата, курица, соус, помидоры черри, сыр пармезан · 200 гр.</div>
-            <div class="grill-price">300 р.</div>
-          </div>
-        </div>
+      <div class="snack-grid">
+        <div class="snack-card"><div class="snack-name">Морковь по-корейски</div><div class="snack-meta">100г</div><div class="snack-price">120р.</div></div>
+        <div class="snack-card"><div class="snack-name">Лук маринованный</div><div class="snack-meta">100г</div><div class="snack-price">150р.</div></div>
+        <div class="snack-card"><div class="snack-name">Капуста маринованная</div><div class="snack-meta">100г</div><div class="snack-price">120р.</div></div>
+        <div class="snack-card"><div class="snack-name">Креветки в панировке</div><div class="snack-meta">5шт.</div><div class="snack-price">250р.</div></div>
+        <div class="snack-card"><div class="snack-name">Картофель фри</div><div class="snack-meta">100г</div><div class="snack-price">180р.</div></div>
+        <div class="snack-card"><div class="snack-name">Картофель по деревенски</div><div class="snack-meta">100г</div><div class="snack-price">180р.</div></div>
+        <div class="snack-card"><div class="snack-name">Сырные палочки</div><div class="snack-meta">5шт.</div><div class="snack-price">200р.</div></div>
+        <div class="snack-card"><div class="snack-name">Нагетсы</div><div class="snack-meta">5шт.</div><div class="snack-price">250р.</div></div>
+        <div class="snack-card"><div class="snack-name">Цезарь с курицей</div><div class="snack-meta">200г</div><div class="snack-price">300р.</div></div>
       </div>
-      <div class="snack-footer">
-        <div class="section-head sauce-head">
-          <div class="section-title sauce-title">Соусы</div>
-          <div class="section-sub">70 г</div>
-        </div>
-        <div class="sauce-mini-grid">
-          <div class="sauce-mini">Барбекю <span>100 р.</span></div>
-          <div class="sauce-mini">Кетчуп <span>100 р.</span></div>
-          <div class="sauce-mini">Кавказский <span>120 р.</span></div>
-          <div class="sauce-mini">Чесночный <span>100 р.</span></div>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="section screen2-drinks">
+    <section class="section">
       <div class="section-head">
-        <div class="section-title">Напитки</div>
+        <div class="section-title">СОУСЫ · 70 г</div>
       </div>
-      <div class="drinks-cols">
-        <div class="drinks-col">
-          <div class="drinks-sub-head">Холодные и чай</div>
-          <div class="drink-row">
-            <div>
-              <div class="drink-name">Морс комбо</div>
-              <div class="drink-vol">смородина, вишня, клюква · 500 мл</div>
-            </div>
-            <div class="drink-price drink-price-hit">150 р.</div>
-          </div>
-          <div class="drink-row">
-            <div>
-              <div class="drink-name">Чай (черный, зеленый)</div>
-              <div class="drink-vol">350 мл</div>
-            </div>
-            <div class="drink-price drink-price-hit">120 р.</div>
-          </div>
-          <div class="soon-card">
-            <div>
-              <div class="soon-title">Настойки 18+</div>
-              <div class="soon-note">Скоро в меню - Яркие вкусы, свои рецепты</div>
-            </div>
-            <div class="soon-badge">скоро</div>
-          </div>
-        </div>
+      <div class="sauce-grid">
+        <div class="sauce-card"><div class="sauce-name">Барбекю</div><div class="sauce-price">100р.</div></div>
+        <div class="sauce-card"><div class="sauce-name">Кетчуп</div><div class="sauce-price">100р.</div></div>
+        <div class="sauce-card"><div class="sauce-name">Кавказский</div><div class="sauce-price">120р.</div></div>
+        <div class="sauce-card"><div class="sauce-name">Чесночный</div><div class="sauce-price">100р.</div></div>
+      </div>
+    </section>
 
-        <div class="drinks-col">
-          <div class="drinks-sub-head">Кофе 350 мл.</div>
-          <div class="drink-row"><div class="drink-name">Американо</div><div class="drink-price">150 р.</div></div>
-          <div class="drink-row"><div class="drink-name">Капучино</div><div class="drink-price">160 р.</div></div>
-          <div class="drink-row"><div class="drink-name">Латте</div><div class="drink-price">160 р.</div></div>
-          <div class="drink-row"><div class="drink-name">Флэт уайт</div><div class="drink-price">160 р.</div></div>
-          <div class="drink-row"><div class="drink-name">Мокачино</div><div class="drink-price">160 р.</div></div>
-          <div class="drink-row"><div class="drink-name">Раф банановый</div><div class="drink-price">160 р.</div></div>
-          <div class="drink-row"><div class="drink-name">Горячий шоколад</div><div class="drink-price">160 р.</div></div>
-          <div class="drink-row"><div class="drink-name">Шоколад с молоком</div><div class="drink-price">160 р.</div></div>
-        </div>
-      </div>
-    </div>
+    <section class="soon-panel">
+      <div class="soon-panel-title">Настойки 18+</div>
+      <div class="soon-panel-note">скоро</div>
+    </section>
+
   </div>
 </div>
 </body>
