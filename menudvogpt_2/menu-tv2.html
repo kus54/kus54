@@ -34,18 +34,19 @@
 }
 
 @media screen and (orientation:landscape){
-  html{overflow:hidden}
+  html{overflow:hidden;width:100%;height:100%}
   body{
     width:100vh;
     min-height:100vw;
+    max-height:100vw;
     transform-origin:top left;
     transform:rotate(-90deg) translateX(-100vw);
     overflow:hidden;
   }
-  .page{width:100%!important;min-height:100vw!important}
+  .page{width:100%!important;min-height:100vw!important;height:100vw!important}
 }
 @media screen and (orientation:portrait){
-  html,body{width:1080px;min-height:1920px}
+  html,body{width:1080px;height:1920px;overflow:hidden}
 }
 
 :root{
@@ -130,7 +131,7 @@ body{overflow:hidden}
 .content{
   flex:1;
   display:grid;
-  grid-template-rows:minmax(0, 1.54fr) minmax(0, .66fr) minmax(0, .18fr) minmax(0, .30fr);
+  grid-template-rows:minmax(0, 1.56fr) minmax(0, .58fr) minmax(0, .15fr) minmax(0, .28fr);
   gap:5px;
   min-height:0;
 }
@@ -321,16 +322,16 @@ body{overflow:hidden}
   background:rgba(13,10,9,.56);
 }
 .snack-grid{
-  padding:5px 7px;
+  padding:4px 6px;
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:4px;
+  gap:3px;
   align-content:start;
 }
 .snack-card{
   border:1px solid var(--divider);
-  border-radius:10px;
-  padding:4px 6px;
+  border-radius:8px;
+  padding:4px 5px;
   background:rgba(255,255,255,.02);
   display:grid;
   grid-template-columns:minmax(0,1fr) auto;
@@ -340,20 +341,20 @@ body{overflow:hidden}
 }
 .snack-name{
   font-family:"BrandOswald",sans-serif;
-  font-size:14px;
+  font-size:13px;
   line-height:1.04;
   color:var(--white);
   grid-column:1;
 }
 .snack-meta{
   margin-top:1px;
-  font-size:8.5px;
+  font-size:8px;
   color:var(--muted);
   grid-column:1;
 }
 .snack-price{
   margin-top:0;
-  font-size:18px;
+  font-size:16px;
   font-weight:800;
   line-height:.95;
   color:var(--text);
@@ -363,16 +364,16 @@ body{overflow:hidden}
 }
 
 .sauce-grid{
-  padding:4px 6px;
+  padding:4px 5px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:4px;
+  gap:3px;
   align-content:start;
 }
 .sauce-card{
   border:1px solid var(--divider);
-  border-radius:10px;
-  padding:4px 6px;
+  border-radius:8px;
+  padding:3px 5px;
   text-align:left;
   background:rgba(232,32,5,.06);
   display:flex;
@@ -382,13 +383,13 @@ body{overflow:hidden}
 }
 .sauce-name{
   font-family:"BrandOswald",sans-serif;
-  font-size:13px;
+  font-size:12px;
   color:var(--white);
   line-height:1;
 }
 .sauce-price{
   margin-top:0;
-  font-size:15px;
+  font-size:14px;
   font-weight:800;
   color:var(--text);
   white-space:nowrap;
