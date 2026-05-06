@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Дело в огне — ТВ меню 2</title>
+
+  <style>
+    /* =========================================================
+       1. БАЗА ЭКРАНА
+       Формат: 1080 x 1920. В landscape экран разворачивается.
+       ========================================================= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @media screen and (orientation: landscape) {
+      html { overflow: hidden; }
+      body {
+        width: 100vh;
+        min-height: 100vw;
+        transform-origin: top left;
+        transform: rotate(-90deg) translateX(-100vw);
+        overflow: hidden;
+      }
+      .page {
+        width: 100% !important;
+        min-height: 100vw !important;
+      }
+    }
+
+    @media screen and (orientation: portrait) {
+      html,
+      body {
+        width: 1080px;
+        min-height: 1920px;
+        overflow: hidden;
+      }
+    }
+
+    :root {
+      --bg: #0d0a09;
+      --red: #e82005;
+      --text: #f5e4ce;
+      --white: #ffffff;
+      --muted: rgba(245, 228, 206, .72);
+      --line: rgba(255, 255, 255, .08);
+      --card: rgba(255, 255, 255, .025);
+    }
+
+    html,
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 1080px;
+      min-height: 1920px;
+      padding: 18px;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto auto;
+      gap: 8px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 90% 24% at 50% 100%, rgba(232, 32, 5, .22), transparent 58%),
+        #0d0a09;
+    }
+
+    /* =========================================================
+       2. ОБЩИЕ СЕКЦИИ
+       ========================================================= */
+    .section {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--card);
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .section-head {
+      padding: 10px 16px 9px;
+      background: var(--red);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .section-title {
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .05em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       3. МЯСО НА УГЛЯХ
+       Где менять размеры:
+       .meat-item-title — название блюда
+       .meat-item-desc — описание
+       .meat-item-meta — вес и цена
+       ========================================================= */
+    .meat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: calc(100% - 53px);
+    }
+
+    .meat-col {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .meat-col:last-child {
+      border-right: 0;
+    }
+
+    .featured-meat {
+      min-height: 214px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .featured-pork {
+      background-image: linear-gradient(180deg, rgba(13,10,9,.14), rgba(13,10,9,.54)), url("../Menu2/Общее фото ш_2.JPG");
+    }
+
+    .featured-lula {
+      background-image: linear-gradient(180deg, rgba(13,10,9,.14), rgba(13,10,9,.56)), url("../Menu2/Люля-кебаб_2.JPG");
+    }
+
+    .badge {
+      width: fit-content;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--red);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .featured-title {
+      margin-top: 8px;
+      font-size: 34px;
+      line-height: .98;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .featured-desc {
+      margin-top: 6px;
+      width: fit-content;
+      max-width: 100%;
+      padding: 4px 6px;
+      border-radius: 8px;
+      background: rgba(13,10,9,.56);
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .featured-price-row {
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid rgba(232,32,5,.58);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .featured-weight {
+      font-size: 22px;
+      font-weight: 700;
+      color: rgba(255,255,255,.72);
+    }
+
+    .featured-price {
+      font-size: 56px;
+      line-height: .95;
+      font-weight: 900;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .meat-list {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .meat-item {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .meat-item:last-child {
+      border-bottom: 0;
+    }
+
+    .meat-item-title {
+      font-size: 26px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .meat-item-desc {
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 1.15;
+      color: var(--muted);
+    }
+
+    .meat-item-meta {
+      margin-top: 6px;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .photo-veg {
+      flex: 1;
+      background-image: linear-gradient(180deg, rgba(13,10,9,.18), rgba(13,10,9,.72)), url("../Menu2/Овощи гриль_1.JPG");
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* =========================================================
+       4. ЗАКУСКИ — ГЛАВНЫЙ БЛОК ДЛЯ РУЧНОЙ ПРАВКИ
+       Если не влезает — уменьшаем font-size и padding здесь.
+       ========================================================= */
+    .snacks-section .section-head,
+    .sauces-section .section-head {
+      padding: 3px 8px 2px;
+    }
+
+    .snacks-section .section-title,
+    .sauces-section .section-title {
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: .04em;
+    }
+
+    .snack-grid {
+      padding: 2px 3px 3px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2px;
+    }
+
+    .snack-card {
+      min-height: 18px;
+      padding: 2px 4px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: rgba(255,255,255,.02);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow: hidden;
+    }
+
+    .snack-name {
+      font-size: 8px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--white);
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .snack-meta {
+      font-size: 6px;
+      line-height: 1;
+      color: var(--muted);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .snack-price {
+      margin-left: auto;
+      font-size: 8px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--text);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    /* =========================================================
+       5. СОУСЫ — ГЛАВНЫЙ БЛОК ДЛЯ РУЧНОЙ ПРАВКИ
+       ========================================================= */
+    .sauce-grid {
+      padding: 2px 3px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 2px;
+    }
+
+    .sauce-card {
+      min-height: 18px;
+      padding: 3px 4px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: rgba(232,32,5,.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3px;
+      overflow: hidden;
+    }
+
+    .sauce-name {
+      font-size: 8px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--white);
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .sauce-price {
+      font-size: 8px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--text);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <!-- ======================================================
+         МЯСО НА УГЛЯХ
+         ====================================================== -->
+    <section class="section meat-section">
+      <div class="section-head">
+        <div class="section-title">Мясо на углях 🔥</div>
+      </div>
+
+      <div class="meat-grid">
+        <div class="meat-col">
+          <div class="featured-meat featured-pork">
+            <div class="badge">Хит</div>
+            <div class="featured-title">Шашлык из свинины</div>
+            <div class="featured-desc">Свиная шейка в авторском маринаде</div>
+            <div class="featured-price-row">
+              <div class="featured-weight">за 100 г</div>
+              <div class="featured-price">220 р.</div>
+            </div>
+          </div>
+
+          <div class="meat-list">
+            <div class="meat-item">
+              <div class="meat-item-title">Куриное бедро</div>
+              <div class="meat-item-desc">Нежное филе, приготовленное на мангале</div>
+              <div class="meat-item-meta">200 г — 400 р.</div>
+            </div>
+
+            <div class="meat-item">
+              <div class="meat-item-title">Крылья на мангале</div>
+              <div class="meat-item-desc">Хрустящие снаружи, сочные внутри</div>
+              <div class="meat-item-meta">500 г — 800 р.</div>
+            </div>
+
+            <div class="meat-item photo-veg">
+              <div class="meat-item-title">Овощи на огне</div>
+              <div class="meat-item-desc">Болгарский перец, кабачки, помидоры, грибы</div>
+              <div class="meat-item-meta">Порция 500 г — 900 р.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="meat-col">
+          <div class="featured-meat featured-lula">
+            <div class="badge">Хит</div>
+            <div class="featured-title">Люля-кебаб</div>
+            <div class="featured-desc">Рублёная свинина и говядина со специями</div>
+            <div class="featured-price-row">
+              <div class="featured-weight">300 г</div>
+              <div class="featured-price">640 р.</div>
+            </div>
+          </div>
+
+          <div class="meat-list">
+            <div class="meat-item">
+              <div class="meat-item-title">Куриная грудка</div>
+              <div class="meat-item-desc">Филе на живом огне — сочно и легко</div>
+              <div class="meat-item-meta">250 г — 400 р.</div>
+            </div>
+
+            <div class="meat-item">
+              <div class="meat-item-title">Креветки на гриле</div>
+              <div class="meat-item-desc">Обжаренные на огне с дымком</div>
+              <div class="meat-item-meta">200 г — 520 р.</div>
+            </div>
+
+            <div class="meat-item">
+              <div class="meat-item-title">Грибы на огне</div>
+              <div class="meat-item-desc">Шампиньоны на мангале — с дымом и зеленью</div>
+              <div class="meat-item-meta">Порция 300 г — 540 р.</div>
+            </div>
+
+            <div class="meat-item">
+              <div class="meat-item-title">Картофель в беконе</div>
+              <div class="meat-item-desc">Запечённый на углях картофель в беконе</div>
+              <div class="meat-item-meta">Порция 500 г — 550 р.</div>
+            </div>
+
+            <div class="meat-item">
+              <div class="meat-item-title">Стейк из сёмги</div>
+              <div class="meat-item-desc">Нежная сёмга на гриле, сочная внутри</div>
+              <div class="meat-item-meta">Стейки от 300 г — 960 р.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         ЗАКУСКИ
+         Название + вес + цена стоят в одну строку.
+         ====================================================== -->
+    <section class="section snacks-section">
+      <div class="section-head">
+        <div class="section-title">Закуски</div>
+      </div>
+
+      <div class="snack-grid">
+        <div class="snack-card"><div class="snack-name">Морковь по-корейски</div><div class="snack-meta">100г</div><div class="snack-price">120р.</div></div>
+        <div class="snack-card"><div class="snack-name">Лук маринованный</div><div class="snack-meta">100г</div><div class="snack-price">150р.</div></div>
+        <div class="snack-card"><div class="snack-name">Капуста маринованная</div><div class="snack-meta">100г</div><div class="snack-price">120р.</div></div>
+        <div class="snack-card"><div class="snack-name">Креветки в панировке</div><div class="snack-meta">5шт.</div><div class="snack-price">250р.</div></div>
+        <div class="snack-card"><div class="snack-name">Картофель фри</div><div class="snack-meta">100г</div><div class="snack-price">180р.</div></div>
+        <div class="snack-card"><div class="snack-name">Картофель по-деревенски</div><div class="snack-meta">100г</div><div class="snack-price">180р.</div></div>
+        <div class="snack-card"><div class="snack-name">Сырные палочки</div><div class="snack-meta">5шт.</div><div class="snack-price">200р.</div></div>
+        <div class="snack-card"><div class="snack-name">Нагетсы</div><div class="snack-meta">5шт.</div><div class="snack-price">250р.</div></div>
+        <div class="snack-card"><div class="snack-name">Цезарь с курицей</div><div class="snack-meta">200г</div><div class="snack-price">300р.</div></div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         СОУСЫ
+         Название + цена стоят в одну строку.
+         ====================================================== -->
+    <section class="section sauces-section">
+      <div class="section-head">
+        <div class="section-title">Соусы · 70 г</div>
+      </div>
+
+      <div class="sauce-grid">
+        <div class="sauce-card"><div class="sauce-name">Барбекю</div><div class="sauce-price">100р.</div></div>
+        <div class="sauce-card"><div class="sauce-name">Кетчуп</div><div class="sauce-price">100р.</div></div>
+        <div class="sauce-card"><div class="sauce-name">Кавказский</div><div class="sauce-price">120р.</div></div>
+        <div class="sauce-card"><div class="sauce-name">Чесночный</div><div class="sauce-price">100р.</div></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
