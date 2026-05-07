@@ -11,6 +11,7 @@
 .menu-tab--active { background: #E8321A; border-color: #E8321A; color: #fff; }
 .menu-grid--hidden { display: none !important; }
 .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 16px; }
+.menu-grid--2col { grid-template-columns: repeat(2, 1fr); }
 .menu-card { background: #141414; border: 1px solid #1E1E1E; border-radius: 16px; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; display: flex; flex-direction: column; }
 .menu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(232,50,26,0.2); border-color: #E8321A; }
 .menu-card__img-wrap { width: 100%; aspect-ratio: 4/3; position: relative; overflow: hidden; background: #1E1E1E; }
@@ -18,680 +19,394 @@
 .menu-card__badge { position: absolute; top: 12px; left: 12px; background: #E8321A; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; z-index: 1; }
 .menu-card__badge--spicy { background: #CC0000; }
 .menu-card__badge--new { background: #27A700; }
+.menu-card__badge--hit { background: #E8321A; }
 .menu-card__body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
 .menu-card__title { font-size: 17px; font-weight: 700; color: #F0EAE0; margin: 0 0 8px; line-height: 1.3; }
 .menu-card__desc { font-size: 13px; color: #686868; line-height: 1.5; margin: 0 0 16px; flex: 1; }
 .menu-card__footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .menu-card__weight { font-size: 13px; font-weight: 600; color: #686868; }
 .menu-card__weight--fixed { font-size: 18px; font-weight: 700; color: #F0DBC0; }
-.menu-card__order { background: #E8321A; color: #fff; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 30px; text-decoration: none; transition: background 0.2s ease; white-space: nowrap; }
+.menu-card__order { background: #E8321A; color: #fff; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 30px; text-decoration: none; transition: background 0.2s ease; white-space: nowrap; cursor: pointer; }
 .menu-card__order:hover { background: #C42818; }
+.menu-card__price { font-size: 17px; font-weight: 800; color: #E8321A; line-height: 1; }
+.menu-card__weight-small { font-size: 11px; color: #555; margin-top: 3px; }
 .menu-note { font-size: 13px; color: #555; line-height: 1.5; margin: 0 0 32px; padding: 12px 16px; border-left: 2px solid #E8321A; background: #111; border-radius: 0 8px 8px 0; }
 .menu-footnote { text-align: center; font-size: 13px; color: #4A4A4A; margin: 0; padding-top: 16px; }
-/* Блок «честный вес» */
 .menu-value-tip { display: flex; align-items: flex-start; gap: 14px; background: rgba(232,50,26,0.08); border: 1px solid rgba(232,50,26,0.25); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; color: #D0C4B4; font-size: 14px; line-height: 1.65; }
 .menu-value-tip__icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
 .menu-value-tip strong { color: #F0EAE0; }
 .menu-value-tip em { color: #E8321A; font-style: normal; font-weight: 700; }
-/* Цена на карточке */
-.menu-card__price { font-size: 17px; font-weight: 800; color: #E8321A; line-height: 1; }
-.menu-card__weight-small { font-size: 11px; color: #555; margin-top: 3px; }
-/* Таб Бар/Настойки */
+.sauces-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
+.sauce-card { background: #141414; border: 1px solid #1E1E1E; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; transition: border-color 0.2s; }
+.sauce-card:hover { border-color: #E8321A; }
+.sauce-card__name { font-size: 15px; font-weight: 600; color: #F0EAE0; }
+.sauce-card__sub { font-size: 12px; color: #555; margin-top: 2px; }
+.sauce-card__price { font-size: 16px; font-weight: 800; color: #E8321A; white-space: nowrap; }
+.addons-block { background: #111; border: 1px solid #1E1E1E; border-radius: 12px; padding: 16px 20px; margin-top: 16px; margin-bottom: 0; }
+.addons-block__title { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #686868; margin-bottom: 12px; }
+.addons-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.addon-pill { background: #1E1E1E; border: 1px solid #2A2A2A; border-radius: 30px; padding: 7px 14px; font-size: 13px; color: #D0C4B4; display: flex; gap: 8px; align-items: center; }
+.addon-pill span { color: #E8321A; font-weight: 700; }
+.coming-soon-block { grid-column: 1/-1; text-align: center; padding: 60px 20px; background: rgba(139,69,19,0.08); border: 1px dashed rgba(255,179,71,0.3); border-radius: 16px; }
+.coming-soon-block__icon { font-size: 48px; display: block; margin-bottom: 16px; }
+.coming-soon-block__title { font-size: 24px; font-weight: 700; color: #FFD580; margin-bottom: 8px; }
+.coming-soon-block__sub { font-size: 14px; color: #9A7A4A; line-height: 1.7; max-width: 480px; margin: 0 auto; }
 .menu-tab--bar { border-color: rgba(255,179,71,0.35) !important; color: #FFB347 !important; }
 .menu-tab--bar:hover, .menu-tab--bar.menu-tab--active { background: linear-gradient(135deg,#7B3F00,#A0522D) !important; border-color: #FFB347 !important; color: #FFE0A0 !important; }
-/* Баннер: только в баре */
-.tinctures-notice { grid-column: 1/-1; display: flex; align-items: center; gap: 14px; background: rgba(139,69,19,0.15); border: 1px dashed rgba(255,179,71,0.4); border-radius: 12px; padding: 14px 20px; color: #FFB347; font-size: 14px; line-height: 1.6; margin-bottom: 4px; }
-.tinctures-notice__icon { font-size: 26px; flex-shrink: 0; }
-.tinctures-notice strong { color: #FFD580; }
-/* Карточка настойки */
-.menu-card--tincture { border-color: rgba(139,69,19,0.3) !important; }
-.menu-card--tincture:hover { box-shadow: 0 12px 40px rgba(255,140,0,0.2) !important; border-color: #FFB347 !important; }
-.menu-card__badge--18 { background: #8B0000; color: #FFB3B3; }
-.menu-card__badge--tincture-emoji { left: auto; right: 10px; background: rgba(0,0,0,0.5); font-size: 14px; }
-.menu-card__badge--seasonal { background: #5C4000; color: #FFD580; top: 38px; }
-.menu-card__price-tincture { font-size: 15px; font-weight: 700; color: #FFB347; }
-.menu-card__bar-only { background: rgba(139,69,19,0.25); color: #FFB347; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(255,179,71,0.35); white-space: nowrap; }
-@media (max-width: 900px) { .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+.drinks-section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #686868; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid #1E1E1E; grid-column: 1/-1; }
+@media (max-width: 900px) { .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } .sauces-grid { grid-template-columns: 1fr; } }
 @media (max-width: 600px) {
   .menu-section { padding: 60px 16px; }
   .menu-title { font-size: 28px; }
   .menu-tab { padding: 10px 14px; font-size: 12px; }
   .menu-grid { grid-template-columns: 1fr; gap: 16px; }
+  .menu-grid--2col { grid-template-columns: 1fr; }
+  .sauces-grid { grid-template-columns: 1fr; }
+  .addons-row { flex-direction: column; }
 }
 </style>
 
 <section class="menu-section" id="menu">
   <div class="menu-inner">
     <div class="menu-header">
-      <span class="menu-label">Что приготовили сегодня</span>
       <h2 class="menu-title">Наше меню</h2>
-      <p class="menu-subtitle">Всё готовится на живом огне. Цены уточняйте у оператора.</p>
+      <p class="menu-subtitle">Всё готовится на живом огне. Мясо — называйте нужный вес.</p>
     </div>
 
     <div class="menu-tabs" role="tablist">
-      <button class="menu-tab menu-tab--active" data-tab="ugly" role="tab">🔥 Блюда на углях</button>
-      <button class="menu-tab" data-tab="complex" role="tab">📦 Комплексы</button>
-      <button class="menu-tab" data-tab="lavash" role="tab">🌯 Шашлык в лаваше</button>
-      <button class="menu-tab" data-tab="shawarma" role="tab">🥙 Шаурма</button>
-      <button class="menu-tab" data-tab="snacks" role="tab">🥗 Закуски</button>
-      <button class="menu-tab" data-tab="drinks" role="tab">🧃 Напитки</button>
-      <button class="menu-tab menu-tab--bar" data-tab="tinctures" role="tab">🍶 Настойки — Бар</button>
+      <button class="menu-tab menu-tab--active" data-tab="meat"     role="tab">🔥 Мясо на углях</button>
+      <button class="menu-tab"                  data-tab="veggies"  role="tab">🥦 Овощи и гриль</button>
+      <button class="menu-tab"                  data-tab="complex"  role="tab">📦 Комплексы</button>
+      <button class="menu-tab"                  data-tab="lavash"   role="tab">🌯 Шашлык в лаваше</button>
+      <button class="menu-tab"                  data-tab="shawarma" role="tab">🥙 Шаурма</button>
+      <button class="menu-tab"                  data-tab="snacks"   role="tab">🥗 Закуски</button>
+      <button class="menu-tab"                  data-tab="sauces"   role="tab">🫙 Соусы</button>
+      <button class="menu-tab"                  data-tab="drinks"   role="tab">🧃 Напитки</button>
+      <button class="menu-tab menu-tab--bar"    data-tab="tinctures" role="tab">🍶 Настойки 18+</button>
     </div>
 
-    <!-- БЛЮДА НА УГЛЯХ -->
-    <div id="tab-ugly">
+    <!-- МЯСО НА УГЛЯХ -->
+    <div id="tab-meat">
       <div class="menu-value-tip">
         <span class="menu-value-tip__icon">🔥</span>
         <div>
-          <strong>Только мясо</strong> — в нашем гриль-баре от <em>250 г</em> чистого мяса на углях.
+          <strong>Называйте нужный вес</strong> — мясо продаётся на развес. Минимальный заказ — <em>200 г</em>. Цена указана за указанную порцию.
         </div>
       </div>
-      <p class="menu-note">Минимальный заказ мяса — от 250 г. Цены уточняйте у оператора или в агрегаторах.</p>
       <div class="menu-grid">
-
         <div class="menu-card">
-          <!-- фото: шашлык из свинины (шейная часть) на мангале -->
           <div class="menu-card__img-wrap">
             <img src="" alt="Шашлык из свинины" class="menu-card__img" loading="lazy">
-            <span class="menu-card__badge">Хит</span>
+            <span class="menu-card__badge menu-card__badge--hit">ХИТ</span>
           </div>
           <div class="menu-card__body">
             <h3 class="menu-card__title">Шашлык из свинины</h3>
-            <p class="menu-card__desc">Шейная часть, маринад, живой огонь.</p>
+            <p class="menu-card__desc">Свиная шейка в авторском маринаде.</p>
             <div class="menu-card__footer">
               <div>
-                <div class="menu-card__price">от 450 ₽</div>
-                <div class="menu-card__weight-small">от 250 г мяса</div>
+                <div class="menu-card__price">550 ₽</div>
+                <div class="menu-card__weight-small">250 г</div>
               </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
         </div>
-
         <div class="menu-card">
-          <!-- фото: люля-кебаб на шампуре над углями -->
           <div class="menu-card__img-wrap">
             <img src="" alt="Люля-кебаб" class="menu-card__img" loading="lazy">
+            <span class="menu-card__badge menu-card__badge--hit">ХИТ</span>
           </div>
           <div class="menu-card__body">
             <h3 class="menu-card__title">Люля-кебаб</h3>
-            <p class="menu-card__desc">Свинина + говядина, авторские специи, лаваш.</p>
+            <p class="menu-card__desc">Рубленая свинина и говядина со специями на шампуре.</p>
             <div class="menu-card__footer">
               <div>
-                <div class="menu-card__price">от 420 ₽</div>
-                <div class="menu-card__weight-small">от 250 г мяса</div>
+                <div class="menu-card__price">640 ₽</div>
+                <div class="menu-card__weight-small">300 г</div>
               </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
         </div>
-
         <div class="menu-card">
-          <!-- фото: куриные крылья с румяной корочкой на решётке над углями -->
           <div class="menu-card__img-wrap">
-            <img src="" alt="Крылья куриные на мангале" class="menu-card__img" loading="lazy">
+            <img src="" alt="Куриное бедро на мангале" class="menu-card__img" loading="lazy">
           </div>
           <div class="menu-card__body">
-            <h3 class="menu-card__title">Крылья куриные на мангале</h3>
-            <p class="menu-card__desc">Хрустящая корочка, живой огонь.</p>
+            <h3 class="menu-card__title">Куриное бедро</h3>
+            <p class="menu-card__desc">Нежное филе, приготовленное на мангале.</p>
             <div class="menu-card__footer">
               <div>
-                <div class="menu-card__price">от 380 ₽</div>
-                <div class="menu-card__weight-small">от 250 г</div>
+                <div class="menu-card__price">400 ₽</div>
+                <div class="menu-card__weight-small">200 г</div>
               </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
         </div>
-
         <div class="menu-card">
-          <!-- фото: куриная грудка с полосками от решётки на мангале -->
           <div class="menu-card__img-wrap">
-            <img src="" alt="Грудка куриная на мангале" class="menu-card__img" loading="lazy">
+            <img src="" alt="Куриная грудка на мангале" class="menu-card__img" loading="lazy">
           </div>
           <div class="menu-card__body">
-            <h3 class="menu-card__title">Грудка куриная на мангале</h3>
-            <p class="menu-card__desc">Куриное филе, маринад, угольный жар.</p>
+            <h3 class="menu-card__title">Куриная грудка</h3>
+            <p class="menu-card__desc">Филе на живом огне — сочно и легко.</p>
             <div class="menu-card__footer">
               <div>
-                <div class="menu-card__price">от 360 ₽</div><!-- уточните цену -->
-                <div class="menu-card__weight-small">от 250 г</div>
+                <div class="menu-card__price">400 ₽</div>
+                <div class="menu-card__weight-small">250 г</div>
               </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
         </div>
-
         <div class="menu-card">
-          <!-- фото: куриное бедро с корочкой на мангале -->
           <div class="menu-card__img-wrap">
-            <img src="" alt="Стейк бедра куриного" class="menu-card__img" loading="lazy">
+            <img src="" alt="Крылья на мангале" class="menu-card__img" loading="lazy">
           </div>
           <div class="menu-card__body">
-            <h3 class="menu-card__title">Стейк бедра куриного</h3>
-            <p class="menu-card__desc">Куриные бёдра, маринад, на углях.</p>
+            <h3 class="menu-card__title">Крылья на мангале</h3>
+            <p class="menu-card__desc">Хрустящие снаружи, сочные внутри.</p>
             <div class="menu-card__footer">
               <div>
-                <div class="menu-card__price">от 370 ₽</div><!-- уточните цену -->
-                <div class="menu-card__weight-small">от 250 г</div>
+                <div class="menu-card__price">800 ₽</div>
+                <div class="menu-card__weight-small">500 г</div>
               </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
         </div>
-
         <div class="menu-card">
-          <!-- фото: колбаски ассорти на решётке, дым от углей -->
           <div class="menu-card__img-wrap">
-            <img src="" alt="Колбаски на мангале ассорти" class="menu-card__img" loading="lazy">
+            <img src="" alt="Креветки на гриле" class="menu-card__img" loading="lazy">
             <span class="menu-card__badge menu-card__badge--new">Новинка</span>
           </div>
           <div class="menu-card__body">
-            <h3 class="menu-card__title">Колбаски на мангале ассорти</h3>
-            <p class="menu-card__desc">Несколько видов колбасок, жар углей.</p>
+            <h3 class="menu-card__title">Креветки на гриле</h3>
+            <p class="menu-card__desc">Обжаренные на огне креветки с дымком.</p>
             <div class="menu-card__footer">
               <div>
-                <div class="menu-card__price">от 390 ₽</div><!-- уточните цену -->
-                <div class="menu-card__weight-small">от 250 г</div>
+                <div class="menu-card__price">620 ₽</div>
+                <div class="menu-card__weight-small">200 г</div>
               </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
         </div>
-
         <div class="menu-card">
-          <!-- фото: перец, кабачок, баклажан на решётке-гриль -->
           <div class="menu-card__img-wrap">
-            <img src="" alt="Овощи на гриле" class="menu-card__img" loading="lazy">
+            <img src="" alt="Стейк из сёмги" class="menu-card__img" loading="lazy">
           </div>
           <div class="menu-card__body">
-            <h3 class="menu-card__title">Овощи на гриле</h3>
-            <p class="menu-card__desc">Болгарский перец и другие овощи на углях.</p>
+            <h3 class="menu-card__title">Стейк из сёмги</h3>
+            <p class="menu-card__desc">Нежная сёмга на гриле, сочная внутри.</p>
             <div class="menu-card__footer">
               <div>
-                <div class="menu-card__price">от 190 ₽</div><!-- уточните цену -->
-                <div class="menu-card__weight-small">от 250 г</div>
+                <div class="menu-card__price">1260 ₽</div>
+                <div class="menu-card__weight-small">от 300 г</div>
               </div>
               <a href="#delivery" class="menu-card__order">Заказать</a>
             </div>
           </div>
         </div>
-
-        <div class="menu-card">
-          <!-- фото: шампиньоны на решётке, румяные -->
-          <div class="menu-card__img-wrap">
-            <img src="" alt="Грибы на мангале" class="menu-card__img" loading="lazy">
-          </div>
-          <div class="menu-card__body">
-            <h3 class="menu-card__title">Грибы на мангале</h3>
-            <p class="menu-card__desc">Шампиньоны целиком на углях.</p>
-            <div class="menu-card__footer">
-              <div>
-                <div class="menu-card__price">от 180 ₽</div><!-- уточните цену -->
-                <div class="menu-card__weight-small">от 250 г</div>
-              </div>
-              <a href="#delivery" class="menu-card__order">Заказать</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <!-- фото: картофель завёрнутый в бекон на решётке -->
-          <div class="menu-card__img-wrap">
-            <img src="" alt="Картофель в беконе на углях" class="menu-card__img" loading="lazy">
-          </div>
-          <div class="menu-card__body">
-            <h3 class="menu-card__title">Картофель в беконе на углях</h3>
-            <p class="menu-card__desc">Картофель, бекон, угольный жар.</p>
-            <div class="menu-card__footer">
-              <div>
-                <div class="menu-card__price">от 220 ₽</div><!-- уточните цену -->
-                <div class="menu-card__weight-small">от 250 г</div>
-              </div>
-              <a href="#delivery" class="menu-card__order">Заказать</a>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </div><!-- /tab-ugly -->
+    </div>
+
+    <!-- ОВОЩИ И ГРИЛЬ -->
+    <div class="menu-grid menu-grid--hidden menu-grid--2col" id="tab-veggies">
+      <div class="menu-card">
+        <div class="menu-card__img-wrap"><img src="" alt="Овощи на огне" class="menu-card__img" loading="lazy"></div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Овощи на огне</h3>
+          <p class="menu-card__desc">Болгарский перец, кабачки, помидоры, грибы. Маринуются в фирменном соусе от шефа.</p>
+          <div class="menu-card__footer">
+            <div><div class="menu-card__price">900 ₽</div><div class="menu-card__weight-small">Порция 500 г</div></div>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card__img-wrap"><img src="" alt="Грибы на огне" class="menu-card__img" loading="lazy"></div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Грибы на огне</h3>
+          <p class="menu-card__desc">Шампиньоны на мангале — с дымком и зеленью.</p>
+          <div class="menu-card__footer">
+            <div><div class="menu-card__price">540 ₽</div><div class="menu-card__weight-small">Порция 300 г</div></div>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card__img-wrap"><img src="" alt="Картофель в беконе на углях" class="menu-card__img" loading="lazy"></div>
+        <div class="menu-card__body">
+          <h3 class="menu-card__title">Картофель в беконе</h3>
+          <p class="menu-card__desc">Запечённый на углях картофель в хрустящем беконе.</p>
+          <div class="menu-card__footer">
+            <div><div class="menu-card__price">550 ₽</div><div class="menu-card__weight-small">Порция 500 г</div></div>
+            <a href="#delivery" class="menu-card__order">Заказать</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- КОМПЛЕКСЫ -->
-    <div class="menu-grid menu-grid--hidden" id="tab-complex">
-
+    <div class="menu-grid menu-grid--hidden menu-grid--2col" id="tab-complex">
+      <div class="menu-value-tip" style="grid-column:1/-1;">
+        <span class="menu-value-tip__icon">📦</span>
+        <div>Комплекс = <strong>мясо + лук маринованный + соус + лаваш</strong>. Всё включено — выгоднее, чем по отдельности.</div>
+      </div>
       <div class="menu-card">
-        <!-- фото: тарелка — шашлык из свинины + лук маринованный + соус + лаваш рядом -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Комплекс №1 Свинина" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge">Хит</span>
-        </div>
+        <div class="menu-card__img-wrap"><img src="" alt="Комплекс №1 Свинина" class="menu-card__img" loading="lazy"><span class="menu-card__badge menu-card__badge--hit">Сильный чек</span></div>
         <div class="menu-card__body">
           <h3 class="menu-card__title">Комплекс №1 — Свинина</h3>
-          <p class="menu-card__desc">Свинина 200 г + лук маринованный + соус + лаваш.</p>
+          <p class="menu-card__desc">Свинина на углях + лук маринованный + соус + лаваш.</p>
           <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">380 г</span>
+            <div><div class="menu-card__price">490 ₽</div></div>
             <a href="#delivery" class="menu-card__order">Заказать</a>
           </div>
         </div>
       </div>
-
       <div class="menu-card">
-        <!-- фото: тарелка — куриная грудка + лук маринованный + соус + лаваш рядом -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Комплекс №2 Курица грудка" class="menu-card__img" loading="lazy">
-        </div>
+        <div class="menu-card__img-wrap"><img src="" alt="Комплекс №2 Куриное бедро" class="menu-card__img" loading="lazy"><span class="menu-card__badge menu-card__badge--new">Быстрый выбор</span></div>
         <div class="menu-card__body">
-          <h3 class="menu-card__title">Комплекс №2 — Курица грудка</h3>
-          <p class="menu-card__desc">Курица грудка 200 г + лук маринованный + соус + лаваш.</p>
+          <h3 class="menu-card__title">Комплекс №2 — Куриное бедро</h3>
+          <p class="menu-card__desc">Куриное бедро на углях + лук маринованный + соус + лаваш.</p>
           <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">380 г</span>
+            <div><div class="menu-card__price">460 ₽</div></div>
             <a href="#delivery" class="menu-card__order">Заказать</a>
           </div>
         </div>
       </div>
-
-      <div class="menu-card">
-        <!-- фото: тарелка — куриное бедро + лук маринованный + соус + лаваш рядом -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Комплекс №3 Курица бедро" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Комплекс №3 — Курица бедро</h3>
-          <p class="menu-card__desc">Курица бедро 200 г + лук маринованный + соус + лаваш.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">380 г</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /tab-complex -->
+    </div>
 
     <!-- ШАШЛЫК В ЛАВАШЕ -->
-    <div class="menu-grid menu-grid--hidden" id="tab-lavash">
-
+    <div class="menu-grid menu-grid--hidden menu-grid--2col" id="tab-lavash">
+      <p class="menu-note" style="grid-column:1/-1;">Мясо + маринованный лук + соус + лаваш. Порция 300 г.</p>
       <div class="menu-card">
-        <!-- фото: шашлык в лаваше из свинины, разрезан пополам — видна начинка -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Шашлык в лаваше — Свинина" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge">Хит</span>
-        </div>
+        <div class="menu-card__img-wrap"><img src="" alt="Свинина в лаваше" class="menu-card__img" loading="lazy"><span class="menu-card__badge menu-card__badge--hit">Хит</span></div>
         <div class="menu-card__body">
-          <h3 class="menu-card__title">Шашлык в лаваше — Свинина</h3>
-          <p class="menu-card__desc">Свинина в маринаде + лук маринованный + соус + кетчуп + лаваш.</p>
+          <h3 class="menu-card__title">Свинина в лаваше</h3>
+          <p class="menu-card__desc">Шашлык из свинины, маринованный лук, соус.</p>
           <div class="menu-card__footer">
+            <div><div class="menu-card__price">450 ₽</div><div class="menu-card__weight-small">300 г</div></div>
             <a href="#delivery" class="menu-card__order">Заказать</a>
           </div>
         </div>
       </div>
-
       <div class="menu-card">
-        <!-- фото: шашлык в лаваше из курицы, разрезан — видна начинка -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Шашлык в лаваше — Курица" class="menu-card__img" loading="lazy">
-        </div>
+        <div class="menu-card__img-wrap"><img src="" alt="Курица в лаваше" class="menu-card__img" loading="lazy"><span class="menu-card__badge menu-card__badge--new">Быстрый выбор</span></div>
         <div class="menu-card__body">
-          <h3 class="menu-card__title">Шашлык в лаваше — Курица</h3>
-          <p class="menu-card__desc">Курица в маринаде + лук маринованный + соус + кетчуп + лаваш.</p>
+          <h3 class="menu-card__title">Курица в лаваше</h3>
+          <p class="menu-card__desc">Шашлык из курицы, маринованный лук, соус.</p>
           <div class="menu-card__footer">
+            <div><div class="menu-card__price">450 ₽</div><div class="menu-card__weight-small">300 г</div></div>
             <a href="#delivery" class="menu-card__order">Заказать</a>
           </div>
         </div>
       </div>
-
-    </div><!-- /tab-lavash -->
+    </div>
 
     <!-- ШАУРМА -->
-    <div class="menu-grid menu-grid--hidden" id="tab-shawarma">
-
-      <div class="menu-card">
-        <!-- фото: шаурма Классик в разрезе — видна начинка (курица, капуста, морковь, огурец, помидор) -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Шаурма Классик" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge">Хит</span>
+    <div id="tab-shawarma" class="menu-grid--hidden">
+      <p class="menu-note">Шаурма — выгодно выделяем. Порция 350 г.</p>
+      <div class="menu-grid" style="margin-bottom:0;">
+        <div class="menu-card">
+          <div class="menu-card__img-wrap"><img src="" alt="Шаурма Классик" class="menu-card__img" loading="lazy"><span class="menu-card__badge menu-card__badge--hit">Хит</span></div>
+          <div class="menu-card__body">
+            <h3 class="menu-card__title">Шаурма Классик</h3>
+            <p class="menu-card__desc">Курица, капуста, морковь по-корейски, огурец, помидор, классический соус.</p>
+            <div class="menu-card__footer">
+              <div><div class="menu-card__price">450 ₽</div><div class="menu-card__weight-small">350 г</div></div>
+              <a href="#delivery" class="menu-card__order">Заказать</a>
+            </div>
+          </div>
         </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Шаурма Классик</h3>
-          <p class="menu-card__desc">Филе грудки + соус классика + капуста + морковь + огурец + помидор + лаваш.</p>
-          <div class="menu-card__footer">
-            <a href="#delivery" class="menu-card__order">Заказать</a>
+        <div class="menu-card">
+          <div class="menu-card__img-wrap"><img src="" alt="Шаурма Острая" class="menu-card__img" loading="lazy"><span class="menu-card__badge menu-card__badge--spicy">Острая 🌶️</span></div>
+          <div class="menu-card__body">
+            <h3 class="menu-card__title">Шаурма Острая</h3>
+            <p class="menu-card__desc">Курица, капуста, морковь, огурец, помидор, острый соус, халапеньо.</p>
+            <div class="menu-card__footer">
+              <div><div class="menu-card__price">470 ₽</div><div class="menu-card__weight-small">350 г</div></div>
+              <a href="#delivery" class="menu-card__order">Заказать</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card__img-wrap"><img src="" alt="Шаурма Сырная" class="menu-card__img" loading="lazy"><span class="menu-card__badge menu-card__badge--new">Новинка</span></div>
+          <div class="menu-card__body">
+            <h3 class="menu-card__title">Шаурма Сырная</h3>
+            <p class="menu-card__desc">Курица, капуста, огурцы, помидоры, фирменный соус, тёртая моцарелла.</p>
+            <div class="menu-card__footer">
+              <div><div class="menu-card__price">480 ₽</div><div class="menu-card__weight-small">350 г</div></div>
+              <a href="#delivery" class="menu-card__order">Заказать</a>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="menu-card">
-        <!-- фото: шаурма Острая в разрезе — акцент на цвет острого соуса -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Шаурма Острая" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge menu-card__badge--spicy">Острая</span>
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Шаурма Острая</h3>
-          <p class="menu-card__desc">Филе грудки + острый соус + капуста + морковь + огурец + помидор + лаваш.</p>
-          <div class="menu-card__footer">
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
+      <div class="addons-block">
+        <div class="addons-block__title">Добавки и хлеб к шаурме</div>
+        <div class="addons-row">
+          <div class="addon-pill">Халапеньо 15 г <span>60 ₽</span></div>
+          <div class="addon-pill">Сыр 15 г <span>60 ₽</span></div>
+          <div class="addon-pill">Лаваш <span>70 ₽</span></div>
+          <div class="addon-pill">Лепёшка <span>70 ₽</span></div>
         </div>
       </div>
-
-      <div class="menu-card">
-        <!-- фото: шаурма Сырная в разрезе — виден тянущийся сыр -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Шаурма Сырная" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge menu-card__badge--new">Новинка</span>
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Шаурма Сырная</h3>
-          <p class="menu-card__desc">Филе грудки + сырный соус + капуста + морковь + огурец + помидор + лаваш.</p>
-          <div class="menu-card__footer">
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /tab-shawarma -->
+    </div>
 
     <!-- ЗАКУСКИ -->
     <div class="menu-grid menu-grid--hidden" id="tab-snacks">
+      <div class="menu-card"><div class="menu-card__img-wrap"><img src="" alt="Морковь по-корейски" class="menu-card__img" loading="lazy"></div><div class="menu-card__body"><h3 class="menu-card__title">Морковь по-корейски</h3><p class="menu-card__desc">Остро-пряный маринад от шефа.</p><div class="menu-card__footer"><div><div class="menu-card__price">120 ₽</div><div class="menu-card__weight-small">100 г</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+      <div class="menu-card"><div class="menu-card__img-wrap"><img src="" alt="Лук маринованный" class="menu-card__img" loading="lazy"></div><div class="menu-card__body"><h3 class="menu-card__title">Лук маринованный</h3><p class="menu-card__desc">Идеально к шашлыку.</p><div class="menu-card__footer"><div><div class="menu-card__price">150 ₽</div><div class="menu-card__weight-small">100 г</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+      <div class="menu-card"><div class="menu-card__img-wrap"><img src="" alt="Капуста маринованная" class="menu-card__img" loading="lazy"></div><div class="menu-card__body"><h3 class="menu-card__title">Капуста маринованная</h3><p class="menu-card__desc">По домашнему рецепту от шефа.</p><div class="menu-card__footer"><div><div class="menu-card__price">120 ₽</div><div class="menu-card__weight-small">100 г</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+      <div class="menu-card"><div class="menu-card__img-wrap"><img src="" alt="Картофель фри" class="menu-card__img" loading="lazy"></div><div class="menu-card__body"><h3 class="menu-card__title">Картофель фри</h3><p class="menu-card__desc">Золотистый, хрустящий.</p><div class="menu-card__footer"><div><div class="menu-card__price">180 ₽</div><div class="menu-card__weight-small">100 г</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+      <div class="menu-card"><div class="menu-card__img-wrap"><img src="" alt="Картофель по-деревенски" class="menu-card__img" loading="lazy"></div><div class="menu-card__body"><h3 class="menu-card__title">Картофель по-деревенски</h3><p class="menu-card__desc">С румяной корочкой и специями.</p><div class="menu-card__footer"><div><div class="menu-card__price">180 ₽</div><div class="menu-card__weight-small">100 г</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+      <div class="menu-card"><div class="menu-card__img-wrap"><img src="" alt="Сырные палочки" class="menu-card__img" loading="lazy"></div><div class="menu-card__body"><h3 class="menu-card__title">Сырные палочки</h3><p class="menu-card__desc">С тягучим сыром внутри.</p><div class="menu-card__footer"><div><div class="menu-card__price">200 ₽</div><div class="menu-card__weight-small">5 шт.</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+      <div class="menu-card"><div class="menu-card__img-wrap"><img src="" alt="Нагетсы" class="menu-card__img" loading="lazy"></div><div class="menu-card__body"><h3 class="menu-card__title">Нагетсы</h3><p class="menu-card__desc">Хрустящие куриные кусочки.</p><div class="menu-card__footer"><div><div class="menu-card__price">250 ₽</div><div class="menu-card__weight-small">5 шт.</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+      <div class="menu-card"><div class="menu-card__img-wrap"><img src="" alt="Креветки в панировке" class="menu-card__img" loading="lazy"></div><div class="menu-card__body"><h3 class="menu-card__title">Креветки в панировке</h3><p class="menu-card__desc">Хрустящие с золотой корочкой.</p><div class="menu-card__footer"><div><div class="menu-card__price">250 ₽</div><div class="menu-card__weight-small">5 шт.</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+      <div class="menu-card"><div class="menu-card__img-wrap"><img src="" alt="Цезарь с курицей" class="menu-card__img" loading="lazy"></div><div class="menu-card__body"><h3 class="menu-card__title">Цезарь с курицей</h3><p class="menu-card__desc">Листья салата, курица, соус, помидоры черри, сыр пармезан.</p><div class="menu-card__footer"><div><div class="menu-card__price">300 ₽</div><div class="menu-card__weight-small">200 г</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+    </div>
 
-      <div class="menu-card">
-        <!-- фото: морковь по-корейски в тарелке, крупный план -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Морковь по-корейски" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Морковь по-корейски</h3>
-          <p class="menu-card__desc">Пикантная закуска к мясу.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">100 г</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
+    <!-- СОУСЫ -->
+    <div id="tab-sauces" class="menu-grid--hidden">
+      <p class="menu-note">Соусы к мясу и закускам. Порция 70 г.</p>
+      <div class="sauces-grid">
+        <div class="sauce-card"><div><div class="sauce-card__name">Барбекю</div><div class="sauce-card__sub">Дымный, насыщенный</div></div><div class="sauce-card__price">100 ₽</div></div>
+        <div class="sauce-card"><div><div class="sauce-card__name">Кетчуп</div><div class="sauce-card__sub">Томатный, классический</div></div><div class="sauce-card__price">100 ₽</div></div>
+        <div class="sauce-card"><div><div class="sauce-card__name">Кавказский</div><div class="sauce-card__sub">Пряный, авторский</div></div><div class="sauce-card__price">120 ₽</div></div>
+        <div class="sauce-card"><div><div class="sauce-card__name">Чесночный</div><div class="sauce-card__sub">Сливочный, с чесноком</div></div><div class="sauce-card__price">100 ₽</div></div>
       </div>
-
-      <div class="menu-card">
-        <!-- фото: маринованный лук кольцами в тарелке -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Лук маринованный" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Лук маринованный</h3>
-          <p class="menu-card__desc">Классическая подача к шашлыку.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">50 г</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <!-- фото: гренки горкой на тарелке, поджаристые -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Гренки чесночные" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Гренки чесночные</h3>
-          <p class="menu-card__desc">Хрустящие гренки с чесноком.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">100 г</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <!-- фото: салат цезарь в тарелке — листья, гренки, заправка -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Цезарь" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Цезарь</h3>
-          <p class="menu-card__desc">Классический салат цезарь.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">200 г</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <!-- фото: квашеная капуста в тарелке, по-домашнему -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Капуста квашеная" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Капуста квашеная</h3>
-          <p class="menu-card__desc">Домашняя квашеная капуста.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">200 г</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <!-- фото: 4–5 соусников в ряд — барбекю, аджика, кетчуп, сырный, чесночный -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Соусы на выбор" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Соусы на выбор</h3>
-          <p class="menu-card__desc">Барбекю, аджика, кетчуп, сырный, чесночный.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">60 г</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /tab-snacks -->
+    </div>
 
     <!-- НАПИТКИ -->
-    <div class="menu-grid menu-grid--hidden" id="tab-drinks">
-
-      <div class="menu-card">
-        <!-- фото: стакан с газировкой и льдом (кола / фанта / спрайт) -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Газировка Кола Фанта Спрайт" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Газировка (Кола / Фанта / Спрайт)</h3>
-          <p class="menu-card__desc">Свежая газировка из автомата.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">350 мл</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
+    <div id="tab-drinks" class="menu-grid--hidden">
+      <div class="menu-grid">
+        <div class="drinks-section-title">☕ Горячие напитки и чай — 350 мл</div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Чай чёрный / зелёный</h3><p class="menu-card__desc">Горячий чай на выбор.</p><div class="menu-card__footer"><div><div class="menu-card__price">120 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Американо</h3><p class="menu-card__desc">Классический чёрный кофе.</p><div class="menu-card__footer"><div><div class="menu-card__price">150 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Капучино</h3><p class="menu-card__desc">Эспрессо с молочной пенкой.</p><div class="menu-card__footer"><div><div class="menu-card__price">160 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Латте</h3><p class="menu-card__desc">Мягкий кофе с молоком.</p><div class="menu-card__footer"><div><div class="menu-card__price">160 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Флэт уайт</h3><p class="menu-card__desc">Двойной эспрессо с молоком.</p><div class="menu-card__footer"><div><div class="menu-card__price">160 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Мокачино</h3><p class="menu-card__desc">Кофе с шоколадом и молоком.</p><div class="menu-card__footer"><div><div class="menu-card__price">160 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Раф банановый</h3><p class="menu-card__desc">Эспрессо, сливки, банановый сироп.</p><div class="menu-card__footer"><div><div class="menu-card__price">160 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Горячий шоколад</h3><p class="menu-card__desc">Насыщенный шоколадный напиток.</p><div class="menu-card__footer"><div><div class="menu-card__price">160 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Шоколад с молоком</h3><p class="menu-card__desc">Мягкий шоколадный напиток.</p><div class="menu-card__footer"><div><div class="menu-card__price">160 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
+        <div class="drinks-section-title" style="margin-top:8px;">🧃 Холодные напитки</div>
+        <div class="menu-card"><div class="menu-card__body"><h3 class="menu-card__title">Морс комбо</h3><p class="menu-card__desc">Смородина, вишня, клюква.</p><div class="menu-card__footer"><div><div class="menu-card__price">150 ₽</div><div class="menu-card__weight-small">350 мл</div></div><a href="#delivery" class="menu-card__order">Заказать</a></div></div></div>
       </div>
+    </div>
 
-      <div class="menu-card">
-        <!-- фото: стакан с морсом (красный цвет), ягоды рядом -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Морс домашний" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Морс</h3>
-          <p class="menu-card__desc">Домашний морс из ягод.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">300 мл</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <!-- фото: бутылка воды или стакан чистой воды -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Вода питьевая" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Вода</h3>
-          <p class="menu-card__desc">Чистая питьевая вода.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">300 мл</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <!-- фото: кружка с чаем, пар -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Чай горячий" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Чай</h3>
-          <p class="menu-card__desc">Горячий чай.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">300 мл</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <!-- фото: кружка чая с молоком, светло-бежевый цвет -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Чай с молоком" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Чай с молоком</h3>
-          <p class="menu-card__desc">Чай с добавлением молока.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">300 мл</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <!-- фото: чашка чёрного кофе, пар -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Кофе" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Кофе</h3>
-          <p class="menu-card__desc">Горячий кофе.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">300 мл</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <!-- фото: латте или капучино в стакане с пеной -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Кофе с молоком" class="menu-card__img" loading="lazy">
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Кофе с молоком</h3>
-          <p class="menu-card__desc">Кофе с молоком, мягкий вкус.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__weight--fixed">300 мл</span>
-            <a href="#delivery" class="menu-card__order">Заказать</a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /tab-drinks -->
-
-    <!-- НАСТОЙКИ (Бар) -->
+    <!-- НАСТОЙКИ -->
     <div class="menu-grid menu-grid--hidden" id="tab-tinctures">
-
-      <div class="tinctures-notice">
-        <span class="tinctures-notice__icon">🚫🚗</span>
-        <p>Приходите в бар и попробуйте наши настойки. Каждая — по собственному рецепту, готовится в небольших партиях. <strong>Только в баре, 18+.</strong></p>
+      <div class="coming-soon-block">
+        <span class="coming-soon-block__icon">🍶</span>
+        <div class="coming-soon-block__title">Скоро в баре</div>
+        <p class="coming-soon-block__sub">Собственные настойки по авторским рецептам — готовятся небольшими партиями. Следите за обновлениями. <strong style="color:#FFD580;">18+</strong></p>
       </div>
+    </div>
 
-      <div class="menu-card menu-card--tincture">
-        <!-- фото: рюмка с клюквенной настойкой, ягоды клюквы рядом -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Клюквенная настойка" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge menu-card__badge--18">18+</span>
-          <span class="menu-card__badge menu-card__badge--tincture-emoji">🍒</span>
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Клюквенная</h3>
-          <p class="menu-card__desc">Кисло-сладкая, как первая любовь. Отличный старт для вечера.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price-tincture">50 мл</span>
-            <span class="menu-card__bar-only">Только в баре</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card menu-card--tincture">
-        <!-- фото: рюмка с лимонной настойкой, долька лимона -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Лимонная настойка" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge menu-card__badge--18">18+</span>
-          <span class="menu-card__badge menu-card__badge--tincture-emoji">🍋</span>
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Лимонная</h3>
-          <p class="menu-card__desc">Свежая, бодрящая — как пощёчина от судьбы, только приятная.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price-tincture">50 мл</span>
-            <span class="menu-card__bar-only">Только в баре</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card menu-card--tincture">
-        <!-- фото: рюмка с перцовой настойкой, острый перец рядом -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Перцовая настойка" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge menu-card__badge--18">18+</span>
-          <span class="menu-card__badge menu-card__badge--tincture-emoji">🌶️</span>
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Перцовая</h3>
-          <p class="menu-card__desc">Согреет до кончиков пальцев. Для тех, кто не боится огня — ни в тарелке, ни в стакане.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price-tincture">50 мл</span>
-            <span class="menu-card__bar-only">Только в баре</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card menu-card--tincture">
-        <!-- фото: красивая рюмка с фирменной настойкой, без лишних деталей -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Фирменная настойка сезонная" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge menu-card__badge--18">18+</span>
-          <span class="menu-card__badge menu-card__badge--seasonal">Сезонная</span>
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Фирменная (сезонная)</h3>
-          <p class="menu-card__desc">Секретный рецепт шефа. Меняется каждый сезон — уточняйте у бармена, что припрятал на этот раз.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price-tincture">50 мл</span>
-            <span class="menu-card__bar-only">Только в баре</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card menu-card--tincture">
-        <!-- фото: рюмка с томатной настойкой, помидор или томатный сок рядом -->
-        <div class="menu-card__img-wrap">
-          <img src="" alt="Томатная настойка" class="menu-card__img" loading="lazy">
-          <span class="menu-card__badge menu-card__badge--18">18+</span>
-          <span class="menu-card__badge menu-card__badge--tincture-emoji">🍅</span>
-        </div>
-        <div class="menu-card__body">
-          <h3 class="menu-card__title">Томатная</h3>
-          <p class="menu-card__desc">Для смелых и любопытных. Пряная, насыщенная — пара рюмок, и мангал кажется ещё жарче.</p>
-          <div class="menu-card__footer">
-            <span class="menu-card__price-tincture">50 мл</span>
-            <span class="menu-card__bar-only">Только в баре</span>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /tab-tinctures -->
-
-    <p class="menu-footnote">* Состав и вес могут незначительно меняться. Цены уточняйте у оператора. Алкоголь продаётся только лицам старше 18 лет.</p>
+    <p class="menu-footnote">* Состав и вес могут незначительно меняться. Цены актуальны на дату обновления. Алкоголь продаётся только лицам старше 18 лет.</p>
   </div>
 </section>
 
@@ -699,11 +414,13 @@
 (function(){
   var tabs = document.querySelectorAll('.menu-tab');
   var grids = {
-    ugly:       document.getElementById('tab-ugly'),
+    meat:       document.getElementById('tab-meat'),
+    veggies:    document.getElementById('tab-veggies'),
     complex:    document.getElementById('tab-complex'),
     lavash:     document.getElementById('tab-lavash'),
     shawarma:   document.getElementById('tab-shawarma'),
     snacks:     document.getElementById('tab-snacks'),
+    sauces:     document.getElementById('tab-sauces'),
     drinks:     document.getElementById('tab-drinks'),
     tinctures:  document.getElementById('tab-tinctures')
   };
