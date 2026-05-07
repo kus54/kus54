@@ -18,6 +18,7 @@
   }
   .page { width: 100% !important; min-height: 100vw !important; }
 }
+
 @media screen and (orientation: portrait) {
   html, body { width: 1080px; min-height: 1920px; }
 }
@@ -67,16 +68,19 @@ html, body {
   0%,100% { opacity: .92; transform: scale(1); }
   50% { opacity: .58; transform: scale(1.03); }
 }
+
 @keyframes spark-rise {
   0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
   10% { opacity: .95; }
   70% { opacity: .65; }
   100% { transform: translateY(var(--rise, -1550px)) translateX(var(--sway)) scale(.18); opacity: 0; }
 }
+
 @keyframes glow-pulse {
   0%,100% { box-shadow: 0 0 0 rgba(212,43,26,0); }
   50% { box-shadow: 0 0 30px rgba(212,43,26,.24); }
 }
+
 @keyframes flicker {
   0% { transform: rotate(-2deg) scale(1); opacity: 1; }
   25% { transform: rotate(1deg) scale(1.06); opacity: .88; }
@@ -100,6 +104,7 @@ html, body {
     radial-gradient(ellipse 70% 24% at 80% 86%, rgba(200,25,20,.08), transparent 66%),
     linear-gradient(180deg, #111114 0%, #090705 28%, #090705 100%);
 }
+
 .page::before,
 .page::after {
   content: "";
@@ -108,19 +113,25 @@ html, body {
   pointer-events: none;
   z-index: 0;
 }
+
 .page::before {
   background:
     radial-gradient(ellipse 94% 36% at 50% 103%, rgba(212,43,26,.26), transparent 56%),
     radial-gradient(ellipse 76% 22% at 50% 98%, rgba(255,107,107,.14), transparent 60%);
   animation: ember-breathe 5.5s ease-in-out infinite;
 }
+
 .page::after {
   background:
     radial-gradient(ellipse 36% 13% at 18% 97%, rgba(212,43,26,.12), transparent 70%),
     radial-gradient(ellipse 36% 13% at 82% 97%, rgba(212,43,26,.12), transparent 70%);
   animation: ember-breathe 7s ease-in-out infinite reverse;
 }
-.page > * { position: relative; z-index: 1; }
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
 
 .sparks {
   position: absolute;
@@ -129,6 +140,7 @@ html, body {
   overflow: hidden;
   z-index: 0;
 }
+
 .spark {
   position: absolute;
   bottom: 40px;
@@ -155,6 +167,7 @@ html, body {
   border-radius: 14px;
   overflow: hidden;
 }
+
 .section-head {
   padding: 7px 12px 6px;
   display: flex;
@@ -168,6 +181,7 @@ html, body {
     inset 0 1px 0 rgba(255,145,145,.12),
     inset 0 -1px 0 rgba(0,0,0,.24);
 }
+
 .section-title {
   font-size: 28px;
   font-weight: 900;
@@ -177,16 +191,19 @@ html, body {
   gap: 8px;
   color: #fff6ef;
 }
+
 .section-sub {
   font-size: 14px;
   color: rgba(255,239,231,.82);
   text-align: right;
 }
+
 .fire-deco {
   display: inline-block;
   animation: flicker 2.3s ease-in-out infinite;
   filter: drop-shadow(0 0 10px rgba(212,43,26,.7));
 }
+
 .hit-badge {
   display: inline-flex;
   width: fit-content;
@@ -203,13 +220,16 @@ html, body {
 }
 
 .row-list { display: flex; flex-direction: column; }
+
 .row-item {
   display: flex;
   gap: 8px;
   padding: 8px 12px;
   border-bottom: 1px solid var(--line);
 }
+
 .row-item:last-child { border-bottom: none; }
+
 .row-left {
   flex: 1;
   min-width: 0;
@@ -217,16 +237,19 @@ html, body {
   flex-direction: column;
   gap: 4px;
 }
+
 .row-name {
   font-size: 22px;
   font-weight: 800;
   line-height: 1.02;
 }
+
 .row-desc {
   font-size: 13px;
   color: var(--muted);
   line-height: 1.14;
 }
+
 .row-right {
   min-width: 118px;
   display: flex;
@@ -234,6 +257,7 @@ html, body {
   align-items: flex-end;
   gap: 2px;
 }
+
 .row-price {
   font-size: 35px;
   font-weight: 900;
@@ -241,6 +265,7 @@ html, body {
   line-height: 1;
   white-space: nowrap;
 }
+
 .row-weight {
   font-size: 14px;
   color: var(--muted);
@@ -250,23 +275,28 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
 .grill-item {
   padding: 7px 9px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
+
 .grill-item:nth-child(even) { border-right: none; }
 .grill-item:nth-last-child(-n+2) { border-bottom: none; }
+
 .grill-name {
   font-size: 18px;
   font-weight: 800;
   margin-bottom: 2px;
 }
+
 .grill-desc {
   font-size: 12px;
   color: var(--muted);
   line-height: 1.12;
 }
+
 .grill-price {
   margin-top: 4px;
   font-size: 27px;
@@ -278,12 +308,15 @@ html, body {
 .compact-rows .row-item {
   padding: 7px 12px;
 }
+
 .compact-rows .row-name {
   font-size: 21px;
 }
+
 .compact-rows .row-desc {
   font-size: 12px;
 }
+
 .compact-rows .row-price {
   font-size: 33px;
 }
@@ -294,6 +327,7 @@ html, body {
   gap: 6px;
   padding: 7px 10px 8px;
 }
+
 .combo-card {
   position: relative;
   padding: 7px 8px 8px;
@@ -303,18 +337,21 @@ html, body {
     radial-gradient(circle at top right, rgba(255,107,107,.15), transparent 42%),
     linear-gradient(180deg, rgba(212,43,26,.18), rgba(89,16,15,.30));
 }
+
 .combo-card-1 {
   border-color: rgba(212,43,26,.34);
   background:
     radial-gradient(circle at top right, rgba(255,130,120,.18), transparent 42%),
     linear-gradient(180deg, rgba(186,34,28,.28), rgba(97,18,16,.34));
 }
+
 .combo-card-3 {
   border-color: rgba(190,86,52,.34);
   background:
     radial-gradient(circle at top right, rgba(255,188,138,.16), transparent 42%),
     linear-gradient(180deg, rgba(153,58,30,.24), rgba(77,23,16,.34));
 }
+
 .combo-tag {
   display: inline-flex;
   padding: 2px 6px;
@@ -327,12 +364,14 @@ html, body {
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+
 .combo-name {
   margin-top: 5px;
   font-size: 18px;
   font-weight: 900;
   line-height: .98;
 }
+
 .combo-desc {
   margin-top: 4px;
   font-size: 11px;
@@ -340,6 +379,7 @@ html, body {
   color: rgba(247,241,234,.78);
   min-height: 52px;
 }
+
 .combo-price-big {
   margin-top: 6px;
   font-size: 36px;
@@ -347,12 +387,15 @@ html, body {
   color: var(--accent-soft);
   line-height: .95;
 }
+
 .snack-split {
   padding: 0;
 }
+
 .snack-split-item {
   padding: 7px 9px;
 }
+
 .snack-split-item + .snack-split-item {
   border-top: 1px solid var(--line);
 }
@@ -362,6 +405,7 @@ html, body {
   border-top: 1px solid rgba(255,255,255,.06);
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
 }
+
 .snack-footer-title {
   font-size: 15px;
   font-weight: 800;
@@ -369,12 +413,14 @@ html, body {
   text-transform: uppercase;
   color: rgba(255,217,189,.80);
 }
+
 .sauce-mini-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   margin-top: 7px;
 }
+
 .sauce-mini {
   display: flex;
   justify-content: space-between;
@@ -388,6 +434,7 @@ html, body {
   font-weight: 700;
   color: #fff1e8;
 }
+
 .sauce-mini span {
   color: rgba(255,217,189,.86);
   font-weight: 900;
@@ -400,6 +447,7 @@ html, body {
   padding: 8px 12px 10px;
   align-items: center;
 }
+
 .sauce-pill {
   padding: 5px 9px;
   border-radius: 999px;
@@ -408,6 +456,7 @@ html, body {
   font-size: 13px;
   font-weight: 700;
 }
+
 .sauce-price {
   margin-left: auto;
   font-size: 22px;
@@ -419,10 +468,13 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
 .drinks-col {
   border-right: 1px solid var(--line);
 }
+
 .drinks-col:last-child { border-right: none; }
+
 .drinks-sub-head {
   padding: 6px 10px;
   font-size: 10px;
@@ -432,6 +484,7 @@ html, body {
   color: rgba(247,241,234,.38);
   border-bottom: 1px solid var(--line);
 }
+
 .drink-row {
   display: flex;
   justify-content: space-between;
@@ -439,22 +492,27 @@ html, body {
   padding: 5px 10px;
   border-bottom: 1px solid rgba(255,255,255,.05);
 }
+
 .drink-row:last-child { border-bottom: none; }
+
 .drink-name {
   font-size: 16px;
   font-weight: 700;
 }
+
 .drink-vol {
   font-size: 12px;
   color: var(--muted);
   margin-top: 2px;
 }
+
 .drink-price {
   font-size: 22px;
   font-weight: 900;
   color: var(--accent-soft);
   white-space: nowrap;
 }
+
 .drink-price-hit {
   font-size: 28px;
 }
@@ -464,6 +522,7 @@ html, body {
   font-size: 13px;
   color: rgba(247,241,234,.44);
 }
+
 .soon-card {
   width: calc(100% - 20px);
   min-height: 84px;
@@ -479,11 +538,13 @@ html, body {
   justify-content: space-between;
   color: rgba(247,241,234,.62);
 }
+
 .soon-title {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.05;
 }
+
 .soon-badge {
   font-size: 15px;
   font-weight: 800;
@@ -491,6 +552,7 @@ html, body {
   text-transform: uppercase;
   align-self: flex-start;
 }
+
 .soon-note {
   font-size: 11px;
   color: rgba(247,241,234,.42);
@@ -501,8 +563,101 @@ html, body {
 .screen2-snacks { flex: 1.18; }
 .screen2-drinks { flex: 1.00; }
 
+/* =========================================================
+   НОВОЕ: 3 карточки комплексов + мини-ланч
+   ОТКАТ: если нужно вернуть назад — удали весь блок от этой строки
+   до строки "КОНЕЦ НОВОГО БЛОКА"
+   ========================================================= */
+
+.combo-grid-hero {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.combo-grid-hero .combo-card {
+  min-width: 0;
+  padding: 6px 7px 7px;
+}
+
+.combo-grid-hero .combo-tag {
+  font-size: 7px;
+  padding: 2px 5px;
+}
+
+.combo-grid-hero .combo-name {
+  margin-top: 4px;
+  font-size: 16px;
+  line-height: .96;
+}
+
+.combo-grid-hero .combo-desc {
+  margin-top: 4px;
+  font-size: 10px;
+  line-height: 1.12;
+  min-height: 40px;
+}
+
+.combo-grid-hero .combo-price-big {
+  margin-top: 4px;
+  font-size: 31px;
+  line-height: .95;
+}
+
+.combo-card-mini {
+  padding: 6px 7px 7px;
+}
+
+.combo-card-mini .combo-name {
+  font-size: 16px;
+}
+
+.mini-lunch-note {
+  margin-top: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: rgba(255,217,189,.72);
+  white-space: nowrap;
+}
+
+.mini-lunch-list {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mini-lunch-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 5px;
+  border-radius: 8px;
+  background: rgba(212,43,26,.12);
+  border: 1px solid rgba(212,43,26,.22);
+}
+
+.mini-lunch-name {
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  color: #fff6ef;
+  white-space: nowrap;
+}
+
+.mini-lunch-price {
+  font-size: 21px;
+  font-weight: 900;
+  line-height: .9;
+  color: var(--accent-soft);
+  white-space: nowrap;
+}
+
+/* КОНЕЦ НОВОГО БЛОКА */
+
 </style>
 </head>
+
 <body>
 <div class="page">
   <div class="sparks" aria-hidden="true">
@@ -522,33 +677,64 @@ html, body {
   </div>
 
   <div class="body">
+
     <div class="section screen2-combos">
       <div class="section-head">
         <div class="section-title">Комплексы</div>
         <div class="section-sub">мясо + лук + соус + лаваш</div>
       </div>
+
       <div class="combo-grid-hero">
+
         <div class="combo-card combo-card-1">
           <div class="combo-tag">сильный чек</div>
           <div class="combo-name">Комплекс №1</div>
           <div class="combo-desc">Свинина на углях, лук, соус, лаваш</div>
           <div class="combo-price-big">490 р.</div>
         </div>
-        <!-- Комплекс №2 временно скрыт. Чтобы вернуть, просто снимите комментарий с блока ниже и при желании верните 3 колонки в .combo-grid-hero -->
-        <!--
-        <div class="combo-card">
-          <div class="combo-tag">добирают к пиву</div>
-          <div class="combo-name">Комплекс №2</div>
-          <div class="combo-desc">Колбаски, картофель по-деревенски, соус, лаваш</div>
-          <div class="combo-price-big">490 р.</div>
-        </div>
-        -->
+
         <div class="combo-card combo-card-3">
           <div class="combo-tag">быстрый выбор</div>
           <div class="combo-name">Комплекс №2</div>
           <div class="combo-desc">Куриное бедро на углях, лук, соус, лаваш</div>
           <div class="combo-price-big">460 р.</div>
         </div>
+
+        <!-- =========================================================
+             НОВОЕ: карточка мини-ланча
+             ОТКАТ: если нужно вернуть назад — удали этот блок целиком
+             от строки "НОВОЕ: карточка мини-ланча" до строки "КОНЕЦ НОВОГО БЛОКА"
+             ========================================================= -->
+        <div class="combo-card combo-card-mini">
+          <div class="combo-tag">для тех, кто торопится</div>
+          <div class="combo-name">Мини-ланч</div>
+          <div class="mini-lunch-note">100 г мясо + лаваш + соус</div>
+
+          <div class="mini-lunch-list">
+            <div class="mini-lunch-row">
+              <div class="mini-lunch-name">Свинина</div>
+              <div class="mini-lunch-price">290 р.</div>
+            </div>
+
+            <div class="mini-lunch-row">
+              <div class="mini-lunch-name">Курица</div>
+              <div class="mini-lunch-price">250 р.</div>
+            </div>
+          </div>
+        </div>
+        <!-- КОНЕЦ НОВОГО БЛОКА -->
+
+        <!--
+        ОТКАТ: старый блок быстрого ланча, если захочешь вернуть:
+
+        <div class="combo-card">
+          <div class="combo-tag">для тех, кто торопится</div>
+          <div class="combo-name">Быстрый ланч</div>
+          <div class="combo-desc">Колбаски, картофель по-деревенски, соус, лаваш</div>
+          <div class="combo-price-big">490 р.</div>
+        </div>
+        -->
+
       </div>
     </div>
 
@@ -556,48 +742,57 @@ html, body {
       <div class="section-head">
         <div class="section-title">Закуски</div>
       </div>
+
       <div class="grill-grid">
         <div class="grill-item">
           <div class="grill-name">Морковь по-корейски</div>
-          <div class="grill-desc">Остро-пряный маринад от шефа. 100 гр.</div>
-          <div class="grill-price">120 р.</div>
+          <div class="grill-desc">Остро-пряный маринад от шефа. 120 гр.</div>
+          <div class="grill-price">130 р.</div>
         </div>
+
         <div class="grill-item">
           <div class="grill-name">Лук маринованный</div>
           <div class="grill-desc">Идеально к шашлыку. 100 гр.</div>
           <div class="grill-price">150 р.</div>
         </div>
+
         <div class="grill-item">
           <div class="grill-name">Капуста маринованная</div>
-          <div class="grill-desc">По домашнему рецепту от шефа. 100 гр.</div>
-          <div class="grill-price">120 р.</div>
+          <div class="grill-desc">По домашнему рецепту от шефа. 120 гр.</div>
+          <div class="grill-price">130 р.</div>
         </div>
+
         <div class="grill-item">
           <div class="grill-name">Креветки в панировке</div>
           <div class="grill-desc">Хрустящие с золотой корочкой. 5 шт.</div>
           <div class="grill-price">250 р.</div>
         </div>
+
         <div class="grill-item">
           <div class="grill-name">Картофель фри</div>
           <div class="grill-desc">Золотистый, хрустящий. 100 гр.</div>
           <div class="grill-price">180 р.</div>
         </div>
+
         <div class="grill-item">
           <div class="grill-name">Картофель по-деревенски</div>
           <div class="grill-desc">С румяной корочкой и специями. 100 гр.</div>
           <div class="grill-price">180 р.</div>
         </div>
+
         <div class="grill-item">
           <div class="grill-name">Сырные палочки</div>
           <div class="grill-desc">С тягучим сыром внутри. 5 шт.</div>
           <div class="grill-price">200 р.</div>
         </div>
+
         <div class="grill-item snack-split">
           <div class="snack-split-item">
             <div class="grill-name">Наггетсы</div>
             <div class="grill-desc">Хрустящие куриные кусочки. 5 шт.</div>
             <div class="grill-price">250 р.</div>
           </div>
+
           <div class="snack-split-item">
             <div class="grill-name">Цезарь с курицей</div>
             <div class="grill-desc">Листья салата, курица, соус, помидоры черри, сыр пармезан · 200 гр.</div>
@@ -605,27 +800,31 @@ html, body {
           </div>
         </div>
       </div>
-     <div class="snack-footer">
-  <div class="section-head sauce-head">
-    <div class="section-title sauce-title">Соусы</div>
-    <div class="section-sub">70 г</div>
-  </div>
-  <div class="sauce-mini-grid">
-    <div class="sauce-mini">Барбекю <span>100 р.</span></div>
-    <div class="sauce-mini">Кетчуп <span>100 р.</span></div>
-    <div class="sauce-mini">Кавказский <span>120 р.</span></div>
-    <div class="sauce-mini">Чесночный <span>100 р.</span></div>
-  </div>
-</div>
+
+      <div class="snack-footer">
+        <div class="section-head sauce-head">
+          <div class="section-title sauce-title">Соусы</div>
+          <div class="section-sub">70 г</div>
+        </div>
+
+        <div class="sauce-mini-grid">
+          <div class="sauce-mini">Барбекю <span>100 р.</span></div>
+          <div class="sauce-mini">Кетчуп <span>100 р.</span></div>
+          <div class="sauce-mini">Кавказский <span>100 р.</span></div>
+          <div class="sauce-mini">Чесночный <span>100 р.</span></div>
+        </div>
+      </div>
     </div>
 
     <div class="section screen2-drinks">
       <div class="section-head">
         <div class="section-title">Напитки</div>
       </div>
+
       <div class="drinks-cols">
         <div class="drinks-col">
           <div class="drinks-sub-head">Холодные и чай</div>
+
           <div class="drink-row">
             <div>
               <div class="drink-name">Морс комбо</div>
@@ -633,6 +832,7 @@ html, body {
             </div>
             <div class="drink-price drink-price-hit">150 р.</div>
           </div>
+
           <div class="drink-row">
             <div>
               <div class="drink-name">Чай (черный, зеленый)</div>
@@ -640,6 +840,7 @@ html, body {
             </div>
             <div class="drink-price drink-price-hit">120 р.</div>
           </div>
+
           <div class="soon-card">
             <div>
               <div class="soon-title">Настойки 18+</div>
@@ -651,6 +852,7 @@ html, body {
 
         <div class="drinks-col">
           <div class="drinks-sub-head">Кофе 350 мл.</div>
+
           <div class="drink-row"><div class="drink-name">Американо</div><div class="drink-price">150 р.</div></div>
           <div class="drink-row"><div class="drink-name">Капучино</div><div class="drink-price">160 р.</div></div>
           <div class="drink-row"><div class="drink-name">Латте</div><div class="drink-price">160 р.</div></div>
@@ -662,8 +864,8 @@ html, body {
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
 </body>
 </html>
