@@ -18,6 +18,7 @@
   }
   .page { width: 100% !important; min-height: 100vw !important; }
 }
+
 @media screen and (orientation: portrait) {
   html, body { width: 1080px; min-height: 1920px; }
 }
@@ -45,41 +46,38 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 
-  БЫСТРАЯ НАСТРОЙКА ШРИФТОВ:
-  .section-title       — заголовки блоков, например "Мясо на углях"
-  .section-sub         — маленький текст справа в шапке блока
-  .section-note        — пояснение под шапкой блока
-  .grill-name          — названия мясных позиций
-  .grill-desc          — описание мясных позиций
-  .grill-measure       — строка "200 р. / 100 г"
-  .grill-anchor-price  — крупная акцентная цена у шашлыка из свинины и люля
-  .grill-price-fixed   — крупная обычная цена у мясных позиций
-  .row-name            — названия строк в обычных блоках
-  .row-desc            — описание строк
-  .row-price           — цена в строках и у шаурмы
-  .row-weight          — подпись под ценой, например "порция"
-  .spot-price          — самая крупная цена в карточках "Шашлык в лаваше"
-  .veg-prefix          — слово "порция" перед ценой в блоке "Овощи и гриль"
-  .extra-price         — цена у добавок и хлеба внизу экрана
-  .shawarma-line-name  — строка формата "Название — 350 г"
-  .shawarma-line-price — крупная цена в блоке шаурмы
+/*
+  БЫСТРАЯ НАСТРОЙКА:
+  .section-title        — заголовки блоков
+  .section-sub          — маленький текст справа
+  .grill-name           — названия блюд на углях
+  .grill-desc           — описание блюд
+  .grill-price-fixed    — цена блюд на углях
+  .grill-weight         — вес порции
+  .row-name             — названия обычных строк
+  .row-desc             — описание обычных строк
+  .row-price            — цена обычных строк
+  .spot-price           — цена шашлыка в лаваше
+  .shawarma-line-price  — цена шаурмы
 */
 
 @keyframes ember-breathe {
   0%,100% { opacity: .92; transform: scale(1); }
   50% { opacity: .58; transform: scale(1.03); }
 }
+
 @keyframes spark-rise {
   0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
   10% { opacity: .95; }
   70% { opacity: .65; }
   100% { transform: translateY(var(--rise, -1550px)) translateX(var(--sway)) scale(.18); opacity: 0; }
 }
+
 @keyframes glow-pulse {
   0%,100% { box-shadow: 0 0 0 rgba(212,43,26,0); }
   50% { box-shadow: 0 0 30px rgba(212,43,26,.24); }
 }
+
 @keyframes flicker {
   0% { transform: rotate(-2deg) scale(1); opacity: 1; }
   25% { transform: rotate(1deg) scale(1.06); opacity: .88; }
@@ -103,6 +101,7 @@ html, body {
     radial-gradient(ellipse 70% 24% at 80% 86%, rgba(200,25,20,.08), transparent 66%),
     linear-gradient(180deg, #111114 0%, #090705 28%, #090705 100%);
 }
+
 .page::before,
 .page::after {
   content: "";
@@ -111,19 +110,26 @@ html, body {
   pointer-events: none;
   z-index: 0;
 }
+
 .page::before {
   background:
     radial-gradient(ellipse 94% 36% at 50% 103%, rgba(212,43,26,.26), transparent 56%),
     radial-gradient(ellipse 76% 22% at 50% 98%, rgba(255,107,107,.14), transparent 60%);
   animation: ember-breathe 5.5s ease-in-out infinite;
 }
+
 .page::after {
   background:
     radial-gradient(ellipse 36% 13% at 18% 97%, rgba(212,43,26,.12), transparent 70%),
     radial-gradient(ellipse 36% 13% at 82% 97%, rgba(212,43,26,.12), transparent 70%);
   animation: ember-breathe 7s ease-in-out infinite reverse;
 }
-.page > * { position: relative; z-index: 1; }
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
 .sparks {
   position: absolute;
   inset: 0;
@@ -131,6 +137,7 @@ html, body {
   overflow: hidden;
   z-index: 0;
 }
+
 .spark {
   position: absolute;
   bottom: 40px;
@@ -157,6 +164,7 @@ html, body {
   border-radius: 12px;
   overflow: hidden;
 }
+
 .section-head {
   padding: 7px 9px 6px;
   display: flex;
@@ -170,6 +178,7 @@ html, body {
     inset 0 1px 0 rgba(255,145,145,.12),
     inset 0 -1px 0 rgba(0,0,0,.24);
 }
+
 .section-title {
   font-size: 25px;
   font-weight: 900;
@@ -179,16 +188,11 @@ html, body {
   gap: 8px;
   color: #fff6ef;
 }
+
 .section-sub {
   font-size: 13px;
   color: rgba(255,239,231,.82);
   text-align: right;
-}
-.section-note {
-  padding: 5px 9px;
-  font-size: 12px;
-  color: rgba(247,241,234,.40);
-  border-bottom: 1px solid var(--line);
 }
 
 .fire-deco {
@@ -201,16 +205,24 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
 .grill-item {
-  padding: 9px 10px 8px;
+  min-height: 116px;
+  padding: 8px 10px 8px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-.grill-item:nth-child(even) { border-right: none; }
-.grill-item:nth-last-child(-n+2) { border-bottom: none; }
+
+.grill-item:nth-child(even) {
+  border-right: none;
+}
+
+.grill-item:nth-last-child(-n+2) {
+  border-bottom: none;
+}
 
 .hit-badge {
   display: inline-flex;
@@ -226,87 +238,58 @@ html, body {
   color: #fff;
   animation: glow-pulse 3s ease-in-out infinite;
 }
+
 .grill-name {
   font-size: 19px;
   font-weight: 800;
   line-height: 1.02;
 }
+
 .grill-desc {
   font-size: 12px;
   line-height: 1.12;
   color: var(--muted);
 }
+
 .grill-bottom {
-  margin-top: 3px;
+  margin-top: auto;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.grill-measure {
-  font-size: 13px;
-  color: rgba(247,241,234,.52);
-}
-.grill-anchor {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
+  justify-content: space-between;
+  align-items: flex-end;
   gap: 8px;
-  width: 100%;
-  padding: 5px 8px;
-  border-radius: 8px;
-  background: rgba(212,43,26,.14);
-  border: 1px solid rgba(212,43,26,.30);
-}
-.grill-anchor-qty {
-  font-size: 16px;
-  color: rgba(247,241,234,.68);
-  line-height: 1.05;
-}
-.grill-anchor-price {
-  font-size: 46px;
-  font-weight: 900;
-  color: var(--accent-soft);
-  line-height: .92;
-  min-width: 108px;
-  text-align: right;
-}
-.grill-price-fixed {
-  font-size: 29px;
-  font-weight: 900;
-  line-height: 1;
-  color: var(--accent-soft);
-}
-.grill-weight {
-  font-size: 12px;
-  color: var(--muted);
-}
-.featured-grill {
-  min-height: 122px;
-}
-.featured-grill .grill-bottom {
-  margin-top: 6px;
-}
-.grill-split {
-  padding: 0;
-}
-.split-dish {
-  padding: 6px 8px 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.split-dish + .split-dish {
-  border-top: 1px solid var(--line);
 }
 
-.row-list { display: flex; flex-direction: column; }
+.grill-price-fixed {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: .95;
+  color: var(--accent-soft);
+  white-space: nowrap;
+}
+
+.grill-weight {
+  font-size: 13px;
+  color: rgba(255,217,189,.78);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.row-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .row-item {
   display: flex;
   gap: 10px;
   padding: 7px 10px;
   border-bottom: 1px solid var(--line);
 }
-.row-item:last-child { border-bottom: none; }
+
+.row-item:last-child {
+  border-bottom: none;
+}
+
 .row-left {
   flex: 1;
   min-width: 0;
@@ -314,16 +297,19 @@ html, body {
   flex-direction: column;
   gap: 4px;
 }
+
 .row-name {
   font-size: 19px;
   font-weight: 800;
   line-height: 1.02;
 }
+
 .row-desc {
   font-size: 12px;
   color: var(--muted);
   line-height: 1.12;
 }
+
 .row-right {
   min-width: 112px;
   display: flex;
@@ -331,6 +317,7 @@ html, body {
   align-items: flex-end;
   gap: 2px;
 }
+
 .row-price {
   font-size: 31px;
   font-weight: 900;
@@ -338,6 +325,7 @@ html, body {
   line-height: 1;
   white-space: nowrap;
 }
+
 .row-weight {
   font-size: 12px;
   color: var(--muted);
@@ -346,12 +334,15 @@ html, body {
 .compact-rows .row-item {
   padding: 7px 10px;
 }
+
 .compact-rows .row-name {
   font-size: 18px;
 }
+
 .compact-rows .row-desc {
   font-size: 11px;
 }
+
 .compact-rows .row-price {
   font-size: 31px;
 }
@@ -362,6 +353,7 @@ html, body {
   gap: 7px;
   padding: 7px 10px 8px;
 }
+
 .spot-card {
   position: relative;
   padding: 8px 10px 9px;
@@ -372,6 +364,7 @@ html, body {
     linear-gradient(180deg, rgba(212,43,26,.20), rgba(83,16,15,.34));
   overflow: hidden;
 }
+
 .spot-badge {
   display: inline-flex;
   align-items: center;
@@ -386,18 +379,21 @@ html, body {
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+
 .spot-name {
   margin-top: 5px;
   font-size: 20px;
   font-weight: 900;
   line-height: .98;
 }
+
 .spot-desc {
   margin-top: 4px;
   font-size: 11px;
   line-height: 1.12;
   color: rgba(247,241,234,.78);
 }
+
 .spot-meta {
   margin-top: 6px;
   display: flex;
@@ -405,11 +401,13 @@ html, body {
   align-items: flex-end;
   gap: 8px;
 }
+
 .spot-hint {
   font-size: 11px;
   color: rgba(255,217,189,.78);
   line-height: 1.1;
 }
+
 .spot-price {
   font-size: 38px;
   font-weight: 900;
@@ -417,23 +415,28 @@ html, body {
   color: #ff7f7f;
   text-align: right;
 }
+
 .shawarma-line .row-item {
   align-items: center;
   gap: 10px;
 }
+
 .shawarma-line-name {
   font-size: 18px;
   font-weight: 900;
   line-height: 1.04;
   color: #fff5ee;
 }
+
 .shawarma-line-name span {
   color: rgba(255,217,189,.78);
   font-weight: 800;
 }
+
 .shawarma-line .row-desc {
   margin-top: 3px;
 }
+
 .shawarma-line-price {
   font-size: 37px;
   font-weight: 900;
@@ -449,6 +452,7 @@ html, body {
     radial-gradient(circle at top right, rgba(255,107,107,.12), transparent 42%),
     linear-gradient(180deg, rgba(212,43,26,.18), rgba(212,43,26,.07));
 }
+
 .extras-title {
   font-size: 11px;
   font-weight: 800;
@@ -456,12 +460,14 @@ html, body {
   text-transform: uppercase;
   color: rgba(255,217,189,.80);
 }
+
 .extras-sections {
   display: grid;
   grid-template-columns: 1.25fr .95fr;
   gap: 8px;
   margin-top: 4px;
 }
+
 .extras-subtitle {
   font-size: 9px;
   font-weight: 800;
@@ -469,6 +475,7 @@ html, body {
   text-transform: uppercase;
   color: rgba(247,241,234,.48);
 }
+
 .addon-pills,
 .bread-grid {
   display: flex;
@@ -476,6 +483,7 @@ html, body {
   gap: 6px;
   margin-top: 3px;
 }
+
 .addon-pill {
   display: inline-flex;
   align-items: center;
@@ -490,11 +498,13 @@ html, body {
   font-weight: 700;
   color: #fff1e8;
 }
+
 .extra-price {
   color: rgba(255,217,189,.86);
   font-weight: 900;
   font-size: 14px;
 }
+
 .bread-item {
   display: flex;
   justify-content: space-between;
@@ -509,32 +519,13 @@ html, body {
   color: #fff1e8;
 }
 
-.screen1-meat { flex: 1.62; }
-.screen1-veg { flex: 1.00; }
-.screen1-lavash { flex: 1.02; }
-.screen1-shawarma { flex: 1.38; }
-
-.veg-price-line {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-.veg-prefix {
-  font-size: 12px;
-  color: rgba(255,217,189,.78);
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  white-space: nowrap;
-}
-.screen1-veg .row-price {
-  font-size: 35px;
-}
-.screen1-shawarma .shawarma-line-price {
-  font-size: 37px;
-}
+.screen1-meat { flex: 1.88; }
+.screen1-lavash { flex: .92; }
+.screen1-shawarma { flex: 1.22; }
 
 </style>
 </head>
+
 <body>
 <div class="page">
   <div class="sparks" aria-hidden="true">
@@ -552,156 +543,170 @@ html, body {
     <div class="spark" style="left:88%;--dur:5.5s;--delay:1.9s;--sway:-14px;--rise:-1750px;--spark-core:#ffd9a4;--spark-edge:#ff6f66;"></div>
     <div class="spark" style="left:93%;--dur:6.4s;--delay:.8s;--sway:10px;--rise:-1900px;--spark-core:#fff5cf;--spark-edge:#ff9b70;"></div>
   </div>
+
   <div class="body">
+
+    <!-- ======================= -->
+    <!-- БЛЮДА НА УГЛЯХ -->
+    <!-- ======================= -->
     <div class="section screen1-meat">
       <div class="section-head">
-        <div class="section-title">Мясо на углях <span class="fire-deco">🔥</span></div>
-        <div class="section-sub">называйте вес</div>
+        <div class="section-title">Блюда на углях <span class="fire-deco">🔥</span></div>
+        <div class="section-sub">готовим порциями</div>
       </div>
+
       <div class="grill-grid">
-        <div class="grill-item featured-grill">
+
+        <!-- ПРАВИТЬ ТУТ: шашлык свинина -->
+        <div class="grill-item">
           <div class="hit-badge">🔥 Хит</div>
           <div class="grill-name">Шашлык из свинины</div>
           <div class="grill-desc">Свиная шейка в авторском маринаде</div>
           <div class="grill-bottom">
-            <div class="grill-anchor">
-              <span class="grill-anchor-qty">100 г →</span>
-              <span class="grill-anchor-price">220 р.</span>
-            </div>
+            <div class="grill-weight">200 г</div>
+            <div class="grill-price-fixed">540 р.</div>
           </div>
         </div>
 
-        <div class="grill-item featured-grill">
+        <!-- ПРАВИТЬ ТУТ: люля -->
+        <div class="grill-item">
           <div class="hit-badge">🔥 Хит</div>
           <div class="grill-name">Люля-кебаб</div>
-          <div class="grill-desc">Рубленая свинина и говядина со специями на шампуре</div>
+          <div class="grill-desc">Свинина и говядина, специи, мангал</div>
           <div class="grill-bottom">
-            <div class="grill-anchor">
-              <span class="grill-anchor-qty">300 г →</span>
-              <span class="grill-anchor-price">640 р.</span>
-            </div>
+            <div class="grill-weight">300 г</div>
+            <div class="grill-price-fixed">530 р.</div>
           </div>
         </div>
 
-        <div class="grill-item">
-          <div class="grill-name">Куриное бедро</div>
-          <div class="grill-desc">Нежное филе, приготовленное на мангале</div>
-          <div class="grill-bottom">
-            <div class="grill-price-fixed">400 р.</div>
-            <div class="grill-weight">200гр.</div>
-          </div>
-        </div>
-
+        <!-- ПРАВИТЬ ТУТ: грудка -->
         <div class="grill-item">
           <div class="grill-name">Куриная грудка</div>
           <div class="grill-desc">Филе на живом огне — сочно и легко</div>
           <div class="grill-bottom">
-            <div class="grill-price-fixed">400 р.</div>
-            <div class="grill-weight">200 гр.</div>
+            <div class="grill-weight">200 г</div>
+            <div class="grill-price-fixed">490 р.</div>
           </div>
         </div>
 
+        <!-- ПРАВИТЬ ТУТ: бедро -->
         <div class="grill-item">
-          <div class="grill-name">Крылья на мангале</div>
+          <div class="grill-name">Стейк бедра куриный</div>
+          <div class="grill-desc">Нежное куриное бедро на мангале</div>
+          <div class="grill-bottom">
+            <div class="grill-weight">200 г</div>
+            <div class="grill-price-fixed">400 р.</div>
+          </div>
+        </div>
+
+        <!-- ПРАВИТЬ ТУТ: крылья -->
+        <div class="grill-item">
+          <div class="grill-name">Крылья куриные</div>
           <div class="grill-desc">Хрустящие снаружи, сочные внутри</div>
           <div class="grill-bottom">
-            <div class="grill-price-fixed">800 р.</div>
             <div class="grill-weight">500 г</div>
+            <div class="grill-price-fixed">800 р.</div>
           </div>
         </div>
 
-        <div class="grill-item grill-split">
-          <div class="split-dish">
-            <div class="grill-name">Креветки на гриле</div>
-            <div class="grill-desc">Обжаренные на огне креветки с дымком</div>
-            <div class="grill-bottom">
-              <!-- TODO: заменить цену креветок после утверждения -->
-              <div class="grill-price-fixed">620 р.</div>
-              <div class="grill-weight">200 г</div>
-            </div>
-          </div>
+        <!-- ПРАВИТЬ ТУТ: креветки -->
+        <div class="grill-item">
+          <div class="grill-name">Креветки на мангале</div>
+          <div class="grill-desc">Креветки с дымком, приготовленные на огне</div>
+          <div class="grill-bottom">
+            <div class="grill-weight">200 г</div>
+            <div class="grill-price-fixed">520 р.</div>
           </div>
         </div>
+
+        <!-- ПРАВИТЬ ТУТ: овощи -->
+        <div class="grill-item">
+          <div class="grill-name">Овощи на гриле</div>
+          <div class="grill-desc">Перец, кабачки, помидоры, грибы</div>
+          <div class="grill-bottom">
+            <div class="grill-weight">500 г</div>
+            <div class="grill-price-fixed">900 р.</div>
+          </div>
+        </div>
+
+        <!-- ПРАВИТЬ ТУТ: грибы -->
+        <div class="grill-item">
+          <div class="grill-name">Грибы на огне</div>
+          <div class="grill-desc">Шампиньоны на мангале с дымком</div>
+          <div class="grill-bottom">
+            <div class="grill-weight">300 г</div>
+            <div class="grill-price-fixed">540 р.</div>
+          </div>
+        </div>
+
+        <!-- ПРАВИТЬ ТУТ: картофель -->
+        <div class="grill-item">
+          <div class="grill-name">Картофель в беконе</div>
+          <div class="grill-desc">Картофель на углях в хрустящем беконе</div>
+          <div class="grill-bottom">
+            <div class="grill-weight">500 г</div>
+            <div class="grill-price-fixed">550 р.</div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <div class="section screen1-veg">
-      <div class="section-head">
-        <div class="section-title">Овощи и гриль</div>
-      </div>
-      <div class="row-list compact-rows">
-        <div class="row-item">
-          <div class="row-left">
-            <div class="row-name">Овощи на огне</div>
-            <div class="row-desc">Болгарский перец, кабачки, помидоры, грибы (маринуются в фирменном соусе от шефа)</div>
-          </div>
-          <div class="row-right">
-            <div class="veg-price-line"><div class="veg-prefix">порция 500 гр.</div><div class="row-price">900 р.</div></div>
-          </div>
-        </div>
-        <div class="row-item">
-          <div class="row-left">
-            <div class="row-name">Грибы на огне</div>
-            <div class="row-desc">Шампиньоны на мангале — с дымком и зеленью</div>
-          </div>
-          <div class="row-right">
-            <div class="veg-price-line"><div class="veg-prefix">порция 300 гр. </div><div class="row-price">540 р.</div></div>
-          </div>
-        </div>
-        <div class="row-item">
-          <div class="row-left">
-            <div class="row-name">Картофель в беконе</div>
-            <div class="row-desc">Запечённый на углях картофель в хрустящем беконе</div>
-          </div>
-          <div class="row-right">
-            <div class="veg-price-line"><div class="veg-prefix">порция 500 гр.</div><div class="row-price">550 р.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- ======================= -->
+    <!-- ШАШЛЫК В ЛАВАШЕ -->
+    <!-- ======================= -->
     <div class="section screen1-lavash">
       <div class="section-head">
         <div class="section-title">Шашлык в лаваше</div>
         <div class="section-sub">мясо + лук + соус</div>
       </div>
+
       <div class="spot-grid">
+
         <div class="spot-card">
           <div class="hit-badge">🔥 Хит</div>
           <div class="spot-name">Свинина<br>в лаваше</div>
           <div class="spot-desc">Шашлык из свинины, маринованный лук, соус</div>
           <div class="spot-meta">
-            <div class="spot-hint">200 г.</div>
+            <div class="spot-hint">200 г</div>
             <div class="spot-price">450 р.</div>
           </div>
         </div>
+
         <div class="spot-card">
           <div class="spot-badge">быстрый выбор</div>
           <div class="spot-name">Курица<br>в лаваше</div>
           <div class="spot-desc">Шашлык из курицы, маринованный лук, соус</div>
           <div class="spot-meta">
-            <div class="spot-hint">200 г.</div>
+            <div class="spot-hint">200 г</div>
             <div class="spot-price">450 р.</div>
           </div>
         </div>
+
       </div>
     </div>
 
+    <!-- ======================= -->
+    <!-- ШАУРМА -->
+    <!-- ======================= -->
     <div class="section screen1-shawarma">
       <div class="section-head">
         <div class="section-title">Шаурма <span class="fire-deco">🔥</span></div>
-        <div class="section-sub">выгодно выделяем</div>
+        <div class="section-sub">сытно и быстро</div>
       </div>
+
       <div class="row-list compact-rows shawarma-line">
+
         <div class="row-item">
           <div class="row-left">
             <div class="shawarma-line-name">Классик <span>— 350 г</span></div>
-            <div class="row-desc">Курица, капуста, морковь по корейски, огурец, помидор, классический соус</div>
+            <div class="row-desc">Курица, капуста, морковь по-корейски, огурец, помидор, классический соус</div>
           </div>
           <div class="row-right">
             <div class="shawarma-line-price">450 р.</div>
           </div>
         </div>
+
         <div class="row-item">
           <div class="row-left">
             <div class="shawarma-line-name">Острая <span>— 350 г</span></div>
@@ -711,6 +716,7 @@ html, body {
             <div class="shawarma-line-price">470 р.</div>
           </div>
         </div>
+
         <div class="row-item">
           <div class="row-left">
             <div class="shawarma-line-name">Сырная <span>— 350 г</span></div>
@@ -720,9 +726,12 @@ html, body {
             <div class="shawarma-line-price">480 р.</div>
           </div>
         </div>
+
       </div>
+
       <div class="extras-bar">
         <div class="extras-title">Добавки и хлеб</div>
+
         <div class="extras-sections">
           <div>
             <div class="extras-subtitle">К шаурме</div>
@@ -731,6 +740,7 @@ html, body {
               <div class="addon-pill">Сыр 15 г <span class="extra-price">60 р.</span></div>
             </div>
           </div>
+
           <div>
             <div class="extras-subtitle">Хлебные изделия</div>
             <div class="bread-grid">
@@ -740,6 +750,7 @@ html, body {
           </div>
         </div>
       </div>
+
     </div>
 
   </div>
